@@ -1,7 +1,7 @@
 import { Button } from '../components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { CheckCircle, Layout, TrendingUp } from 'lucide-react';
-import serviceHero from "./../assets/otherSecHero.png";
+import Hero from "./../assets/servicepage/hero.png";
 import ERPImp from "./../assets/servicepage/ERPImp.png";
 import customSoft from "./../assets/servicepage/customSoftware.png";
 import bussinesAuto from "./../assets/servicepage/businessAuto.png";
@@ -11,7 +11,7 @@ const Servicespage = () => {
   return (
     <div className="min-h-screen font-sans text-gray-800 antialiased">
       <section className="relative w-full h-[200px] md:h-[30px] lg:h-[400px] overflow-hidden">
-        <img src={serviceHero} alt="service Hero" className="w-full h-full object-cover" />
+        <img src={Hero} alt="service Hero" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
         <div className="absolute inset-0 container mx-auto px-4 text-white flex flex-col justify-center">
           <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Our Services</h1>

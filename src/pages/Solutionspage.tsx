@@ -48,7 +48,7 @@ const SolutionsPage = () => {
               <CardDescription>
                 Deployed a full-scale Odoo ERP to manage production, sales, inventory, and logistics for an East African textile plant.
               </CardDescription>
-              <a href="ERPDetail" className="mt-4 flex items-center text-sm font-medium text-blue-600 hover:text-blue-700">
+              <a href="ERPDetail" className="mt-4 flex items-center text-sm font-medium text-[#61C7D5] hover:text-[#61C7D5]-700">
                 Read More
                 <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -69,7 +69,7 @@ const SolutionsPage = () => {
               <CardDescription>
                 Built a volunteer & donation portal with dashboards, secure processes, and automated reports.
               </CardDescription>
-              <a href="CharityPlatform" className="mt-4 flex items-center text-sm font-medium text-blue-600 hover:text-blue-700">
+              <a href="CharityPlatform" className="mt-4 flex items-center text-sm font-medium text-[#61C7D5] hover:text-[#61C7D5]-700">
                 Read More
                 <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -91,7 +91,7 @@ const SolutionsPage = () => {
               <CardDescription>
                 Automated sales-stock syncing for a regional retail chain, ensuring accurate inventory across branches.
               </CardDescription>
-              <a href="RetailAuto" className="mt-4 flex items-center text-sm font-medium text-blue-600 hover:text-blue-700">
+              <a href="RetailAuto" className="mt-4 flex items-center text-sm font-medium text-[#61C7D5] hover:text-[#61C7D5]-700">
                 Read More
                 <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

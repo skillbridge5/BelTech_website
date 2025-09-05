@@ -12,7 +12,7 @@ const RetailAuto = () => {
       <div className="container mx-auto px-4 py-6">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center text-gray-700 hover:text-blue-600 transition"
+          className="flex items-center text-gray-700 hover:text-[#61C7D5] transition"
         >
           <ArrowLeft className="mr-2 h-5 w-5" /> Back
         </button>

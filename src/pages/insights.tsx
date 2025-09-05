@@ -1,6 +1,6 @@
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
-import otherSecHero from "./../assets/otherSecHero.png";
+import Hero from "./../assets/insightpage/hero.png";
 import ERPdrivesROI from "./../assets/insightpage/ERPdrivesROI.png"
 import RealWorldWorkFow from "./../assets/insightpage/RealWorldWorkFow.png"
 import DigitalTransformation from "./../assets/insightpage/DigitalTransformation.png"
@@ -30,7 +30,7 @@ const ArticleCard = ({ imageSrc, date, title, description }: ArticleCardProps) =
         <CardDescription className="text-gray-700 text-base">{description}</CardDescription>
       </CardContent>
       <CardFooter>
-        <a href="#" className="text-blue-600 hover:underline font-semibold">Read More</a>
+        <a href="#" className="text-[#61C7D5] hover:underline font-semibold">Read More</a>
       </CardFooter>
     </Card>
   );
@@ -42,7 +42,7 @@ const Insight = () => {
 
       <section className="relative w-full h-[200px] md:h-[30px] lg:h-[400px] overflow-hidden">
         <img
-          src={otherSecHero}
+          src={Hero}
           alt="insight Hero"
           className="w-full h-full object-cover"
         />

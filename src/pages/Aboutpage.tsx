@@ -1,7 +1,7 @@
 import { Target, Flag, Handshake, LineChart, Eye } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription } from "../components/ui/card";
-import abouthero from "./../assets/otherSecHero.png"
-import logo from "./../assets/logo.png";
+import abouthero from "./../assets/aboutPage/hero.png"
+import beltech from "./../assets/aboutPage/beltech.jpg";
 import { Button } from "../components/ui/button";
 import above_the_footer from "./../assets/above_the_footer.png"
 
@@ -40,7 +40,7 @@ const About = () => {
               </p>
             </div>
             <div className="order-2 md:order-2 flex justify-center">
-              <img src={logo} alt="Bel Tech Solutions Logo" className="w-3/4 md:w-full mt-4 shadow-md" />
+              <img src={beltech} alt="Bel Tech Solutions Logo" className="w-3/4 md:w-full mt-4 shadow-md" />
             </div>
           </div>
         </section>
@@ -151,14 +151,14 @@ const About = () => {
               <Button
                 size="lg"
                 className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#61C7D5] text-white"
-                onClick={() => window.location.href = '/contact'}
+                onClick={() => window.location.href = '/Contact'}
               >
                 Start Your Digital Journey
               </Button>
               <Button
                 size="lg"
                 className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#61C7D5] text-white"
-                onClick={() => window.location.href = '/solutions'}
+                onClick={() => window.location.href = '/Solutions'}
               >
                 View Success Stories
               </Button>
