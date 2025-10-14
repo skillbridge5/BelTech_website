@@ -1,4 +1,4 @@
-import { Button } from "../components/ui/button"; 
+import { Button } from "../components/ui/button";  
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
 import Hero from "./../assets/insightpage/heroNew.png";
 import ERPdrivesROI from "./../assets/insightpage/ERPdrivesROINew.jpg";
@@ -66,7 +66,7 @@ const Insight = () => {
       </section>
 
       {/* Articles Section */}
-      <section className="py-10 px-4 sm:px-8 lg:px-16">
+      <section className="py-8 px-4 sm:px-8 lg:px-16">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-1 leading-tight">Latest Articles</h2>
@@ -114,7 +114,7 @@ const Insight = () => {
             />
           </div>
 
-          <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
               className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8] text-white"
@@ -126,9 +126,9 @@ const Insight = () => {
         </div>
       </section>
 
-      {/* cta */}
+      {/* CTA Section */}
       <section
-        className="relative py-10 text-white"
+        className="relative pt-6 pb-8 text-white"
         style={{
           backgroundImage: `url(${above_the_footer})`,
           backgroundSize: "cover",

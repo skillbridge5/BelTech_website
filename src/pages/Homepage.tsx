@@ -14,20 +14,19 @@ import {
   Shield,
   ArrowDown,
   Award,
-  Sparkles,
 } from "lucide-react";
 import hero from "./../assets/homepage/hero.png";
 import odoo from "./../assets/homepage/odoo.png";
 import odooErp from "./../assets/homepage/oddoNew.png";
-import custom_soft_dev from "./../assets/homepage/customSoft.png";
-import bussiness_automation_int from "./../assets/homepage/bussinessAuto.png";
+import custom_soft_dev from "./../assets/homepage/customSoftNew.jpg";
+import bussiness_automation_int from "./../assets/homepage/automationAndIntegration.jpg";
 import emointel from "./../assets/clientLogo/emointel.png";
 import frontline from "./../assets/clientLogo/frontline.png";
 import mPower from "./../assets/clientLogo/mPower.png";
 import fewis from "./../assets/clientLogo/fewis.png";
 import osiri from "./../assets/clientLogo/osiri.png";
 import above_the_footer from "./../assets/above_the_footer.png";
-import beltechImpact from "./../assets/homepage/beltechimpactfinal.jpg";
+import beltechImpact from "./../assets/homepage/beltechImpact.png";
 
 const Homepage: React.FC = () => {
   return (
@@ -123,7 +122,7 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
+
               <div className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0">
                 <div className="w-full h-64 overflow-hidden">
                   <img
@@ -373,10 +372,6 @@ const Homepage: React.FC = () => {
         <section className="py-10 bg-[#f7f8fa]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h6 className="flex justify-center items-center text-sm md:text-md text-[#787b81] mb-2 font-normal">
-                <Sparkles className="h-6 w-6 mr-0.5 text-[#27A2D8]" />
-                SOFTWARE DEVELOPMENT
-              </h6>
               <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
                 We Build Digital Solutions
               </h2>
@@ -480,7 +475,7 @@ const Homepage: React.FC = () => {
             </div>
           </div>
         </section>
-        {/* testimonial section */} 
+        {/* testimonial section */}
         <section className="py-10 bg-white relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -493,7 +488,8 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className="relative overflow-hidden">
-              <div className="flex gap-12 whitespace-nowrap animate-[marquee_30s_linear_infinite]">
+              {/* 👇 This flex container scrolls smoothly forever */}
+              <div className="flex gap-12 whitespace-nowrap animate-marquee will-change-transform">
                 {[
                   { name: "Emointel leaders corner", img: emointel, testimonial: "Emointel leaders corner loved our digital transformation solutions!" },
                   { name: "Frontline Estate Solution LLC", img: frontline, testimonial: "Frontline Estate Solution LLC experienced amazing growth with BelTech Solutions!" },
@@ -501,7 +497,7 @@ const Homepage: React.FC = () => {
                   { name: "Fewis Digital Medical Solutions", img: fewis, testimonial: "Fewis Digital Medical Solutions saw remarkable results!" },
                   { name: "Osiri University", img: osiri, testimonial: "Osiri University appreciated our efficiency!" },
                 ]
-
+                  // duplicate once for seamless flow
                   .concat([
                     { name: "Emointel leaders corner", img: emointel, testimonial: "Emointel leaders corner loved our digital transformation solutions!" },
                     { name: "Frontline Estate Solution LLC", img: frontline, testimonial: "Frontline Estate Solution LLC experienced amazing growth with BelTech Solutions!" },
@@ -515,8 +511,11 @@ const Homepage: React.FC = () => {
                     if (idx % 5 === 2) width = "w-98";
 
                     return (
-                      <div key={idx} className="relative flex flex-col items-center group flex-shrink-0">
-
+                      <div
+                        key={idx}
+                        className="relative flex flex-col items-center group flex-shrink-0"
+                      >
+                        {/* Logo */}
                         <div
                           className={`flex items-center justify-center transition-transform duration-200 group-hover:scale-110 z-10 ${width} ${height}`}
                         >
@@ -527,13 +526,13 @@ const Homepage: React.FC = () => {
                           />
                         </div>
 
-                        {/* Testimonial */}
+                        {/* Testimonial tooltip */}
                         <div
                           className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full 
-                             opacity-0 group-hover:opacity-100 group-hover:translate-y-2 
-                             transition-all duration-300 
-                             w-64 max-w-xs bg-white shadow-lg rounded-lg 
-                             p-4 text-center z-50 pointer-events-none"
+                    opacity-0 group-hover:opacity-100 group-hover:translate-y-2 
+                    transition-all duration-300 
+                    w-64 max-w-xs bg-white shadow-lg rounded-lg 
+                    p-4 text-center z-50 pointer-events-none"
                         >
                           <p className="text-base font-normal text-black whitespace-normal break-words line-clamp-2">
                             "{client.testimonial}"
@@ -545,15 +544,36 @@ const Homepage: React.FC = () => {
               </div>
             </div>
           </div>
+
+          {/* Custom animation styles */}
           <style>
             {`
       @keyframes marquee {
-        0% { transform: translateX(0%); }
+        0% { transform: translateX(0); }
         100% { transform: translateX(-50%); }
+      }
+
+      .animate-marquee {
+        display: flex;
+        width: max-content;
+        animation: marquee 30s linear infinite;
+      }
+
+      /* 👇 This eliminates the visible "jump" at the loop point */
+      .animate-marquee::after {
+        content: '';
+        display: block;
+        width: 50%;
+      }
+
+      /* Optimize for smooth GPU rendering */
+      .will-change-transform {
+        will-change: transform;
       }
     `}
           </style>
         </section>
+
 
 
         <section

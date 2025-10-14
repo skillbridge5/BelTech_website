@@ -57,7 +57,7 @@ const Servicespage = () => {
     </section>
 
 
-     <section className="bg-white py-8 container mx-auto px-4 md:px-8 lg:px-12">
+     <section className="bg-white py-11 container mx-auto px-4 md:px-8 lg:px-12">
   <div className="flex flex-col lg:flex-row items-start gap-12">
     
     <div className="flex-1 flex flex-col justify-between">
