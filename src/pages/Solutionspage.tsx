@@ -1,9 +1,9 @@
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import solutionHero from "../assets/solutionpage/heroNew.png";
-import ERPforTextile from "../assets/solutionpage/ERPforTextile.png";
-import charityForSccma from "../assets/solutionpage/charityForSccma.png";
-import retailAutomation from "../assets/solutionpage/retailAutomation.png";
+import importEport from "./../assets/solutionpage/importExport.jpg";
+import eLearning from "./../assets/solutionpage/eLearning.jpg";
+import DigitalMarketingDetail from "../assets/solutionpage/digitalMarketing.jpg";
 import above_the_footer from "../assets/above_the_footer.png";
 
 const SolutionsPage = () => {
@@ -52,13 +52,13 @@ const SolutionsPage = () => {
 
   <div className="border border-gray-200 flex flex-col rounded-lg shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
     <img
-      src={ERPforTextile}
+      src={importEport}
       alt="ERP for Textile Manufacturer"
       className="w-full aspect-video object-cover"
     />
     <div className="px-6 pt-4 pb-3">
       <h3 className="text-xl font-bold leading-snug mb-1">
-        ERP for a Textile Manufacturer
+        ERP for import/export company
       </h3>
     </div>
     <div className="px-6 pb-6">
@@ -76,7 +76,7 @@ const SolutionsPage = () => {
 
   <div className="border border-gray-200 flex flex-col rounded-lg shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
     <img
-      src={charityForSccma}
+      src={eLearning}
       alt="Charity Platform"
       className="w-full aspect-video object-cover"
     />
@@ -100,8 +100,8 @@ const SolutionsPage = () => {
 
   <div className="border border-gray-200 flex flex-col rounded-lg shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
     <img
-      src={retailAutomation}
-      alt="Retail Automation"
+      src={DigitalMarketingDetail}
+      alt="Digital Marketing"
       className="w-full aspect-video object-cover"
     />
     <div className="px-6 pt-4 pb-3">

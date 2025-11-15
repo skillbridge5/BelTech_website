@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../assets/logoo (1).png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +14,7 @@ const Navbar = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const solutionsPaths = ["/solutions", "/ERPDetail", "/CharityPlatform", "/RetailAuto"];
+  const solutionsPaths = ["/solutions", "/ERPDetail", "/CharityPlatform", "/DigitalMarketingDetail"];
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -69,7 +69,7 @@ const Navbar = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Button ... the hamburgur menu*/}
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}

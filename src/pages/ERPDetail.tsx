@@ -1,7 +1,7 @@
 import { Button } from "../components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import ERPforTextile from "./../assets/solutionpage/ERPforTextile.png";
+import importEport from "./../assets/solutionpage/importExport.jpg";
 import above_the_footer from "../assets/above_the_footer.png";
 
 const ERPDetail = () => {
@@ -12,8 +12,8 @@ const ERPDetail = () => {
       <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 relative">
         <div className="lg:col-span-2 relative">
           <img
-            src={ERPforTextile}
-            alt="ERP for Textile Manufacturer"
+            src={importEport}
+            alt="Diligent Trade Solution"
             className="w-full h-[400px] object-cover rounded-lg shadow-md"
           />
           <button
@@ -25,22 +25,48 @@ const ERPDetail = () => {
           </button>
           <div className="mt-4">
             <h1 className="text-2xl font-bold mb-2 text-gray-900">
-              ERP for a Textile Manufacturer
+             ERP for Import-Export Companies
             </h1>
-            <div className="h-0.5 bg-[#858585] w-full rounded"></div>
+            <div className="h-0.5 bg-[#858585] w-full rounded mb-6"></div>
+
+            <p className="text-gray-700 mb-4">
+              At <strong>Beltech Solutions</strong>, we understand the complexities of the import-export business. Managing logistics, compliance, inventory, and finance across borders can be challenging. That’s why we developed <strong>Diligent Trade Solution</strong>, an advanced ERP system designed to streamline operations, improve efficiency, and drive growth for import-export companies.
+            </p>
+
+            <h2 className="text-xl font-semibold mb-2">Key Features</h2>
+            <ul className="list-disc list-inside mb-4 text-gray-700">
+              <li>Comprehensive Trade Management: Track orders, shipments, and compliance with international trade regulations.</li>
+              <li>Inventory Control: Optimize stock levels and reduce holding costs with automated tracking.</li>
+              <li>Financial Management: Monitor accounts, generate reports, and manage finances with ease.</li>
+              <li>Reporting & Analytics: Make informed decisions with dashboards, KPIs, and predictive insights.</li>
+              <li>User-Friendly Interface: Navigate complex operations effortlessly with an intuitive design.</li>
+            </ul>
+
+            <h2 className="text-xl font-semibold mb-2">Benefits</h2>
+            <ul className="list-disc list-inside mb-4 text-gray-700">
+              <li>Efficiency: Automate repetitive tasks and reduce errors.</li>
+              <li>Visibility: Gain complete oversight of operations from procurement to delivery.</li>
+              <li>Compliance: Ensure trade activities meet regulations, minimizing risks.</li>
+              <li>Scalability: Grow your business without worrying about system limitations.</li>
+            </ul>
+
+            <p className="text-gray-700">
+              Partner with <strong>Beltech Solutions</strong> and experience a smarter way to manage your import-export operations. Diligent Trade Solution isn’t just software—it’s a strategic tool that empowers your business to operate efficiently, profitably, and confidently.
+            </p>
           </div>
         </div>
+
         <div className="border-0 rounded-lg shadow-md p-6 bg-gray-100 flex flex-col items-center text-center justify-center">
           <h2 className="text-2xl font-bold mb-4">Subscribe</h2>
           <p className="text-gray-600 mb-4 text-sm">
-            Stay informed with tips on family child development, parenting topics, and the vital role of play in a child’s growth. You’ll also receive updates on our upcoming events and workshops.
+            Stay informed with tips on business solutions, ERP insights, and Beltech’s latest offerings. You’ll also receive updates on our upcoming events and workshops.
           </p>
           <label htmlFor="email" className="block text-gray-700 font-medium mb-1 self-start">Email</label>
           <input
             type="email"
             id="email"
             placeholder=""
-            className="w-full  rounded-md px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-[#27A2D8] bg-white"
+            className="w-full rounded-md px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-[#27A2D8] bg-white"
           />
           <Button className="w-full bg-[#27A2D8] hover:bg-[#4db7c5] text-white font-semibold py-2">
             Subscribe
@@ -56,12 +82,12 @@ const ERPDetail = () => {
           backgroundPosition: "center",
         }}
       >
-         <div
-    className="absolute inset-0 z-0"
-    style={{
-      backgroundColor: "rgba(0, 0, 0, 0.6)", 
-    }}
-  ></div>
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundColor: "rgba(0, 0, 0, 0.6)", 
+          }}
+        ></div>
         <div
           className="absolute inset-0 z-0"
           style={{

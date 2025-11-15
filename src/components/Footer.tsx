@@ -17,8 +17,11 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Mail, url: "mailto:beltechsolns@gmail.com" },
-    { icon: Linkedin, url: "https://www.linkedin.com/company/beltech-solution/" },
-    { icon: Github, url: "#" }, // no link provided?
+    {
+      icon: Linkedin,
+      url: "https://www.linkedin.com/company/beltech-solution/",
+    },
+    { icon: Github, url: "#" },
     { icon: Send, url: "https://t.me/belTechSolns" },
     { icon: Youtube, url: "https://www.youtube.com/@BeltechSolns" },
   ];
@@ -38,8 +41,12 @@ const Footer = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-semibold text-lg text-white">BelTech Solutions</span>
-                <span className="text-white text-sm">ERP & Software Development</span>
+                <span className="font-semibold text-lg text-white">
+                  BelTech Solutions
+                </span>
+                <span className="text-white text-sm">
+                  ERP & Software Development
+                </span>
               </div>
             </div>
 
@@ -67,7 +74,9 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="flex-1 md:absolute md:left-1/2 md:-translate-x-1/2 flex flex-col items-center text-center mt-8 md:mt-0 z-10">
-            <h3 className="text-base font-medium mb-3 text-white">Quick Links</h3>
+            <h3 className="text-base font-medium mb-3 text-white">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -82,25 +91,39 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Subscribe  */}
+          {/* Live Demo Section */}
           <div className="flex-1 flex flex-col items-start md:items-end text-left md:text-right mt-8 md:mt-0">
-            <div className="flex flex-col space-y-2 w-full max-w-xs">
+            <div className="flex flex-col space-y-3 w-full max-w-xs">
               <h3 className="text-base font-medium text-white text-left">
-                Stay Updated
+                Try Our ERP System
               </h3>
               <p className="text-white text-sm text-left">
-                Get the latest insights on digital transformation and ERP solutions.
+                Experience our ERP platform in action.
               </p>
-              <div className="flex flex-col sm:flex-row gap-2 w-full">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-3 py-2 bg-gray-800 text-white border border-gray-700 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-[#27A2D8]"
-                />
-                <Button className="px-4 bg-[#27A2D8] hover:bg-[#1f8cb8] text-white rounded-md text-sm">
-                  Subscribe
-                </Button>
+
+              {/* Credentials Box */}
+              <div className="bg-gray-900 border border-gray-800 rounded-lg p-3 text-sm text-white shadow-md">
+                <p className="text-left mb-2">
+                  Use the demo credentials below:
+                </p>
+                <div className="text-left space-y-1">
+                  <p>
+                    <strong>Username:</strong> erp-demo
+                  </p>
+                  <p>
+                    <strong>Password:</strong> erp-demo
+                  </p>
+                </div>
               </div>
+
+              <Button
+                onClick={() =>
+                  window.open("https://google.com", "_blank")
+                }
+                className="px-4 bg-[#27A2D8] hover:bg-[#1f8cb8] text-white rounded-md text-sm shadow-md transition-all"
+              >
+                Watch Live Demo
+              </Button>
             </div>
           </div>
         </div>
@@ -108,7 +131,8 @@ const Footer = () => {
         {/* Bottom Line */}
         <div className="border-t border-gray-800 mt-16 pt-8 text-center">
           <p className="text-[#9CA3AF] text-sm">
-            © 2024 BelTech Solutions. All rights reserved. | Addis Ababa, Ethiopia
+            © 2025 BelTech Solutions. All rights reserved. | Addis Ababa,
+            Ethiopia
           </p>
         </div>
       </div>

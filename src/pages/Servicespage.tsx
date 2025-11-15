@@ -4,7 +4,7 @@ import { CheckCircle, Zap, Users, Globe, Settings } from 'lucide-react';
 import Hero from "./../assets/servicepage/heroNew.png";
 import HeroMobile from "./../assets/servicepage/heroMobile.png";
 import ERPImp from "./../assets/homepage/oddoNew.png";
-import customSoft from "./../assets/servicepage/customSoftware.png";
+import customSoft from "./../assets/servicepage/customSoftNew.png";
 import bussinesAuto from "./../assets/servicepage/businessAuto.png";
 import above_the_footer from "./../assets/above_the_footer.png";
 
@@ -57,7 +57,7 @@ const Servicespage = () => {
     </section>
 
 
-     <section className="bg-white py-11 container mx-auto px-4 md:px-8 lg:px-12">
+   <section className="bg-white py-11 container mx-auto px-4 md:px-8 lg:px-12">
   <div className="flex flex-col lg:flex-row items-start gap-12">
     
     <div className="flex-1 flex flex-col justify-between">
@@ -100,17 +100,17 @@ const Servicespage = () => {
       </div>
     </div>
 
-    <div className="flex-1 flex justify-center items-start">
-      <img
-        src={ERPImp}
-        alt="ERP Implementation"
-        className="rounded-lg object-contain w-full max-h-[500px] lg:max-h-[450px]"
-        style={{ objectPosition: 'top' }}
-      />
-    </div>
+   <div className="flex-1 flex justify-center items-start overflow-hidden rounded-3xl max-h-[425px]">
+  <img
+    src={ERPImp}
+    alt="ERP Implementation"
+    className="w-full h-full object-cover"
+    style={{ objectPosition: 'center top' }}
+  />
+</div>
+
   </div>
 </section>
-
 
       <section className="bg-gray-100 py-10">
         <div className="container mx-auto px-4 md:px-8 lg:px-12">
@@ -175,13 +175,16 @@ const Servicespage = () => {
             </ul>
           </div>
 
-          <div className="flex-1 flex justify-center items-center lg:justify-end">
-            <img
-              src={customSoft}
-              alt="Custom Software Development"
-              className="rounded-lg object-cover w-full h-full max-h-[500px]"
-            />
-          </div>
+           <div className="flex-1 flex justify-center items-start overflow-hidden rounded-3xl max-h-[425px]">
+  <img
+    src={customSoft}
+    alt="Custom Software Development"
+    className="w-full h-full object-cover"
+    style={{ objectPosition: 'center top' }}
+  />
+</div>
+
+    
         </div>
 
      <div className="grid grid-cols-1 gap-8 mt-12 md:grid-cols-2 lg:grid-cols-4">

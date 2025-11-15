@@ -1,7 +1,7 @@
 import { Button } from "../components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import charityForSccma from "./../assets/solutionpage/charityForSccma.png";
+import eLearning from "./../assets/solutionpage/eLearning.jpg";
 import above_the_footer from "../assets/above_the_footer.png";
 
 const CharityPlatform = () => {
@@ -12,11 +12,11 @@ const CharityPlatform = () => {
       <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 relative">
         <div className="lg:col-span-2 relative">
           <img
-            src={charityForSccma}
+            src={eLearning}
             alt="Charity Platform for SCCMA"
             className="w-full h-[400px] object-cover rounded-lg shadow-md"
           />
-          <button
+         <button
             onClick={() => navigate(-1)}
             className="absolute top-4 left-4 flex items-center text-black bg-white/70 hover:bg-white transition px-2 py-1 rounded shadow z-10"
           >
@@ -24,10 +24,30 @@ const CharityPlatform = () => {
             Back
           </button>
           <div className="mt-4">
-            <h1 className="text-2xl font-bold mb-2 text-gray-900">
-              Charity Platform for SCCMA
+              <h1 className="text-2xl font-bold mb-2 text-gray-900">
+              Website for E learning company
             </h1>
-            <div className="h-0.5 bg-[#858585] w-full rounded"></div>
+            <div className="h-0.5 bg-[#858585] w-full rounded mb-6"></div>
+
+          <p className="text-gray-700 mb-4">
+            At Beltech Solutions, we understand the challenges of delivering effective online education. Engaging students, tracking progress, and managing course content across multiple platforms can be complex. That’s why we developed LearnSmart, an advanced e-learning platform designed to streamline course delivery, enhance student engagement, and drive learning outcomes.  </p>
+
+            <h2 className="text-xl font-semibold mb-2">Key Features</h2>
+            <ul className="list-disc list-inside mb-4 text-gray-700">
+              <li>User-Friendly Interface: Navigate courses, modules, and resources effortlessly with an intuitive design.</li>
+              <li>Course Management: Create, organize, and update courses easily with a centralized platform.</li>
+              <li>Analytics & Reporting: Gain insights with dashboards, KPIs, and detailed learning analytics</li>
+              <li>User-Friendly Interface: Navigate complex operations effortlessly with an intuitive design.</li>
+            </ul>
+
+            <h2 className="text-xl font-semibold mb-2">Benefits</h2>
+            <ul className="list-disc list-inside mb-4 text-gray-700">
+              <li>Efficiency: Simplify course administration and reduce manual workload.</li>
+              <li>Engagement: Keep students motivated with interactive content and progress tracking.</li>
+              <li>Insight: Make data-driven decisions to improve teaching strategies and learning outcomes.</li>
+              <li>Scalability: Expand your learning platform to accommodate more courses and learners without technical limits.</li>
+            </ul>
+
           </div>
         </div>
         <div className="border-0 rounded-lg shadow-md p-6 bg-gray-100 flex flex-col items-center text-center justify-center">

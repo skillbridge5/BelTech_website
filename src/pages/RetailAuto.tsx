@@ -1,7 +1,7 @@
 import { Button } from "../components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import retailAutomation from "./../assets/solutionpage/retailAutomation.png";
+import digitalMarketing from "./../assets/solutionpage/digitalMarketing.jpg";
 import above_the_footer from "../assets/above_the_footer.png";
 
 const RetailAuto = () => {
@@ -12,8 +12,8 @@ const RetailAuto = () => {
       <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 relative">
         <div className="lg:col-span-2 relative">
           <img
-            src={retailAutomation}
-            alt="Retail Automation"
+            src={digitalMarketing}
+            alt="Diligent Trade Solution"
             className="w-full h-[400px] object-cover rounded-lg shadow-md"
           />
           <button
@@ -24,23 +24,45 @@ const RetailAuto = () => {
             Back
           </button>
           <div className="mt-4">
-            <h1 className="text-2xl font-bold mb-2 text-gray-900">
-              Retail Automation
-            </h1>
-            <div className="h-0.5 bg-[#858585] w-full rounded"></div>
+           <h1 className="text-2xl font-bold mb-2 text-gray-900">
+  Website for Digital Marketing Company
+</h1>
+<div className="h-0.5 bg-[#858585] w-full rounded mb-6"></div>
+
+<p className="text-gray-700 mb-4">
+  At <strong>Beltech Solutions</strong>, we understand that digital marketing companies need an online presence that is as dynamic and engaging as their services. That’s why we developed <strong>Eyoha Digitals Website</strong>, a sleek and responsive platform designed to showcase services, highlight client portfolios, and enhance audience engagement seamlessly.
+</p>
+
+<h2 className="text-xl font-semibold mb-2">Key Features</h2>
+<ul className="list-disc list-inside mb-4 text-gray-700">
+  <li>Responsive Design: Optimized for all devices to ensure a seamless user experience.</li>
+  <li>Portfolio Showcase: Highlight completed projects and client success stories.</li>
+  <li>Interactive Contact & Registration: Allow potential clients to request services or consultations online.</li>
+  <li>Content Management: Easily update services, blogs, and client testimonials without coding.</li>
+  <li>User-Friendly Navigation: Clear structure for smooth browsing and engagement.</li>
+</ul>
+
+<h2 className="text-xl font-semibold mb-2">Benefits</h2>
+<ul className="list-disc list-inside mb-4 text-gray-700">
+  <li>Professional Online Presence: Strengthen brand image and credibility instantly.</li>
+  <li>Client Engagement: Improve interactions through portfolios, blogs, and forms.</li>
+  <li>Ease of Updates: Dynamic content management reduces maintenance overhead.</li>
+  <li>Marketing Efficiency: Showcase services effectively to attract leads and grow your business.</li>
+</ul>
+
           </div>
-         
         </div>
+
         <div className="border-0 rounded-lg shadow-md p-6 bg-gray-100 flex flex-col items-center text-center justify-center">
           <h2 className="text-2xl font-bold mb-4">Subscribe</h2>
           <p className="text-gray-600 mb-4 text-sm">
-            Stay informed with tips on digital transformation and ERP adoption. You’ll also get updates on our upcoming events and workshops.
+            Stay informed with tips on business solutions, ERP insights, and Beltech’s latest offerings. You’ll also receive updates on our upcoming events and workshops.
           </p>
           <label htmlFor="email" className="block text-gray-700 font-medium mb-1 self-start">Email</label>
           <input
             type="email"
             id="email"
-            placeholder="Your email"
+            placeholder=""
             className="w-full rounded-md px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-[#27A2D8] bg-white"
           />
           <Button className="w-full bg-[#27A2D8] hover:bg-[#4db7c5] text-white font-semibold py-2">
@@ -48,6 +70,7 @@ const RetailAuto = () => {
           </Button>
         </div>
       </div>
+
       <section
         className="relative py-10 text-white"
         style={{
@@ -56,12 +79,12 @@ const RetailAuto = () => {
           backgroundPosition: "center",
         }}
       >
-         <div
-    className="absolute inset-0 z-0"
-    style={{
-      backgroundColor: "rgba(0, 0, 0, 0.6)", 
-    }}
-  ></div>
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundColor: "rgba(0, 0, 0, 0.6)", 
+          }}
+        ></div>
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -87,7 +110,6 @@ const RetailAuto = () => {
           </div>
         </div>
       </section>
-
     </div>
   );
 };
