@@ -1,7 +1,7 @@
 import { Target, Flag, Handshake, LineChart, Eye } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription } from "../components/ui/card";
 import abouthero from "./../assets/aboutPage/hero1.png"
-import beltech from "./../assets/aboutPage/beltech.jpg";
+import beltech from "./../assets/aboutPage/beltech1.png";
 import { Button } from "../components/ui/button";
 import above_the_footer from "./../assets/above_the_footer.png"
 

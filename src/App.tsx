@@ -10,6 +10,7 @@ import CharityPlatform from "./pages/CharityPlatform";
 import RetailAuto from "./pages/RetailAuto";
 import Insights from "./pages/insights"
 import Contact from "./pages/Contact";
+import Industries from "./pages/Industries";
 
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/RetailAuto" element ={<RetailAuto />} />
         <Route path="/insights" element ={<Insights />} />
         <Route path="/Contact" element ={<Contact />} />
+        <Route path="/industries" element ={<Industries />} />
 
       </Routes>
       <Footer />
