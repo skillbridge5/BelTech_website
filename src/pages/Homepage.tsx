@@ -3,7 +3,7 @@
 import React from "react";
 import { Button } from "../components/ui/button";
 import {
-  CheckCircle, Users, Zap, Layers, TrendingUp, DollarSign, Globe, ArrowDown, Award, ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed
+  CheckCircle, Users, Zap, Layers, TrendingUp, DollarSign, Globe, Award, ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed
 } from "lucide-react";
 import { motion } from "framer-motion";
 import hero from "./../assets/homepage/hero.png";
@@ -143,7 +143,7 @@ const Homepage: React.FC = () => {
             minHeight: "100vh",
           }}
         >
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center pt-32 pb-24">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center pt-28">
             <div className="flex flex-col items-center text-center w-full">
               <div className="mb-6 relative w-full max-w-3xl mx-auto flex justify-center md:justify-start">
                 <div className="relative inline-flex items-center text-left -translate-x-6 md:-translate-x-25">
@@ -153,16 +153,17 @@ const Homepage: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <h1 className="text-4xl md:text-6xl font-light mb-6 leading-tight">
+              <h1 className="text-4xl md:text-[64px] mb-6 leading-tight" style={{ fontFamily: 'Poppins', fontWeight: 90 }}>
                 Streamline. Automate. Scale.
               </h1>
-              <p className="text-lg md:text-xl text-white max-w-3xl mx-auto mb-0">
+              <p className="text-[20px] text-white max-w-2xl mx-auto mb-0" style={{ fontFamily: 'Open Sans', fontWeight: 200 }}>
                 Transforming African businesses with ERP, automation, and smart software solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                 <Button
                   size="lg"
-                  className="text-white px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8]"
+                  className="text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-[#27A2D8]"
+                  style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
                   onClick={() => (window.location.href = "/Contact")}
                 >
                   Get a Free Consultation
@@ -172,7 +173,8 @@ const Homepage: React.FC = () => {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-white text-white px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-transparent"
+                    className="border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
+                    style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
                   >
                     See Live Demo
                   </Button>
@@ -181,7 +183,8 @@ const Homepage: React.FC = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white text-white px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-transparent"
+                  className="border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
+                  style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
                   onClick={() => (window.location.href = "/Contact")}
                 >
                   Book a Demo
@@ -189,7 +192,7 @@ const Homepage: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center flex flex-col items-center pointer-events-auto">
+          {/* <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center flex flex-col items-center pointer-events-auto">
             <span className="text-sm text-white mb-2">Discover Our Solutions</span>
             <button
               className="p-0 bg-transparent hover:bg-transparent transition-colors duration-200"
@@ -202,7 +205,7 @@ const Homepage: React.FC = () => {
             >
               <ArrowDown className="w-8 h-8 text-[#27A2D8]" />
             </button>
-          </div>
+          </div> */}
         </section>
 
 
@@ -211,10 +214,10 @@ const Homepage: React.FC = () => {
         <section id="solutions-section" className="py-10 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="mb-4" style={{ fontFamily: 'Inter', fontSize: '36px', fontWeight: 700 }}>
                 Our Solutions
               </h2>
-              <p className="text-xl font-normal text-black max-w-3xl mx-auto">
+              <p className="text-lg font-normal text-black max-w-3xl mx-auto">
                 We provide comprehensive digital transformation solutions that
                 help African businesses thrive in the modern economy.
               </p>
@@ -222,19 +225,19 @@ const Homepage: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-              <div className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0">
-                <div className="w-full h-64 overflow-hidden">
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-65 overflow-hidden">
                   <img
                     src={odooErp}
                     alt="Odoo ERP Implementation"
-                    className="w-full h-full object-cover object-top block"
+                    className="w-full h-full object-cover rounded-t-2xl"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-black mb-3">
+                <div className="p-8">
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '24px', fontWeight: 700 }}>
                     Odoo ERP Implementation
                   </h3>
-                  <p className="text-base font-normal text-black mb-6">
+                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
                     A tailored Odoo ERP system to
                     streamline your entire workflow and
                     gain real-time insights.
@@ -249,22 +252,22 @@ const Homepage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0">
-                <div className="w-full h-64 overflow-hidden">
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-65 overflow-hidden">
                   <img
                     src={bussiness_automation_int}
                     alt="Business Automation & Integration"
-                    className="w-full h-full object-cover object-top block"
+                    className="w-full h-full object-cover rounded-t-2xl"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-black mb-3">
+                <div className="p-8">
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '24px', fontWeight: 700 }}>
                     Automation & Integration
                   </h3>
-                  <p className="text-base font-normal text-black mb-4">
+                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
                     Automation workflows that reduce
                     errors, cut down on costs, and free your
-                    team’s time.
+                    team's time.
 
                   </p>
                   <a
@@ -276,19 +279,19 @@ const Homepage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0">
-                <div className="w-full h-64 overflow-hidden">
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-65 overflow-hidden">
                   <img
                     src={custom_soft_dev}
                     alt="Custom Software Development"
-                    className="w-full h-full object-cover object-top block"
+                    className="w-full h-full object-cover rounded-t-2xl"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-black mb-3">
+                <div className="p-8">
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '24px', fontWeight: 700 }}>
                     Custom Software Development
                   </h3>
-                  <p className="text-base font-normal text-black mb-4">
+                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
                     Web and mobile applications designed
                     to enhance your operations and solve
                     specific challenges.

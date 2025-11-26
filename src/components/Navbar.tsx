@@ -8,11 +8,39 @@ import logo from "../assets/logoo (1).png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [opacity, setOpacity] = useState(1);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      // Gradually decrease opacity from 100% to 90% as user scrolls
+      // Start fading after 50px, reach 90% opacity at 200px
+      const maxScroll = 200;
+      const minScroll = 50;
+      
+      if (scrollY <= minScroll) {
+        setOpacity(1);
+        setIsScrolled(false);
+      } else if (scrollY >= maxScroll) {
+        setOpacity(0.9);
+        setIsScrolled(true);
+      } else {
+        // Linear interpolation between 1 and 0.9
+        const ratio = (scrollY - minScroll) / (maxScroll - minScroll);
+        setOpacity(1 - (ratio * 0.1));
+        setIsScrolled(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const solutionsPaths = ["/solutions", "/ERPDetail", "/CharityPlatform", "/DigitalMarketingDetail"];
 
@@ -33,9 +61,16 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md fixed top-0 w-full z-50">
+    <nav 
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'backdrop-blur-lg bg-white/95 shadow-md' 
+          : 'bg-white shadow-md'
+      }`}
+      style={{ opacity }}
+    >
       <div className="w-full px-4 lg:px-8">
-        <div className="flex items-center justify-between h-20 min-h-[80px]">
+        <div className="flex items-center justify-between h-20 min-h-[55px]">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
@@ -54,7 +89,7 @@ const Navbar = () => {
                 className={`text-md font-medium transition-colors duration-200 ${
                   isActiveLink(link.path)
                     ? "text-[#27A2D8] border-b-2 border-[#27A2D8]"
-                    : "text-gray-700 hover:text-[#27A2D8]"
+                    : "text-gray-900 hover:text-[#27A2D8]"
                 }`}
               >
                 {link.name}
@@ -83,7 +118,11 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden border-t bg-white">
+        <div className={`md:hidden border-t ${
+          isScrolled 
+            ? 'backdrop-blur-lg bg-white/95' 
+            : 'bg-white'
+        }`}>
           <div className="px-4 py-3 space-y-2">
             {navLinks.map((link) => (
               <Link
