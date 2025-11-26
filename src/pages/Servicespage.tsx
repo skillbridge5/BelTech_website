@@ -1,7 +1,7 @@
 import { Button } from '../components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { CheckCircle, Zap, Users, Globe, Settings } from 'lucide-react';
-import Hero from "./../assets/servicepage/heroNew.png";
+import Hero from "./../assets/servicepage/hero1.png";
 import HeroMobile from "./../assets/servicepage/heroMobile.png";
 import ERPImp from "./../assets/homepage/oddoNew.png";
 import customSoft from "./../assets/servicepage/customSoftNew.png";
@@ -11,16 +11,16 @@ import above_the_footer from "./../assets/above_the_footer.png";
 const Servicespage = () => {
   return (
     <div className="min-h-screen font-sans text-gray-800 antialiased">
- <section className="relative w-full h-screen overflow-hidden">
+ <section className="relative w-full h-[700px] overflow-hidden">
 
       <div
         className="absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover hidden md:block"
         style={{
           backgroundImage: `url(${Hero})`,
-          backgroundPosition: "center 20%",
-          backgroundColor: "black",
-          transform: "scale(1.15)",
-          transformOrigin: "center",
+          // backgroundPosition: "center 20%",
+          // backgroundColor: "black",
+          // transform: "scale(1.15)",
+          // transformOrigin: "center",
         }}
       ></div>
       <div
@@ -33,7 +33,7 @@ const Servicespage = () => {
           transformOrigin: "center",
         }}
       ></div>
-      <div
+      {/* <div
         className="absolute inset-0"
         style={{
           background: `
@@ -41,7 +41,7 @@ const Servicespage = () => {
             linear-gradient(to left, rgba(39,162,216,0.5) 0%, rgba(39,162,216,0.0) 40%)
           `,
         }}
-      ></div>
+      ></div> */}
 
       <div className="absolute inset-0 flex items-center">
         <div className="w-full px-4 lg:px-8 text-white">
@@ -57,10 +57,10 @@ const Servicespage = () => {
     </section>
 
 
-   <section className="bg-white py-11 container mx-auto px-4 md:px-8 lg:px-12">
+   <section className="bg-white py-18 container mx-auto px-4 md:px-8 lg:px-12">
   <div className="flex flex-col lg:flex-row items-start gap-12">
     
-    <div className="flex-1 flex flex-col justify-between">
+    <div className="flex-1 flex flex-col justify-between gap-4">
       <div>
         <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
           ERP Implementation
@@ -70,7 +70,7 @@ const Servicespage = () => {
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-10">
         <div className="flex items-start border-l-4 border-[#27A2D8] bg-white p-4 rounded-xl shadow-md hover:shadow-lg">
           <div className="ml-3">
             <h4 className="text-lg font-semibold text-gray-900">Department Integration</h4>
@@ -112,7 +112,7 @@ const Servicespage = () => {
   </div>
 </section>
 
-      <section className="bg-gray-100 py-10">
+      <section className="bg-gray-100 py-15">
         <div className="container mx-auto px-4 md:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-start gap-12">
             <div className="flex justify-center lg:justify-end">

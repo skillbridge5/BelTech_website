@@ -64,12 +64,22 @@ const Navbar = () => {
     <nav 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'backdrop-blur-lg bg-white/95 shadow-md' 
+          ? 'shadow-md' 
           : 'bg-white shadow-md'
       }`}
       style={{ opacity }}
     >
-      <div className="w-full px-4 lg:px-8">
+      {/* Frosted glass overlay when scrolled */}
+      {isScrolled && (
+        <div 
+          className="absolute inset-0 backdrop-blur-xl bg-white/98"
+          style={{ 
+            WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+            backdropFilter: 'blur(24px) saturate(180%)',
+          }}
+        />
+      )}
+      <div className="relative w-full px-4 lg:px-8">
         <div className="flex items-center justify-between h-20 min-h-[55px]">
           {/* Logo */}
           <Link to="/" className="flex items-center">
@@ -118,35 +128,46 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className={`md:hidden border-t ${
+        <div className={`md:hidden border-t relative ${
           isScrolled 
-            ? 'backdrop-blur-lg bg-white/95' 
+            ? '' 
             : 'bg-white'
         }`}>
-          <div className="px-4 py-3 space-y-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`block font-medium px-2 py-1 transition-colors duration-200 ${
-                  isActiveLink(link.path)
-                    ? "text-[#27A2D8] border-b border-[#27A2D8]"
-                    : "text-gray-700 hover:text-[#27A2D8]"
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Button
-              className="w-full mt-2 text-white bg-[#27A2D8] hover:bg-[#4FB3C1]"
-              onClick={() => {
-                setIsMenuOpen(false);
-                window.location.href = "/contact";
+          {isScrolled && (
+            <div 
+              className="absolute inset-0 backdrop-blur-xl bg-white/98"
+              style={{ 
+                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                backdropFilter: 'blur(24px) saturate(180%)',
               }}
-            >
-              Get Demo
-            </Button>
+            />
+          )}
+          <div className="relative">
+            <div className="px-4 py-3 space-y-2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={`block font-medium px-2 py-1 transition-colors duration-200 ${
+                    isActiveLink(link.path)
+                      ? "text-[#27A2D8] border-b border-[#27A2D8]"
+                      : "text-gray-700 hover:text-[#27A2D8]"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <Button
+                className="w-full mt-2 text-white bg-[#27A2D8] hover:bg-[#4FB3C1]"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.location.href = "/contact";
+                }}
+              >
+                Get Demo
+              </Button>
+            </div>
           </div>
         </div>
       )}
