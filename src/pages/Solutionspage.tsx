@@ -10,7 +10,7 @@ const SolutionsPage = () => {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800 antialiased">
 
-      <section className="relative w-full h-screen overflow-hidden">
+      <section className="relative w-full h-[700px] overflow-hidden">
         <div
           className="absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover"
           style={{ backgroundImage: `url(${solutionHero})` }}
@@ -50,7 +50,7 @@ const SolutionsPage = () => {
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 
-  <div className="border border-gray-200 flex flex-col rounded-lg shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
+  <div className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
     <img
       src={importEport}
       alt="ERP for Textile Manufacturer"
@@ -74,7 +74,7 @@ const SolutionsPage = () => {
     </div>
   </div>
 
-  <div className="border border-gray-200 flex flex-col rounded-lg shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
+  <div className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
     <img
       src={eLearning}
       alt="Charity Platform"
@@ -98,7 +98,7 @@ const SolutionsPage = () => {
     </div>
   </div>
 
-  <div className="border border-gray-200 flex flex-col rounded-lg shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
+  <div className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
     <img
       src={DigitalMarketingDetail}
       alt="Digital Marketing"

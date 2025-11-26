@@ -71,7 +71,7 @@ const Servicespage = () => {
       </div>
 
       <div className="space-y-10">
-        <div className="flex items-start border-l-4 border-[#27A2D8] bg-white p-4 rounded-xl shadow-md hover:shadow-lg">
+        <div className="flex items-start border-l-4 border-[#27A2D8] bg-white p-4 rounded-xl">
           <div className="ml-3">
             <h4 className="text-lg font-semibold text-gray-900">Department Integration</h4>
             <p className="text-sm text-gray-600">
@@ -80,7 +80,7 @@ const Servicespage = () => {
           </div>
         </div>
 
-        <div className="flex items-start border-l-4 border-[#27A2D8] bg-white p-4 rounded-xl shadow-md hover:shadow-lg">
+        <div className="flex items-start border-l-4 border-[#27A2D8] bg-white p-4 rounded-xl">
           <div className="ml-3">
             <h4 className="text-lg font-semibold text-gray-900">Local Compliance</h4>
             <p className="text-sm text-gray-600">
@@ -89,7 +89,7 @@ const Servicespage = () => {
           </div>
         </div>
 
-        <div className="flex items-start border-l-4 border-[#27A2D8] bg-white p-4 rounded-xl shadow-md hover:shadow-lg">
+        <div className="flex items-start border-l-4 border-[#27A2D8] bg-white p-4 rounded-xl">
           <div className="ml-3">
             <h4 className="text-lg font-semibold text-gray-900">Full Support</h4>
             <p className="text-sm text-gray-600">
@@ -188,7 +188,7 @@ const Servicespage = () => {
         </div>
 
      <div className="grid grid-cols-1 gap-8 mt-12 md:grid-cols-2 lg:grid-cols-4">
-   <Card className="border-0 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
+   <Card className="border-0 text-center">
     <CardHeader className="px-4 pt-1 pb-0">
       <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
         <Users className="h-6 w-6 text-[#27A2D8]" />
@@ -199,7 +199,7 @@ const Servicespage = () => {
       </CardDescription>
     </CardHeader>
   </Card>
-  <Card className="border-0 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
+  <Card className="border-0 text-center">
     <CardHeader className="px-4 pt-1 pb-1">
       <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
         <Zap className="h-6 w-6 text-[#27A2D8]" />
@@ -211,7 +211,7 @@ const Servicespage = () => {
     </CardHeader>
   </Card>
 
-  <Card className="border-0 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
+  <Card className="border-0 text-center">
     <CardHeader className="px-4 pt-1 pb-1">
       <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
         <Globe className="h-6 w-6 text-[#27A2D8]" />
@@ -223,7 +223,7 @@ const Servicespage = () => {
     </CardHeader>
   </Card>
 
-  <Card className="border-0 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
+  <Card className="border-0 text-center">
     <CardHeader className="px-4 pt-1 pb-1">
       <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
         <Settings className="h-6 w-6 text-[#27A2D8]" />

@@ -89,7 +89,7 @@ const Contact = () => {
       <Toaster position="top-right" />
 
       {/* Hero Section */}
-      <section className="relative w-full h-screen overflow-hidden">
+      <section className="relative w-full h-[700px] overflow-hidden">
         <div
           className="absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover"
           style={{ backgroundImage: `url(${contactHero})` }}

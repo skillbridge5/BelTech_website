@@ -22,7 +22,7 @@ const ArticleCard = ({
   onReadMore: (insight: InsightType) => void;
 }) => {
   return (
-    <Card className="border border-gray-200 flex flex-col rounded-lg shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
+    <Card className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
       <img className="w-full aspect-video rounded-t-lg object-cover" src={insight.imageUrl} alt={insight.title} />
 
       <CardHeader className="px-4 pt-2 pb-0">
@@ -64,7 +64,7 @@ const Insight = () => {
   return (
     <div className="font-sans antialiased bg-white text-gray-900">
       {/* Hero Section */}
-      <section className="relative w-full h-screen overflow-hidden">
+      <section className="relative w-full h-[700px] overflow-hidden">
         <div
           className="absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover"
           style={{ backgroundImage: `url(${Hero})` }}
@@ -115,7 +115,7 @@ const Insight = () => {
       {/* Read More Modal */}
       {selectedInsight && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg max-w-3xl w-full p-6 relative shadow-lg">
+          <div className="bg-white rounded-lg max-w-3xl w-full p-6 relative">
             <button
               onClick={() => setSelectedInsight(null)}
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 font-bold text-xl"

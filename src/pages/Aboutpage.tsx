@@ -14,7 +14,7 @@ const About = () => {
         <div className="min-h-screen bg-white font-sans text-gray-800 antialiased">
             <main>
                 {/* Section 1: Hero Section */}
-              <section className="relative w-full h-screen overflow-hidden">
+              <section className="relative w-full h-[700px] overflow-hidden">
   {/* Background Image */}
   <div
     className="absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover"
@@ -80,7 +80,7 @@ const About = () => {
                 <section className="bg-gray-50 py-10">
                     <div className={contentContainerClasses}>
                         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                            <div className="rounded-lg bg-white p-8 shadow-md">
+                            <div className="rounded-lg bg-white p-8">
                                 <div className="mb-4 flex items-center">
                                     <Target className="h-8 w-8 text-[#27A2D8] " />
                                     <h3 className="ml-4 text-2xl font-bold text-gray-900">Our Mission</h3>
@@ -92,7 +92,7 @@ const About = () => {
                                     We strive to provide technology solutions that are specifically tailored to the needs and challenges of African businesses, helping them compete effectively in the global marketplace.
                                 </p>
                             </div>
-                            <div className="rounded-lg bg-white p-8 shadow-md">
+                            <div className="rounded-lg bg-white p-8">
                                 <div className="mb-4 flex items-center">
                                     <Eye className="h-8 w-8 text-[#27A2D8] " />
                                     <h3 className="ml-4 text-2xl font-bold text-gray-900">Our Vision</h3>
@@ -117,7 +117,7 @@ const About = () => {
                         </p>
 
                         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-                            <Card className="border-0 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
+                            <Card className="border-0 text-center">
                                 <CardHeader>
                                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
                                         <Target className="h-6 w-6 text-[#27A2D8] " />
@@ -129,7 +129,7 @@ const About = () => {
                                 </CardHeader>
                             </Card>
 
-                            <Card className="border-0 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
+                            <Card className="border-0 text-center">
                                 <CardHeader>
                                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
                                         <Flag className="h-6 w-6 text-[#27A2D8] " />
@@ -140,7 +140,7 @@ const About = () => {
                                     </CardDescription>
                                 </CardHeader>
                             </Card>
-                            <Card className="border-0 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
+                            <Card className="border-0 text-center">
                                 <CardHeader>
                                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
                                         <Handshake className="h-6 w-6 text-[#27A2D8] " />
@@ -152,7 +152,7 @@ const About = () => {
                                 </CardHeader>
                             </Card>
 
-                            <Card className="border-0 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
+                            <Card className="border-0 text-center">
                                 <CardHeader>
                                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
                                         <LineChart className="h-6 w-6 text-[#27A2D8] " />

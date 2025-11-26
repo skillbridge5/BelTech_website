@@ -14,11 +14,11 @@ const RetailAuto = () => {
           <img
             src={digitalMarketing}
             alt="Diligent Trade Solution"
-            className="w-full h-[400px] object-cover rounded-lg shadow-md"
+            className="w-full h-[400px] object-cover rounded-lg"
           />
           <button
             onClick={() => navigate(-1)}
-            className="absolute top-4 left-4 flex items-center text-black bg-white/70 hover:bg-white transition px-2 py-1 rounded shadow z-10"
+            className="absolute top-4 left-4 flex items-center text-black bg-white/70 hover:bg-white transition px-2 py-1 rounded z-10"
           >
             <ArrowLeft className="mr-2 h-5 w-5" />
             Back
@@ -53,7 +53,7 @@ const RetailAuto = () => {
           </div>
         </div>
 
-        <div className="border-0 rounded-lg shadow-md p-6 bg-gray-100 flex flex-col items-center text-center justify-center">
+        <div className="border-0 rounded-lg p-6 bg-gray-100 flex flex-col items-center text-center justify-center">
           <h2 className="text-2xl font-bold mb-4">Subscribe</h2>
           <p className="text-gray-600 mb-4 text-sm">
             Stay informed with tips on business solutions, ERP insights, and Beltech’s latest offerings. You’ll also receive updates on our upcoming events and workshops.
