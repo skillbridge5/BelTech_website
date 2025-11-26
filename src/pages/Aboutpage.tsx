@@ -1,6 +1,6 @@
 import { Target, Flag, Handshake, LineChart, Eye } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription } from "../components/ui/card";
-import abouthero from "./../assets/aboutPage/heroNew.png"
+import abouthero from "./../assets/aboutPage/hero1.png"
 import beltech from "./../assets/aboutPage/beltech.jpg";
 import { Button } from "../components/ui/button";
 import above_the_footer from "./../assets/above_the_footer.png"
@@ -22,7 +22,7 @@ const About = () => {
   ></div>
 
   {/* Gradient Overlay */}
-  <div
+  {/* <div
     className="absolute inset-0"
     style={{
       background: `
@@ -30,11 +30,11 @@ const About = () => {
         linear-gradient(to left, rgba(39,162,216,0.5) 0%, rgba(39,162,216,0.0) 40%)
       `,
     }}
-  ></div>
+  ></div> */}
 
   {/* Content */}
   <div className="absolute inset-0 flex items-center">
-    <div className="w-full px-4 lg:px-8 text-white">
+    <div className="w-full px-4 lg:px-25 text-white">
       <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
         About Us
       </h1>
