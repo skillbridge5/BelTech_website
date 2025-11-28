@@ -4,6 +4,7 @@ import abouthero from "./../assets/aboutPage/hero1.png"
 import beltech from "./../assets/aboutPage/beltech1.png";
 import { Button } from "../components/ui/button";
 import above_the_footer from "./../assets/above_the_footer.png"
+import { motion } from "framer-motion";
 
 const About = () => {
     // Define a single, consistent container class for all section content.
@@ -35,12 +36,18 @@ const About = () => {
   {/* Content */}
   <div className="absolute inset-0 flex items-center">
     <div className="w-full px-4 lg:px-25 text-white">
-      <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
-        About Us
-      </h1>
-      <p className="mt-4 text-lg md:text-xl max-w-2xl">
-        A company born in Ethiopia, supporting businesses across Africa with digital transformation solutions.
-      </p>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
+          About Us
+        </h1>
+        <p className="mt-4 text-lg md:text-xl max-w-2xl">
+          A company born in Ethiopia, supporting businesses across Africa with digital transformation solutions.
+        </p>
+      </motion.div>
     </div>
   </div>
 </section>
@@ -49,7 +56,13 @@ const About = () => {
                 {/* Section 2: Our Story */}
                 <section className="py-8 bg-white">
                     <div className={contentContainerClasses}>
-                        <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+                        <motion.div
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.6 }}
+                            className="grid grid-cols-1 items-center gap-12 md:grid-cols-2"
+                        >
                             <div className="order-1 md:order-1">
                                 <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
                                     Our Story
@@ -71,7 +84,7 @@ const About = () => {
                                     className="w-full max-w-xs mt-4"
                                 />
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </section>
 
@@ -80,7 +93,13 @@ const About = () => {
                 <section className="bg-gray-50 py-10">
                     <div className={contentContainerClasses}>
                         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                            <div className="rounded-lg bg-white p-8">
+                            <motion.div
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.6, delay: 0.1 }}
+                                className="rounded-lg bg-white p-8"
+                            >
                                 <div className="mb-4 flex items-center">
                                     <Target className="h-8 w-8 text-[#27A2D8] " />
                                     <h3 className="ml-4 text-2xl font-bold text-gray-900">Our Mission</h3>
@@ -91,8 +110,14 @@ const About = () => {
                                 <p className="mt-4 text-gray-600">
                                     We strive to provide technology solutions that are specifically tailored to the needs and challenges of African businesses, helping them compete effectively in the global marketplace.
                                 </p>
-                            </div>
-                            <div className="rounded-lg bg-white p-8">
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.6, delay: 0.2 }}
+                                className="rounded-lg bg-white p-8"
+                            >
                                 <div className="mb-4 flex items-center">
                                     <Eye className="h-8 w-8 text-[#27A2D8] " />
                                     <h3 className="ml-4 text-2xl font-bold text-gray-900">Our Vision</h3>
@@ -103,7 +128,7 @@ const About = () => {
                                 <p className="mt-4 text-gray-900">
                                     We aim to lead the digital transformation of African businesses by providing innovative, reliable, and accessible technology solutions that drive growth and efficiency.
                                 </p>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </section>
@@ -117,6 +142,12 @@ const About = () => {
                         </p>
 
                         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+                            <motion.div
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.6, delay: 0.1 }}
+                            >
                             <Card className="border-0 text-center">
                                 <CardHeader>
                                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
@@ -128,7 +159,14 @@ const About = () => {
                                     </CardDescription>
                                 </CardHeader>
                             </Card>
+                            </motion.div>
 
+                            <motion.div
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.6, delay: 0.2 }}
+                            >
                             <Card className="border-0 text-center">
                                 <CardHeader>
                                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
@@ -140,6 +178,13 @@ const About = () => {
                                     </CardDescription>
                                 </CardHeader>
                             </Card>
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.6, delay: 0.3 }}
+                            >
                             <Card className="border-0 text-center">
                                 <CardHeader>
                                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
@@ -151,7 +196,14 @@ const About = () => {
                                     </CardDescription>
                                 </CardHeader>
                             </Card>
+                            </motion.div>
 
+                            <motion.div
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.6, delay: 0.4 }}
+                            >
                             <Card className="border-0 text-center">
                                 <CardHeader>
                                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
@@ -163,6 +215,7 @@ const About = () => {
                                     </CardDescription>
                                 </CardHeader>
                             </Card>
+                            </motion.div>
                         </div>
                     </div>
                 </section>
@@ -190,6 +243,12 @@ const About = () => {
                         }}
                     ></div>
                     <div className={`relative z-10 text-center ${contentContainerClasses}`}>
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                        >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
                             Ready to Transform Your Business?
                         </h2>
@@ -212,6 +271,7 @@ const About = () => {
                                 View Success Stories
                             </Button>
                         </div>
+                        </motion.div>
                     </div>
                 </section>
 
