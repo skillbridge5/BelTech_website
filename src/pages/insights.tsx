@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { loadInsights } from "../api/client"; // named import
 import Hero from "./../assets/insightpage/heroNew.png";
 import above_the_footer from "./../assets/above_the_footer.png";
+import { motion } from "framer-motion";
 
 interface InsightType {
   _id: string;
@@ -80,10 +81,16 @@ const Insight = () => {
         ></div>
         <div className="absolute inset-0 flex items-center">
           <div className="w-full px-4 lg:px-8 text-white">
-            <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Insights</h1>
-            <p className="mt-2 text-lg md:text-xl max-w-2xl leading-snug">
-              Explore our latest articles and guides on digital transformation and technology in Africa.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Insights</h1>
+              <p className="mt-2 text-lg md:text-xl max-w-2xl leading-snug">
+                Explore our latest articles and guides on digital transformation and technology in Africa.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -91,12 +98,18 @@ const Insight = () => {
       {/* Articles Section */}
       <section className="py-8 px-4 sm:px-8 lg:px-16">
         <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-6"
+          >
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-1 leading-tight">Latest Articles</h2>
             <p className="text-base text-gray-600 max-w-2xl mx-auto leading-snug">
               Stay informed with our latest insights on technology, business, and digital transformation
             </p>
-          </div>
+          </motion.div>
 
           {loading ? (
             <p className="text-center text-gray-500">Loading insights...</p>
@@ -104,8 +117,16 @@ const Insight = () => {
             <p className="text-center text-gray-500">No insights at the moment.</p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
-              {insights.map((insight) => (
-                <ArticleCard key={insight._id} insight={insight} onReadMore={setSelectedInsight} />
+              {insights.map((insight, index) => (
+                <motion.div
+                  key={insight._id}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <ArticleCard insight={insight} onReadMore={setSelectedInsight} />
+                </motion.div>
               ))}
             </div>
           )}
@@ -141,6 +162,12 @@ const Insight = () => {
         <div className="absolute inset-0 z-0" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}></div>
         <div className="absolute inset-0 z-0" style={{ background: "linear-gradient(to right, #31A8EB, #61C7D5)", opacity: 0.5 }}></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto leading-snug">
             Join hundreds of African businesses that have streamlined their operations with BelTech Solutions.
@@ -154,6 +181,7 @@ const Insight = () => {
               Start Your Digital Journey
             </Button>
           </div>
+          </motion.div>
         </div>
       </section>
     </div>
