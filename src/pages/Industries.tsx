@@ -116,7 +116,7 @@ const Industries = () => {
           }}
         ></div>
         <div className="absolute inset-0 flex items-center">
-          <div className="w-full px-4 lg:px-4 text-white max-w-7xl mx-auto">
+          <div className="w-full px-4 lg:px-25 text-white">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}

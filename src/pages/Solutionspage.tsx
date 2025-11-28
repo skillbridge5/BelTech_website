@@ -25,7 +25,7 @@ const SolutionsPage = () => {
           }}
         ></div>
         <div className="absolute inset-0 flex items-center">
-          <div className="w-full px-4 lg:px-8 text-white">
+          <div className="w-full px-4 lg:px-25 text-white">
             <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
               Solution in Action
             </h1>
