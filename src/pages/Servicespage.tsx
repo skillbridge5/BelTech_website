@@ -33,15 +33,7 @@ const Servicespage = () => {
           transformOrigin: "center",
         }}
       ></div>
-      {/* <div
-        className="absolute inset-0"
-        style={{
-          background: `
-            linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)),
-            linear-gradient(to left, rgba(39,162,216,0.5) 0%, rgba(39,162,216,0.0) 40%)
-          `,
-        }}
-      ></div> */}
+     
 
       <div className="absolute inset-0 flex items-center">
         <div className="w-full px-4 lg:px-25 text-white">
