@@ -134,98 +134,96 @@ const Industries = () => {
       </section>
 
       {/* Industries Grid */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-32">
-            {industries.map((industry, index) => {
-              const Icon = industry.icon;
-              const isEven = index % 2 === 0;
+      {industries.map((industry, index) => {
+        const Icon = industry.icon;
+        const isEven = index % 2 === 0;
+        const bgColor = index % 2 === 0 ? 'bg-white' : 'bg-[#f7f8fa]';
 
-              return (
-                <motion.div
-                  key={industry.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`flex flex-col lg:flex-row items-center gap-12 ${
-                    isEven ? "lg:flex-row" : "lg:flex-row-reverse"
-                  }`}
-                >
-                  {/* Image Section */}
-                  <div className="flex-1 w-full lg:w-auto">
-                    <div className="relative group">
-                      <div className={`absolute inset-0 bg-gradient-to-br ${industry.gradient} opacity-20 rounded-3xl blur-2xl group-hover:opacity-30 transition-opacity duration-500`}></div>
-                      <div className="relative overflow-hidden rounded-3xl">
-                        <img
-                          src={industry.image}
-                          alt={industry.title}
-                          className="w-full h-[400px] lg:h-[500px] object-cover transform group-hover:scale-110 transition-transform duration-700"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                        <div className="absolute bottom-6 left-6 right-6">
-                          <div className="flex items-center gap-3 mb-2">
-                            <div className="p-3 bg-[#27A2D8] rounded-xl">
-                              <Icon className="w-6 h-6 text-white" />
-                            </div>
-                            <h3 className="text-2xl md:text-3xl font-bold text-white">
-                              {industry.title}
-                            </h3>
+        return (
+          <section key={industry.id} className={`py-20 ${bgColor}`}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`flex flex-col lg:flex-row items-center gap-12 ${
+                  isEven ? "lg:flex-row" : "lg:flex-row-reverse"
+                }`}
+              >
+                {/* Image Section */}
+                <div className="flex-1 w-full lg:w-auto">
+                  <div className="relative group">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${industry.gradient} opacity-10 rounded-3xl blur-2xl group-hover:opacity-15 transition-opacity duration-500`}></div>
+                    <div className="relative overflow-hidden rounded-3xl">
+                      <img
+                        src={industry.image}
+                        alt={industry.title}
+                        className="w-full h-[400px] lg:h-[500px] object-cover transform group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="p-3 bg-[#27A2D8] rounded-xl">
+                            <Icon className="w-6 h-6 text-white" />
                           </div>
-                          <p className="text-white/90 text-lg font-medium">
-                            {industry.lead}
-                          </p>
+                          <h3 className="text-2xl md:text-3xl font-bold text-white">
+                            {industry.title}
+                          </h3>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Content Section */}
-                  <div className="flex-1 w-full lg:w-auto">
-                    <div className="space-y-6">
-                      {/* Features List */}
-                      <div className="space-y-4">
-                        {industry.bullets.map((bullet, bulletIndex) => (
-                          <motion.div
-                            key={bulletIndex}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: bulletIndex * 0.1 }}
-                            className="flex items-start gap-4 group"
-                          >
-                            <div className="flex-shrink-0 mt-1">
-                              <div className="w-8 h-8 rounded-full bg-[#27A2D8] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                <CheckCircle className="w-5 h-5 text-white" />
-                              </div>
-                            </div>
-                            <p className="text-gray-700 text-lg leading-relaxed pt-1">
-                              {bullet}
-                            </p>
-                          </motion.div>
-                        ))}
-                      </div>
-
-                      {/* Quote */}
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        className="relative p-6 rounded-2xl bg-gradient-to-br from-[#27A2D8]/10 to-[#27A2D8]/5 border-l-4 border-[#27A2D8]"
-                      >
-                        <p className="text-gray-800 text-lg italic leading-relaxed">
-                          "{industry.quote}"
+                        <p className="text-white/90 text-lg font-medium">
+                          {industry.lead}
                         </p>
-                      </motion.div>
+                      </div>
                     </div>
                   </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+                </div>
+
+                {/* Content Section */}
+                <div className="flex-1 w-full lg:w-auto">
+                  <div className="space-y-6">
+                    {/* Features List */}
+                    <div className="space-y-4">
+                      {industry.bullets.map((bullet, bulletIndex) => (
+                        <motion.div
+                          key={bulletIndex}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.4, delay: bulletIndex * 0.1 }}
+                          className="flex items-start gap-4 group"
+                        >
+                          <div className="shrink-0 mt-1">
+                            <div className="w-8 h-8 rounded-full bg-[#27A2D8] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                              <CheckCircle className="w-5 h-5 text-white" />
+                            </div>
+                          </div>
+                          <p className="text-gray-700 text-lg leading-relaxed pt-1">
+                            {bullet}
+                          </p>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Quote */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.3 }}
+                      className="relative p-6 rounded-2xl bg-gradient-to-br from-[#27A2D8]/10 to-[#27A2D8]/5 border-l-4 border-[#27A2D8]"
+                    >
+                      <p className="text-gray-800 text-lg italic leading-relaxed">
+                        "{industry.quote}"
+                      </p>
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+        );
+      })}
 
       {/* CTA Section */}
       <section
