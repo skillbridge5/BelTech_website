@@ -153,7 +153,7 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
                 alt={activeIndustry.title}
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
               />
-              <div className={`absolute inset-0 bg-gradient-to-br ${activeIndustry.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-500`}></div>
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-opacity duration-500"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
               
               {/* Content Overlay */}
@@ -214,7 +214,7 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
                       alt={industry.title}
                       className="w-full h-full object-cover"
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${industry.gradient} opacity-30`}></div>
+                    <div className="absolute inset-0 bg-black/30"></div>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Icon className="w-6 h-6 text-white relative z-10" />
                     </div>
@@ -629,19 +629,19 @@ const Homepage: React.FC = () => {
         </section>
 
          {/*  Industries We Serve section*/}
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-[#f7f8fa]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="text-xs font-semibold text-[#27A2D8] uppercase tracking-wider mb-3" style={{ fontFamily: 'Inter', fontSize: '12px', fontWeight: 600 }}>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Industries We Serve
           </h2>
-          <p className="text-sm text-gray-600 max-w-xl mx-auto" style={{ fontFamily: 'Inter', fontSize: '14px', fontWeight: 400 }}>
+          <p className="text-xl font-normal text-black max-w-3xl mx-auto">
             We automate business operations so you stop managing chaos and start managing growth.
           </p>
         </motion.div>
@@ -663,110 +663,148 @@ const Homepage: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Starter */}
-              <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <h3 className="text-2xl font-bold text-black mb-2">Starter</h3>
-                <p className="text-gray-800 italic mb-1">
-                  For small businesses getting started with ERP
-                </p>
-                <p className="text-black mb-1">
-                  <span className="font-semibold">Ideal for:</span> Startups, small retail or service businesses
-                </p>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-[#27A2D8] transition-all duration-300 hover:shadow-xl relative overflow-hidden group"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#27A2D8]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#27A2D8]/10 transition-colors duration-300"></div>
+                <div className="relative">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Starter</h3>
+                  <p className="text-gray-600 mb-4 text-sm">
+                    For small businesses getting started with ERP
+                  </p>
+                  <div className="mb-6 pb-6 border-b border-gray-100">
+                    <p className="text-sm text-gray-700">
+                      <span className="font-semibold text-gray-900">Ideal for:</span> Startups, small retail or service businesses
+                    </p>
+                  </div>
 
-                {/* Features */}
-                <h4 className="font-semibold mb-2">Features:</h4>
-                <ul className="text-black mb-4 space-y-2">
-                  {[
-                    "Sales & Purchase Management",
-                    "Inventory Tracking",
-                    "Basic Accounting & Reporting",
-                    "Standard Dashboards",
-                  ].map((feature, i) => (
-                    <li key={i} className="flex items-start space-x-2">
-                      <CheckCircle className="text-[#27A2D8] w-5 h-5 mt-0.5" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                  {/* Features */}
+                  <h4 className="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wide">Features:</h4>
+                  <ul className="space-y-3 mb-8">
+                    {[
+                      "Sales & Purchase Management",
+                      "Inventory Tracking",
+                      "Basic Accounting & Reporting",
+                      "Standard Dashboards",
+                    ].map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <CheckCircle className="text-[#27A2D8] w-5 h-5 shrink-0 mt-0.5" />
+                        <span className="text-gray-700 text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                <Button
-                  size="lg"
-                  className="w-full text-white bg-[#27A2D8] hover:scale-105 transition-all duration-200"
-                  onClick={() => (window.location.href = "/contact")}
-                >
-                  Get Started
-                </Button>
-              </div>
+                  <Button
+                    size="lg"
+                    className="w-full text-white bg-[#27A2D8] hover:bg-[#1f8cb8] transition-all duration-200 font-semibold"
+                    onClick={() => (window.location.href = "/contact")}
+                  >
+                    Get Started
+                  </Button>
+                </div>
+              </motion.div>
 
               {/* Professional */}
-              <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <h3 className="text-2xl font-bold text-black mb-2">Professional</h3>
-                <p className="text-gray-800 italic mb-1">
-                  For growing SMEs that need more automation
-                </p>
-                <p className="text-black mb-1">
-                  <span className="font-semibold">Ideal for:</span> Medium businesses expanding operations
-                </p>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="bg-gradient-to-br from-[#27A2D8] to-[#1f8cb8] p-8 rounded-2xl border-2 border-[#27A2D8] hover:shadow-2xl transition-all duration-300 relative overflow-hidden group transform hover:-translate-y-1"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:bg-white/15 transition-colors duration-300"></div>
+                <div className="relative">
+                  <div className="mb-4">
+                    <span className="inline-block px-3 py-1 bg-white/20 text-white text-xs font-semibold rounded-full mb-3">
+                      MOST POPULAR
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-3">Professional</h3>
+                  <p className="text-white/90 mb-4 text-sm">
+                    For growing SMEs that need more automation
+                  </p>
+                  <div className="mb-6 pb-6 border-b border-white/20">
+                    <p className="text-sm text-white/90">
+                      <span className="font-semibold text-white">Ideal for:</span> Medium businesses expanding operations
+                    </p>
+                  </div>
 
-                <h4 className="font-semibold mb-2">Features:</h4>
-                <ul className="text-black mb-4 space-y-2">
-                  {[
-                    "All Starter modules",
-                    "HR & Payroll",
-                    "POS & eCommerce",
-                    "Workflow Automation",
-                    "Customizable Reports & Dashboards",
-                  ].map((feature, i) => (
-                    <li key={i} className="flex items-start space-x-2">
-                      <CheckCircle className="text-[#27A2D8] w-5 h-5 mt-0.5" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                  <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wide">Features:</h4>
+                  <ul className="space-y-3 mb-8">
+                    {[
+                      "All Starter modules",
+                      "HR & Payroll",
+                      "POS & eCommerce",
+                      "Workflow Automation",
+                      "Customizable Reports & Dashboards",
+                    ].map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <CheckCircle className="text-white w-5 h-5 shrink-0 mt-0.5" />
+                        <span className="text-white/90 text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                <Button
-                  size="lg"
-                  className="w-full text-white bg-[#27A2D8] hover:scale-105 transition-all duration-200"
-                  onClick={() => (window.location.href = "/contact")}
-                >
-                  Request a Demo
-                </Button>
-              </div>
+                  <Button
+                    size="lg"
+                    className="w-full bg-white text-[#27A2D8] hover:bg-gray-50 transition-all duration-200 font-semibold"
+                    onClick={() => (window.location.href = "/contact")}
+                  >
+                    Request a Demo
+                  </Button>
+                </div>
+              </motion.div>
 
               {/* Enterprise */}
-              <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <h3 className="text-2xl font-bold text-black mb-2">Enterprise</h3>
-                <p className="text-gray-800 italic mb-1">
-                  For large organizations with advanced needs
-                </p>
-                <p className="text-black mb-1">
-                  <span className="font-semibold">Ideal for:</span> Multi-branch operations, complex workflows, large teams
-                </p>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-[#27A2D8] transition-all duration-300 hover:shadow-xl relative overflow-hidden group"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#27A2D8]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#27A2D8]/10 transition-colors duration-300"></div>
+                <div className="relative">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Enterprise</h3>
+                  <p className="text-gray-600 mb-4 text-sm">
+                    For large organizations with advanced needs
+                  </p>
+                  <div className="mb-6 pb-6 border-b border-gray-100">
+                    <p className="text-sm text-gray-700">
+                      <span className="font-semibold text-gray-900">Ideal for:</span> Multi-branch operations, complex workflows, large teams
+                    </p>
+                  </div>
 
-                <h4 className="font-semibold mb-2">Features:</h4>
-                <ul className="text-black mb-4 space-y-2">
-                  {[
-                    "All Professional modules",
-                    "Manufacturing (MRP)",
-                    "Marketing & Campaigns",
-                    "Project Management ",
-                    "Multi-branch support",
-                    "Custom Integrations & Automation",
-                  ].map((feature, i) => (
-                    <li key={i} className="flex items-start space-x-2">
-                      <CheckCircle className="text-[#27A2D8] w-5 h-5 mt-0.5" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                  <h4 className="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wide">Features:</h4>
+                  <ul className="space-y-3 mb-8">
+                    {[
+                      "All Professional modules",
+                      "Manufacturing (MRP)",
+                      "Marketing & Campaigns",
+                      "Project Management",
+                      "Multi-branch support",
+                      "Custom Integrations & Automation",
+                    ].map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <CheckCircle className="text-[#27A2D8] w-5 h-5 shrink-0 mt-0.5" />
+                        <span className="text-gray-700 text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                <Button
-                  size="lg"
-                  className="w-full text-white bg-[#27A2D8] hover:scale-105 transition-all duration-200"
-                  onClick={() => (window.location.href = "/contact")}
-                >
-                  Contact Sales
-                </Button>
-              </div>
+                  <Button
+                    size="lg"
+                    className="w-full text-white bg-[#27A2D8] hover:bg-[#1f8cb8] transition-all duration-200 font-semibold"
+                    onClick={() => (window.location.href = "/contact")}
+                  >
+                    Contact Sales
+                  </Button>
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>
