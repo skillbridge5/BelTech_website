@@ -3,7 +3,7 @@
 import React from "react";
 import { Button } from "../components/ui/button";
 import {
-  CheckCircle, Users, Zap, Layers, TrendingUp, DollarSign, Globe, Award, ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed
+  CheckCircle, Users, Zap, Layers, TrendingUp, DollarSign, Globe, Award, ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed, ChevronLeft, ChevronRight, ArrowRight
 } from "lucide-react";
 import { motion } from "framer-motion";
 import hero from "./../assets/homepage/hero.png";
@@ -30,7 +30,9 @@ const industries = [
       "Barcode inventory + automated stock alerts",
       "Real-time sales dashboards",
     ],
-    quote: "Know exactly what’s selling, what’s missing, and what’s making money — from your phone.",
+    quote: "Know exactly what's selling, what's missing, and what's making money — from your phone.",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+    gradient: "from-blue-500 to-cyan-500",
   },
   {
     id: "manufacturing",
@@ -43,6 +45,8 @@ const industries = [
       "Production cost analysis",
     ],
     quote: "No more guesswork. Know your cost per product before you produce.",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop",
+    gradient: "from-cyan-500 to-teal-500",
   },
   {
     id: "import",
@@ -55,6 +59,8 @@ const industries = [
       "Warehouse + delivery tracking",
     ],
     quote: "Stop losing profit on hidden costs. Track every birr from customs to customer.",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop",
+    gradient: "from-teal-500 to-green-500",
   },
   {
     id: "construction",
@@ -67,6 +73,8 @@ const industries = [
       "Timesheets & subcontractor management",
     ],
     quote: "See where money is going — before it disappears.",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop",
+    gradient: "from-green-500 to-emerald-500",
   },
   {
     id: "services",
@@ -79,6 +87,8 @@ const industries = [
       "Automated follow-ups for unpaid invoices",
     ],
     quote: "Invoice smarter — not harder.",
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop",
+    gradient: "from-emerald-500 to-blue-500",
   },
   {
     id: "health",
@@ -91,6 +101,8 @@ const industries = [
       "Integrated billing + accounting",
     ],
     quote: "Your whole facility in one system — zero paperwork.",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop",
+    gradient: "from-blue-500 to-indigo-500",
   },
   {
     id: "restaurants",
@@ -103,29 +115,173 @@ const industries = [
       "Delivery, takeaway, and table management",
     ],
     quote: "Know your profit per plate — not just your daily sales.",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
+    gradient: "from-indigo-500 to-purple-500",
   },
 ];
-function Card({ data }: { data: typeof industries[number] }) {
-  const Icon = data.icon;
+
+const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ industries }) => {
+  const [activeIndex, setActiveIndex] = React.useState(0);
+
+  const nextCard = () => {
+    setActiveIndex((prev) => (prev + 1) % industries.length);
+  };
+
+  const prevCard = () => {
+    setActiveIndex((prev) => (prev - 1 + industries.length) % industries.length);
+  };
+
+  const activeIndustry = industries[activeIndex];
+  const waitingIndustries = industries.filter((_, index) => index !== activeIndex);
+
   return (
-    <div className="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-      <div>
-        <div className="mb-4 flex h-10 w-10 items-center justify-center bg-[#f7f8fa] rounded-xl">
-          <Icon className="h-5 w-5 text-[#27A2D8]" />
+    <div className="relative">
+      <div className="flex flex-col lg:flex-row gap-8 items-start">
+        {/* Active Card - Left Side */}
+        <motion.div
+          key={activeIndex}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 50 }}
+          transition={{ duration: 0.5 }}
+          className="flex-1 w-full lg:w-2/3"
+        >
+          <div className="relative group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#27A2D8]/30 transition-all duration-300">
+            <div className="relative h-[400px] lg:h-[500px] overflow-hidden">
+              <img
+                src={activeIndustry.image}
+                alt={activeIndustry.title}
+                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className={`absolute inset-0 bg-gradient-to-br ${activeIndustry.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-500`}></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              
+              {/* Content Overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="p-3 bg-[#27A2D8] rounded-xl">
+                    <activeIndustry.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white" style={{ fontFamily: 'Inter', fontWeight: 700 }}>
+                    {activeIndustry.title}
+                  </h3>
+                </div>
+                <p className="text-white/90 text-lg mb-4" style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 400 }}>
+                  {activeIndustry.lead}
+                </p>
+                
+                {/* Features */}
+                <div className="space-y-2 mb-4">
+                  {activeIndustry.bullets.slice(0, 2).map((bullet) => (
+                    <div key={bullet} className="flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-[#27A2D8] shrink-0" />
+                      <span className="text-white/90 text-sm" style={{ fontFamily: 'Inter', fontSize: '14px', fontWeight: 400 }}>
+                        {bullet}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Waiting Cards - Right Side */}
+        <div className="w-full lg:w-1/3 space-y-4">
+          {waitingIndustries.slice(0, 3).map((industry) => {
+            const Icon = industry.icon;
+            const originalIndex = industries.findIndex((ind) => ind.id === industry.id);
+            const isNext = originalIndex === (activeIndex + 1) % industries.length;
+            
+            return (
+              <motion.div
+                key={industry.id}
+                initial={{ opacity: 0.6, x: 20 }}
+                animate={{ 
+                  opacity: isNext ? 0.9 : 0.6,
+                  x: 0,
+                  scale: isNext ? 1.02 : 1
+                }}
+                whileHover={{ opacity: 1, scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                onClick={() => setActiveIndex(originalIndex)}
+                className="cursor-pointer"
+              >
+                <div className="bg-white rounded-xl p-4 border border-gray-100 hover:border-[#27A2D8]/30 transition-all duration-300 flex items-center gap-4">
+                  <div className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
+                    <img
+                      src={industry.image}
+                      alt={industry.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${industry.gradient} opacity-30`}></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-white relative z-10" />
+                    </div>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-sm font-semibold text-gray-900 mb-1 truncate" style={{ fontFamily: 'Inter', fontSize: '14px', fontWeight: 600 }}>
+                      {industry.title}
+                    </h4>
+                    <p className="text-xs text-gray-600 line-clamp-2" style={{ fontFamily: 'Inter', fontSize: '12px', fontWeight: 400 }}>
+                      {industry.lead}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
-        <h3 className="text-lg font-semibold text-black mb-1">{data.title}</h3>
-        <p className="text-sm text-gray-700 mb-2">{data.lead}</p>
-        <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
-          {data.bullets.map((b) => (
-            <li key={b}>{b}</li>
-          ))}
-        </ul>
       </div>
-      <p className="italic text-xs text-gray-600 mt-3">{data.quote}</p>
+
+      {/* Navigation Buttons */}
+      <div className="flex items-center justify-between mt-8">
+        <div className="flex items-center gap-2">
+          <button
+            onClick={prevCard}
+            className="p-3 rounded-full bg-white border border-gray-200 hover:border-[#27A2D8] hover:bg-[#27A2D8]/10 transition-all duration-300 group"
+            aria-label="Previous industry"
+          >
+            <ChevronLeft className="w-5 h-5 text-gray-600 group-hover:text-[#27A2D8]" />
+          </button>
+          <button
+            onClick={nextCard}
+            className="p-3 rounded-full bg-white border border-gray-200 hover:border-[#27A2D8] hover:bg-[#27A2D8]/10 transition-all duration-300 group"
+            aria-label="Next industry"
+          >
+            <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-[#27A2D8]" />
+          </button>
+        </div>
+
+        {/* See More Button */}
+        <a
+          href="/industries"
+          className="inline-flex items-center gap-2 text-[#27A2D8] font-semibold hover:gap-3 transition-all duration-300 group"
+          style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 600 }}
+        >
+          <span>See More</span>
+          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+        </a>
+      </div>
+
+      {/* Dots Indicator */}
+      <div className="flex items-center justify-center gap-2 mt-6">
+        {industries.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveIndex(index)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              index === activeIndex
+                ? 'bg-[#27A2D8] w-8'
+                : 'bg-gray-300 hover:bg-gray-400'
+            }`}
+            aria-label={`Go to industry ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
-}
-
+};
 
 const Homepage: React.FC = () => {
   return (
@@ -473,65 +629,26 @@ const Homepage: React.FC = () => {
         </section>
 
          {/*  Industries We Serve section*/}
-    <section className="py-10 bg-[#f7f8fa]">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-14">
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-        Industries We Serve
-      </h2>
-      <p className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">
-        We automate business operations so you stop managing chaos and start managing growth.
-      </p>
-    </div>
+    <section className="py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-xs font-semibold text-[#27A2D8] uppercase tracking-wider mb-3" style={{ fontFamily: 'Inter', fontSize: '12px', fontWeight: 600 }}>
+            Industries We Serve
+          </h2>
+          <p className="text-sm text-gray-600 max-w-xl mx-auto" style={{ fontFamily: 'Inter', fontSize: '14px', fontWeight: 400 }}>
+            We automate business operations so you stop managing chaos and start managing growth.
+          </p>
+        </motion.div>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-      {/* Column 1 */}
-      <div className="flex flex-col justify-center gap-6">
-        {industries.slice(0, 2).map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-          >
-            <Card data={item} />
-          </motion.div>
-        ))}
+        <IndustriesCarousel industries={industries} />
       </div>
-
-      {/* Column 2 */}
-      <div className="flex flex-col gap-6">
-        {industries.slice(2, 5).map((item, index) => (
-          <motion.div
-            key={index + 2}
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-          >
-            <Card data={item} />
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Column 3 */}
-      <div className="flex flex-col justify-center gap-6">
-        {industries.slice(5, 7).map((item, index) => (
-          <motion.div
-            key={index + 5}
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-          >
-            <Card data={item} />
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

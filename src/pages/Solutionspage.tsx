@@ -5,6 +5,7 @@ import importEport from "./../assets/solutionpage/importExport.jpg";
 import eLearning from "./../assets/solutionpage/eLearning.jpg";
 import DigitalMarketingDetail from "../assets/solutionpage/digitalMarketing.jpg";
 import above_the_footer from "../assets/above_the_footer.png";
+import { motion } from "framer-motion";
 
 const SolutionsPage = () => {
   return (
@@ -26,31 +27,49 @@ const SolutionsPage = () => {
         ></div>
         <div className="absolute inset-0 flex items-center">
           <div className="w-full px-4 lg:px-25 text-white">
-            <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
-              Solution in Action
-            </h1>
-             <p className="mt-4 text-lg md:text-xl max-w-2xl">
-              Real projects. Real impact. Discover how we help businesses work smarter.
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
+                Solution in Action
+              </h1>
+               <p className="mt-4 text-lg md:text-xl max-w-2xl">
+                Real projects. Real impact. Discover how we help businesses work smarter.
 
-            </p>
+              </p>
+            </motion.div>
           </div>
         </div>
         <div className="absolute bottom-0 w-full h-1 bg-white"></div>
       </section>
 
       <section className="container mx-auto my-12 px-4 md:px-8 lg:px-12">
-        <div className="text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Success Stories
           </h2>
           <p className="text-xl font-normal text-black mb-12 max-w-3xl mx-auto">
             Explore how our solutions have helped businesses overcome challenges and achieve growth.
           </p>
-        </div>
+        </motion.div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 
-  <div className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.6, delay: 0.1 }}
+    className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden"
+  >
     <img
       src={importEport}
       alt="ERP for Textile Manufacturer"
@@ -72,9 +91,15 @@ const SolutionsPage = () => {
         Read More
       </Link>
     </div>
-  </div>
+  </motion.div>
 
-  <div className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.6, delay: 0.2 }}
+    className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden"
+  >
     <img
       src={eLearning}
       alt="Charity Platform"
@@ -96,9 +121,15 @@ const SolutionsPage = () => {
         Read More
       </Link>
     </div>
-  </div>
+  </motion.div>
 
-  <div className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.6, delay: 0.3 }}
+    className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden"
+  >
     <img
       src={DigitalMarketingDetail}
       alt="Digital Marketing"
@@ -120,9 +151,9 @@ const SolutionsPage = () => {
         Read More
       </Link>
     </div>
-  </div>
+  </motion.div>
 
-</div>
+      </div>
 
       </section>
 
@@ -148,6 +179,12 @@ const SolutionsPage = () => {
           }}
         ></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Transform Your Business?
           </h2>
@@ -163,6 +200,7 @@ const SolutionsPage = () => {
               Start Your Digital Journey
             </Button>
           </div>
+          </motion.div>
         </div>
       </section>
     </div>

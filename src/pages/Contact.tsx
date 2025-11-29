@@ -7,6 +7,7 @@ import contactHero from "./../assets/contactHero.png";
 import above_the_footer from "./../assets/above_the_footer.png";
 import { Dot } from "lucide-react";
 import { submitContact } from "../api/client";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -105,11 +106,17 @@ const Contact = () => {
         ></div>
         <div className="absolute inset-0 flex items-center">
           <div className="w-full px-4 lg:px-8 text-white">
-            <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Contact Us</h1>
-            <p className="mt-4 text-lg md:text-xl max-w-2xl">
-              Want to discuss a project or ask questions? <br />
-              Let us transform your business with smart software and a tailored ERP.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Contact Us</h1>
+              <p className="mt-4 text-lg md:text-xl max-w-2xl">
+                Want to discuss a project or ask questions? <br />
+                Let us transform your business with smart software and a tailored ERP.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -118,7 +125,13 @@ const Contact = () => {
       <section className="py-16 px-4 sm:px-8 lg:px-16 flex justify-center">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start max-w-6xl">
           {/* Left Info */}
-          <div className="flex flex-col justify-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col justify-center"
+          >
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Let's talk</h2>
             <div className="space-y-6">
               {/* Location */}
@@ -163,10 +176,16 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right side: FORM */}
-          <div className="w-full flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full flex justify-center"
+          >
             <form className="w-full max-w-md space-y-6" onSubmit={handleSubmit}>
               <p className="text-gray-600 mb-6">
                 Questions, comments, or suggestions? Simply fill in the form and we'll be in touch shortly.
@@ -230,7 +249,7 @@ const Contact = () => {
                 Send Message
               </Button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -246,6 +265,12 @@ const Contact = () => {
         <div className="absolute inset-0 z-0" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}></div>
         <div className="absolute inset-0 z-0" style={{ background: "linear-gradient(to right, #31A8EB, #61C7D5)", opacity: 0.5 }}></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
             Join hundreds of African businesses that have streamlined their operations with BelTech Solutions.
@@ -259,6 +284,7 @@ const Contact = () => {
               View Success Stories
             </Button>
           </div>
+          </motion.div>
         </div>
       </section>
     </div>
