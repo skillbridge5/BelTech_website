@@ -2,6 +2,8 @@ import { ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCr
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
 import above_the_footer from "./../assets/above_the_footer.png";
+import hero from "../../src/assets/in/hero.png"
+import hos from "../../src/assets/in/hospital.png"
 
 const industries = [
   {
@@ -85,7 +87,7 @@ const industries = [
       "Integrated billing + accounting",
     ],
     quote: "Your whole facility in one system — zero paperwork.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop",
+    image: hos,
     gradient: "from-blue-500 to-indigo-500",
   },
   {
@@ -112,7 +114,7 @@ const Industries = () => {
         <div
           className="absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover"
           style={{
-            backgroundImage: `url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop)`,
+            backgroundImage: `url(${hero})`,
           }}
         ></div>
         <div className="absolute inset-0 flex items-center">
