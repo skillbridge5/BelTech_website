@@ -228,7 +228,7 @@ const Industries = () => {
       })}
 
       {/* CTA Section */}
-      <section
+      {/* <section
         className="relative py-20 text-white"
         style={{
           backgroundImage: `url(${above_the_footer})`,
@@ -271,7 +271,54 @@ const Industries = () => {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
+      <section
+          className="relative py-10 text-white"
+          style={{
+            backgroundImage: `url(${above_the_footer})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundColor: "rgba(0, 0, 0, 0.6)",
+            }}
+          ></div>
+          <div
+            className="absolute inset-0 z-0"
+            style={{
+              background: "linear-gradient(to right, #31A8EB, #61C7D5)",
+              opacity: 0.5,
+            }}
+          ></div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-xl font-normal mb-8 max-w-3xl mx-auto">
+              Join hundreds of African businesses that have streamlined their
+              operations with BelTech Solutions.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8]  text-white hover:bg-[#27A2D8]-100"
+                onClick={() => (window.location.href = "/contact")}
+              >
+                Start Your Digital Journey
+              </Button>
+              <Button
+                size="lg"
+                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8]  text-white hover:bg-[#27A2D8]-100"
+                onClick={() => (window.location.href = "/solutions")}
+              >
+                View Success Stories
+              </Button>
+            </div>
+          </div>
+        </section>
     </div>
   );
 };
