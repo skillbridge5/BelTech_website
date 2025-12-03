@@ -87,7 +87,7 @@ const Insight = () => {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Insights</h1>
-              <p className="mt-2 text-lg md:text-xl max-w-2xl leading-snug">
+              <p className="mt- text-lg md:text-xl max-w-2xl leading-snug">
                 Explore our latest articles and guides on digital transformation and technology in Africa.
               </p>
             </motion.div>
