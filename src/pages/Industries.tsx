@@ -2,7 +2,7 @@ import { ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCr
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
 import above_the_footer from "./../assets/above_the_footer.png";
-import hero from "../../src/assets/in/hero.png"
+import hero from "../../src/assets/in/hero1.png"
 import hos from "../../src/assets/in/hospital.png"
 
 const industries = [
