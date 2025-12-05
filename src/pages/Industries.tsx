@@ -1,4 +1,4 @@
-import { ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed, ArrowRight, CheckCircle } from "lucide-react";
+import { ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed, CheckCircle } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
 import above_the_footer from "./../assets/above_the_footer.png";
