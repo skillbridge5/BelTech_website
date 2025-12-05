@@ -390,7 +390,7 @@ const Homepage: React.FC = () => {
                   />
                 </div>
                 <div className="p-8">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '24px', fontWeight: 700 }}>
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
                     Odoo ERP Implementation
                   </h3>
                   <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
@@ -417,7 +417,7 @@ const Homepage: React.FC = () => {
                   />
                 </div>
                 <div className="p-8">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '24px', fontWeight: 700 }}>
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
                     Automation & Integration
                   </h3>
                   <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
@@ -444,7 +444,7 @@ const Homepage: React.FC = () => {
                   />
                 </div>
                 <div className="p-8">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '24px', fontWeight: 700 }}>
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
                     Custom Software Development
                   </h3>
                   <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
