@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import above_the_footer from "./../assets/above_the_footer.png";
 import hero from "../../src/assets/in/hero1.png"
 import hos from "../../src/assets/in/hospital.png"
-
+import market from "../../src/assets/in/market.png"
+import importexport from "../../src/assets/in/import.png"
+import acc from "../../src/assets/in/acc.png"
 const industries = [
   {
     id: "retail",
@@ -17,7 +19,7 @@ const industries = [
       "Real-time sales dashboards",
     ],
     quote: "Know exactly what's selling, what's missing, and what's making money — from your phone.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+    image: market,
     gradient: "from-blue-500 to-cyan-500",
   },
   {
@@ -45,7 +47,7 @@ const industries = [
       "Warehouse + delivery tracking",
     ],
     quote: "Stop losing profit on hidden costs. Track every birr from customs to customer.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop",
+    image: importexport,
     gradient: "from-teal-500 to-green-500",
   },
   {
@@ -73,7 +75,7 @@ const industries = [
       "Automated follow-ups for unpaid invoices",
     ],
     quote: "Invoice smarter — not harder.",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop",
+    image:acc,
     gradient: "from-emerald-500 to-blue-500",
   },
   {
