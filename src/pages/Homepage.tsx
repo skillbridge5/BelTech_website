@@ -17,6 +17,12 @@ import SkillsBridge from "./../assets/clientLogo/skillBridge.png";
 import diligent from "./../assets/clientLogo/diligent.png";
 import above_the_footer from "./../assets/above_the_footer.png";
 import beltechImpact from "./../assets/homepage/beltechImpact.png";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../components/ui/tooltip";
 
 
 const industries = [
@@ -155,7 +161,7 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
               />
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-opacity duration-500"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-              
+
               {/* Content Overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <div className="flex items-center gap-4 mb-3">
@@ -169,7 +175,7 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
                 <p className="text-white/90 text-lg mb-4" style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 400 }}>
                   {activeIndustry.lead}
                 </p>
-                
+
                 {/* Features */}
                 <div className="space-y-2 mb-4">
                   {activeIndustry.bullets.slice(0, 2).map((bullet) => (
@@ -192,12 +198,12 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
             const Icon = industry.icon;
             const originalIndex = industries.findIndex((ind) => ind.id === industry.id);
             const isNext = originalIndex === (activeIndex + 1) % industries.length;
-            
+
             return (
               <motion.div
                 key={industry.id}
                 initial={{ opacity: 0.6, x: 20 }}
-                animate={{ 
+                animate={{
                   opacity: isNext ? 0.9 : 0.6,
                   x: 0,
                   scale: isNext ? 1.02 : 1
@@ -270,11 +276,10 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
           <button
             key={index}
             onClick={() => setActiveIndex(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === activeIndex
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${index === activeIndex
                 ? 'bg-[#27A2D8] w-8'
                 : 'bg-gray-300 hover:bg-gray-400'
-            }`}
+              }`}
             aria-label={`Go to industry ${index + 1}`}
           />
         ))}
@@ -325,16 +330,34 @@ const Homepage: React.FC = () => {
                   Get a Free Consultation
                 </Button>
 
-                <a href="/Contact">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
-                    style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
-                  >
-                    See Live Demo
-                  </Button>
-                </a>
+              <TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <div className="relative w-max"> {/* wrapper to match button width */}
+        <Button
+          size="lg"
+          variant="outline"
+          className="border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
+          style={{ fontFamily: "Inter", fontSize: "18px", fontWeight: 200 }}
+          onClick={() => (window.location.href = "/Contact")}
+        >
+          See Live Demo
+        </Button>
+
+        <TooltipContent
+          side="bottom"
+          sideOffset={4}   // small gap below button
+          className="absolute left-1/2 -translate-x-1/2 bg-gray-900 border border-gray-800 rounded-lg p-3 text-sm text-white shadow-md w-max text-left"
+        >
+          <p className="mb-1">Use the demo credentials below:</p>
+          <p className="mb-1">Username: <strong>erp-demo</strong></p>
+          <p>Password: <strong>erp-demo</strong></p>
+        </TooltipContent>
+      </div>
+    </TooltipTrigger>
+  </Tooltip>
+</TooltipProvider>
+
 
                 <Button
                   size="lg"
@@ -628,27 +651,27 @@ const Homepage: React.FC = () => {
           </div>
         </section>
 
-         {/*  Industries We Serve section*/}
-    <section className="py-16 bg-[#f7f8fa]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Industries We Serve
-          </h2>
-          <p className="text-xl font-normal text-black max-w-3xl mx-auto">
-            We automate business operations so you stop managing chaos and start managing growth.
-          </p>
-        </motion.div>
+        {/*  Industries We Serve section*/}
+        <section className="py-16 bg-[#f7f8fa]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Industries We Serve
+              </h2>
+              <p className="text-xl font-normal text-black max-w-3xl mx-auto">
+                We automate business operations so you stop managing chaos and start managing growth.
+              </p>
+            </motion.div>
 
-        <IndustriesCarousel industries={industries} />
-      </div>
-    </section>
+            <IndustriesCarousel industries={industries} />
+          </div>
+        </section>
 
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -823,7 +846,7 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className="relative overflow-hidden">
-              {/* 👇 Perfectly seamless marquee */}
+              {/*  Perfectly seamless marquee */}
               <div className="flex gap-12 whitespace-nowrap animate-marquee will-change-transform">
                 {[
                   { name: "Eyoha Digitals", img: eyoha, testimonial: "Eyoha Digitals loved our website!" },
