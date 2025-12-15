@@ -77,7 +77,7 @@ const SolutionsPage = () => {
     />
     <div className="px-6 pt-4 pb-3">
       <h3 className="text-xl font-bold leading-snug mb-1">
-        ERP for import/export company
+        Website for 
       </h3>
     </div>
     <div className="px-6 pb-6">
@@ -107,12 +107,12 @@ const SolutionsPage = () => {
     />
     <div className="px-6 pt-4 pb-3">
       <h3 className="text-xl font-bold leading-snug mb-1">
-        Charity Platform for SCCMA
+        Website for SkillsBridge
       </h3>
     </div>
     <div className="px-6 pb-6">
       <p className="text-base font-normal text-gray-700 leading-relaxed">
-        Built a volunteer & donation portal with dashboards, secure processes, and automated reports.
+    Built custom software with tailored features, secure workflows, and automated reporting feature
       </p>
       <Link
         to="/CharityPlatform"
@@ -137,13 +137,13 @@ const SolutionsPage = () => {
     />
     <div className="px-6 pt-4 pb-3">
       <h3 className="text-xl font-bold leading-snug mb-1">
-        Retail Automation
+       Website for Eyoha media
       </h3>
     </div>
     <div className="px-6 pb-6">
       <p className="text-base font-normal text-gray-700 leading-relaxed">
-        Automated sales-stock syncing for a regional retail chain, ensuring accurate inventory across branches.
-      </p>
+       Built custom software with tailored features, secure workflows, and automated reporting feature
+         </p>
       <Link
         to="/RetailAuto"
         className="mt-4 inline-block text-[#27A2D8] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"

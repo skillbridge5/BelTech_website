@@ -17,6 +17,10 @@ import SkillsBridge from "./../assets/clientLogo/skillBridge.png";
 import diligent from "./../assets/clientLogo/diligent.png";
 import above_the_footer from "./../assets/above_the_footer.png";
 import beltechImpact from "./../assets/homepage/beltechImpact.png";
+import market from "../../src/assets/in/market.png";
+import importexport from "../../src/assets/in/import.png";
+import acc from "../../src/assets/in/acc.png";
+import hos from "../../src/assets/in/hospital.png";
 import {
   Tooltip,
   TooltipContent,
@@ -37,7 +41,7 @@ const industries = [
       "Real-time sales dashboards",
     ],
     quote: "Know exactly what's selling, what's missing, and what's making money — from your phone.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+    image: market,
     gradient: "from-blue-500 to-cyan-500",
   },
   {
@@ -65,7 +69,7 @@ const industries = [
       "Warehouse + delivery tracking",
     ],
     quote: "Stop losing profit on hidden costs. Track every birr from customs to customer.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop",
+    image: importexport,
     gradient: "from-teal-500 to-green-500",
   },
   {
@@ -93,7 +97,7 @@ const industries = [
       "Automated follow-ups for unpaid invoices",
     ],
     quote: "Invoice smarter — not harder.",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop",
+    image: acc,
     gradient: "from-emerald-500 to-blue-500",
   },
   {
@@ -107,7 +111,7 @@ const industries = [
       "Integrated billing + accounting",
     ],
     quote: "Your whole facility in one system — zero paperwork.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop",
+    image: hos,
     gradient: "from-blue-500 to-indigo-500",
   },
   {
@@ -467,7 +471,7 @@ const Homepage: React.FC = () => {
                   />
                 </div>
                 <div className="p-8">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
+                  <h3 className="mb-3 whitespace-nowrap" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
                     Custom Software Development
                   </h3>
                   <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>

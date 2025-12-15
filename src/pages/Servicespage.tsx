@@ -20,7 +20,7 @@ const Servicespage = () => {
           backgroundImage: `url(${Hero})`,
           // backgroundPosition: "center 20%",
           // backgroundColor: "black",
-          // transform: "scale(1.15)",
+          transform: "scale(1.1)",
           // transformOrigin: "center",
         }}
       ></div>
