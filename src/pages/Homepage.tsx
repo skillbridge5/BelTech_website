@@ -337,32 +337,39 @@ const Homepage: React.FC = () => {
   </Button>
 
   <TooltipProvider>
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <div className="relative w-full sm:w-max">
-          <Button
-            size="lg"
-            variant="outline"
-            className="w-full sm:w-auto border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
-            style={{ fontFamily: "Inter", fontSize: "18px", fontWeight: 200 }}
-            onClick={() => (window.location.href = "/Contact")}
-          >
-            See Live Demo
-          </Button>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <div className="relative w-full sm:w-max">
+        <Button
+          size="lg"
+          variant="outline"
+          className="w-full sm:w-auto border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
+          style={{ fontFamily: "Inter", fontSize: "18px", fontWeight: 200 }}
+          onClick={() =>
+            window.open("https://beltech-erp.blsglob.com/", "_blank")
+          }
+        >
+          See Live Demo
+        </Button>
 
-          <TooltipContent
-            side="bottom"
-            sideOffset={4}
-            className="absolute left-1/2 -translate-x-1/2 bg-gray-900 border border-gray-800 rounded-lg p-3 text-sm text-white shadow-md w-max text-left"
-          >
-            <p className="mb-1">Use the demo credentials below:</p>
-            <p className="mb-1">Username: <strong>erp-demo</strong></p>
-            <p>Password: <strong>erp-demo</strong></p>
-          </TooltipContent>
-        </div>
-      </TooltipTrigger>
-    </Tooltip>
-  </TooltipProvider>
+        <TooltipContent
+          side="bottom"
+          sideOffset={4}
+          className="absolute left-1/2 -translate-x-1/2 bg-gray-900 border border-gray-800 rounded-lg p-3 text-sm text-white shadow-md w-max text-left"
+        >
+          <p className="mb-1">Use the demo credentials below:</p>
+          <p className="mb-1">
+            Username: <strong>erp-demo</strong>
+          </p>
+          <p>
+            Password: <strong>erp-demo</strong>
+          </p>
+        </TooltipContent>
+      </div>
+    </TooltipTrigger>
+  </Tooltip>
+</TooltipProvider>
+
 
   <Button
     size="lg"
