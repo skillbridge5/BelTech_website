@@ -107,7 +107,7 @@ const SolutionsPage = () => {
     />
     <div className="px-6 pt-4 pb-3">
       <h3 className="text-xl font-bold leading-snug mb-1">
-        Website for SkillsBridge
+        Website for SkillBridge Institute Of Technology
       </h3>
     </div>
     <div className="px-6 pb-6">
