@@ -324,57 +324,58 @@ const Homepage: React.FC = () => {
               <p className="text-[20px] text-white max-w-2xl mx-auto mb-0" style={{ fontFamily: 'Open Sans', fontWeight: 200 }}>
                 Transforming African businesses with ERP, automation, and smart software solutions.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                <Button
-                  size="lg"
-                  className="text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-[#27A2D8]"
-                  style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
-                  onClick={() => (window.location.href = "/Contact")}
-                >
-                  Get a Free Consultation
-                </Button>
-
-              <TooltipProvider>
-  <Tooltip>
-    <TooltipTrigger asChild>
-      <div className="relative w-max"> {/* wrapper to match button width */}
-        <Button
-          size="lg"
-          variant="outline"
-          className="border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
-          style={{ fontFamily: "Inter", fontSize: "18px", fontWeight: 200 }}
-          onClick={() => (window.location.href = "/Contact")}
-        >
-          See Live Demo
-        </Button>
-
-        <TooltipContent
-          side="bottom"
-          sideOffset={4}   // small gap below button
-          className="absolute left-1/2 -translate-x-1/2 bg-gray-900 border border-gray-800 rounded-lg p-3 text-sm text-white shadow-md w-max text-left"
-        >
-          <p className="mb-1">Use the demo credentials below:</p>
-          <p className="mb-1">Username: <strong>erp-demo</strong></p>
-          <p>Password: <strong>erp-demo</strong></p>
-        </TooltipContent>
-      </div>
-    </TooltipTrigger>
-  </Tooltip>
-</TooltipProvider>
-
-
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
-                  style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
-                  onClick={() => (window.location.href = "/Contact")}
-                >
-                  Book a Demo
-                </Button>
-              </div>
             </div>
-          </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+
+  <Button
+    size="lg"
+    className="w-full sm:w-auto text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-[#27A2D8]"
+    style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
+    onClick={() => (window.location.href = "/Contact")}
+  >
+    Get a Free Consultation
+  </Button>
+
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <div className="relative w-full sm:w-max">
+          <Button
+            size="lg"
+            variant="outline"
+            className="w-full sm:w-auto border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
+            style={{ fontFamily: "Inter", fontSize: "18px", fontWeight: 200 }}
+            onClick={() => (window.location.href = "/Contact")}
+          >
+            See Live Demo
+          </Button>
+
+          <TooltipContent
+            side="bottom"
+            sideOffset={4}
+            className="absolute left-1/2 -translate-x-1/2 bg-gray-900 border border-gray-800 rounded-lg p-3 text-sm text-white shadow-md w-max text-left"
+          >
+            <p className="mb-1">Use the demo credentials below:</p>
+            <p className="mb-1">Username: <strong>erp-demo</strong></p>
+            <p>Password: <strong>erp-demo</strong></p>
+          </TooltipContent>
+        </div>
+      </TooltipTrigger>
+    </Tooltip>
+  </TooltipProvider>
+
+  <Button
+    size="lg"
+    variant="outline"
+    className="w-full sm:w-auto border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
+    style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
+    onClick={() => (window.location.href = "/Contact")}
+  >
+    Book a Demo
+  </Button>
+
+</div>
+</div>
           {/* <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center flex flex-col items-center pointer-events-auto">
             <span className="text-sm text-white mb-2">Discover Our Solutions</span>
             <button

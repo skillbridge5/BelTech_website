@@ -77,12 +77,12 @@ const SolutionsPage = () => {
     />
     <div className="px-6 pt-4 pb-3">
       <h3 className="text-xl font-bold leading-snug mb-1">
-      ERP for Import-Export Companies
+      ERP for Import-Export company
       </h3>
     </div>
     <div className="px-6 pb-6">
       <p className="text-base font-normal text-gray-700 leading-relaxed">
-        Deployed a full-scale Odoo ERP to manage production, sales, inventory, and logistics for an African textile plant.
+        Deployed a full-scale Odoo ERP to manage production, sales, inventory, and logistics.
       </p>
       <Link
         to="/ERPDetail"
