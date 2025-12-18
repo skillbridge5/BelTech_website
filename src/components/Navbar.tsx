@@ -14,7 +14,12 @@ const Navbar = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const solutionsPaths = ["/solutions", "/ERPDetail", "/CharityPlatform", "/DigitalMarketingDetail"];
+  const solutionsPaths = [
+    "/solutions",
+    "/ERPDetail",
+    "/CharityPlatform",
+    "/DigitalMarketingDetail",
+  ];
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -37,16 +42,14 @@ const Navbar = () => {
     <nav className="bg-white fixed top-0 w-full z-50">
       <div className="w-full px-4 lg:px-8">
         <div className="flex items-center justify-between h-20 min-h-[55px]">
-          {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
               src={logo}
               alt="BelTech Logo"
-              className="h-16 w-auto object-contain" // fixed logo height
+              className="h-16 w-auto object-contain"
             />
           </Link>
 
-          {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
@@ -64,13 +67,14 @@ const Navbar = () => {
 
             <Button
               className="ml-2 text-white px-5 py-2 text-sm font-medium transition-all duration-200 hover:scale-105 bg-[#27A2D8]"
-              onClick={() => (window.location.href = "/contact")}
+              onClick={() =>
+                window.open("https://beltech-erp.blsglob.com/", "_blank")
+              }
             >
               Get Demo
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -82,7 +86,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden border-t bg-white">
           <div className="px-4 py-3 space-y-2">
@@ -100,11 +103,12 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+
             <Button
               className="w-full mt-2 text-white bg-[#27A2D8] hover:bg-[#4FB3C1]"
               onClick={() => {
                 setIsMenuOpen(false);
-                window.location.href = "/contact";
+                window.open("https://beltech-erp.blsglob.com/", "_blank");
               }}
             >
               Get Demo
