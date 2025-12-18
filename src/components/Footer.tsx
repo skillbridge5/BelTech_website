@@ -116,14 +116,15 @@ const Footer = () => {
                 </div>
               </div>
 
-              <Button
-                onClick={() =>
-                  window.open("https://google.com", "_blank")
-                }
-                className="px-4 bg-[#27A2D8] hover:bg-[#1f8cb8] text-white rounded-md text-sm shadow-md transition-all"
-              >
-                Watch Live Demo
-              </Button>
+            <Button
+               onClick={() =>
+              window.open("https://beltech-erp.blsglob.com/", "_blank")
+              }
+            className="px-4 bg-[#27A2D8] hover:bg-[#1f8cb8] text-white rounded-md text-sm shadow-md transition-all"
+             >
+              Watch Live Demo
+            </Button>
+
             </div>
           </div>
         </div>
