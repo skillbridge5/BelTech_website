@@ -119,7 +119,7 @@ const BusinessOperations = () => {
               ))}
             </div>
 
-            {/* Main App Grid Section*/}
+            {/* Main App Grid */}
             <div className="bg-[#EBEEF5] p-8 md:p-10 rounded-[2.5rem] grid grid-cols-4 md:grid-cols-6 gap-y-10 gap-x-4 shadow-inner w-full">
               {appIcons.map((app, idx) => (
                 <div key={idx} className="flex flex-col items-center group cursor-pointer">
