@@ -3,7 +3,12 @@
 import React from "react";
 import { Button } from "../components/ui/button";
 import {
-  CheckCircle, Users, Zap, Layers, TrendingUp, DollarSign, Globe, Award, ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed, ChevronLeft, ChevronRight, ArrowRight
+  CheckCircle, Users, Zap, Layers, TrendingUp, DollarSign, Globe, Award, ShoppingCart, 
+  Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed, ChevronLeft, 
+  ChevronRight, ArrowRight, MessageSquare, Calendar, CheckSquare, BookOpen, UserPlus, 
+  BarChart3, Repeat, Briefcase, Clock, ShieldCheck, Globe2, Mail, Ticket, Package, 
+  Cpu, LayoutPanelLeft, CreditCard, UserCheck, Settings, Calculator, Handshake, 
+  ShoppingBag, Boxes, ListTodo, Target, Key, PenTool, Barcode, Layout, Network, Cloud
 } from "lucide-react";
 import { motion } from "framer-motion";
 import hero from "./../assets/homepage/hero.png";
@@ -28,6 +33,128 @@ import {
   TooltipTrigger,
 } from "../components/ui/tooltip";
 
+
+const BusinessOperations = () => {
+  const operationCategories = [
+    { title: "Finance & Decision Making", desc: "Cash flow, expenses, profitability, and performance clarity.", icon: <BarChart3 className="w-5 h-5 text-[#27A2D8]" /> },
+    { title: "Sales & Customer Handling", desc: "Lead tracking, deal management, faster responses.", icon: <Handshake className="w-5 h-5 text-[#27A2D8]" /> },
+    { title: "Procurement & Supplier Management", desc: "Purchasing, approvals, vendors, cost transparency.", icon: <Truck className="w-5 h-5 text-[#27A2D8]" /> },
+    { title: "People & Workforce Management", desc: "Employees, attendance, performance, payroll.", icon: <Users className="w-5 h-5 text-[#27A2D8]" /> },
+    { title: "Inventory & Operational Control", desc: "Stock accuracy, movement tracking, loss reduction.", icon: <Boxes className="w-5 h-5 text-[#27A2D8]" /> },
+    { title: "Project & Service Delivery", desc: "Task planning, ownership, progress tracking, accountability.", icon: <ListTodo className="w-5 h-5 text-[#27A2D8]" /> }
+  ];
+
+  const appIcons = [
+    { name: "Discuss", icon: <MessageSquare className="text-orange-500" /> },
+    { name: "Calendar", icon: <Calendar className="text-orange-400" /> },
+    { name: "Appointments", icon: <Calendar className="text-teal-500" /> },
+    { name: "To-do", icon: <CheckSquare className="text-teal-600" /> },
+    { name: "Knowledge", icon: <BookOpen className="text-purple-500" /> },
+    { name: "Contacts", icon: <UserPlus className="text-teal-500" /> },
+    { name: "CRM", icon: <Target className="text-teal-400" /> },
+    { name: "Sales", icon: <BarChart3 className="text-orange-600" /> },
+    { name: "Dashboards", icon: <Layout className="text-blue-500" /> },
+    { name: "Subscriptions", icon: <Repeat className="text-orange-400" /> },
+    { name: "Rental", icon: <Key className="text-teal-500" /> },
+    { name: "Point of Sale", icon: <ShoppingBag className="text-orange-500" /> },
+    { name: "Kitchen Display", icon: <UtensilsCrossed className="text-orange-600" /> },
+    { name: "Accounting", icon: <Calculator className="text-orange-400" /> },
+    { name: "Documents", icon: <FileText className="text-blue-400" /> },
+    { name: "Project", icon: <Briefcase className="text-teal-500" /> },
+    { name: "Timesheets", icon: <Clock className="text-blue-600" /> },
+    { name: "Field Service", icon: <Zap className="text-orange-400" /> },
+    { name: "Planning", icon: <Calendar className="text-orange-500" /> },
+    { name: "Helpdesk", icon: <ShieldCheck className="text-teal-500" /> },
+    { name: "Website", icon: <Globe2 className="text-blue-400" /> },
+    { name: "Email Marketing", icon: <Mail className="text-blue-300" /> },
+    { name: "Events", icon: <Ticket className="text-orange-500" /> },
+    { name: "Purchase", icon: <ShoppingCart className="text-teal-600" /> },
+    { name: "Inventory", icon: <Package className="text-orange-600" /> },
+    { name: "Manufacturing", icon: <Factory className="text-orange-400" /> },
+    { name: "Shop Floor", icon: <Cpu className="text-blue-500" /> },
+    { name: "Barcode", icon: <Barcode className="text-purple-600" /> },
+    { name: "Sign", icon: <PenTool className="text-teal-600" /> },
+    { name: "Employees", icon: <Users className="text-orange-400" /> },
+    { name: "Payroll", icon: <CreditCard className="text-pink-600" /> },
+    { name: "Recruitment", icon: <UserCheck className="text-teal-400" /> },
+    { name: "Time Off", icon: <Calendar className="text-orange-400" /> },
+    { name: "Expenses", icon: <DollarSign className="text-blue-400" /> },
+    { name: "Apps", icon: <LayoutPanelLeft className="text-teal-500" /> },
+    { name: "Settings", icon: <Settings className="text-purple-700" /> },
+  ];
+
+  const pillIcons = [
+    { icon: BarChart3, color: "text-blue-500" },
+    { icon: Network, color: "text-purple-500" },
+    { icon: Cloud, color: "text-sky-500" },
+    { icon: Users, color: "text-green-500" },
+    { icon: ListTodo, color: "text-orange-500" },
+    { icon: TrendingUp, color: "text-pink-500" },
+  ];
+
+  return (
+    <section className="py-24 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+            Business Operations We <span className="text-[#27A2D8]">Transform</span>
+          </h2>
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+            Streamline your business processes with our comprehensive suite of operational tools designed for modern enterprises.
+          </p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
+          {/* Left Grid Section */}
+          <div className="lg:w-1/2 flex flex-col items-center w-full">
+            {/* Colorful Pill Nav */}
+            <div className="flex gap-4 md:gap-6 mb-10 w-full justify-center">
+              {pillIcons.map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="w-12 h-12 rounded-full flex items-center justify-center bg-white shadow-[0_8px_20px_rgba(0,0,0,0.08)] border border-gray-100 hover:scale-110 transition-transform cursor-pointer group"
+                >
+                  <item.icon className={`w-5 h-5 ${item.color} group-hover:scale-110 transition-all`} />
+                </div>
+              ))}
+            </div>
+
+            {/* Main App Grid Section*/}
+            <div className="bg-[#EBEEF5] p-8 md:p-10 rounded-[2.5rem] grid grid-cols-4 md:grid-cols-6 gap-y-10 gap-x-4 shadow-inner w-full">
+              {appIcons.map((app, idx) => (
+                <div key={idx} className="flex flex-col items-center group cursor-pointer">
+                  <div className="w-12 h-12 bg-white rounded-xl shadow-[0_4px_10px_rgba(0,0,0,0.03)] flex items-center justify-center mb-2 group-hover:-translate-y-1 transition-all duration-300">
+                    {React.cloneElement(app.icon as React.ReactElement, { size: 24 })}
+                  </div>
+                  <span className="text-[9px] font-bold text-gray-400 text-center uppercase tracking-tighter whitespace-nowrap">{app.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Cards Section */}
+          <div className="lg:w-1/2 flex flex-col justify-center space-y-5 h-full self-center w-full">
+            {operationCategories.map((item, idx) => (
+              <motion.div 
+                key={idx}
+                whileHover={{ x: 8, scale: 1.02 }}
+                className="flex items-center p-6 bg-white rounded-2xl border border-gray-50 border-l-[6px] border-l-[#27A2D8] shadow-[0_10px_25px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_35px_rgba(0,0,0,0.1)] transition-all cursor-default"
+              >
+                <div className="mr-5 p-3.5 bg-[#F0F7FF] rounded-xl shrink-0 shadow-sm">
+                  {item.icon}
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-800 text-lg leading-tight">{item.title}</h4>
+                  <p className="text-gray-500 text-sm mt-1 font-medium leading-relaxed">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const industries = [
   {
@@ -662,6 +789,9 @@ const Homepage: React.FC = () => {
             </div>
           </div>
         </section>
+            {/* Business Operations We Transform */}
+          
+            <BusinessOperations />
 
         {/*  Industries We Serve section*/}
         <section className="py-16 bg-[#f7f8fa]">
