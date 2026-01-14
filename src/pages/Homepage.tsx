@@ -3,11 +3,11 @@
 import React from "react";
 import { Button } from "../components/ui/button";
 import {
-  CheckCircle, Users, Zap, Layers, TrendingUp, DollarSign, Globe, Award, ShoppingCart, 
-  Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed, ChevronLeft, 
-  ChevronRight, ArrowRight, MessageSquare, Calendar, CheckSquare, BookOpen, UserPlus, 
-  BarChart3, Repeat, Briefcase, Clock, ShieldCheck, Globe2, Mail, Ticket, Package, 
-  Cpu, LayoutPanelLeft, CreditCard, UserCheck, Settings, Calculator, Handshake, 
+  CheckCircle, Users, Zap, Layers, TrendingUp, DollarSign, Globe, Award, ShoppingCart,
+  Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed, ChevronLeft,
+  ChevronRight, ArrowRight, MessageSquare, Calendar, CheckSquare, BookOpen, UserPlus,
+  BarChart3, Repeat, Briefcase, Clock, ShieldCheck, Globe2, Mail, Ticket, Package,
+  Cpu, LayoutPanelLeft, CreditCard, UserCheck, Settings, Calculator, Handshake,
   ShoppingBag, Boxes, ListTodo, Target, Key, PenTool, Barcode, Layout, Network, Cloud
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -22,6 +22,7 @@ import SkillsBridge from "./../assets/clientLogo/skillBridge.png";
 import diligent from "./../assets/clientLogo/diligent.png";
 import above_the_footer from "./../assets/above_the_footer.png";
 import beltechImpact from "./../assets/homepage/beltechImpact.png";
+import businessOperationsImg from "./../assets/homepage/business-operations.png";
 import market from "../../src/assets/in/market.png";
 import importexport from "../../src/assets/in/import.png";
 import acc from "../../src/assets/in/acc.png";
@@ -44,44 +45,6 @@ const BusinessOperations = () => {
     { title: "Project & Service Delivery", desc: "Task planning, ownership, progress tracking, accountability.", icon: <ListTodo className="w-5 h-5 text-[#27A2D8]" /> }
   ];
 
-  const appIcons = [
-    { name: "Discuss", icon: <MessageSquare className="text-orange-500" /> },
-    { name: "Calendar", icon: <Calendar className="text-orange-400" /> },
-    { name: "Appointments", icon: <Calendar className="text-teal-500" /> },
-    { name: "To-do", icon: <CheckSquare className="text-teal-600" /> },
-    { name: "Knowledge", icon: <BookOpen className="text-purple-500" /> },
-    { name: "Contacts", icon: <UserPlus className="text-teal-500" /> },
-    { name: "CRM", icon: <Target className="text-teal-400" /> },
-    { name: "Sales", icon: <BarChart3 className="text-orange-600" /> },
-    { name: "Dashboards", icon: <Layout className="text-blue-500" /> },
-    { name: "Subscriptions", icon: <Repeat className="text-orange-400" /> },
-    { name: "Rental", icon: <Key className="text-teal-500" /> },
-    { name: "Point of Sale", icon: <ShoppingBag className="text-orange-500" /> },
-    { name: "Kitchen Display", icon: <UtensilsCrossed className="text-orange-600" /> },
-    { name: "Accounting", icon: <Calculator className="text-orange-400" /> },
-    { name: "Documents", icon: <FileText className="text-blue-400" /> },
-    { name: "Project", icon: <Briefcase className="text-teal-500" /> },
-    { name: "Timesheets", icon: <Clock className="text-blue-600" /> },
-    { name: "Field Service", icon: <Zap className="text-orange-400" /> },
-    { name: "Planning", icon: <Calendar className="text-orange-500" /> },
-    { name: "Helpdesk", icon: <ShieldCheck className="text-teal-500" /> },
-    { name: "Website", icon: <Globe2 className="text-blue-400" /> },
-    { name: "Email Marketing", icon: <Mail className="text-blue-300" /> },
-    { name: "Events", icon: <Ticket className="text-orange-500" /> },
-    { name: "Purchase", icon: <ShoppingCart className="text-teal-600" /> },
-    { name: "Inventory", icon: <Package className="text-orange-600" /> },
-    { name: "Manufacturing", icon: <Factory className="text-orange-400" /> },
-    { name: "Shop Floor", icon: <Cpu className="text-blue-500" /> },
-    { name: "Barcode", icon: <Barcode className="text-purple-600" /> },
-    { name: "Sign", icon: <PenTool className="text-teal-600" /> },
-    { name: "Employees", icon: <Users className="text-orange-400" /> },
-    { name: "Payroll", icon: <CreditCard className="text-pink-600" /> },
-    { name: "Recruitment", icon: <UserCheck className="text-teal-400" /> },
-    { name: "Time Off", icon: <Calendar className="text-orange-400" /> },
-    { name: "Expenses", icon: <DollarSign className="text-blue-400" /> },
-    { name: "Apps", icon: <LayoutPanelLeft className="text-teal-500" /> },
-    { name: "Settings", icon: <Settings className="text-purple-700" /> },
-  ];
 
   const pillIcons = [
     { icon: BarChart3, color: "text-blue-500" },
@@ -93,62 +56,78 @@ const BusinessOperations = () => {
   ];
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-24 bg-[#F9FAFB] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
-            Business Operations We <span className="text-[#27A2D8]">Transform</span>
+        <div className="text-center mb-14">
+          <h2
+            className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight"
+            style={{ fontFamily: "Inter" }}
+          >
+            Business Operations We{" "}
+            <span className="text-[#27A2D8]">Transform</span>
           </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Streamline your business processes with our comprehensive suite of operational tools designed for modern enterprises.
+          <p
+            className="mt-4 text-base md:text-lg text-gray-600 max-w-2xl mx-auto"
+            style={{ fontFamily: "Inter" }}
+          >
+            Streamline your business processes with our comprehensive suite of
+            operational tools designed for modern enterprises.
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
-          {/* Left Grid Section */}
-          <div className="lg:w-1/2 flex flex-col items-center w-full">
-            {/* Colorful Pill Nav */}
-            <div className="flex gap-4 md:gap-6 mb-10 w-full justify-center">
-              {pillIcons.map((item, idx) => (
-                <div 
-                  key={idx} 
-                  className="w-12 h-12 rounded-full flex items-center justify-center bg-white shadow-[0_8px_20px_rgba(0,0,0,0.08)] border border-gray-100 hover:scale-110 transition-transform cursor-pointer group"
-                >
-                  <item.icon className={`w-5 h-5 ${item.color} group-hover:scale-110 transition-all`} />
-                </div>
-              ))}
-            </div>
+        {/* Pill Icon Row  */}
+        <div className="w-full lg:w-[calc(50%-1.5rem)] mb-6">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-5">
+            {pillIcons.map((item, idx) => (
+              <div
+                key={idx}
+                className="w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center  border border-gray-100 shadow-[0_8px_20px_rgba(15,23,42,0.1)] hover:shadow-[0_12px_30px_rgba(15,23,42,0.15)] hover:-translate-y-0.5 transition-all cursor-default"
+              >
+                <item.icon
+                  className={`w-5 h-5 ${item.color}`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
 
-            {/* Main App Grid */}
-            <div className="bg-[#EBEEF5] p-8 md:p-10 rounded-[2.5rem] grid grid-cols-4 md:grid-cols-6 gap-y-10 gap-x-4 shadow-inner w-full">
-              {appIcons.map((app, idx) => (
-                <div key={idx} className="flex flex-col items-center group cursor-pointer">
-                  <div className="w-12 h-12 bg-white rounded-xl shadow-[0_4px_10px_rgba(0,0,0,0.03)] flex items-center justify-center mb-2 group-hover:-translate-y-1 transition-all duration-300">
-                    {React.cloneElement(app.icon as React.ReactElement, { size: 24 })}
-                  </div>
-                  <span className="text-[9px] font-bold text-gray-400 text-center uppercase tracking-tighter whitespace-nowrap">{app.name}</span>
-                </div>
-              ))}
+        <div className="flex flex-col lg:flex-row gap-18 items-stretch justify-between ">
+          {/* Left Image Section */}
+          <div className="w-full lg:w-1/2 flex flex-col hover:scale-101 transition-all">
+            <div className="relative overflow-hidden scale-110  flex-1 ">
+              <img
+                src={businessOperationsImg}
+                alt="Business operations dashboard"
+                className="w-full h-full object-contain"
+              />
             </div>
           </div>
 
-          {/* Right Cards Section */}
-          <div className="lg:w-1/2 flex flex-col justify-center space-y-5 h-full self-center w-full">
-            {operationCategories.map((item, idx) => (
-              <motion.div 
-                key={idx}
-                whileHover={{ x: 8, scale: 1.02 }}
-                className="flex items-center p-6 bg-white rounded-2xl border border-gray-50 border-l-[6px] border-l-[#27A2D8] shadow-[0_10px_25px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_35px_rgba(0,0,0,0.1)] transition-all cursor-default"
-              >
-                <div className="mr-5 p-3.5 bg-[#F0F7FF] rounded-xl shrink-0 shadow-sm">
-                  {item.icon}
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-800 text-lg leading-tight">{item.title}</h4>
-                  <p className="text-gray-500 text-sm mt-1 font-medium leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+          {/* Right Content Section */}
+          <div className="w-full lg:w-1/2 flex flex-col">
+            <div className="space-y-4">
+              {operationCategories.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{ x: 4 }}
+                  className="flex items-center px-6 py-4 md:px-7 md:py-5 bg-white rounded-xl border-l-4 border-l-[#60A5FA] shadow-[0_10px_15px_rgba(15,23,42,0.08),0_4px_6px_rgba(15,23,42,0.05)] transition-all"
+                >
+                  <div className="mr-4 md:mr-5 flex-shrink-0">
+                    <div className="w-12 h-12 md:w-12 md:h-12 rounded-lg bg-[#E5F1FF] flex items-center justify-center">
+                      {item.icon}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-base md:text-lg leading-snug">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-600 text-sm md:text-sm mt-1 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -408,8 +387,8 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
             key={index}
             onClick={() => setActiveIndex(index)}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${index === activeIndex
-                ? 'bg-[#27A2D8] w-8'
-                : 'bg-gray-300 hover:bg-gray-400'
+              ? 'bg-[#27A2D8] w-8'
+              : 'bg-gray-300 hover:bg-gray-400'
               }`}
             aria-label={`Go to industry ${index + 1}`}
           />
@@ -452,64 +431,64 @@ const Homepage: React.FC = () => {
                 Transforming African businesses with ERP, automation, and smart software solutions.
               </p>
             </div>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
 
-  <Button
-    size="lg"
-    className="w-full sm:w-auto text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-[#27A2D8]"
-    style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
-    onClick={() => (window.location.href = "/Contact")}
-  >
-    Get a Free Consultation
-  </Button>
+              <Button
+                size="lg"
+                className="w-full sm:w-auto text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-[#27A2D8]"
+                style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
+                onClick={() => (window.location.href = "/Contact")}
+              >
+                Get a Free Consultation
+              </Button>
 
-  <TooltipProvider>
-  <Tooltip>
-    <TooltipTrigger asChild>
-      <div className="relative w-full sm:w-max">
-        <Button
-          size="lg"
-          variant="outline"
-          className="w-full sm:w-auto border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
-          style={{ fontFamily: "Inter", fontSize: "18px", fontWeight: 200 }}
-          onClick={() =>
-            window.open("https://beltech-erp.blsglob.com/", "_blank")
-          }
-        >
-          See Live Demo
-        </Button>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div className="relative w-full sm:w-max">
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="w-full sm:w-auto border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
+                        style={{ fontFamily: "Inter", fontSize: "18px", fontWeight: 200 }}
+                        onClick={() =>
+                          window.open("https://beltech-erp.blsglob.com/", "_blank")
+                        }
+                      >
+                        See Live Demo
+                      </Button>
 
-        <TooltipContent
-          side="bottom"
-          sideOffset={4}
-          className="absolute left-1/2 -translate-x-1/2 bg-gray-900 border border-gray-800 rounded-lg p-3 text-sm text-white shadow-md w-max text-left"
-        >
-          <p className="mb-1">Use the demo credentials below:</p>
-          <p className="mb-1">
-            Username: <strong>erp-demo</strong>
-          </p>
-          <p>
-            Password: <strong>erp-demo</strong>
-          </p>
-        </TooltipContent>
-      </div>
-    </TooltipTrigger>
-  </Tooltip>
-</TooltipProvider>
+                      <TooltipContent
+                        side="bottom"
+                        sideOffset={4}
+                        className="absolute left-1/2 -translate-x-1/2 bg-gray-900 border border-gray-800 rounded-lg p-3 text-sm text-white shadow-md w-max text-left"
+                      >
+                        <p className="mb-1">Use the demo credentials below:</p>
+                        <p className="mb-1">
+                          Username: <strong>erp-demo</strong>
+                        </p>
+                        <p>
+                          Password: <strong>erp-demo</strong>
+                        </p>
+                      </TooltipContent>
+                    </div>
+                  </TooltipTrigger>
+                </Tooltip>
+              </TooltipProvider>
 
 
-  <Button
-    size="lg"
-    variant="outline"
-    className="w-full sm:w-auto border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
-    style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
-    onClick={() => (window.location.href = "/Contact")}
-  >
-    Book a Demo
-  </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
+                style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
+                onClick={() => (window.location.href = "/Contact")}
+              >
+                Book a Demo
+              </Button>
 
-</div>
-</div>
+            </div>
+          </div>
           {/* <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center flex flex-col items-center pointer-events-auto">
             <span className="text-sm text-white mb-2">Discover Our Solutions</span>
             <button
@@ -789,9 +768,9 @@ const Homepage: React.FC = () => {
             </div>
           </div>
         </section>
-            {/* Business Operations We Transform */}
-          
-            <BusinessOperations />
+        {/* Business Operations We Transform */}
+
+        <BusinessOperations />
 
         {/*  Industries We Serve section*/}
         <section className="py-16 bg-[#f7f8fa]">
