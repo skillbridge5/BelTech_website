@@ -91,10 +91,10 @@ const BusinessOperations = () => {
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-18 items-stretch justify-between ">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-18 items-stretch justify-between px-2 sm:px-0">
           {/* Left Image Section */}
-          <div className="w-full lg:w-1/2 flex flex-col hover:scale-101 transition-all">
-            <div className="relative overflow-hidden scale-110  flex-1 ">
+          <div className="w-full lg:w-1/2 flex flex-col">
+            <div className="relative overflow-visible flex-1 lg:w-[110%] lg:-ml-[5%]">
               <img
                 src={businessOperationsImg}
                 alt="Business operations dashboard"
