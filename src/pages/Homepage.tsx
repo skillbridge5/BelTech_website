@@ -60,14 +60,14 @@ const BusinessOperations = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <h2
-            className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight"
+            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
             style={{ fontFamily: "Inter" }}
           >
             Business Operations We{" "}
             <span className="text-[#27A2D8]">Transform</span>
           </h2>
           <p
-            className="mt-4 text-base md:text-lg text-gray-600 max-w-2xl mx-auto"
+            className="text-xl font-normal text-black max-w-3xl mx-auto"
             style={{ fontFamily: "Inter" }}
           >
             Streamline your business processes with our comprehensive suite of
@@ -773,7 +773,7 @@ const Homepage: React.FC = () => {
         <BusinessOperations />
 
         {/*  Industries We Serve section*/}
-        <section className="py-16 bg-[#f7f8fa]">
+        <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -794,7 +794,7 @@ const Homepage: React.FC = () => {
           </div>
         </section>
 
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-[#f7f8fa]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -955,7 +955,7 @@ const Homepage: React.FC = () => {
 
 
         {/* testimonial section */}
-        <section className="py-8 bg-[#f7f8fa] relative overflow-hidden">
+        <section className="py-8 bg-white relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
