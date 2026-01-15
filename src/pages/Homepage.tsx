@@ -5,10 +5,10 @@ import { Button } from "../components/ui/button";
 import {
   CheckCircle, Users, Zap, Layers, TrendingUp, DollarSign, Globe, Award, ShoppingCart,
   Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed, ChevronLeft,
-  ChevronRight, ArrowRight, MessageSquare, Calendar, CheckSquare, BookOpen, UserPlus,
-  BarChart3, Repeat, Briefcase, Clock, ShieldCheck, Globe2, Mail, Ticket, Package,
-  Cpu, LayoutPanelLeft, CreditCard, UserCheck, Settings, Calculator, Handshake,
-  ShoppingBag, Boxes, ListTodo, Target, Key, PenTool, Barcode, Layout, Network, Cloud
+  ChevronRight, ArrowRight,
+  BarChart3,
+  Handshake,
+  Boxes, ListTodo, Network, Cloud
 } from "lucide-react";
 import { motion } from "framer-motion";
 import hero from "./../assets/homepage/hero.png";
