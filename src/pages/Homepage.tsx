@@ -111,7 +111,7 @@ const BusinessOperations = () => {
                   key={idx}
                   whileHover={{ y: -2, transition: { type: "tween", duration: 0.16, ease: "easeOut" } }}
                   whileTap={{ y: -1, transition: { type: "tween", duration: 0.08, ease: "easeOut" } }}
-                  className="flex items-center px-6 py-4 md:px-7 md:py-5 bg-white rounded-xl border-l-4 border-l-[#60A5FA] shadow-[0_10px_15px_rgba(15,23,42,0.08),0_4px_6px_rgba(15,23,42,0.05)] transition-all cursor-pointer"
+                  className="flex items-center px-6 py-4 md:px-7 md:py-5 bg-white rounded-xl border-l-4 border-l-[#60A5FA] shadow-[0_10px_15px_rgba(15,23,42,0.08),0_4px_6px_rgba(15,23,42,0.05)] transition-all "
                 >
                   <div className="mr-4 md:mr-5 flex-shrink-0">
                     <div className="w-12 h-12 md:w-12 md:h-12 rounded-lg bg-[#E5F1FF] flex items-center justify-center">
