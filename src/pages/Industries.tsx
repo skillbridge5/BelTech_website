@@ -1,4 +1,4 @@
-import { ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed, CheckCircle } from "lucide-react";
+import { ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed, CheckCircle, GraduationCap } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
 import above_the_footer from "./../assets/above_the_footer.png";
@@ -105,6 +105,20 @@ const industries = [
     quote: "Know your profit per plate — not just your daily sales.",
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
     gradient: "from-indigo-500 to-purple-500",
+  },
+  {
+    id: "education",
+    icon: GraduationCap,
+    title: "Schools, Colleges & Universities",
+    lead: "Smart management. Seamless operations.",
+    bullets: [
+      "Student enrollment & academic records",
+      "Attendance, grading, and timetable management",
+      "Fees, accounting, and administration in one system",
+    ],
+    quote: "Run your institution with clarity",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=600&fit=crop",
+    gradient: "from-indigo-500 to-sky-500",
   },
 ];
 
@@ -283,4 +297,3 @@ const Industries = () => {
 };
 
 export default Industries;
-
