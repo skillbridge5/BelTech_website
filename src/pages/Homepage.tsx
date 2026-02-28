@@ -34,6 +34,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../components/ui/tooltip";
+import school from "./../assets/homepage/school.jpg";
+import kiray from "../assets/homepage/kiray.jpg";
+import care from "./../assets/homepage/care.jpg";
 
 
 const BusinessOperations = () => {
@@ -597,6 +600,80 @@ const Homepage: React.FC = () => {
                     className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
                   >
                     <span>Learn More</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-65 overflow-hidden">
+                  <img
+                    src={school}
+                    alt="School Management System"
+                    className="w-full h-full object-cover rounded-t-2xl"
+                  />
+                </div>
+                <div className="p-8">
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
+                    School Management System
+                  </h3>
+                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
+                    Full school management system to streamline student, HR, finance and other school operations.
+
+                  </p>
+                  <a
+                    onClick={() => (window.location.href = "/Services")}
+                    className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
+                  >
+                    {/* <span>Learn More</span> */}
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-65 overflow-hidden">
+                  <img
+                    src={kiray}
+                    alt="Kiray "
+                    className="w-full h-full object-cover rounded-t-2xl"
+                  />
+                </div>
+                <div className="p-8">
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
+                    Kiray Rental Management System
+                  </h3>
+                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
+                    Comprehensive rental management system to streamline property listings, tenant management, and financial tracking.
+                  </p>
+                  <a
+                    onClick={() => (window.location.href = "/Services")}
+                    className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
+                  >
+                    {/* <span>Learn More</span> */}
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-65 overflow-hidden">
+                  <img
+                    src={care}
+                    alt="Care "
+                    className="w-full h-full object-cover rounded-t-2xl"
+                  />
+                </div>
+                <div className="p-8">
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
+                    CareCentral health management system
+                  </h3>
+                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
+                    Full health management system to streamline patient care, medical records, and administrative tasks.
+
+                  </p>
+                  <a
+                    onClick={() => (window.location.href = "/Services")}
+                    className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
+                  >
+                    {/* <span>Learn More</span> */}
                   </a>
                 </div>
               </div>
