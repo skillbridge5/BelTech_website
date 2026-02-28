@@ -60,7 +60,7 @@ const BusinessOperations = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#F9FAFB] overflow-hidden">
+    <section className="py-24 bg-[#f7f8fa] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <h2
@@ -509,7 +509,7 @@ const Homepage: React.FC = () => {
 
 
         {/* our soluton section*/}
-        <section id="solutions-section" className="py-10 bg-white">
+        <section id="solutions-section" className="py-10 bg-[#f7f8fa]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="mb-4" style={{ fontFamily: 'Inter', fontSize: '36px', fontWeight: 700 }}>
@@ -603,84 +603,90 @@ const Homepage: React.FC = () => {
                   </a>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
 
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
-                <div className="w-full h-65 overflow-hidden">
-                  <img
-                    src={school}
-                    alt="School Management System"
-                    className="w-full h-full object-cover rounded-t-2xl"
-                  />
-                </div>
-                <div className="p-8">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
-                    School360
-                  </h3>
-                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
-                    Full school management system to streamline student, HR, finance and other school operations.
 
-                  </p>
-                  <a
-                    onClick={() => (window.location.href = "/Services")}
-                    className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
-                  >
-                    {/* <span>Learn More</span> */}
-                  </a>
-                </div>
+        {/* beltech impact section*/}
+        <section className="py-10 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">BelTech Impact</h2>
+              <p className="text-xl font-normal text-black max-w-3xl mx-auto">
+                We combine technical expertise with deep understanding of African business needs to deliver exceptional results.
+              </p>
+            </div>
+
+            <div className="flex flex-col lg:flex-row gap-12 items-stretch">
+              <div className="lg:flex-1 flex items-stretch">
+                <img src={beltechImpact} alt="BelTech Impact" className="rounded-3xl w-full h-full object-cover" />
               </div>
 
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
-                <div className="w-full h-65 overflow-hidden">
-                  <img
-                    src={kiray}
-                    alt="Kiray "
-                    className="w-full h-full object-cover rounded-t-2xl"
-                  />
+              <div className="lg:flex-1 flex flex-col space-y-6 h-full">
+                <div
+                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#27A2D8] transform transition-transform duration-300 hover:-translate-y-0.5"
+                  style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
+                >
+                  <div className="flex-shrink-0 h-12 w-12 bg-[#27A2D8] flex items-center justify-center rounded-sm">
+                    <Award className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-black mb-2">Odoo ERP experts</h3>
+                    <p className="text-base font-normal text-black">
+                      Our team has deep expertise in Odoo and extensive experience in ERP implementation.
+                    </p>
+                  </div>
                 </div>
-                <div className="p-8">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
-                    Kiray Plus
-                  </h3>
-                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
-                    Comprehensive rental management system to streamline property listings and tenant management.
-                  </p>
-                  <a
-                    onClick={() => (window.location.href = "/Services")}
-                    className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
-                  >
-                    {/* <span>Learn More</span> */}
-                  </a>
-                </div>
-              </div>
 
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
-                <div className="w-full h-65 overflow-hidden">
-                  <img
-                    src={care}
-                    alt="Care "
-                    className="w-full h-full object-cover rounded-t-2xl"
-                  />
+                <div
+                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#27A2D8] transform transition-transform duration-300 hover:-translate-y-0.5"
+                  style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
+                >
+                  <div className="flex-shrink-0 h-12 w-12 bg-[#27A2D8] flex items-center justify-center rounded-sm">
+                    <Globe className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-black mb-2">Real-world African business focus</h3>
+                    <p className="text-base font-normal text-black">
+                      We understand the unique challenges and opportunities of African markets.
+                    </p>
+                  </div>
                 </div>
-                <div className="p-8">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
-                    CareCentral 
-                  </h3>
-                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
-                    Full health management system to streamline patient care, medical records, and administrative tasks.
 
-                  </p>
-                  <a
-                    onClick={() => (window.location.href = "/Services")}
-                    className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
-                  >
-                    {/* <span>Learn More</span> */}
-                  </a>
+                <div
+                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#27A2D8] transform transition-transform duration-300 hover:-translate-y-0.5"
+                  style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
+                >
+                  <div className="flex-shrink-0 h-12 w-12 bg-[#27A2D8] flex items-center justify-center rounded-sm">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-black mb-2">Open-source innovation at your service</h3>
+                    <p className="text-base font-normal text-black">
+                      Leveraging the power of open-source technology for maximum flexibility and value.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#27A2D8] transform transition-transform duration-300 hover:-translate-y-0.5"
+                  style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
+                >
+                  <div className="flex-shrink-0 h-12 w-12 bg-[#27A2D8] flex items-center justify-center rounded-sm">
+                    <DollarSign className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-black mb-2">Agile, scalable, and cost-effective</h3>
+                    <p className="text-base font-normal text-black">
+                      Solutions that grow with your business while maintaining cost efficiency.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
 
         {/* why oddo part */}
         <section className="py-10 bg-[#f7f8fa]">
@@ -764,85 +770,54 @@ const Homepage: React.FC = () => {
           </div>
         </section>
 
-        {/* beltech impact section*/}
+        {/* Our Products section */}
         <section className="py-10 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">BelTech Impact</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Products</h2>
               <p className="text-xl font-normal text-black max-w-3xl mx-auto">
-                We combine technical expertise with deep understanding of African business needs to deliver exceptional results.
+                Explore our flagship products built to streamline operations and deliver value.
               </p>
             </div>
 
-            <div className="flex flex-col lg:flex-row gap-12 items-stretch">
-              <div className="lg:flex-1 flex items-stretch">
-                <img src={beltechImpact} alt="BelTech Impact" className="rounded-3xl w-full h-full object-cover" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-56 overflow-hidden">
+                  <img src={school} alt="360School" className="w-full h-full object-cover scale-150" />
+                </div>
+                <div className="p-6">
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>School360</h3>
+                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>A complete school management platform for administration, attendance, grading, and communication.</p>
+                  {/* <a className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
+                </div>
               </div>
 
-              <div className="lg:flex-1 flex flex-col space-y-6 h-full">
-                <div
-                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#27A2D8] transform transition-transform duration-300 hover:-translate-y-0.5"
-                  style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
-                >
-                  <div className="flex-shrink-0 h-12 w-12 bg-[#27A2D8] flex items-center justify-center rounded-sm">
-                    <Award className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-black mb-2">Odoo ERP experts</h3>
-                    <p className="text-base font-normal text-black">
-                      Our team has deep expertise in Odoo and extensive experience in ERP implementation.
-                    </p>
-                  </div>
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-56 overflow-hidden">
+                  <img src={kiray} alt="Kiray" className="w-full h-full object-cover" />
                 </div>
-
-                <div
-                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#27A2D8] transform transition-transform duration-300 hover:-translate-y-0.5"
-                  style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
-                >
-                  <div className="flex-shrink-0 h-12 w-12 bg-[#27A2D8] flex items-center justify-center rounded-sm">
-                    <Globe className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-black mb-2">Real-world African business focus</h3>
-                    <p className="text-base font-normal text-black">
-                      We understand the unique challenges and opportunities of African markets.
-                    </p>
-                  </div>
+                <div className="p-6">
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>Kiray Plus</h3>
+                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>A rental and property management solution to list, manage bookings, and process payments.</p>
+                  {/* <a className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
                 </div>
+              </div>
 
-                <div
-                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#27A2D8] transform transition-transform duration-300 hover:-translate-y-0.5"
-                  style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
-                >
-                  <div className="flex-shrink-0 h-12 w-12 bg-[#27A2D8] flex items-center justify-center rounded-sm">
-                    <Zap className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-black mb-2">Open-source innovation at your service</h3>
-                    <p className="text-base font-normal text-black">
-                      Leveraging the power of open-source technology for maximum flexibility and value.
-                    </p>
-                  </div>
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-56 overflow-hidden">
+                  <img src={care} alt="Care Cental" className="w-full h-full object-cover" />
                 </div>
-
-                <div
-                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#27A2D8] transform transition-transform duration-300 hover:-translate-y-0.5"
-                  style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
-                >
-                  <div className="flex-shrink-0 h-12 w-12 bg-[#27A2D8] flex items-center justify-center rounded-sm">
-                    <DollarSign className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-black mb-2">Agile, scalable, and cost-effective</h3>
-                    <p className="text-base font-normal text-black">
-                      Solutions that grow with your business while maintaining cost efficiency.
-                    </p>
-                  </div>
+                <div className="p-6">
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>Care Cental</h3>
+                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>Healthcare management tools for clinics and care providers — appointments, records, and billing.</p>
+                  {/* <a className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        
         {/* Business Operations We Transform */}
 
         <BusinessOperations />
