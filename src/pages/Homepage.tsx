@@ -614,7 +614,7 @@ const Homepage: React.FC = () => {
                 </div>
                 <div className="p-8">
                   <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
-                    School Management System
+                    School360
                   </h3>
                   <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
                     Full school management system to streamline student, HR, finance and other school operations.
@@ -639,10 +639,10 @@ const Homepage: React.FC = () => {
                 </div>
                 <div className="p-8">
                   <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
-                    Kiray Rental Management System
+                    Kiray Plus
                   </h3>
                   <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
-                    Comprehensive rental management system to streamline property listings, tenant management, and financial tracking.
+                    Comprehensive rental management system to streamline property listings and tenant management.
                   </p>
                   <a
                     onClick={() => (window.location.href = "/Services")}
@@ -663,7 +663,7 @@ const Homepage: React.FC = () => {
                 </div>
                 <div className="p-8">
                   <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
-                    CareCentral health management system
+                    CareCentral 
                   </h3>
                   <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
                     Full health management system to streamline patient care, medical records, and administrative tasks.
