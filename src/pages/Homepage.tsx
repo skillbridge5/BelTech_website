@@ -688,8 +688,57 @@ const Homepage: React.FC = () => {
           </div>
         </section>
 
-        {/* why oddo part */}
+      
+
+        {/* Our Products section */}
         <section className="py-10 bg-[#f7f8fa]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Products</h2>
+              <p className="text-xl font-normal text-black max-w-3xl mx-auto">
+                Explore our flagship products built to streamline operations and deliver value.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-56 overflow-hidden">
+                  <img src={school} alt="360School" className="w-full h-full object-cover scale-150" />
+                </div>
+                <div className="p-6">
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>School360</h3>
+                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>A comprehensive school management platform for administration, attendance, exams, fees, and parent communication.</p>
+                  {/* <a className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-56 overflow-hidden">
+                  <img src={kiray} alt="Kiray" className="w-full h-full object-cover" />
+                </div>
+                <div className="p-6">
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>Kiray+</h3>
+                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>Rental and asset management tools for homes and machinery — listings, leases, tracking, and payments.</p>
+                  {/* <a className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-56 overflow-hidden">
+                  <img src={care} alt="Care Cental" className="w-full h-full object-cover" />
+                </div>
+                <div className="p-6">
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>CareCental</h3>
+                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>A comprehensive healthcare management platform — appointments, records, treatments, and billing.</p>
+                  {/* <a className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+          {/* why oddo part */}
+        <section className="py-10 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -765,53 +814,6 @@ const Homepage: React.FC = () => {
                   className="w-full h-full rounded-2xl"
                   style={{ height: "108%", width: "108%" }}
                 />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Our Products section */}
-        <section className="py-10 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Products</h2>
-              <p className="text-xl font-normal text-black max-w-3xl mx-auto">
-                Explore our flagship products built to streamline operations and deliver value.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                <div className="w-full h-56 overflow-hidden">
-                  <img src={school} alt="360School" className="w-full h-full object-cover scale-150" />
-                </div>
-                <div className="p-6">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>School360</h3>
-                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>A complete school management platform for administration, attendance, grading, and communication.</p>
-                  {/* <a className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                <div className="w-full h-56 overflow-hidden">
-                  <img src={kiray} alt="Kiray" className="w-full h-full object-cover" />
-                </div>
-                <div className="p-6">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>Kiray Plus</h3>
-                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>A rental and property management solution to list, manage bookings, and process payments.</p>
-                  {/* <a className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                <div className="w-full h-56 overflow-hidden">
-                  <img src={care} alt="Care Cental" className="w-full h-full object-cover" />
-                </div>
-                <div className="p-6">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>Care Cental</h3>
-                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>Healthcare management tools for clinics and care providers — appointments, records, and billing.</p>
-                  {/* <a className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
-                </div>
               </div>
             </div>
           </div>
