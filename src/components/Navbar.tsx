@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logoo (1).png";
+import logo from "../assets/new_logo.png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,7 +46,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="BelTech Logo"
-              className="h-16 w-auto object-contain"
+              className="h-36 w-auto object-contain"
             />
           </Link>
 
@@ -57,8 +57,8 @@ const Navbar = () => {
                 to={link.path}
                 className={`text-md font-medium transition-colors duration-200 ${
                   isActiveLink(link.path)
-                    ? "text-[#27A2D8] border-b-2 border-[#27A2D8]"
-                    : "text-gray-900 hover:text-[#27A2D8]"
+                    ? "text-[#0078B7] border-b-2 border-[#0078B7]"
+                    : "text-gray-900 hover:text-[#0078B7]"
                 }`}
               >
                 {link.name}
@@ -66,7 +66,7 @@ const Navbar = () => {
             ))}
 
             <Button
-              className="ml-2 text-white px-5 py-2 text-sm font-medium transition-all duration-200 hover:scale-105 bg-[#27A2D8]"
+              className="ml-2 text-white px-5 py-2 text-sm font-medium transition-all duration-200 hover:scale-105 bg-[#0078B7]"
               onClick={() =>
                 window.open("https://beltech-erp.blsglob.com/", "_blank")
               }
@@ -78,7 +78,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-[#27A2D8] transition-colors duration-200"
+              className="text-gray-700 hover:text-[#0078B7] transition-colors duration-200"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -95,8 +95,8 @@ const Navbar = () => {
                 to={link.path}
                 className={`block font-medium px-2 py-1 transition-colors duration-200 ${
                   isActiveLink(link.path)
-                    ? "text-[#27A2D8] border-b border-[#27A2D8]"
-                    : "text-gray-700 hover:text-[#27A2D8]"
+                    ? "text-[#0078B7] border-b border-[#0078B7]"
+                    : "text-gray-700 hover:text-[#0078B7]"
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -105,7 +105,7 @@ const Navbar = () => {
             ))}
 
             <Button
-              className="w-full mt-2 text-white bg-[#27A2D8] hover:bg-[#4FB3C1]"
+              className="w-full mt-2 text-white bg-[#0078B7] hover:bg-[#005C8A]"
               onClick={() => {
                 setIsMenuOpen(false);
                 window.open("https://beltech-erp.blsglob.com/", "_blank");

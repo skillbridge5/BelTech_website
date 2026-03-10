@@ -41,12 +41,12 @@ import care from "./../assets/homepage/care.jpg";
 
 const BusinessOperations = () => {
   const operationCategories = [
-    { title: "Finance & Decision Making", desc: "Cash flow, expenses, profitability, and performance clarity.", icon: <BarChart3 className="w-5 h-5 text-[#27A2D8]" /> },
-    { title: "Sales & Customer Handling", desc: "Lead tracking, deal management, faster responses.", icon: <Handshake className="w-5 h-5 text-[#27A2D8]" /> },
-    { title: "Procurement & Supplier Management", desc: "Purchasing, approvals, vendors, cost transparency.", icon: <Truck className="w-5 h-5 text-[#27A2D8]" /> },
-    { title: "People & Workforce Management", desc: "Employees, attendance, performance, payroll.", icon: <Users className="w-5 h-5 text-[#27A2D8]" /> },
-    { title: "Inventory & Operational Control", desc: "Stock accuracy, movement tracking, loss reduction.", icon: <Boxes className="w-5 h-5 text-[#27A2D8]" /> },
-    { title: "Project & Service Delivery", desc: "Task planning, ownership, progress tracking, accountability.", icon: <ListTodo className="w-5 h-5 text-[#27A2D8]" /> }
+    { title: "Finance & Decision Making", desc: "Cash flow, expenses, profitability, and performance clarity.", icon: <BarChart3 className="w-5 h-5 text-[#0078B7]" /> },
+    { title: "Sales & Customer Handling", desc: "Lead tracking, deal management, faster responses.", icon: <Handshake className="w-5 h-5 text-[#0078B7]" /> },
+    { title: "Procurement & Supplier Management", desc: "Purchasing, approvals, vendors, cost transparency.", icon: <Truck className="w-5 h-5 text-[#0078B7]" /> },
+    { title: "People & Workforce Management", desc: "Employees, attendance, performance, payroll.", icon: <Users className="w-5 h-5 text-[#0078B7]" /> },
+    { title: "Inventory & Operational Control", desc: "Stock accuracy, movement tracking, loss reduction.", icon: <Boxes className="w-5 h-5 text-[#0078B7]" /> },
+    { title: "Project & Service Delivery", desc: "Task planning, ownership, progress tracking, accountability.", icon: <ListTodo className="w-5 h-5 text-[#0078B7]" /> }
   ];
 
 
@@ -67,7 +67,7 @@ const BusinessOperations = () => {
             className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
           >
             Business Operations We{" "}
-            <span className="text-[#27A2D8]">Transform</span>
+            <span className="text-[#0078B7]">Transform</span>
           </h2>
           <p
             className="text-xl font-normal text-black max-w-3xl mx-auto"
@@ -263,7 +263,7 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
           transition={{ duration: 0.5 }}
           className="flex-1 w-full lg:w-2/3"
         >
-          <div className="relative group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#27A2D8]/30 transition-all duration-300">
+          <div className="relative group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#0078B7]/30 transition-all duration-300">
             <div className="relative h-[400px] lg:h-[500px] overflow-hidden">
               <img
                 src={activeIndustry.image}
@@ -276,7 +276,7 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
               {/* Content Overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <div className="flex items-center gap-4 mb-3">
-                  <div className="p-3 bg-[#27A2D8] rounded-xl">
+                  <div className="p-3 bg-[#0078B7] rounded-xl">
                     <activeIndustry.icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-2xl md:text-3xl font-bold text-white" style={{ fontFamily: 'Inter', fontWeight: 700 }}>
@@ -291,7 +291,7 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
                 <div className="space-y-2 mb-4">
                   {activeIndustry.bullets.slice(0, 2).map((bullet) => (
                     <div key={bullet} className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-[#27A2D8] shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-[#0078B7] shrink-0" />
                       <span className="text-white/90 text-sm" style={{ fontFamily: 'Inter', fontSize: '14px', fontWeight: 400 }}>
                         {bullet}
                       </span>
@@ -324,7 +324,7 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
                 onClick={() => setActiveIndex(originalIndex)}
                 className="cursor-pointer"
               >
-                <div className="bg-white rounded-xl p-4 border border-gray-100 hover:border-[#27A2D8]/30 transition-all duration-300 flex items-center gap-4">
+                <div className="bg-white rounded-xl p-4 border border-gray-100 hover:border-[#0078B7]/30 transition-all duration-300 flex items-center gap-4">
                   <div className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
                     <img
                       src={industry.image}
@@ -356,24 +356,24 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
         <div className="flex items-center gap-2">
           <button
             onClick={prevCard}
-            className="p-3 rounded-full bg-white border border-gray-200 hover:border-[#27A2D8] hover:bg-[#27A2D8]/10 transition-all duration-300 group"
+            className="p-3 rounded-full bg-white border border-gray-200 hover:border-[#0078B7] hover:bg-[#0078B7]/10 transition-all duration-300 group"
             aria-label="Previous industry"
           >
-            <ChevronLeft className="w-5 h-5 text-gray-600 group-hover:text-[#27A2D8]" />
+            <ChevronLeft className="w-5 h-5 text-gray-600 group-hover:text-[#0078B7]" />
           </button>
           <button
             onClick={nextCard}
-            className="p-3 rounded-full bg-white border border-gray-200 hover:border-[#27A2D8] hover:bg-[#27A2D8]/10 transition-all duration-300 group"
+            className="p-3 rounded-full bg-white border border-gray-200 hover:border-[#0078B7] hover:bg-[#0078B7]/10 transition-all duration-300 group"
             aria-label="Next industry"
           >
-            <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-[#27A2D8]" />
+            <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-[#0078B7]" />
           </button>
         </div>
 
         {/* See More Button */}
         <a
           href="/industries"
-          className="inline-flex items-center gap-2 text-[#27A2D8] font-semibold hover:gap-3 transition-all duration-300 group"
+          className="inline-flex items-center gap-2 text-[#0078B7] font-semibold hover:gap-3 transition-all duration-300 group"
           style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 600 }}
         >
           <span>See More</span>
@@ -388,7 +388,7 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
             key={index}
             onClick={() => setActiveIndex(index)}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${index === activeIndex
-              ? 'bg-[#27A2D8] w-8'
+              ? 'bg-[#0078B7] w-8'
               : 'bg-gray-300 hover:bg-gray-400'
               }`}
             aria-label={`Go to industry ${index + 1}`}
@@ -419,8 +419,8 @@ const Homepage: React.FC = () => {
             <div className="flex flex-col items-center text-center w-full">
               <div className="mb-6 relative w-full max-w-3xl mx-auto flex justify-center md:justify-start">
                 <div className="relative inline-flex items-center text-left -translate-x-6 md:-translate-x-25">
-                  <div className="hidden md:block h-0.5 w-16 bg-[#27A2D8] mr-6"></div>
-                  <span className="inline-block text-sm font-medium text-[#27A2D8]">
+                  <div className="hidden md:block h-0.5 w-16 bg-[#0078B7] mr-6"></div>
+                  <span className="inline-block text-sm font-medium text-[#0078B7]">
                     DIGITAL TRANSFORMATION EXPERTS
                   </span>
                 </div>
@@ -436,7 +436,7 @@ const Homepage: React.FC = () => {
 
               <Button
                 size="lg"
-                className="w-full sm:w-auto text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-[#27A2D8]"
+                className="w-full sm:w-auto text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-[#0078B7]"
                 style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
                 onClick={() => (window.location.href = "/Contact")}
               >
@@ -501,7 +501,7 @@ const Homepage: React.FC = () => {
                 }
               }}
             >
-              <ArrowDown className="w-8 h-8 text-[#27A2D8]" />
+              <ArrowDown className="w-8 h-8 text-[#0078B7]" />
             </button>
           </div> */}
         </section>
@@ -543,7 +543,7 @@ const Homepage: React.FC = () => {
                   </p>
                   <a
                     onClick={() => (window.location.href = "/Services")}
-                    className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
+                    className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
                   >
                     <span>Learn More</span>
                   </a>
@@ -570,7 +570,7 @@ const Homepage: React.FC = () => {
                   </p>
                   <a
                     onClick={() => (window.location.href = "/Services")}
-                    className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
+                    className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
                   >
                     <span>Learn More</span>
                   </a>
@@ -597,7 +597,7 @@ const Homepage: React.FC = () => {
                   </p>
                   <a
                     onClick={() => (window.location.href = "/Services")}
-                    className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
+                    className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
                   >
                     <span>Learn More</span>
                   </a>
@@ -625,10 +625,10 @@ const Homepage: React.FC = () => {
 
               <div className="lg:flex-1 flex flex-col space-y-6 h-full">
                 <div
-                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#27A2D8] transform transition-transform duration-300 hover:-translate-y-0.5"
+                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#0078B7] transform transition-transform duration-300 hover:-translate-y-0.5"
                   style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
                 >
-                  <div className="flex-shrink-0 h-12 w-12 bg-[#27A2D8] flex items-center justify-center rounded-sm">
+                  <div className="flex-shrink-0 h-12 w-12 bg-[#0078B7] flex items-center justify-center rounded-sm">
                     <Award className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -640,10 +640,10 @@ const Homepage: React.FC = () => {
                 </div>
 
                 <div
-                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#27A2D8] transform transition-transform duration-300 hover:-translate-y-0.5"
+                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#0078B7] transform transition-transform duration-300 hover:-translate-y-0.5"
                   style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
                 >
-                  <div className="flex-shrink-0 h-12 w-12 bg-[#27A2D8] flex items-center justify-center rounded-sm">
+                  <div className="flex-shrink-0 h-12 w-12 bg-[#0078B7] flex items-center justify-center rounded-sm">
                     <Globe className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -655,10 +655,10 @@ const Homepage: React.FC = () => {
                 </div>
 
                 <div
-                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#27A2D8] transform transition-transform duration-300 hover:-translate-y-0.5"
+                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#0078B7] transform transition-transform duration-300 hover:-translate-y-0.5"
                   style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
                 >
-                  <div className="flex-shrink-0 h-12 w-12 bg-[#27A2D8] flex items-center justify-center rounded-sm">
+                  <div className="flex-shrink-0 h-12 w-12 bg-[#0078B7] flex items-center justify-center rounded-sm">
                     <Zap className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -670,10 +670,10 @@ const Homepage: React.FC = () => {
                 </div>
 
                 <div
-                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#27A2D8] transform transition-transform duration-300 hover:-translate-y-0.5"
+                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#0078B7] transform transition-transform duration-300 hover:-translate-y-0.5"
                   style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
                 >
-                  <div className="flex-shrink-0 h-12 w-12 bg-[#27A2D8] flex items-center justify-center rounded-sm">
+                  <div className="flex-shrink-0 h-12 w-12 bg-[#0078B7] flex items-center justify-center rounded-sm">
                     <DollarSign className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -708,7 +708,7 @@ const Homepage: React.FC = () => {
                 <div className="p-6">
                   <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>School360</h3>
                   <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>A comprehensive school management platform for administration, attendance, exams, fees, and parent communication.</p>
-                  {/* <a className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
+                  {/* <a className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
                 </div>
               </div>
 
@@ -719,7 +719,7 @@ const Homepage: React.FC = () => {
                 <div className="p-6">
                   <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>Kiray+</h3>
                   <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>Rental and asset management tools for homes and machinery — listings, leases, tracking, and payments.</p>
-                  {/* <a className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
+                  {/* <a className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
                 </div>
               </div>
 
@@ -730,7 +730,7 @@ const Homepage: React.FC = () => {
                 <div className="p-6">
                   <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>CareCental</h3>
                   <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>A comprehensive healthcare management platform — appointments, records, treatments, and billing.</p>
-                  {/* <a className="text-[#27A2D8] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
+                  {/* <a className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
                 </div>
               </div>
             </div>
@@ -754,7 +754,7 @@ const Homepage: React.FC = () => {
 
               <div className="flex flex-col gap-6 h-full">
                 <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex items-start space-x-4">
-                  <CheckCircle className="w-6 h-6 text-[#27A2D8] flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-[#0078B7] flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 mb-1">
                       All-in-One Solution
@@ -767,7 +767,7 @@ const Homepage: React.FC = () => {
                 </div>
 
                 <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex items-start space-x-4">
-                  <Users className="w-6 h-6 text-[#27A2D8] flex-shrink-0" />
+                  <Users className="w-6 h-6 text-[#0078B7] flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 mb-1">
                       User-Friendly Interface
@@ -781,7 +781,7 @@ const Homepage: React.FC = () => {
                 </div>
 
                 <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex items-start space-x-4">
-                  <Layers className="w-6 h-6 text-[#27A2D8] flex-shrink-0" />
+                  <Layers className="w-6 h-6 text-[#0078B7] flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 mb-1">
                       Modular Architecture
@@ -793,7 +793,7 @@ const Homepage: React.FC = () => {
                 </div>
 
                 <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex items-start space-x-4">
-                  <TrendingUp className="w-6 h-6 text-[#27A2D8] flex-shrink-0" />
+                  <TrendingUp className="w-6 h-6 text-[#0078B7] flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 mb-1">
                       Scalable Growth
@@ -864,9 +864,9 @@ const Homepage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-[#27A2D8] transition-all duration-300 hover:shadow-xl relative overflow-hidden group"
+                className="bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-[#0078B7] transition-all duration-300 hover:shadow-xl relative overflow-hidden group"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#27A2D8]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#27A2D8]/10 transition-colors duration-300"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#0078B7]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#0078B7]/10 transition-colors duration-300"></div>
                 <div className="relative">
                   <h3 className="text-2xl font-bold text-gray-900 mb-3">Starter</h3>
                   <p className="text-gray-600 mb-4 text-sm">
@@ -888,7 +888,7 @@ const Homepage: React.FC = () => {
                       "Standard Dashboards",
                     ].map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <CheckCircle className="text-[#27A2D8] w-5 h-5 shrink-0 mt-0.5" />
+                        <CheckCircle className="text-[#0078B7] w-5 h-5 shrink-0 mt-0.5" />
                         <span className="text-gray-700 text-sm">{feature}</span>
                       </li>
                     ))}
@@ -896,7 +896,7 @@ const Homepage: React.FC = () => {
 
                   <Button
                     size="lg"
-                    className="w-full text-white bg-[#27A2D8] hover:bg-[#1f8cb8] transition-all duration-200 font-semibold"
+                    className="w-full text-white bg-[#0078B7] hover:bg-[#005C8A] transition-all duration-200 font-semibold"
                     onClick={() => (window.location.href = "/contact")}
                   >
                     Get Started
@@ -910,7 +910,7 @@ const Homepage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-gradient-to-br from-[#27A2D8] to-[#1f8cb8] p-8 rounded-2xl border-2 border-[#27A2D8] hover:shadow-2xl transition-all duration-300 relative overflow-hidden group transform hover:-translate-y-1"
+                className="bg-gradient-to-br from-[#0078B7] to-[#005C8A] p-8 rounded-2xl border-2 border-[#0078B7] hover:shadow-2xl transition-all duration-300 relative overflow-hidden group transform hover:-translate-y-1"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:bg-white/15 transition-colors duration-300"></div>
                 <div className="relative">
@@ -947,7 +947,7 @@ const Homepage: React.FC = () => {
 
                   <Button
                     size="lg"
-                    className="w-full bg-white text-[#27A2D8] hover:bg-gray-50 transition-all duration-200 font-semibold"
+                    className="w-full bg-white text-[#0078B7] hover:bg-gray-50 transition-all duration-200 font-semibold"
                     onClick={() => (window.location.href = "/contact")}
                   >
                     Request a Demo
@@ -961,9 +961,9 @@ const Homepage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-[#27A2D8] transition-all duration-300 hover:shadow-xl relative overflow-hidden group"
+                className="bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-[#0078B7] transition-all duration-300 hover:shadow-xl relative overflow-hidden group"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#27A2D8]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#27A2D8]/10 transition-colors duration-300"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#0078B7]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#0078B7]/10 transition-colors duration-300"></div>
                 <div className="relative">
                   <h3 className="text-2xl font-bold text-gray-900 mb-3">Enterprise</h3>
                   <p className="text-gray-600 mb-4 text-sm">
@@ -986,7 +986,7 @@ const Homepage: React.FC = () => {
                       "Custom Integrations & Automation",
                     ].map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <CheckCircle className="text-[#27A2D8] w-5 h-5 shrink-0 mt-0.5" />
+                        <CheckCircle className="text-[#0078B7] w-5 h-5 shrink-0 mt-0.5" />
                         <span className="text-gray-700 text-sm">{feature}</span>
                       </li>
                     ))}
@@ -994,7 +994,7 @@ const Homepage: React.FC = () => {
 
                   <Button
                     size="lg"
-                    className="w-full text-white bg-[#27A2D8] hover:bg-[#1f8cb8] transition-all duration-200 font-semibold"
+                    className="w-full text-white bg-[#0078B7] hover:bg-[#005C8A] transition-all duration-200 font-semibold"
                     onClick={() => (window.location.href = "/contact")}
                   >
                     Contact Sales
@@ -1127,7 +1127,7 @@ const Homepage: React.FC = () => {
           <div
             className="absolute inset-0 z-0"
             style={{
-              background: "linear-gradient(to right, #31A8EB, #61C7D5)",
+              background: "linear-gradient(to right, #0078B7, #005C8A)",
               opacity: 0.5,
             }}
           ></div>
@@ -1142,14 +1142,14 @@ const Homepage: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8]  text-white hover:bg-[#27A2D8]-100"
+                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7]  text-white hover:bg-[#005C8A]"
                 onClick={() => (window.location.href = "/contact")}
               >
                 Start Your Digital Journey
               </Button>
               <Button
                 size="lg"
-                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8]  text-white hover:bg-[#27A2D8]-100"
+                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7]  text-white hover:bg-[#005C8A]"
                 onClick={() => (window.location.href = "/solutions")}
               >
                 View Success Stories

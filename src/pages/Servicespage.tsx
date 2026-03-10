@@ -81,7 +81,7 @@ const Servicespage = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="flex items-start border-l-4 border-[#27A2D8] bg-white p-4 rounded-xl"
+          className="flex items-start border-l-4 border-[#0078B7] bg-white p-4 rounded-xl"
         >
           <div className="ml-3">
             <h4 className="text-lg font-semibold text-gray-900">Department Integration</h4>
@@ -96,7 +96,7 @@ const Servicespage = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="flex items-start border-l-4 border-[#27A2D8] bg-white p-4 rounded-xl"
+          className="flex items-start border-l-4 border-[#0078B7] bg-white p-4 rounded-xl"
         >
           <div className="ml-3">
             <h4 className="text-lg font-semibold text-gray-900">Local Compliance</h4>
@@ -111,7 +111,7 @@ const Servicespage = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.3 }}
-          className="flex items-start border-l-4 border-[#27A2D8] bg-white p-4 rounded-xl"
+          className="flex items-start border-l-4 border-[#0078B7] bg-white p-4 rounded-xl"
         >
           <div className="ml-3">
             <h4 className="text-lg font-semibold text-gray-900">Full Support</h4>
@@ -193,24 +193,24 @@ const Servicespage = () => {
 
             <ul className="space-y-4">
               <li className="flex items-start">
-                <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-[#27A2D8]" />
+                <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-[#0078B7]" />
                 <span className="ml-3 text-gray-600">Custom Web & Mobile Applications
 </span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-[#27A2D8]" />
+                <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-[#0078B7]" />
                 <span className="ml-3 text-gray-600">Ongoing Support & Maintenance</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-[#27A2D8]" />
+                <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-[#0078B7]" />
                 <span className="ml-3 text-gray-600">Enterprise Software Solutions</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-[#27A2D8]" />
+                <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-[#0078B7]" />
                 <span className="ml-3 text-gray-600">API Design & System Integration</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-[#27A2D8]" />
+                <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-[#0078B7]" />
                 <span className="ml-3 text-gray-600">Security-first approach</span>
               </li>
             </ul>
@@ -244,7 +244,7 @@ const Servicespage = () => {
    <Card className="border-0 text-center">
     <CardHeader className="px-4 pt-1 pb-0">
       <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
-        <Users className="h-6 w-6 text-[#27A2D8]" />
+        <Users className="h-6 w-6 text-[#0078B7]" />
       </div>
       <CardTitle className="mt-1 font-bold text-base">User Portals</CardTitle>
       <CardDescription className="mt-1 text-sm text-gray-700">
@@ -255,7 +255,7 @@ const Servicespage = () => {
   <Card className="border-0 text-center">
     <CardHeader className="px-4 pt-1 pb-1">
       <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
-        <Zap className="h-6 w-6 text-[#27A2D8]" />
+        <Zap className="h-6 w-6 text-[#0078B7]" />
       </div>
       <CardTitle className="mt-1 font-bold text-base">Internal Tools</CardTitle>
       <CardDescription className="mt-1 text-sm text-gray-700">
@@ -267,7 +267,7 @@ const Servicespage = () => {
   <Card className="border-0 text-center">
     <CardHeader className="px-4 pt-1 pb-1">
       <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
-        <Globe className="h-6 w-6 text-[#27A2D8]" />
+        <Globe className="h-6 w-6 text-[#0078B7]" />
       </div>
       <CardTitle className="mt-1 font-bold text-base">Responsive Design</CardTitle>
       <CardDescription className="mt-1 text-sm text-gray-700">
@@ -279,7 +279,7 @@ const Servicespage = () => {
   <Card className="border-0 text-center">
     <CardHeader className="px-4 pt-1 pb-1">
       <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
-        <Settings className="h-6 w-6 text-[#27A2D8]" />
+        <Settings className="h-6 w-6 text-[#0078B7]" />
       </div>
       <CardTitle className="mt-1 font-bold text-base">
         API Design & System Integration
@@ -309,7 +309,7 @@ const Servicespage = () => {
         <div
           className="absolute inset-0 z-0"
           style={{
-            background: "linear-gradient(to right, #31A8EB, #61C7D5)",
+            background: "linear-gradient(to right, #0078B7, #005C8A)",
             opacity: 0.5,
           }}
         ></div>
@@ -329,14 +329,14 @@ const Servicespage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8] text-white"
+              className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7] text-white"
               onClick={() => window.location.href = '/contact'}
             >
               Start Your Digital Journey
             </Button>
             <Button
               size="lg"
-              className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8] text-white"
+              className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7] text-white"
               onClick={() => window.location.href = '/solutions'}
             >
               View Success Stories

@@ -86,7 +86,7 @@ const SolutionsPage = () => {
       </p>
       <Link
         to="/ERPDetail"
-        className="mt-4 inline-block text-[#27A2D8] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
+        className="mt-4 inline-block text-[#0078B7] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
       >
         Read More
       </Link>
@@ -116,7 +116,7 @@ const SolutionsPage = () => {
       </p>
       <Link
         to="/CharityPlatform"
-        className="mt-4 inline-block text-[#27A2D8] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
+        className="mt-4 inline-block text-[#0078B7] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
       >
         Read More
       </Link>
@@ -146,7 +146,7 @@ const SolutionsPage = () => {
          </p>
       <Link
         to="/RetailAuto"
-        className="mt-4 inline-block text-[#27A2D8] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
+        className="mt-4 inline-block text-[#0078B7] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
       >
         Read More
       </Link>
@@ -174,7 +174,7 @@ const SolutionsPage = () => {
         <div
           className="absolute inset-0 z-0"
           style={{
-            background: "linear-gradient(to right, #31A8EB, #61C7D5)",
+            background: "linear-gradient(to right, #0078B7, #005C8A)",
             opacity: 0.5,
           }}
         ></div>
@@ -194,7 +194,7 @@ const SolutionsPage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8] text-white"
+              className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7] text-white"
               onClick={() => window.location.href = '/contact'}
             >
               Start Your Digital Journey

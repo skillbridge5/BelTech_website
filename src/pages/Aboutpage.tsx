@@ -101,7 +101,7 @@ const About = () => {
                                 className="rounded-lg bg-white p-8"
                             >
                                 <div className="mb-4 flex items-center">
-                                    <Target className="h-8 w-8 text-[#27A2D8] " />
+                                    <Target className="h-8 w-8 text-[#0078B7] " />
                                     <h3 className="ml-4 text-2xl font-bold text-gray-900">Our Mission</h3>
                                 </div>
                                 <p className="text-sm font-medium text-gray-900">
@@ -119,7 +119,7 @@ const About = () => {
                                 className="rounded-lg bg-white p-8"
                             >
                                 <div className="mb-4 flex items-center">
-                                    <Eye className="h-8 w-8 text-[#27A2D8] " />
+                                    <Eye className="h-8 w-8 text-[#0078B7] " />
                                     <h3 className="ml-4 text-2xl font-bold text-gray-900">Our Vision</h3>
                                 </div>
                                 <p className="text-sm font-medium text-gray-900">
@@ -151,7 +151,7 @@ const About = () => {
                             <Card className="border-0 text-center">
                                 <CardHeader>
                                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
-                                        <Target className="h-6 w-6 text-[#27A2D8] " />
+                                        <Target className="h-6 w-6 text-[#0078B7] " />
                                     </div>
                                     <CardTitle className="mt-4">Precision</CardTitle>
                                     <CardDescription>
@@ -170,7 +170,7 @@ const About = () => {
                             <Card className="border-0 text-center">
                                 <CardHeader>
                                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
-                                        <Flag className="h-6 w-6 text-[#27A2D8] " />
+                                        <Flag className="h-6 w-6 text-[#0078B7] " />
                                     </div>
                                     <CardTitle className="mt-4">Purpose</CardTitle>
                                     <CardDescription>
@@ -188,7 +188,7 @@ const About = () => {
                             <Card className="border-0 text-center">
                                 <CardHeader>
                                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
-                                        <Handshake className="h-6 w-6 text-[#27A2D8] " />
+                                        <Handshake className="h-6 w-6 text-[#0078B7] " />
                                     </div>
                                     <CardTitle className="mt-4">Partnership</CardTitle>
                                     <CardDescription>
@@ -207,7 +207,7 @@ const About = () => {
                             <Card className="border-0 text-center">
                                 <CardHeader>
                                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
-                                        <LineChart className="h-6 w-6 text-[#27A2D8] " />
+                                        <LineChart className="h-6 w-6 text-[#0078B7] " />
                                     </div>
                                     <CardTitle className="mt-4">Progress</CardTitle>
                                     <CardDescription>
@@ -238,7 +238,7 @@ const About = () => {
                     <div
                         className="absolute inset-0 z-0"
                         style={{
-                            background: "linear-gradient(to right, #31A8EB, #61C7D5)",
+                            background: "linear-gradient(to right, #0078B7, #005C8A)",
                             opacity: 0.5,
                         }}
                     ></div>
@@ -258,14 +258,14 @@ const About = () => {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button
                                 size="lg"
-                                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8] text-white"
+                                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7] text-white"
                                 onClick={() => window.location.href = '/Contact'}
                             >
                                 Start Your Digital Journey
                             </Button>
                             <Button
                                 size="lg"
-                                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8] text-white"
+                                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7] text-white"
                                 onClick={() => window.location.href = '/Solutions'}
                             >
                                 View Success Stories

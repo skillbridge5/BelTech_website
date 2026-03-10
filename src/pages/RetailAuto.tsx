@@ -63,9 +63,9 @@ const RetailAuto = () => {
             type="email"
             id="email"
             placeholder=""
-            className="w-full rounded-md px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-[#27A2D8] bg-white"
+            className="w-full rounded-md px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-[#0078B7] bg-white"
           />
-          <Button className="w-full bg-[#27A2D8] hover:bg-[#4db7c5] text-white font-semibold py-2">
+          <Button className="w-full bg-[#0078B7] hover:bg-[#005C8A] text-white font-semibold py-2">
             Subscribe
           </Button>
         </div>
@@ -88,7 +88,7 @@ const RetailAuto = () => {
         <div
           className="absolute inset-0 z-0"
           style={{
-            background: "linear-gradient(to right, #31A8EB, #61C7D5)",
+            background: "linear-gradient(to right, #0078B7, #005C8A)",
             opacity: 0.5,
           }}
         ></div>
@@ -102,7 +102,7 @@ const RetailAuto = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8] text-white"
+              className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7] text-white"
               onClick={() => window.location.href = '/contact'}
             >
               Start Your Digital Journey

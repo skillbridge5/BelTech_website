@@ -38,7 +38,7 @@ const ArticleCard = ({
       <CardFooter className="px-4 pt-1 pb-2">
         <button
           onClick={() => onReadMore(insight)}
-          className="inline-flex items-center text-[#27A2D8] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
+          className="inline-flex items-center text-[#0078B7] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
         >
           Read More
         </button>
@@ -160,7 +160,7 @@ const Insight = () => {
         }}
       >
         <div className="absolute inset-0 z-0" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}></div>
-        <div className="absolute inset-0 z-0" style={{ background: "linear-gradient(to right, #31A8EB, #61C7D5)", opacity: 0.5 }}></div>
+        <div className="absolute inset-0 z-0" style={{ background: "linear-gradient(to right, #0078B7, #005C8A)", opacity: 0.5 }}></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -175,7 +175,7 @@ const Insight = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8] text-white"
+              className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7] text-white"
               onClick={() => window.location.href = "/contact"}
             >
               Start Your Digital Journey

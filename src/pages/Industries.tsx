@@ -182,7 +182,7 @@ const Industries = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                       <div className="absolute bottom-6 left-6 right-6">
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="p-3 bg-[#27A2D8] rounded-xl">
+                          <div className="p-3 bg-[#0078B7] rounded-xl">
                             <Icon className="w-6 h-6 text-white" />
                           </div>
                           <h3 className="text-2xl md:text-3xl font-bold text-white">
@@ -212,7 +212,7 @@ const Industries = () => {
                           className="flex items-start gap-4 group"
                         >
                           <div className="shrink-0 mt-1">
-                            <div className="w-8 h-8 rounded-full bg-[#27A2D8] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <div className="w-8 h-8 rounded-full bg-[#0078B7] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                               <CheckCircle className="w-5 h-5 text-white" />
                             </div>
                           </div>
@@ -229,7 +229,7 @@ const Industries = () => {
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: 0.3 }}
-                      className="relative p-6 rounded-2xl bg-gradient-to-br from-[#27A2D8]/10 to-[#27A2D8]/5 border-l-4 border-[#27A2D8]"
+                      className="relative p-6 rounded-2xl bg-gradient-to-br from-[#0078B7]/10 to-[#0078B7]/5 border-l-4 border-[#0078B7]"
                     >
                       <p className="text-gray-800 text-lg italic leading-relaxed">
                         "{industry.quote}"
@@ -262,7 +262,7 @@ const Industries = () => {
           <div
             className="absolute inset-0 z-0"
             style={{
-              background: "linear-gradient(to right, #31A8EB, #61C7D5)",
+              background: "linear-gradient(to right, #0078B7, #005C8A)",
               opacity: 0.5,
             }}
           ></div>
@@ -277,14 +277,14 @@ const Industries = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8]  text-white hover:bg-[#27A2D8]-100"
+                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7]  text-white hover:bg-[#005C8A]"
                 onClick={() => (window.location.href = "/contact")}
               >
                 Start Your Digital Journey
               </Button>
               <Button
                 size="lg"
-                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#27A2D8]  text-white hover:bg-[#27A2D8]-100"
+                className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7]  text-white hover:bg-[#005C8A]"
                 onClick={() => (window.location.href = "/solutions")}
               >
                 View Success Stories
