@@ -2,7 +2,7 @@
 
 import { Mail, Linkedin, Github, Send, Youtube } from "lucide-react";
 import { Button } from "./ui/button";
-import logo from "../assets/new_logo.png";
+import logo from "../assets/new-logo-free.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -33,11 +33,11 @@ const Footer = () => {
           {/* Logo + About */}
           <div className="flex-1 flex flex-col items-start">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="bg-white rounded-full p-2 flex items-center justify-center">
+              <div className="bg-white rounded-full p-2 flex items-center justify-center overflow-hidden">
                 <img
                   src={logo}
                   alt="BelTech Logo"
-                  className="h-24 w-24 object-contain"
+                  className="h-14 w-14 object-contain"
                 />
               </div>
               <div className="flex flex-col">
