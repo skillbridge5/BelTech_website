@@ -1,7 +1,7 @@
 import { Target, Flag, Handshake, LineChart, Eye } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription } from "../components/ui/card";
 import abouthero from "./../assets/aboutPage/hero1.png"
-import beltech from "./../assets/aboutPage/beltech1.png";
+import beltech from "./../assets/new_logo.png";
 import { Button } from "../components/ui/button";
 import above_the_footer from "./../assets/above_the_footer.png"
 import { motion } from "framer-motion";
@@ -81,7 +81,7 @@ const About = () => {
                                 <img
                                     src={beltech}
                                     alt="Bel Tech Solutions Logo"
-                                    className="w-full max-w-xs mt-4"
+                                    className="w-full max-w-md mt-4"
                                 />
                             </div>
                         </motion.div>
