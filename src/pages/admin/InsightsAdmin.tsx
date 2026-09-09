@@ -12,6 +12,7 @@ import {
 import type { Insight } from "../../api/client";
 import { getErrorMessage } from "../../api/client";
 import { Plus, Pencil, Trash2, X, Search } from "lucide-react";
+import ImageUpload from "../../components/ImageUpload";
 
 interface FormState {
   title: string;
@@ -281,7 +282,16 @@ const InsightsAdmin = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <div className="mb-1">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Image
+                  </label>
+                </div>
+                <ImageUpload
+                  value={form.imageUrl}
+                  onChange={(url) => setForm({ ...form, imageUrl: url })}
+                />
+                <label className="block text-sm font-medium text-gray-700 mt-3 mb-1">
                   Image URL
                 </label>
                 <Input

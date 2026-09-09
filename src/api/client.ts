@@ -53,6 +53,18 @@ export const getErrorMessage = (err: unknown, fallback: string): string => {
 export const adminLogin = (email: string, password: string) =>
   api.post("/auth/login", { email, password });
 
+// ===== Upload =====
+export const uploadImage = async (file: File): Promise<string> => {
+  const dataUrl = await new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = () => reject(new Error("Failed to read file"));
+    reader.readAsDataURL(file);
+  });
+  const res = await api.post("/upload", { fileName: file.name, dataUrl });
+  return res.data.data.url;
+};
+
 // ===== Contact =====
 // Submit a contact message
 export const submitContact = (payload: ContactPayload) => {
