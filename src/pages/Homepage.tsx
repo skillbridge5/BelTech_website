@@ -15,6 +15,7 @@ import hero from "./../assets/homepage/hero.png";
 import odoo from "./../assets/homepage/odoo.png";
 import odooErp from "./../assets/homepage/oddoNew.png";
 import custom_soft_dev from "./../assets/homepage/customSoftNew.png";
+import erpNextImg from "./../assets/servicepage/ERPImp.png";
 import bussiness_automation_int from "./../assets/homepage/automationAndIntegration.jpg";
 import eyoha from "./../assets/clientLogo/eyoha.png";
 import Roha from "./../assets/clientLogo/RohaCake.png";
@@ -521,7 +522,7 @@ const Homepage: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
 
               <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
                 <div className="w-full h-65 overflow-hidden">
@@ -539,6 +540,33 @@ const Homepage: React.FC = () => {
                     A tailored Odoo ERP system to
                     streamline your entire workflow and
                     gain real-time insights.
+
+                  </p>
+                  <a
+                    onClick={() => (window.location.href = "/Services")}
+                    className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
+                  >
+                    <span>Learn More</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-65 overflow-hidden">
+                  <img
+                    src={erpNextImg}
+                    alt="ERP Next Implementation"
+                    className="w-full h-full object-cover rounded-t-2xl"
+                  />
+                </div>
+                <div className="p-8">
+                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
+                    ERP Next Implementation
+                  </h3>
+                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
+                    An open-source ERP that unifies
+                    finance, sales, HR, and operations
+                    for businesses of all sizes.
 
                   </p>
                   <a
