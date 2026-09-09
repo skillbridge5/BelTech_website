@@ -45,11 +45,11 @@ const Dashboard = () => {
       link: "/admin/solutions",
     },
     {
-      title: "Insights",
+      title: "Blog",
       value: insightCount,
       icon: FileText,
       color: "text-emerald-600 bg-emerald-50",
-      link: "/admin/insights",
+      link: "/admin/blog",
     },
     {
       title: "Contacts",
@@ -102,11 +102,11 @@ const Dashboard = () => {
             Manage Solutions
           </Link>
           <Link
-            to="/admin/insights"
+            to="/admin/blog"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition-colors text-sm"
           >
             <FileText className="h-4 w-4" />
-            Manage Insights
+            Manage Posts
           </Link>
         </div>
       </div>

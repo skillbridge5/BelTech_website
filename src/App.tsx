@@ -9,7 +9,7 @@ import SolutionsPage from "./pages/Solutionspage";
 import ERPDetail from "./pages/ERPDetail";
 import CharityPlatform from "./pages/CharityPlatform";
 import RetailAuto from "./pages/RetailAuto";
-import Insights from "./pages/insights";
+import Blog from "./pages/blog";
 import Contact from "./pages/Contact";
 import Industries from "./pages/Industries";
 import Login from "./pages/admin/Login";
@@ -41,7 +41,8 @@ export default function App() {
             <Route path="/ERPDetail" element={<ERPDetail />} />
             <Route path="/CharityPlatform" element={<CharityPlatform />} />
             <Route path="/RetailAuto" element={<RetailAuto />} />
-            <Route path="/insights" element={<Insights />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/insights" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/Contact" element={<Contact />} />
             <Route path="/industries" element={<Industries />} />
@@ -55,6 +56,7 @@ export default function App() {
             <Route element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="solutions" element={<SolutionsAdmin />} />
+              <Route path="blog" element={<InsightsAdmin />} />
               <Route path="insights" element={<InsightsAdmin />} />
             </Route>
           </Route>

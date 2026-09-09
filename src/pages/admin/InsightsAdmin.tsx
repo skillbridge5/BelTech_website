@@ -46,7 +46,7 @@ const InsightsAdmin = () => {
       const data = await loadInsights();
       setInsights(Array.isArray(data) ? data : []);
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to load insights"), {
+      toast.error(getErrorMessage(err, "Failed to load posts"), {
         style: { background: "#D82727", color: "#ffffff" },
       });
     } finally {
@@ -95,19 +95,19 @@ const InsightsAdmin = () => {
       const date = form.date ? new Date(form.date).toISOString() : "";
       if (editingId) {
         await updateInsight(editingId, { ...form, date });
-        toast.success("Insight updated", {
+        toast.success("Post updated", {
           style: { background: "#0078B7", color: "#ffffff" },
         });
       } else {
         await createInsight({ ...form, date });
-        toast.success("Insight created", {
+        toast.success("Post created", {
           style: { background: "#0078B7", color: "#ffffff" },
         });
       }
       setShowForm(false);
       load();
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to save insight"), {
+      toast.error(getErrorMessage(err, "Failed to save post"), {
         style: { background: "#D82727", color: "#ffffff" },
       });
     } finally {
@@ -120,13 +120,13 @@ const InsightsAdmin = () => {
     setDeleting(true);
     try {
       await deleteInsight(deleteTarget._id);
-      toast.success("Insight deleted", {
+      toast.success("Post deleted", {
         style: { background: "#0078B7", color: "#ffffff" },
       });
       setDeleteTarget(null);
       load();
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to delete insight"), {
+      toast.error(getErrorMessage(err, "Failed to delete post"), {
         style: { background: "#D82727", color: "#ffffff" },
       });
     } finally {
@@ -142,13 +142,13 @@ const InsightsAdmin = () => {
     <div>
       <Toaster position="top-right" />
       <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
-        <h1 className="text-2xl font-bold text-gray-900">Insights</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Blog</h1>
         <Button
           onClick={openAdd}
           className="bg-emerald-600 hover:bg-emerald-700 text-white"
         >
           <Plus className="h-4 w-4" />
-          Add Insight
+          Add Post
         </Button>
       </div>
 
@@ -157,16 +157,16 @@ const InsightsAdmin = () => {
         <Input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search insights..."
+          placeholder="Search posts..."
           className="pl-10 border-gray-300 rounded-lg"
         />
       </div>
 
       {loading ? (
-        <p className="text-gray-500">Loading insights...</p>
+        <p className="text-gray-500">Loading posts...</p>
       ) : filtered.length === 0 ? (
         <div className="bg-white border border-gray-200 rounded-xl p-10 text-center">
-          <p className="text-gray-500">No insights found.</p>
+          <p className="text-gray-500">No posts found.</p>
         </div>
       ) : (
         <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
@@ -241,7 +241,7 @@ const InsightsAdmin = () => {
               <X className="h-5 w-5" />
             </button>
             <h2 className="text-xl font-bold text-gray-900 mb-5">
-              {editingId ? "Edit Insight" : "Add Insight"}
+              {editingId ? "Edit Post" : "Add Post"}
             </h2>
             <form onSubmit={handleSave} className="space-y-4">
               <div>
@@ -330,7 +330,7 @@ const InsightsAdmin = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl max-w-md w-full p-6">
             <h3 className="text-lg font-bold text-gray-900 mb-2">
-              Delete Insight
+              Delete Post
             </h3>
             <p className="text-gray-600 mb-6">
               Are you sure you want to delete{" "}

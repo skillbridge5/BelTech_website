@@ -47,7 +47,7 @@ const ArticleCard = ({
   );
 };
 
-const Insight = () => {
+const Blog = () => {
   const [insights, setInsights] = useState<InsightType[]>([]);
   const [selectedInsight, setSelectedInsight] = useState<InsightType | null>(null);
   const [loading, setLoading] = useState(true);
@@ -86,7 +86,7 @@ const Insight = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Insights</h1>
+              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Blog</h1>
               <p className="mt-5 text-lg md:text-xl max-w-2xl leading-snug">
                 Explore our latest articles and guides on digital transformation and technology in Africa.
               </p>
@@ -107,14 +107,14 @@ const Insight = () => {
           >
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-1 leading-tight">Latest Articles</h2>
             <p className="text-base text-gray-600 max-w-2xl mx-auto leading-snug">
-              Stay informed with our latest insights on technology, business, and digital transformation
+              Stay informed with our latest blog posts on technology, business, and digital transformation
             </p>
           </motion.div>
 
           {loading ? (
-            <p className="text-center text-gray-500">Loading insights...</p>
+            <p className="text-center text-gray-500">Loading posts...</p>
           ) : insights.length === 0 ? (
-            <p className="text-center text-gray-500">No insights at the moment.</p>
+            <p className="text-center text-gray-500">No posts yet.</p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
               {insights.map((insight, index) => (
@@ -188,4 +188,4 @@ const Insight = () => {
   );
 };
 
-export default Insight;
+export default Blog;

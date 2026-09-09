@@ -7,7 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 const navItems = [
   { name: "Dashboard", path: "/admin", icon: LayoutDashboard, end: true },
   { name: "Solutions", path: "/admin/solutions", icon: FolderKanban, end: false },
-  { name: "Insights", path: "/admin/insights", icon: FileText, end: false },
+  { name: "Blog", path: "/admin/blog", icon: FileText, end: false },
 ];
 
 const AdminLayout = () => {

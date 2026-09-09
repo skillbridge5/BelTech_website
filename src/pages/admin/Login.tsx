@@ -60,7 +60,7 @@ const Login = () => {
               Admin Login
             </h1>
             <p className="text-center text-gray-500 text-sm mb-8">
-              Sign in to manage Solutions and Insights
+              Sign in to manage Solutions and Blog
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
