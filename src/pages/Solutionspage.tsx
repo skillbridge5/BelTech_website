@@ -19,6 +19,7 @@ const fallbackSolutions: SolutionCard[] = [
     imageUrl: importEport,
     link: "/ERPDetail",
     detail: "",
+    priority: 1,
   },
   {
     title: "Website for SkillBridge Institute Of Technology",
@@ -26,6 +27,7 @@ const fallbackSolutions: SolutionCard[] = [
     imageUrl: eLearning,
     link: "/CharityPlatform",
     detail: "",
+    priority: 2,
   },
   {
     title: "Website for Eyoha media",
@@ -33,6 +35,7 @@ const fallbackSolutions: SolutionCard[] = [
     imageUrl: DigitalMarketingDetail,
     link: "/RetailAuto",
     detail: "",
+    priority: 3,
   },
 ];
 

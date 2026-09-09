@@ -20,6 +20,7 @@ interface FormState {
   detail: string;
   imageUrl: string;
   link: string;
+  priority: number;
 }
 
 const emptyForm: FormState = {
@@ -28,6 +29,7 @@ const emptyForm: FormState = {
   detail: "",
   imageUrl: "",
   link: "",
+  priority: 0,
 };
 
 const SolutionsAdmin = () => {
@@ -73,6 +75,7 @@ const SolutionsAdmin = () => {
       detail: solution.detail,
       imageUrl: solution.imageUrl,
       link: solution.link,
+      priority: solution.priority ?? 0,
     });
     setShowForm(true);
   };
@@ -178,6 +181,7 @@ const SolutionsAdmin = () => {
                 <th className="px-4 py-3 font-medium hidden md:table-cell">
                   Description
                 </th>
+                <th className="px-4 py-3 font-medium">Priority</th>
                 <th className="px-4 py-3 font-medium text-right">Actions</th>
               </tr>
             </thead>
@@ -203,6 +207,11 @@ const SolutionsAdmin = () => {
                   <td className="px-4 py-3 text-gray-600 hidden md:table-cell max-w-xs">
                     <span className="line-clamp-2">
                       {solution.description}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-700">
+                      {solution.priority ?? 0}
                     </span>
                   </td>
                   <td className="px-4 py-3">
@@ -310,6 +319,24 @@ const SolutionsAdmin = () => {
                   value={form.link}
                   onChange={handleChange}
                   placeholder="e.g. /ERPDetail"
+                  className="border-gray-300 rounded-lg"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Priority (lower number shows first)
+                </label>
+                <Input
+                  name="priority"
+                  type="number"
+                  min={0}
+                  value={form.priority}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      priority: parseInt(e.target.value || "0", 10),
+                    })
+                  }
                   className="border-gray-300 rounded-lg"
                 />
               </div>

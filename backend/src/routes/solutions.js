@@ -10,6 +10,10 @@ const sanitize = (body = {}) => ({
   detail: body.detail ?? "",
   image_url: body.imageUrl ?? body.image_url ?? "",
   link: body.link ?? "",
+  priority:
+    typeof body.priority === "number" && body.priority >= 0
+      ? Math.round(body.priority)
+      : 0,
 });
 
 const mapRow = (row) => ({
@@ -19,6 +23,7 @@ const mapRow = (row) => ({
   detail: row.detail,
   imageUrl: row.image_url,
   link: row.link,
+  priority: row.priority ?? 0,
   createdAt: row.created_at,
 });
 
@@ -27,6 +32,7 @@ router.get("/", async (req, res) => {
   const { data, error } = await supabase
     .from("solutions")
     .select("*")
+    .order("priority", { ascending: true, nullsFirst: false })
     .order("created_at", { ascending: false });
 
   if (error) return res.status(500).json({ message: error.message });

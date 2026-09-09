@@ -16,6 +16,7 @@ export interface Solution {
   detail: string;
   imageUrl: string;
   link: string;
+  priority: number;
   createdAt?: string;
 }
 
