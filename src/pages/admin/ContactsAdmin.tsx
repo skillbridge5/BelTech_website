@@ -7,7 +7,7 @@ import {
   deleteContact,
   getErrorMessage,
 } from "../../api/client";
-import { Search, Eye, X, CheckCircle2, Reply, Inbox, Trash2 } from "lucide-react";
+import { Search, Eye, X, CheckCircle2, Inbox, Trash2 } from "lucide-react";
 
 interface Contact {
   id: string;
@@ -211,16 +211,6 @@ const ContactsAdmin = () => {
                       >
                         <Eye className="h-4 w-4" />
                       </button>
-                      {c.status !== "replied" && (
-                        <button
-                          onClick={() => changeStatus(c, "replied")}
-                          disabled={updating === c.id}
-                          className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors disabled:opacity-50"
-                          title="Mark as replied"
-                        >
-                          <Reply className="h-4 w-4" />
-                        </button>
-                      )}
                       <button
                         onClick={() => setDeleteTarget(c)}
                         className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
@@ -295,16 +285,6 @@ const ContactsAdmin = () => {
                 >
                   <CheckCircle2 className="h-4 w-4" />
                   Mark as read
-                </Button>
-              )}
-              {selected.status !== "replied" && (
-                <Button
-                  disabled={updating === selected.id}
-                  onClick={() => changeStatus(selected, "replied")}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white inline-flex items-center gap-2"
-                >
-                  <Reply className="h-4 w-4" />
-                  Mark as replied
                 </Button>
               )}
             </div>
