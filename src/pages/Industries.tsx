@@ -126,11 +126,15 @@ const Industries = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative w-full h-[700px] overflow-hidden">
+      <section className="relative w-full min-h-screen overflow-hidden">
         <div
-          className="absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover"
+          className="absolute inset-0 w-full h-full"
           style={{
             backgroundImage: `url(${hero})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundColor: "black",
           }}
         ></div>
         <div className="absolute inset-0 flex items-center">

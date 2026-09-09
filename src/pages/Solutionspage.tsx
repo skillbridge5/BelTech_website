@@ -62,10 +62,16 @@ const SolutionsPage = () => {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800 antialiased">
 
-      <section className="relative w-full h-[700px] overflow-hidden">
+      <section className="relative w-full min-h-screen overflow-hidden">
         <div
-          className="absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover"
-          style={{ backgroundImage: `url(${solutionHero})` }}
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: `url(${solutionHero})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundColor: "black",
+          }}
         ></div>
         <div
           className="absolute inset-0"

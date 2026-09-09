@@ -15,11 +15,17 @@ const About = () => {
         <div className="min-h-screen bg-white font-sans text-gray-800 antialiased">
             <main>
                 {/* Section 1: Hero Section */}
-              <section className="relative w-full h-[700px] overflow-hidden">
+              <section className="relative w-full min-h-screen overflow-hidden">
   {/* Background Image */}
   <div
-    className="absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover"
-    style={{ backgroundImage: `url(${abouthero})` }}
+    className="absolute inset-0 w-full h-full"
+    style={{
+      backgroundImage: `url(${abouthero})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundColor: "black",
+    }}
   ></div>
 
   {/* Gradient Overlay */}

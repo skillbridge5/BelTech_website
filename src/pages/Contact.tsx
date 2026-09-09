@@ -90,10 +90,16 @@ const Contact = () => {
       <Toaster position="top-right" />
 
       {/* Hero Section */}
-      <section className="relative w-full h-[700px] overflow-hidden">
+      <section className="relative w-full min-h-screen overflow-hidden">
         <div
-          className="absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover"
-          style={{ backgroundImage: `url(${contactHero})` }}
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: `url(${contactHero})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundColor: "black",
+          }}
         ></div>
         <div
           className="absolute inset-0"
