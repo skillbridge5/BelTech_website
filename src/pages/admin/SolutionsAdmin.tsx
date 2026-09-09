@@ -356,9 +356,9 @@ const SolutionsAdmin = () => {
                 Cancel
               </Button>
               <Button
-                variant="destructive"
                 onClick={confirmDelete}
                 disabled={deleting}
+                className="bg-red-600 hover:bg-red-700 text-white"
               >
                 {deleting ? "Deleting..." : "Delete"}
               </Button>
