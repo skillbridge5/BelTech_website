@@ -88,28 +88,6 @@ const Dashboard = () => {
           </Card>
         ))}
       </div>
-
-      <div className="bg-white border border-gray-200 rounded-xl p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">
-          Quick Actions
-        </h2>
-        <div className="flex flex-wrap gap-4">
-          <Link
-            to="/admin/solutions"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0078B7] text-white rounded-lg font-medium hover:bg-[#005C8A] transition-colors text-sm"
-          >
-            <FolderKanban className="h-4 w-4" />
-            Manage Solutions
-          </Link>
-          <Link
-            to="/admin/blog"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition-colors text-sm"
-          >
-            <FileText className="h-4 w-4" />
-            Manage Posts
-          </Link>
-        </div>
-      </div>
     </div>
   );
 };
