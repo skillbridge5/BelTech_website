@@ -1,6 +1,6 @@
 import { NavLink, Outlet, useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import { LayoutDashboard, FileText, FolderKanban, LogOut } from "lucide-react";
+import { LayoutDashboard, FileText, FolderKanban, Mail, LogOut } from "lucide-react";
 import logo from "../../assets/new_logo.png";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -8,6 +8,7 @@ const navItems = [
   { name: "Dashboard", path: "/admin", icon: LayoutDashboard, end: true },
   { name: "Solutions", path: "/admin/solutions", icon: FolderKanban, end: false },
   { name: "Blog", path: "/admin/blog", icon: FileText, end: false },
+  { name: "Contact", path: "/admin/contact", icon: Mail, end: false },
 ];
 
 const AdminLayout = () => {
