@@ -346,7 +346,7 @@ const SolutionsAdmin = () => {
               <span className="font-medium text-gray-900">
                 "{deleteTarget.title}"
               </span>
-              ? This action cannot be undone.
+              ?
             </p>
             <div className="flex justify-end gap-3">
               <Button
