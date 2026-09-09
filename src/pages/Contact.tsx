@@ -111,7 +111,7 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Contact Us</h1>
+              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Streamline. Automate. Scale.</h1>
               <p className="mt-4 text-lg md:text-xl max-w-2xl">
                 Want to discuss a project or ask questions? <br />
                 Let us transform your business with smart software and a tailored ERP.

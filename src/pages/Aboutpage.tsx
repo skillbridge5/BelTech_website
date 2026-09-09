@@ -42,7 +42,7 @@ const About = () => {
         transition={{ duration: 0.6 }}
       >
         <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
-          About Us
+          Streamline. Automate. Scale.
         </h1>
         <p className="mt-4 text-lg md:text-xl max-w-2xl">
           A company born in Ethiopia, supporting businesses across Africa with digital transformation solutions.

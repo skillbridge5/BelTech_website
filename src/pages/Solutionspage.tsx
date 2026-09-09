@@ -84,7 +84,7 @@ const SolutionsPage = () => {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
-                Solution in Action
+                Streamline. Automate. Scale.
               </h1>
                <p className="mt-4 text-lg md:text-xl max-w-2xl">
                 Real projects. Real impact. Discover how we help businesses work smarter.

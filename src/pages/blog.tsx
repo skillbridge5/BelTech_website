@@ -86,7 +86,7 @@ const Blog = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Blog</h1>
+              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Streamline. Automate. Scale.</h1>
               <p className="mt-5 text-lg md:text-xl max-w-2xl leading-snug">
                 Explore our latest articles and guides on digital transformation and technology in Africa.
               </p>
