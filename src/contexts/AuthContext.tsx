@@ -18,19 +18,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, [token]);
 
   const login = async (email: string, password: string) => {
-    // First try the real backend auth endpoint.
-    try {
-      const res = await adminLogin(email, password);
-      const authToken = res.data?.token || res.data?.data?.token;
-      if (authToken) {
-        localStorage.setItem(TOKEN_KEY, authToken);
-        setToken(authToken);
-        return;
-      }
-      throw new Error("No token returned from server");
-    } catch (err) {
-      throw err;
+    const res = await adminLogin(email, password);
+    const authToken = res.data?.token || res.data?.data?.token;
+    if (authToken) {
+      localStorage.setItem(TOKEN_KEY, authToken);
+      setToken(authToken);
+      return;
     }
+    throw new Error("No token returned from server");
   };
 
   const logout = () => {

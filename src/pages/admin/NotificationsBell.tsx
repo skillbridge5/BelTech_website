@@ -81,6 +81,7 @@ const NotificationsBell = () => {
     check(true);
     const id = setInterval(() => check(true), POLL_INTERVAL_MS);
     return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

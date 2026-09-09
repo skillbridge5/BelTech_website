@@ -6,7 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import contactHero from "./../assets/contactHero.png";
 import above_the_footer from "./../assets/above_the_footer.png";
 import { Dot } from "lucide-react";
-import { submitContact } from "../api/client";
+import { submitContact, getErrorMessage } from "../api/client";
 import { motion } from "framer-motion";
 
 const Contact = () => {
@@ -19,7 +19,7 @@ const Contact = () => {
     message: "",
   });
 
-  const [errors, setErrors] = useState<any>({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,7 +30,7 @@ const Contact = () => {
 
     // Now all backend-required fields are checked
     const requiredFields = ["firstName", "lastName", "email", "phone", "organization", "message"] as const;
-    const newErrors: any = {};
+    const newErrors: Record<string, string> = {};
 
     requiredFields.forEach((field) => {
       if (!formData[field]) {
@@ -73,8 +73,8 @@ const Contact = () => {
           organization: "",
           message: "",
         });
-      } catch (err: any) {
-        toast.error(err?.response?.data?.message || "Failed to send message", {
+      } catch (err) {
+        toast.error(getErrorMessage(err, "Failed to send message"), {
           style: { background: "#D82727", color: "#ffffff" },
         });
       }
