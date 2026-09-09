@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "../../components/ui/button";
 import toast, { Toaster } from "react-hot-toast";
 import {
@@ -44,6 +45,7 @@ const ContactsAdmin = () => {
   const [updating, setUpdating] = useState<string | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<Contact | null>(null);
   const [deleting, setDeleting] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const load = async () => {
     setLoading(true);
@@ -63,6 +65,19 @@ const ContactsAdmin = () => {
   useEffect(() => {
     load();
   }, []);
+
+  useEffect(() => {
+    const id = searchParams.get("open");
+    if (!id) return;
+    const contact = contacts.find((c) => c.id === id);
+    if (contact) {
+      setSelected(contact);
+      const next = new URLSearchParams(searchParams);
+      next.delete("open");
+      setSearchParams(next, { replace: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams, contacts]);
 
   const changeStatus = async (contact: Contact, status: Contact["status"]) => {
     setUpdating(contact.id);

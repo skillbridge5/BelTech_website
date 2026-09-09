@@ -23,12 +23,17 @@ const NotificationsBell = () => {
   const [open, setOpen] = useState(false);
   const prevCountRef = useRef<number | null>(null);
 
+  const openContact = (id: string) => {
+    setOpen(false);
+    navigate(`/admin/contact?open=${id}`);
+  };
+
   const showToast = (contact: Contact) => {
     toast.custom((t) => (
       <div
         onClick={() => {
           toast.dismiss(t.id);
-          navigate("/admin/contact");
+          openContact(contact.id);
         }}
         className="flex items-start gap-3 bg-white rounded-xl shadow-lg border border-gray-200 px-4 py-3 cursor-pointer hover:bg-gray-50 transition-colors min-w-[300px]"
       >
@@ -118,10 +123,7 @@ const NotificationsBell = () => {
                 {newest.map((c) => (
                   <button
                     key={c.id}
-                    onClick={() => {
-                      setOpen(false);
-                      navigate("/admin/contact");
-                    }}
+                    onClick={() => openContact(c.id)}
                     className="w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0"
                   >
                     <p className="text-sm font-medium text-gray-900">
