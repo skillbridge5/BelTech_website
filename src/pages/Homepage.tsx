@@ -876,6 +876,15 @@ const Homepage: React.FC = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
 
+              <div className="flex h-full">
+                <img
+                  src={erpNextImg}
+                  alt="ERP Next Interface"
+                  className="w-full h-full rounded-2xl"
+                  style={{ height: "108%", width: "108%" }}
+                />
+              </div>
+
               <div className="flex flex-col gap-6 h-full">
                 <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex items-start space-x-4">
                   <Zap className="w-6 h-6 text-[#0078B7] flex-shrink-0" />
@@ -912,15 +921,6 @@ const Homepage: React.FC = () => {
                     </p>
                   </div>
                 </div>
-              </div>
-
-              <div className="flex h-full">
-                <img
-                  src={erpNextImg}
-                  alt="ERP Next Interface"
-                  className="w-full h-full rounded-2xl"
-                  style={{ height: "108%", width: "108%" }}
-                />
               </div>
             </div>
           </div>
