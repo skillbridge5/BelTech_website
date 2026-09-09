@@ -82,4 +82,15 @@ router.patch("/:id/status", requireAuth, async (req, res) => {
   return res.json({ data });
 });
 
+// DELETE /contact/:id (admin)
+router.delete("/:id", requireAuth, async (req, res) => {
+  const { error } = await supabase
+    .from("contacts")
+    .delete()
+    .eq("id", req.params.id);
+
+  if (error) return res.status(500).json({ message: error.message });
+  return res.status(204).send();
+});
+
 export default router;

@@ -87,6 +87,8 @@ export const updateContactStatus = (
   status: "new" | "read" | "replied"
 ) => api.patch(`/contact/${id}/status`, { status });
 
+export const deleteContact = (id: string) => api.delete(`/contact/${id}`);
+
 // ===== Insights (public) =====
 export const loadInsights = async () => {
   try {

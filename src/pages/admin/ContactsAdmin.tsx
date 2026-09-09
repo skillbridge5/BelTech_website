@@ -4,9 +4,10 @@ import toast, { Toaster } from "react-hot-toast";
 import {
   fetchContacts,
   updateContactStatus,
+  deleteContact,
   getErrorMessage,
 } from "../../api/client";
-import { Search, Eye, X, CheckCircle2, Reply, Inbox } from "lucide-react";
+import { Search, Eye, X, CheckCircle2, Reply, Inbox, Trash2 } from "lucide-react";
 
 interface Contact {
   id: string;
@@ -41,6 +42,8 @@ const ContactsAdmin = () => {
   >("all");
   const [selected, setSelected] = useState<Contact | null>(null);
   const [updating, setUpdating] = useState<string | null>(null);
+  const [deleteTarget, setDeleteTarget] = useState<Contact | null>(null);
+  const [deleting, setDeleting] = useState(false);
 
   const load = async () => {
     setLoading(true);
@@ -78,6 +81,26 @@ const ContactsAdmin = () => {
       });
     } finally {
       setUpdating(null);
+    }
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteTarget) return;
+    setDeleting(true);
+    try {
+      await deleteContact(deleteTarget.id);
+      toast.success("Contact deleted", {
+        style: { background: "#0078B7", color: "#ffffff" },
+      });
+      setDeleteTarget(null);
+      setSelected((cur) => (cur && cur.id === deleteTarget.id ? null : cur));
+      load();
+    } catch (err) {
+      toast.error(getErrorMessage(err, "Failed to delete contact"), {
+        style: { background: "#D82727", color: "#ffffff" },
+      });
+    } finally {
+      setDeleting(false);
     }
   };
 
@@ -198,6 +221,13 @@ const ContactsAdmin = () => {
                           <Reply className="h-4 w-4" />
                         </button>
                       )}
+                      <button
+                        onClick={() => setDeleteTarget(c)}
+                        className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                        title="Delete"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -277,6 +307,39 @@ const ContactsAdmin = () => {
                   Mark as replied
                 </Button>
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Confirm Modal */}
+      {deleteTarget && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl max-w-md w-full p-6">
+            <h3 className="text-lg font-bold text-gray-900 mb-2">
+              Delete Contact
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Are you sure you want to delete{" "}
+              <span className="font-medium text-gray-900">
+                "{deleteTarget.name}"
+              </span>
+              ?
+            </p>
+            <div className="flex justify-end gap-3">
+              <Button
+                variant="outline"
+                onClick={() => setDeleteTarget(null)}
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={confirmDelete}
+                disabled={deleting}
+                className="bg-red-600 hover:bg-red-700 text-white"
+              >
+                {deleting ? "Deleting..." : "Delete"}
+              </Button>
             </div>
           </div>
         </div>
