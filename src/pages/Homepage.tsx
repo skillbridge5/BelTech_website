@@ -672,6 +672,21 @@ const Homepage: React.FC = () => {
                   style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
                 >
                   <div className="flex-shrink-0 h-12 w-12 bg-[#0078B7] flex items-center justify-center rounded-sm">
+                    <Layers className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-black mb-2">ERP Next experts</h3>
+                    <p className="text-base font-normal text-black">
+                      Certified ERP Next specialists delivering open-source ERP implementations at any scale.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="bg-white p-6 rounded-3xl flex items-start space-x-4 flex-1 border-l-4 border-[#0078B7] transform transition-transform duration-300 hover:-translate-y-0.5"
+                  style={{ boxShadow: '4px 4px 10px rgba(0,0,0,0.1)' }}
+                >
+                  <div className="flex-shrink-0 h-12 w-12 bg-[#0078B7] flex items-center justify-center rounded-sm">
                     <Globe className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -839,6 +854,70 @@ const Homepage: React.FC = () => {
                 <img
                   src={odoo}
                   alt="Odoo Interface"
+                  className="w-full h-full rounded-2xl"
+                  style={{ height: "108%", width: "108%" }}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+          {/* why erp next part */}
+        <section className="py-10 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Why ERP Next?
+              </h2>
+              <p className="text-xl font-normal text-black max-w-3xl mx-auto">
+                ERP Next is a powerful open-source ERP trusted by businesses across the globe.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+
+              <div className="flex flex-col gap-6 h-full">
+                <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex items-start space-x-4">
+                  <Zap className="w-6 h-6 text-[#0078B7] flex-shrink-0" />
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-1">
+                      Free & Open Source
+                    </h3>
+                    <p className="text-base font-normal text-gray-700">
+                      No licensing fees—invest your budget where it matters: customization and support.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex items-start space-x-4">
+                  <Boxes className="w-6 h-6 text-[#0078B7] flex-shrink-0" />
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-1">
+                      Complete Business Suite
+                    </h3>
+                    <p className="text-base font-normal text-gray-700">
+                      Accounting, CRM, inventory, HR, and manufacturing in a single, connected platform.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex items-start space-x-4">
+                  <Cloud className="w-6 h-6 text-[#0078B7] flex-shrink-0" />
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-1">
+                      Modern & Flexible
+                    </h3>
+                    <p className="text-base font-normal text-gray-700">
+                      Built on a modern web stack that adapts to your workflows and scales as your business grows.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex h-full">
+                <img
+                  src={erpNextImg}
+                  alt="ERP Next Interface"
                   className="w-full h-full rounded-2xl"
                   style={{ height: "108%", width: "108%" }}
                 />
