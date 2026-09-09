@@ -9,13 +9,51 @@ export type ContactPayload = {
   message: string;
 };
 
-// Helper to remove undefined values
-const cleanPayload = (payload: ContactPayload) => {
+export interface Solution {
+  _id: string;
+  title: string;
+  description: string;
+  detail: string;
+  imageUrl: string;
+  link: string;
+  createdAt?: string;
+}
+
+export interface Insight {
+  _id: string;
+  title: string;
+  description: string;
+  detail: string;
+  date: string;
+  imageUrl: string;
+  createdAt?: string;
+}
+
+type SolutionPayload = Omit<Solution, "_id" | "createdAt">;
+type InsightPayload = Omit<Insight, "_id" | "createdAt">;
+
+// Helper to remove undefined/empty values
+const cleanPayload = (payload: Record<string, unknown>) => {
   return Object.fromEntries(
-    Object.entries(payload).filter(([_, v]) => v !== undefined && v !== "")
+    Object.entries(payload).filter(([, v]) => v !== undefined && v !== "")
   );
 };
 
+// Helper to extract a readable error message from an unknown error
+export const getErrorMessage = (err: unknown, fallback: string): string => {
+  if (err && typeof err === "object" && "response" in err) {
+    const response = (err as { response?: { data?: { message?: string } } })
+      .response;
+    if (response?.data?.message) return response.data.message;
+  }
+  return fallback;
+};
+
+// ===== Auth =====
+export const adminLogin = (email: string, password: string) =>
+  api.post("/auth/login", { email, password });
+
+// ===== Contact =====
 // Submit a contact message
 export const submitContact = (payload: ContactPayload) => {
   const cleaned = cleanPayload(payload);
@@ -26,7 +64,7 @@ export const submitContact = (payload: ContactPayload) => {
   });
 };
 
-// Optional: Admin endpoints
+// Admin endpoints
 export const fetchContacts = (page = 1, limit = 10) =>
   api.get(`/contact?page=${page}&limit=${limit}`);
 
@@ -37,14 +75,37 @@ export const updateContactStatus = (
   status: "new" | "read" | "replied"
 ) => api.patch(`/contact/${id}/status`, { status });
 
-// Fetch insights
+// ===== Insights (public) =====
 export const loadInsights = async () => {
   try {
     const res = await api.get("/insights");
-    // Extract the actual array
     return res.data.data.insights;
   } catch (err) {
     console.error("Failed to fetch insights", err);
     return [];
   }
 };
+
+// ===== Solutions =====
+export const getSolutions = async (): Promise<Solution[]> => {
+  const res = await api.get("/solutions");
+  const data = res.data;
+  return (data?.data?.solutions || data?.solutions || data?.data || data) ?? [];
+};
+
+export const createSolution = (payload: SolutionPayload) =>
+  api.post("/solutions", payload);
+
+export const updateSolution = (id: string, payload: SolutionPayload) =>
+  api.put(`/solutions/${id}`, payload);
+
+export const deleteSolution = (id: string) => api.delete(`/solutions/${id}`);
+
+// ===== Insights (admin) =====
+export const createInsight = (payload: InsightPayload) =>
+  api.post("/insights", payload);
+
+export const updateInsight = (id: string, payload: InsightPayload) =>
+  api.put(`/insights/${id}`, payload);
+
+export const deleteInsight = (id: string) => api.delete(`/insights/${id}`);

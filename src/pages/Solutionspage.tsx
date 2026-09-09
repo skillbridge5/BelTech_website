@@ -1,13 +1,64 @@
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import solutionHero from "../assets/solutionpage/heroNew.png";
 import importEport from "./../assets/solutionpage/importExport.jpg";
 import eLearning from "./../assets/solutionpage/eLearning.jpg";
 import DigitalMarketingDetail from "../assets/solutionpage/digitalMarketing.jpg";
 import above_the_footer from "../assets/above_the_footer.png";
 import { motion } from "framer-motion";
+import { getSolutions } from '../api/client';
+import type { Solution } from '../api/client';
+
+type SolutionCard = Omit<Solution, "_id"> & { _id?: string };
+
+const fallbackSolutions: SolutionCard[] = [
+  {
+    title: "ERP for Import-Export company",
+    description: "Deployed a full-scale Odoo ERP to manage production, sales, inventory, and logistics.",
+    imageUrl: importEport,
+    link: "/ERPDetail",
+    detail: "",
+  },
+  {
+    title: "Website for SkillBridge Institute Of Technology",
+    description: "Built custom software with tailored features, secure workflows, and automated reporting feature",
+    imageUrl: eLearning,
+    link: "/CharityPlatform",
+    detail: "",
+  },
+  {
+    title: "Website for Eyoha media",
+    description: "Built custom software with tailored features, secure workflows, and automated reporting feature",
+    imageUrl: DigitalMarketingDetail,
+    link: "/RetailAuto",
+    detail: "",
+  },
+];
 
 const SolutionsPage = () => {
+  const [solutions, setSolutions] = useState<SolutionCard[]>(fallbackSolutions);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const data = await getSolutions();
+        if (mounted && Array.isArray(data) && data.length > 0) {
+          setSolutions(data);
+        }
+      } catch (err) {
+        console.error("Failed to load solutions, using fallback", err);
+      } finally {
+        if (mounted) setLoaded(true);
+      }
+    })();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800 antialiased">
 
@@ -62,97 +113,44 @@ const SolutionsPage = () => {
         </motion.div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-
-  <motion.div
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.3 }}
-    transition={{ duration: 0.6, delay: 0.1 }}
-    className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden"
-  >
-    <img
-      src={importEport}
-      alt="ERP for Textile Manufacturer"
-      className="w-full aspect-video object-cover"
-    />
-    <div className="px-6 pt-4 pb-3">
-      <h3 className="text-xl font-bold leading-snug mb-1">
-      ERP for Import-Export company
-      </h3>
-    </div>
-    <div className="px-6 pb-6">
-      <p className="text-base font-normal text-gray-700 leading-relaxed">
-        Deployed a full-scale Odoo ERP to manage production, sales, inventory, and logistics.
-      </p>
-      <Link
-        to="/ERPDetail"
-        className="mt-4 inline-block text-[#0078B7] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
-      >
-        Read More
-      </Link>
-    </div>
-  </motion.div>
-
-  <motion.div
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.3 }}
-    transition={{ duration: 0.6, delay: 0.2 }}
-    className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden"
-  >
-    <img
-      src={eLearning}
-      alt="Charity Platform"
-      className="w-full aspect-video object-cover"
-    />
-    <div className="px-6 pt-4 pb-3">
-      <h3 className="text-xl font-bold leading-snug mb-1">
-        Website for SkillBridge Institute Of Technology
-      </h3>
-    </div>
-    <div className="px-6 pb-6">
-      <p className="text-base font-normal text-gray-700 leading-relaxed">
-    Built custom software with tailored features, secure workflows, and automated reporting feature
-      </p>
-      <Link
-        to="/CharityPlatform"
-        className="mt-4 inline-block text-[#0078B7] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
-      >
-        Read More
-      </Link>
-    </div>
-  </motion.div>
-
-  <motion.div
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.3 }}
-    transition={{ duration: 0.6, delay: 0.3 }}
-    className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden"
-  >
-    <img
-      src={DigitalMarketingDetail}
-      alt="Digital Marketing"
-      className="w-full aspect-video object-cover"
-    />
-    <div className="px-6 pt-4 pb-3">
-      <h3 className="text-xl font-bold leading-snug mb-1">
-       Website for Eyoha media
-      </h3>
-    </div>
-    <div className="px-6 pb-6">
-      <p className="text-base font-normal text-gray-700 leading-relaxed">
-       Built custom software with tailored features, secure workflows, and automated reporting feature
-         </p>
-      <Link
-        to="/RetailAuto"
-        className="mt-4 inline-block text-[#0078B7] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
-      >
-        Read More
-      </Link>
-    </div>
-  </motion.div>
-
+        {solutions.length === 0 && loaded ? (
+          <p className="text-center text-gray-500 col-span-full">
+            No solutions available yet.
+          </p>
+        ) : (
+          solutions.map((solution, index) => (
+            <motion.div
+              key={solution._id || solution.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
+              className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden"
+            >
+              <img
+                src={solution.imageUrl}
+                alt={solution.title}
+                className="w-full aspect-video object-cover"
+              />
+              <div className="px-6 pt-4 pb-3">
+                <h3 className="text-xl font-bold leading-snug mb-1">
+                  {solution.title}
+                </h3>
+              </div>
+              <div className="px-6 pb-6">
+                <p className="text-base font-normal text-gray-700 leading-relaxed">
+                  {solution.description}
+                </p>
+                <Link
+                  to={solution.link || "/solutions"}
+                  className="mt-4 inline-block text-[#0078B7] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
+                >
+                  Read More
+                </Link>
+              </div>
+            </motion.div>
+          ))
+        )}
       </div>
 
       </section>

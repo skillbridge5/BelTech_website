@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Homepage from "./pages/Homepage";
@@ -8,29 +9,57 @@ import SolutionsPage from "./pages/Solutionspage";
 import ERPDetail from "./pages/ERPDetail";
 import CharityPlatform from "./pages/CharityPlatform";
 import RetailAuto from "./pages/RetailAuto";
-import Insights from "./pages/insights"
+import Insights from "./pages/insights";
 import Contact from "./pages/Contact";
 import Industries from "./pages/Industries";
+import Login from "./pages/admin/Login";
+import AdminLayout from "./pages/admin/AdminLayout";
+import Dashboard from "./pages/admin/Dashboard";
+import SolutionsAdmin from "./pages/admin/SolutionsAdmin";
+import InsightsAdmin from "./pages/admin/InsightsAdmin";
+import ProtectedRoute from "./components/ProtectedRoute";
 
+const PublicLayout = () => (
+  <>
+    <Navbar />
+    <Outlet />
+    <Footer />
+  </>
+);
 
 export default function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/about" element={<Aboutpage />} />
-        <Route path ="/services" element={<Servicespage />} />
-        <Route path="/solutions" element = {<SolutionsPage />} />
-        <Route path="/ERPDetail" element = {<ERPDetail />} />
-        <Route path="/CharityPlatform" element = {<CharityPlatform />} />
-        <Route path="/RetailAuto" element ={<RetailAuto />} />
-        <Route path="/insights" element ={<Insights />} />
-        <Route path="/Contact" element ={<Contact />} />
-        <Route path="/industries" element ={<Industries />} />
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* Public site (with Navbar/Footer) */}
+          <Route element={<PublicLayout />}>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/about" element={<Aboutpage />} />
+            <Route path="/services" element={<Servicespage />} />
+            <Route path="/solutions" element={<SolutionsPage />} />
+            <Route path="/ERPDetail" element={<ERPDetail />} />
+            <Route path="/CharityPlatform" element={<CharityPlatform />} />
+            <Route path="/RetailAuto" element={<RetailAuto />} />
+            <Route path="/insights" element={<Insights />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/Contact" element={<Contact />} />
+            <Route path="/industries" element={<Industries />} />
+          </Route>
 
-      </Routes>
-      <Footer />
-    </Router>
+          {/* Admin login (standalone) */}
+          <Route path="/admin/login" element={<Login />} />
+
+          {/* Admin panel (protected, no public Navbar/Footer) */}
+          <Route path="/admin" element={<ProtectedRoute />}>
+            <Route element={<AdminLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="solutions" element={<SolutionsAdmin />} />
+              <Route path="insights" element={<InsightsAdmin />} />
+            </Route>
+          </Route>
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
