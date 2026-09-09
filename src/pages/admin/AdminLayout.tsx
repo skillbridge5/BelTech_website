@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { LayoutDashboard, FileText, FolderKanban, Mail, LogOut } from "lucide-react";
+import NotificationsBell from "./NotificationsBell";
 import logo from "../../assets/new_logo.png";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -72,8 +73,13 @@ const AdminLayout = () => {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 ml-64 p-8">
-        <Outlet />
+      <main className="flex-1 ml-64 flex flex-col">
+        <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-end px-8 z-20">
+          <NotificationsBell />
+        </header>
+        <div className="flex-1 overflow-y-auto p-8">
+          <Outlet />
+        </div>
       </main>
     </div>
   );
