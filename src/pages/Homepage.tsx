@@ -15,7 +15,8 @@ import hero from "./../assets/homepage/hero.png";
 import odoo from "./../assets/homepage/odoo.png";
 import odooErp from "./../assets/homepage/oddoNew.png";
 import custom_soft_dev from "./../assets/homepage/customSoftNew.png";
-import erpNextImg from "./../assets/servicepage/ERPImp.png";
+import whyErpNextImg from "./../assets/Why ERP Next.png";
+import erpNextCardImg from "./../assets/ERP Next Implementation.png";
 import bussiness_automation_int from "./../assets/homepage/automationAndIntegration.jpg";
 import eyoha from "./../assets/clientLogo/eyoha.png";
 import Roha from "./../assets/clientLogo/RohaCake.png";
@@ -553,9 +554,9 @@ const Homepage: React.FC = () => {
 
               <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
                 <div className="w-full h-65 overflow-hidden">
-                  <img
-                    src={erpNextImg}
-                    alt="ERP Next Implementation"
+<img
+                  src={erpNextCardImg}
+                  alt="ERP Next Implementation"
                     className="w-full h-full object-cover rounded-t-2xl"
                   />
                 </div>
@@ -878,7 +879,7 @@ const Homepage: React.FC = () => {
 
               <div className="flex h-full">
                 <img
-                  src={erpNextImg}
+                  src={whyErpNextImg}
                   alt="ERP Next Interface"
                   className="w-full h-full rounded-2xl"
                   style={{ height: "108%", width: "108%" }}
