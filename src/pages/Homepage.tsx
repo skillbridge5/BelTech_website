@@ -9,7 +9,7 @@ import {
   ChevronRight, ArrowRight,
   BarChart3,
   Handshake,
-  Boxes, ListTodo, Network, Cloud
+  Boxes, ListTodo, Network, Cloud, Bot, Workflow, Rocket
 } from "lucide-react";
 import { motion } from "framer-motion";
 import hero from "./../assets/homepage/hero.png";
@@ -955,6 +955,62 @@ const Homepage: React.FC = () => {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Automation Tools section */}
+        <section className="py-10 bg-[#F0F5F9]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Automation That Powers Your Business
+              </h2>
+              <p className="text-xl font-normal text-black max-w-3xl mx-auto">
+                We integrate and automate your workflows using the world's leading automation platforms.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex flex-col items-center text-center space-y-3">
+                <Bot className="w-10 h-10 text-[#0078B7]" />
+                <h3 className="text-xl font-bold text-gray-900">AI</h3>
+                <p className="text-base font-normal text-gray-700">
+                  Intelligent automation that understands, predicts, and decides—20x faster than manual work.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex flex-col items-center text-center space-y-3">
+                <Workflow className="w-10 h-10 text-[#0078B7]" />
+                <h3 className="text-xl font-bold text-gray-900">n8n</h3>
+                <p className="text-base font-normal text-gray-700">
+                  Fair-code workflow automation that connects your apps with 400+ integrations.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex flex-col items-center text-center space-y-3">
+                <Zap className="w-10 h-10 text-[#0078B7]" />
+                <h3 className="text-xl font-bold text-gray-900">Zapier</h3>
+                <p className="text-base font-normal text-gray-700">
+                  Automate repetitive tasks between 6,000+ apps without writing a single line of code.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex flex-col items-center text-center space-y-3">
+                <Building2 className="w-10 h-10 text-[#0078B7]" />
+                <h3 className="text-xl font-bold text-gray-900">Zoho</h3>
+                <p className="text-base font-normal text-gray-700">
+                  A complete suite of business apps—CRM, books, and workflows—working together seamlessly.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex flex-col items-center text-center space-y-3">
+                <Rocket className="w-10 h-10 text-[#0078B7]" />
+                <h3 className="text-xl font-bold text-gray-900">Make</h3>
+                <p className="text-base font-normal text-gray-700">
+                  Visual automation builder that creates powerful scenarios across 2,000+ apps.
+                </p>
               </div>
             </div>
           </div>
