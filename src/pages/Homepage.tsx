@@ -14,11 +14,8 @@ import {
 import { motion } from "framer-motion";
 import hero from "./../assets/homepage/hero.png";
 import odoo from "./../assets/homepage/odoo.png";
-import odooErp from "./../assets/homepage/oddoNew.png";
-import custom_soft_dev from "./../assets/homepage/customSoftNew.png";
 import whyErpNextImg from "./../assets/Why ERP Next.png";
-import erpNextCardImg from "./../assets/ERP Next Implementation.png";
-import bussiness_automation_int from "./../assets/homepage/automationAndIntegration.jpg";
+import beltechImpact from "./../assets/homepage/beltechImpact.png";
 import eyoha from "./../assets/clientLogo/eyoha.png";
 import Roha from "./../assets/clientLogo/RohaCake.png";
 import SkillsBridge from "./../assets/clientLogo/skillBridge.png";
@@ -557,114 +554,50 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
-                <div className="w-full h-65 overflow-hidden">
-                  <img
-                    src={odooErp}
-                    alt="Odoo ERP Implementation"
-                    className="w-full h-full object-cover rounded-t-2xl"
-                  />
-                </div>
-                <div className="p-8">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
-                    Odoo ERP Implementation
+              {[
+                {
+                  icon: Boxes,
+                  title: "Odoo ERP Implementation",
+                  desc: "A tailored Odoo ERP system to streamline your entire workflow and gain real-time insights.",
+                },
+                {
+                  icon: Layers,
+                  title: "ERP Next Implementation",
+                  desc: "An open-source ERP that unifies finance, sales, HR, and operations for businesses of all sizes.",
+                },
+                {
+                  icon: Workflow,
+                  title: "Automation & Integration",
+                  desc: "Automation workflows that reduce errors, cut down on costs, and free your team's time.",
+                },
+                {
+                  icon: Network,
+                  title: "Custom Software Development",
+                  desc: "Web and mobile applications designed to enhance your operations and solve specific challenges.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="bg-white rounded-2xl p-8 shadow-md shadow-gray-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                >
+                  <div className="h-14 w-14 rounded-xl bg-[#0078B7]/10 flex items-center justify-center mb-6">
+                    <item.icon className="h-7 w-7 text-[#0078B7]" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {item.title}
                   </h3>
-                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
-                    A tailored Odoo ERP system to
-                    streamline your entire workflow and
-                    gain real-time insights.
-
+                  <p className="text-base text-gray-600 mb-6 flex-1">
+                    {item.desc}
                   </p>
                   <a
                     onClick={() => (window.location.href = "/Services")}
-                    className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
+                    className="text-[#0078B7] font-semibold flex items-center gap-1 hover:gap-2 transition-all cursor-pointer"
                   >
-                    <span>Learn More</span>
+                    Learn More
+                    <ArrowRight className="h-4 w-4" />
                   </a>
                 </div>
-              </div>
-
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
-                <div className="w-full h-65 overflow-hidden">
-<img
-                  src={erpNextCardImg}
-                  alt="ERP Next Implementation"
-                    className="w-full h-full object-cover rounded-t-2xl"
-                  />
-                </div>
-                <div className="p-8">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
-                    ERP Next Implementation
-                  </h3>
-                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
-                    An open-source ERP that unifies
-                    finance, sales, HR, and operations
-                    for businesses of all sizes.
-
-                  </p>
-                  <a
-                    onClick={() => (window.location.href = "/Services")}
-                    className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
-                  >
-                    <span>Learn More</span>
-                  </a>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
-                <div className="w-full h-65 overflow-hidden">
-                  <img
-                    src={bussiness_automation_int}
-                    alt="Business Automation & Integration"
-                    className="w-full h-full object-cover rounded-t-2xl"
-                  />
-                </div>
-                <div className="p-8">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
-                    Automation & Integration
-                  </h3>
-                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
-                    Automation workflows that reduce
-                    errors, cut down on costs, and free your
-                    team's time.
-
-                  </p>
-                  <a
-                    onClick={() => (window.location.href = "/Services")}
-                    className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
-                  >
-                    <span>Learn More</span>
-                  </a>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl transition-all duration-300">
-                <div className="w-full h-65 overflow-hidden">
-                  <img
-                    src={custom_soft_dev}
-                    alt="Custom Software Development"
-                    className="w-full h-full object-cover rounded-t-2xl"
-                  />
-                </div>
-                <div className="p-8">
-                  <h3 className="mb-3 whitespace-nowrap" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>
-                    Custom Software Development
-                  </h3>
-                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>
-                    Web and mobile applications designed
-                    to enhance your operations and solve
-                    specific challenges.
-
-                  </p>
-                  <a
-                    onClick={() => (window.location.href = "/Services")}
-                    className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer"
-                  >
-                    <span>Learn More</span>
-                  </a>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
