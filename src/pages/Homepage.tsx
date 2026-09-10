@@ -9,7 +9,7 @@ import {
   ChevronRight, ArrowRight,
   BarChart3,
   Handshake,
-  Boxes, ListTodo, Network, Cloud, Bot, Workflow, Rocket
+  Boxes, ListTodo, Network, Cloud, Bot, Workflow, Rocket, Receipt
 } from "lucide-react";
 import { motion } from "framer-motion";
 import hero from "./../assets/homepage/hero.png";
@@ -1010,6 +1010,14 @@ const Homepage: React.FC = () => {
                 <h3 className="text-xl font-bold text-gray-900">Make</h3>
                 <p className="text-base font-normal text-gray-700">
                   Visual automation builder that creates powerful scenarios across 2,000+ apps.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex flex-col items-center text-center space-y-3">
+                <Receipt className="w-10 h-10 text-[#0078B7]" />
+                <h3 className="text-xl font-bold text-gray-900">Xero</h3>
+                <p className="text-base font-normal text-gray-700">
+                  Beautiful cloud accounting that automates invoicing, bookkeeping, and finances for growing teams.
                 </p>
               </div>
             </div>
