@@ -22,7 +22,6 @@ import SkillsBridge from "./../assets/clientLogo/skillBridge.png";
 import diligent from "./../assets/clientLogo/diligent.png";
 import firma from "./../assets/clientLogo/firma.jpg";
 import above_the_footer from "./../assets/above_the_footer.png";
-import beltechImpact from "./../assets/homepage/beltechImpact.png";
 import businessOperationsImg from "./../assets/homepage/business-operations.png";
 import market from "../../src/assets/in/market.png";
 import importexport from "../../src/assets/in/import.png";
