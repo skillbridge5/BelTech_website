@@ -587,11 +587,11 @@ const Homepage: React.FC = () => {
                   key={item.title}
                   className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
                 >
-                  <div className="overflow-hidden">
+                  <div className="h-48 bg-[#f7f8fa] flex items-center justify-center p-4">
                     <img
                       src={item.img}
                       alt={item.alt}
-                      className="w-full h-auto object-contain"
+                      className="w-full h-full object-contain"
                     />
                   </div>
                   <div className="p-6 flex flex-col flex-1">
