@@ -561,28 +561,24 @@ const Homepage: React.FC = () => {
                 {
                   img: odooErp,
                   alt: "Odoo ERP Implementation",
-                  icon: Boxes,
                   title: "Odoo ERP Implementation",
                   desc: "A tailored Odoo ERP system to streamline your entire workflow and gain real-time insights.",
                 },
                 {
                   img: erpNextCardImg,
                   alt: "ERP Next Implementation",
-                  icon: Layers,
                   title: "ERP Next Implementation",
                   desc: "An open-source ERP that unifies finance, sales, HR, and operations for businesses of all sizes.",
                 },
                 {
                   img: bussiness_automation_int,
                   alt: "Automation & Integration",
-                  icon: Workflow,
                   title: "Automation & Integration",
                   desc: "Automation workflows that reduce errors, cut down on costs, and free your team's time.",
                 },
                 {
                   img: custom_soft_dev,
                   alt: "Custom Software Development",
-                  icon: Network,
                   title: "Custom Software Development",
                   desc: "Web and mobile applications designed to enhance your operations and solve specific challenges.",
                 },
@@ -599,14 +595,6 @@ const Homepage: React.FC = () => {
                     />
                   </div>
                   <div className="p-6 flex flex-col flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="h-10 w-10 rounded-lg bg-[#0078B7]/10 flex items-center justify-center flex-shrink-0">
-                        <item.icon className="h-5 w-5 text-[#0078B7]" />
-                      </div>
-                      <h3 className="text-lg font-bold text-gray-900">
-                        {item.title}
-                      </h3>
-                    </div>
                     <p className="text-base text-gray-600 mb-6 flex-1">
                       {item.desc}
                     </p>
