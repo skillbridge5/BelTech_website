@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "../../components/ui/card";
-import { getSolutions, loadInsights, fetchContacts } from "../../api/client";
-import { FolderKanban, FileText, Users } from "lucide-react";
+import { getSolutions, loadInsights, fetchContacts, fetchTestimonials } from "../../api/client";
+import { FolderKanban, FileText, Users, MessageCircle } from "lucide-react";
 
 const Dashboard = () => {
   const [solutionCount, setSolutionCount] = useState<number | null>(null);
   const [insightCount, setInsightCount] = useState<number | null>(null);
   const [contactCount, setContactCount] = useState<number | null>(null);
+  const [testimonialCount, setTestimonialCount] = useState<number | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -32,6 +33,14 @@ const Dashboard = () => {
         setContactCount(total);
       } catch {
         setContactCount(0);
+      }
+      try {
+        const testimonials = await fetchTestimonials();
+        setTestimonialCount(
+          Array.isArray(testimonials) ? testimonials.length : 0
+        );
+      } catch {
+        setTestimonialCount(0);
       }
     })();
   }, []);
@@ -58,13 +67,20 @@ const Dashboard = () => {
       color: "text-amber-600 bg-amber-50",
       link: "/admin",
     },
+    {
+      title: "Testimonials",
+      value: testimonialCount,
+      icon: MessageCircle,
+      color: "text-purple-600 bg-purple-50",
+      link: "/admin/testimonials",
+    },
   ];
 
   return (
     <div>
       <h1 className="text-2xl font-bold text-gray-900 mb-6">Dashboard</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {stats.map((stat) => (
           <Card
             key={stat.title}
