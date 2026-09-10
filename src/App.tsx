@@ -18,6 +18,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import SolutionsAdmin from "./pages/admin/SolutionsAdmin";
 import InsightsAdmin from "./pages/admin/InsightsAdmin";
 import ContactsAdmin from "./pages/admin/ContactsAdmin";
+import TestimonialsAdmin from "./pages/admin/TestimonialsAdmin";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const PublicLayout = () => (
@@ -60,6 +61,7 @@ export default function App() {
               <Route path="blog" element={<InsightsAdmin />} />
               <Route path="insights" element={<InsightsAdmin />} />
               <Route path="contact" element={<ContactsAdmin />} />
+              <Route path="testimonials" element={<TestimonialsAdmin />} />
             </Route>
           </Route>
         </Routes>

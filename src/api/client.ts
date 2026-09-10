@@ -33,6 +33,15 @@ export interface Insight {
 type SolutionPayload = Omit<Solution, "_id" | "createdAt">;
 type InsightPayload = Omit<Insight, "_id" | "createdAt">;
 
+export interface Testimonial {
+  _id: string;
+  name: string;
+  testimonial: string;
+  imageUrl: string;
+  priority: number;
+  createdAt?: string;
+}
+
 // Helper to remove undefined/empty values
 const cleanPayload = (payload: Record<string, unknown>) => {
   return Object.fromEntries(
@@ -124,3 +133,35 @@ export const updateInsight = (id: string, payload: InsightPayload) =>
   api.put(`/insights/${id}`, payload);
 
 export const deleteInsight = (id: string) => api.delete(`/insights/${id}`);
+
+// ===== Testimonials =====
+export const fetchTestimonials = async (): Promise<Testimonial[]> => {
+  const res = await api.get("/testimonials");
+  const data = res.data;
+  return (
+    data?.data?.testimonials ||
+    data?.testimonials ||
+    data?.data ||
+    []
+  );
+};
+
+export const createTestimonial = (payload: {
+  name: string;
+  testimonial: string;
+  imageUrl: string;
+  priority: number;
+}) => api.post("/testimonials", payload);
+
+export const updateTestimonial = (
+  id: string,
+  payload: {
+    name: string;
+    testimonial: string;
+    imageUrl: string;
+    priority: number;
+  }
+) => api.put(`/testimonials/${id}`, payload);
+
+export const deleteTestimonial = (id: string) =>
+  api.delete(`/testimonials/${id}`);

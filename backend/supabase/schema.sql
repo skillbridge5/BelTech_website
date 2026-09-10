@@ -45,11 +45,22 @@ create table if not exists public.contacts (
   created_at timestamptz not null default now()
 );
 
+-- ============ testimonials table ============
+create table if not exists public.testimonials (
+  id uuid primary key default gen_random_uuid(),
+  name text not null,
+  testimonial text not null,
+  image_url text not null default '',
+  priority int not null default 0,
+  created_at timestamptz not null default now()
+);
+
 -- ============ Row Level Security (optional; service role bypasses RLS) ============
 alter table public.admins enable row level security;
 alter table public.solutions enable row level security;
 alter table public.insights enable row level security;
 alter table public.contacts enable row level security;
+alter table public.testimonials enable row level security;
 
 -- Public read access to solutions + insights
 create policy "public read solutions" on public.solutions
@@ -60,3 +71,7 @@ create policy "public read insights" on public.insights
 -- Public insert into contacts (contact form)
 create policy "public insert contacts" on public.contacts
   for insert with check (true);
+
+-- Public read access to testimonials
+create policy "public read testimonials" on public.testimonials
+  for select using (true);

@@ -6,6 +6,7 @@ import solutionRoutes from "./routes/solutions.js";
 import insightRoutes from "./routes/insights.js";
 import contactRoutes from "./routes/contacts.js";
 import uploadRoutes from "./routes/upload.js";
+import testimonialRoutes from "./routes/testimonials.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -21,6 +22,7 @@ app.use("/api/solutions", solutionRoutes);
 app.use("/api/insights", insightRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/upload", uploadRoutes);
+app.use("/api/testimonials", testimonialRoutes);
 
 app.use((req, res) => res.status(404).json({ message: "Not found" }));
 

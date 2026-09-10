@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
 import {
   CheckCircle, Users, Zap, Layers, TrendingUp, DollarSign, Globe, Award, ShoppingCart,
@@ -39,6 +40,15 @@ import {
 import school from "./../assets/homepage/school.jpg";
 import kiray from "../assets/homepage/kiray.jpg";
 import care from "./../assets/homepage/care.jpg";
+import { fetchTestimonials } from "../api/client";
+
+const defaultClients = [
+  { name: "Eyoha Digitals", img: eyoha, testimonial: "Eyoha Digitals loved our website!" },
+  { name: "Roha Cake and Bread Bakery", img: Roha, testimonial: "Roha Bakery saw amazing growth with our product." },
+  { name: "SkillBridge Institute of Technology", img: SkillsBridge, testimonial: "SkillBridge praises the website we built." },
+  { name: "Diligent Trade Solutions", img: diligent, testimonial: "Diligent Trade saw great results from our ERP." },
+  { name: "Firma media and communications", img: firma, testimonial: "Odoo ERP Enterprise - Finance, Sales, Project" },
+];
 
 
 const BusinessOperations = () => {
@@ -402,6 +412,29 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
 };
 
 const Homepage: React.FC = () => {
+  const [clients, setClients] = useState(defaultClients);
+
+  useEffect(() => {
+    let active = true;
+    fetchTestimonials()
+      .then((testimonials) => {
+        if (!active || !testimonials.length) return;
+        setClients(
+          testimonials.map((t) => ({
+            name: t.name,
+            img: t.imageUrl || "",
+            testimonial: t.testimonial,
+          }))
+        );
+      })
+      .catch(() => setClients(defaultClients));
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const marqueeClients = [...clients, ...clients, ...clients];
+
   return (
     <div className="flex flex-col min-h-screen bg-[#F0F5F9]">
       <main className="flex-grow">
@@ -1129,31 +1162,7 @@ const Homepage: React.FC = () => {
             <div className="relative overflow-hidden">
               {/*  Perfectly seamless marquee */}
               <div className="flex gap-12 whitespace-nowrap animate-marquee will-change-transform">
-                {[
-                  { name: "Eyoha Digitals", img: eyoha, testimonial: "Eyoha Digitals loved our website!" },
-                  { name: "Roha Cake and Bread Bakery", img: Roha, testimonial: "Roha Bakery saw amazing growth with our product." },
-                  { name: "SkillBridge Institute of Technology", img: SkillsBridge, testimonial: "SkillBridge praises the website we built." },
-                  { name: "Diligent Trade Solutions", img: diligent, testimonial: "Diligent Trade saw great results from our ERP." },
-                  { name: "Firma media and communications", img: firma, testimonial: "Odoo ERP Enterprise - Finance ,Sales, Project" },
-                ]
-                  // Duplicate twice for a continuous flow
-                  .concat([
-                    { name: "Eyoha Digitals", img: eyoha, testimonial: "Eyoha Digitals loved our website!" },
-                    { name: "Roha Cake and Bread Bakery", img: Roha, testimonial: "Roha Bakery saw amazing growth with our product." },
-                    { name: "SkillBridge Institute of Technology", img: SkillsBridge, testimonial: "SkillBridge praises the website we built." },
-                    { name: "Diligent Trade Solutions", img: diligent, testimonial: "Diligent Trade saw great results from our ERP." },
-                    { name: "Firma media and communications", img: firma, testimonial: "Odoo ERP Enterprise - Finance, Sales, Project" },
-                  ])
-
-                  .concat([
-                    { name: "Eyoha Digitals", img: eyoha, testimonial: "Eyoha Digitals loved our website!" },
-                    { name: "Roha Cake and Bread Bakery", img: Roha, testimonial: "Roha Bakery saw amazing growth with our product." },
-                    { name: "SkillBridge Institute of Technology", img: SkillsBridge, testimonial: "SkillBridge praises the website we built." },
-                    { name: "Diligent Trade Solutions", img: diligent, testimonial: "Diligent Trade saw great results from our ERP." },
-                    { name: "Firma media and communications", img: firma, testimonial: "Odoo ERP Enterprise - Finance, Sales, Project" },
-                  ])
-
-                  .map((client, idx) => (
+                {marqueeClients.map((client, idx) => (
                     <div
                       key={idx}
                       className="relative flex flex-col items-center group flex-shrink-0"
@@ -1162,11 +1171,17 @@ const Homepage: React.FC = () => {
                       <div
                         className="flex items-center justify-center transition-transform duration-200 group-hover:scale-110 z-10 w-44 h-44 md:w-48 md:h-48"
                       >
-                        <img
-                          src={client.img}
-                          alt={client.name}
-                          className="h-full w-full object-contain"
-                        />
+                        {client.img ? (
+                          <img
+                            src={client.img}
+                            alt={client.name}
+                            className="h-full w-full object-contain"
+                          />
+                        ) : (
+                          <div className="h-32 w-32 rounded-full bg-[#0078B7] text-white flex items-center justify-center text-4xl font-semibold">
+                            {client.name.charAt(0)}
+                          </div>
+                        )}
                       </div>
 
                       {/* Tooltip */}
