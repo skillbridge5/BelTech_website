@@ -654,7 +654,7 @@ const Homepage: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-bold text-black mb-2">ERP Next experts</h3>
                     <p className="text-base font-normal text-black">
-                      Certified ERP Next specialists delivering open-source ERP implementations at any scale.
+                      ERP Next specialists delivering open-source ERP implementations at any scale.
                     </p>
                   </div>
                 </div>
