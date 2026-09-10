@@ -14,6 +14,10 @@ import {
 import { motion } from "framer-motion";
 import hero from "./../assets/homepage/hero.png";
 import odoo from "./../assets/homepage/odoo.png";
+import odooErp from "./../assets/homepage/oddoNew.png";
+import erpNextCardImg from "./../assets/ERP Next Implementation.png";
+import bussiness_automation_int from "./../assets/homepage/automationAndIntegration.jpg";
+import custom_soft_dev from "./../assets/homepage/customSoftNew.png";
 import whyErpNextImg from "./../assets/Why ERP Next.png";
 import beltechImpact from "./../assets/homepage/beltechImpact.png";
 import eyoha from "./../assets/clientLogo/eyoha.png";
@@ -555,21 +559,29 @@ const Homepage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
               {[
                 {
+                  img: odooErp,
+                  alt: "Odoo ERP Implementation",
                   icon: Boxes,
                   title: "Odoo ERP Implementation",
                   desc: "A tailored Odoo ERP system to streamline your entire workflow and gain real-time insights.",
                 },
                 {
+                  img: erpNextCardImg,
+                  alt: "ERP Next Implementation",
                   icon: Layers,
                   title: "ERP Next Implementation",
                   desc: "An open-source ERP that unifies finance, sales, HR, and operations for businesses of all sizes.",
                 },
                 {
+                  img: bussiness_automation_int,
+                  alt: "Automation & Integration",
                   icon: Workflow,
                   title: "Automation & Integration",
                   desc: "Automation workflows that reduce errors, cut down on costs, and free your team's time.",
                 },
                 {
+                  img: custom_soft_dev,
+                  alt: "Custom Software Development",
                   icon: Network,
                   title: "Custom Software Development",
                   desc: "Web and mobile applications designed to enhance your operations and solve specific challenges.",
@@ -577,24 +589,35 @@ const Homepage: React.FC = () => {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="bg-white rounded-2xl p-8 shadow-md shadow-gray-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                  className="bg-white rounded-2xl overflow-hidden shadow-md shadow-gray-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
                 >
-                  <div className="h-14 w-14 rounded-xl bg-[#0078B7]/10 flex items-center justify-center mb-6">
-                    <item.icon className="h-7 w-7 text-[#0078B7]" />
+                  <div className="h-36 overflow-hidden">
+                    <img
+                      src={item.img}
+                      alt={item.alt}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-base text-gray-600 mb-6 flex-1">
-                    {item.desc}
-                  </p>
-                  <a
-                    onClick={() => (window.location.href = "/Services")}
-                    className="text-[#0078B7] font-semibold flex items-center gap-1 hover:gap-2 transition-all cursor-pointer"
-                  >
-                    Learn More
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="h-10 w-10 rounded-lg bg-[#0078B7]/10 flex items-center justify-center flex-shrink-0">
+                        <item.icon className="h-5 w-5 text-[#0078B7]" />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900">
+                        {item.title}
+                      </h3>
+                    </div>
+                    <p className="text-base text-gray-600 mb-6 flex-1">
+                      {item.desc}
+                    </p>
+                    <a
+                      onClick={() => (window.location.href = "/Services")}
+                      className="text-[#0078B7] font-semibold flex items-center gap-1 hover:gap-2 transition-all cursor-pointer"
+                    >
+                      Learn More
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
