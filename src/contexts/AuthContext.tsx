@@ -50,9 +50,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setEmail(null);
   };
 
+  const setSession = (newToken: string) => {
+    localStorage.setItem(TOKEN_KEY, newToken);
+    setToken(newToken);
+    setEmail(decodeEmail(newToken));
+  };
+
   return (
     <AuthContext.Provider
-      value={{ token, email, isAuthenticated, login, logout }}
+      value={{ token, email, isAuthenticated, login, logout, setSession }}
     >
       {children}
     </AuthContext.Provider>

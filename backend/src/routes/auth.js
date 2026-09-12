@@ -2,6 +2,7 @@ import { Router } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { supabase } from "../db/supabase.js";
+import { requireAuth } from "../middleware/auth.js";
 
 const router = Router();
 
@@ -65,6 +66,67 @@ router.post("/login", async (req, res) => {
   );
 
   return res.json({ token });
+});
+
+// PUT /auth/account — update the logged-in admin's email and/or password
+router.put("/account", requireAuth, async (req, res) => {
+  const { currentPassword, email, password } = req.body || {};
+
+  const { data: admin, error } = await supabase
+    .from("admins")
+    .select("id, email, password_hash")
+    .eq("id", req.user.sub)
+    .maybeSingle();
+
+  if (error || !admin) {
+    return res
+      .status(401)
+      .json({ message: error ? error.message : "Admin not found" });
+  }
+
+  const valid = await bcrypt.compare(currentPassword || "", admin.password_hash);
+  if (!valid) {
+    return res.status(401).json({ message: "Current password is incorrect" });
+  }
+
+  const newEmail =
+    typeof email === "string" && email.trim() ? email.trim().toLowerCase() : null;
+  const newPassword = typeof password === "string" && password ? password : null;
+
+  if (newEmail === admin.email) {
+    return res
+      .status(400)
+      .json({ message: "New email is the same as the current one" });
+  }
+
+  if (!newEmail && !newPassword) {
+    return res
+      .status(400)
+      .json({ message: "Provide a new email or a new password" });
+  }
+
+  const updates = {};
+  if (newEmail) updates.email = newEmail;
+  if (newPassword) updates.password_hash = await bcrypt.hash(newPassword, 10);
+
+  const { data: updated, error: updateError } = await supabase
+    .from("admins")
+    .update(updates)
+    .eq("id", admin.id)
+    .select("id, email")
+    .single();
+
+  if (updateError) {
+    return res.status(500).json({ message: updateError.message });
+  }
+
+  const token = jwt.sign(
+    { sub: updated.id, email: updated.email },
+    process.env.JWT_SECRET,
+    { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
+  );
+
+  return res.json({ data: { email: updated.email }, token });
 });
 
 export default router;

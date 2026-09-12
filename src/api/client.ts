@@ -63,6 +63,12 @@ export const getErrorMessage = (err: unknown, fallback: string): string => {
 export const adminLogin = (email: string, password: string) =>
   api.post("/auth/login", { email, password });
 
+export const updateAdminAccount = (payload: {
+  currentPassword: string;
+  email?: string;
+  password?: string;
+}) => api.put("/auth/account", payload);
+
 // ===== Upload =====
 export const uploadImage = async (file: File): Promise<string> => {
   const dataUrl = await new Promise<string>((resolve, reject) => {
