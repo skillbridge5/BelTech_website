@@ -42,6 +42,16 @@ export interface Testimonial {
   createdAt?: string;
 }
 
+export interface Product {
+  _id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  link: string;
+  priority: number;
+  createdAt?: string;
+}
+
 // Helper to remove undefined/empty values
 const cleanPayload = (payload: Record<string, unknown>) => {
   return Object.fromEntries(
@@ -171,3 +181,33 @@ export const updateTestimonial = (
 
 export const deleteTestimonial = (id: string) =>
   api.delete(`/testimonials/${id}`);
+
+// ===== Products =====
+export const getProducts = async (): Promise<Product[]> => {
+  const res = await api.get("/products");
+  const data = res.data;
+  return (
+    data?.data?.products || data?.products || data?.data || (Array.isArray(data) ? data : [])
+  );
+};
+
+export const createProduct = (payload: {
+  title: string;
+  description: string;
+  imageUrl: string;
+  link: string;
+  priority: number;
+}) => api.post("/products", payload);
+
+export const updateProduct = (
+  id: string,
+  payload: {
+    title: string;
+    description: string;
+    imageUrl: string;
+    link: string;
+    priority: number;
+  }
+) => api.put(`/products/${id}`, payload);
+
+export const deleteProduct = (id: string) => api.delete(`/products/${id}`);

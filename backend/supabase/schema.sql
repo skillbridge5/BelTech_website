@@ -55,12 +55,24 @@ create table if not exists public.testimonials (
   created_at timestamptz not null default now()
 );
 
+-- ============ products table ============
+create table if not exists public.products (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  description text not null default '',
+  image_url text not null default '',
+  link text not null default '',
+  priority int not null default 0,
+  created_at timestamptz not null default now()
+);
+
 -- ============ Row Level Security (optional; service role bypasses RLS) ============
 alter table public.admins enable row level security;
 alter table public.solutions enable row level security;
 alter table public.insights enable row level security;
 alter table public.contacts enable row level security;
 alter table public.testimonials enable row level security;
+alter table public.products enable row level security;
 
 -- Public read access to solutions + insights
 create policy "public read solutions" on public.solutions
@@ -74,4 +86,8 @@ create policy "public insert contacts" on public.contacts
 
 -- Public read access to testimonials
 create policy "public read testimonials" on public.testimonials
+  for select using (true);
+
+-- Public read access to products
+create policy "public read products" on public.products
   for select using (true);

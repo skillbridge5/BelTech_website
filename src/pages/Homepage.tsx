@@ -15,7 +15,6 @@ import { motion } from "framer-motion";
 import hero from "./../assets/homepage/hero.png";
 import odoo from "./../assets/homepage/odoo.png";
 import odooErp from "./../assets/homepage/oddoNew.png";
-import erpNextCardImg from "./../assets/ERP Next Implementation.png";
 import bussiness_automation_int from "./../assets/homepage/automationAndIntegration.jpg";
 import custom_soft_dev from "./../assets/homepage/customSoftNew.png";
 import whyErpNextImg from "./../assets/Why ERP Next.png";
@@ -40,7 +39,8 @@ import {
 import school from "./../assets/homepage/school.jpg";
 import kiray from "../assets/homepage/kiray.jpg";
 import care from "./../assets/homepage/care.jpg";
-import { fetchTestimonials } from "../api/client";
+import { fetchTestimonials, getProducts } from "../api/client";
+import type { Product } from "../api/client";
 
 const defaultClients = [
   { name: "Eyoha Digitals", img: eyoha, testimonial: "Eyoha Digitals loved our website!" },
@@ -48,6 +48,33 @@ const defaultClients = [
   { name: "SkillBridge Institute of Technology", img: SkillsBridge, testimonial: "SkillBridge praises the website we built." },
   { name: "Diligent Trade Solutions", img: diligent, testimonial: "Diligent Trade saw great results from our ERP." },
   { name: "Firma media and communications", img: firma, testimonial: "Odoo ERP Enterprise - Finance, Sales, Project" },
+];
+
+const defaultProducts = [
+  {
+    _id: "default-school360",
+    title: "School360",
+    description: "A comprehensive school management platform for administration, attendance, exams, fees, and parent communication.",
+    imageUrl: school,
+    link: "",
+    priority: 0,
+  },
+  {
+    _id: "default-kiray",
+    title: "Kiray+",
+    description: "Rental and asset management tools for homes and machinery — listings, leases, tracking, and payments.",
+    imageUrl: kiray,
+    link: "",
+    priority: 1,
+  },
+  {
+    _id: "default-carecentral",
+    title: "CareCental",
+    description: "A comprehensive healthcare management platform — appointments, records, treatments, and billing.",
+    imageUrl: care,
+    link: "",
+    priority: 2,
+  },
 ];
 
 
@@ -413,6 +440,7 @@ const IndustriesCarousel: React.FC<{ industries: typeof industries }> = ({ indus
 
 const Homepage: React.FC = () => {
   const [clients, setClients] = useState(defaultClients);
+  const [products, setProducts] = useState<Product[]>(defaultProducts);
 
   useEffect(() => {
     let active = true;
@@ -428,6 +456,23 @@ const Homepage: React.FC = () => {
         );
       })
       .catch(() => setClients(defaultClients));
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+    getProducts()
+      .then((data) => {
+        if (!active) return;
+        if (Array.isArray(data) && data.length) {
+          setProducts(data);
+        }
+      })
+      .catch(() => {
+        if (active) setProducts(defaultProducts);
+      });
     return () => {
       active = false;
     };
@@ -556,30 +601,27 @@ const Homepage: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
               {[
                 {
                   img: odooErp,
                   alt: "Odoo ERP Implementation",
                   title: "Odoo ERP Implementation",
-                  desc: "A tailored Odoo ERP system to streamline your entire workflow and gain real-time insights.",
-                },
-                {
-                  img: erpNextCardImg,
-                  alt: "ERP Next Implementation",
-                  title: "ERP Next Implementation",
-                  desc: "An open-source ERP that unifies finance, sales, HR, and operations for businesses of all sizes.",
+                  hash: "erp-implementation",
+                  desc: "Odoo and ERPNext tailored to streamline your entire workflow — unifying finance, sales, HR, and operations for real-time insights.",
                 },
                 {
                   img: bussiness_automation_int,
                   alt: "Automation & Integration",
                   title: "Automation & Integration",
+                  hash: "business-process-automation",
                   desc: "Automation workflows that reduce errors, cut down on costs, and free your team's time.",
                 },
                 {
                   img: custom_soft_dev,
                   alt: "Custom Software Development",
                   title: "Custom Software Development",
+                  hash: "custom-software-development",
                   desc: "Web and mobile applications designed to enhance your operations and solve specific challenges.",
                 },
               ].map((item) => (
@@ -595,11 +637,14 @@ const Homepage: React.FC = () => {
                     />
                   </div>
                   <div className="p-6 flex flex-col flex-1">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      {item.title}
+                    </h3>
                     <p className="text-base text-gray-600 mb-6 flex-1">
                       {item.desc}
                     </p>
                     <a
-                      onClick={() => (window.location.href = "/Services")}
+                      onClick={() => (window.location.href = "/services#" + item.hash)}
                       className="text-[#0078B7] font-semibold flex items-center gap-1 hover:gap-2 transition-all cursor-pointer"
                     >
                       Learn More
@@ -721,38 +766,34 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                <div className="w-full h-56 overflow-hidden">
-                  <img src={school} alt="360School" className="w-full h-full object-cover scale-150" />
+              {products.map((product) => (
+                <div key={product._id} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col">
+                  <div className="w-full h-56 overflow-hidden">
+                    {product.imageUrl ? (
+                      <img src={product.imageUrl} alt={product.title} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400 text-sm">
+                        No image
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>{product.title}</h3>
+                    <p className="mb-6 flex-1" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>{product.description}</p>
+                    {product.link && (
+                      <a
+                        href={product.link}
+                        target={product.link.startsWith("http") ? "_blank" : undefined}
+                        rel={product.link.startsWith("http") ? "noreferrer" : undefined}
+                        className="inline-flex items-center gap-1 text-[#0078B7] font-semibold hover:gap-2 transition-all cursor-pointer"
+                      >
+                        Learn More
+                        <ArrowRight className="h-4 w-4" />
+                      </a>
+                    )}
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>School360</h3>
-                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>A comprehensive school management platform for administration, attendance, exams, fees, and parent communication.</p>
-                  {/* <a className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                <div className="w-full h-56 overflow-hidden">
-                  <img src={kiray} alt="Kiray" className="w-full h-full object-cover" />
-                </div>
-                <div className="p-6">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>Kiray+</h3>
-                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>Rental and asset management tools for homes and machinery — listings, leases, tracking, and payments.</p>
-                  {/* <a className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                <div className="w-full h-56 overflow-hidden">
-                  <img src={care} alt="Care Cental" className="w-full h-full object-cover" />
-                </div>
-                <div className="p-6">
-                  <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>CareCental</h3>
-                  <p className="mb-6" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>A comprehensive healthcare management platform — appointments, records, treatments, and billing.</p>
-                  {/* <a className="text-[#0078B7] font-bold flex items-center space-x-2 hover:underline cursor-pointer">Learn More</a> */}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -895,6 +936,18 @@ const Homepage: React.FC = () => {
                     </h3>
                     <p className="text-base font-normal text-gray-700">
                       Built on a modern web stack that adapts to your workflows and scales as your business grows.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-200 flex items-start space-x-4">
+                  <Globe className="w-6 h-6 text-[#0078B7] flex-shrink-0" />
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-1">
+                      Thriving Community
+                    </h3>
+                    <p className="text-base font-normal text-gray-700">
+                      Backed by a global open-source community with rich documentation, extensions, and expert support.
                     </p>
                   </div>
                 </div>
