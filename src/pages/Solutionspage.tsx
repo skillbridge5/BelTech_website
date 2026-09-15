@@ -65,17 +65,17 @@ const SolutionsPage = () => {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800 antialiased">
 
-      <section className="relative w-full min-h-screen overflow-hidden">
-        <div
-          className="absolute inset-0 w-full h-full"
-          style={{
-            backgroundImage: `url(${solutionHero})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundColor: "black",
-          }}
-        ></div>
+      <section
+        className="relative text-white flex items-center justify-center"
+        style={{
+          backgroundImage: `url(${solutionHero})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundColor: "black",
+          minHeight: "100vh",
+        }}
+      >
         <div
           className="absolute inset-0"
           style={{
@@ -85,8 +85,8 @@ const SolutionsPage = () => {
             `,
           }}
         ></div>
-        <div className="absolute inset-0 flex items-center">
-          <div className="w-full px-4 lg:px-25 text-white">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center pt-28">
+          <div className="flex flex-col items-center text-center w-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -95,17 +95,16 @@ const SolutionsPage = () => {
               <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
                 Streamline. Automate. Scale.
               </h1>
-               <p className="mt-4 text-lg md:text-xl max-w-2xl">
+              <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
                 Real projects. Real impact. Discover how we help businesses work smarter.
-
               </p>
             </motion.div>
           </div>
         </div>
-        <div className="absolute bottom-0 w-full h-1 bg-white"></div>
+
       </section>
 
-      <section className="container mx-auto my-12 px-4 md:px-8 lg:px-12">
+      <section className="container mx-auto px-4 md:px-8 lg:px-12 mt-0">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

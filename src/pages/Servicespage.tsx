@@ -1,4 +1,5 @@
 import { Button } from '../components/ui/button';
+import { useEffect } from 'react';
 import { Card, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { CheckCircle, Zap, Users, Globe, Settings } from 'lucide-react';
 import Hero from "./../assets/servicepage/hero1.png";
@@ -10,10 +11,19 @@ import above_the_footer from "./../assets/above_the_footer.png";
 import { motion } from "framer-motion";
 
 const Servicespage = () => {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, []);
+
   return (
     <div className="min-h-screen font-sans text-gray-800 antialiased">
- <section className="relative w-full min-h-screen overflow-hidden">
-
+ <section className="relative text-white flex items-center justify-center" style={{ minHeight: "100vh", backgroundColor: "black" }}>
       <div
         className="absolute inset-0 w-full h-full hidden md:block"
         style={{
@@ -21,7 +31,6 @@ const Servicespage = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundColor: "black",
         }}
       ></div>
       <div
@@ -31,13 +40,11 @@ const Servicespage = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundColor: "black",
         }}
       ></div>
-     
 
-      <div className="absolute inset-0 flex items-center">
-        <div className="w-full px-4 lg:px-25 text-white">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center pt-28">
+        <div className="flex flex-col items-center text-center w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -46,7 +53,7 @@ const Servicespage = () => {
             <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
               Streamline. Automate. Scale.
             </h1>
-            <p className="mt-4 text-lg md:text-xl max-w-2xl">
+            <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
               Transforming business operations through smart ERP, system
               integration, and custom software solutions.
             </p>
@@ -56,7 +63,7 @@ const Servicespage = () => {
     </section>
 
 
-   <section className="bg-white py-18 container mx-auto px-4 md:px-8 lg:px-12">
+   <section id="erp-implementation" className="bg-white py-18 container mx-auto px-4 md:px-8 lg:px-12 scroll-mt-24">
   <motion.div
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -141,7 +148,7 @@ const Servicespage = () => {
   </motion.div>
 </section>
 
-      <section className="bg-gray-100 py-15">
+      <section id="business-process-automation" className="bg-gray-100 py-15 scroll-mt-24">
         <div className="container mx-auto px-4 md:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -176,7 +183,7 @@ const Servicespage = () => {
         </div>
       </section>
 
-      <section className="bg-white py-10 container mx-auto px-4 md:px-8 lg:px-12">
+      <section id="custom-software-development" className="bg-white py-10 container mx-auto px-4 md:px-8 lg:px-12 scroll-mt-24">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -605,8 +605,8 @@ const Homepage: React.FC = () => {
               {[
                 {
                   img: odooErp,
-                  alt: "Odoo ERP Implementation",
-                  title: "Odoo ERP Implementation",
+                  alt: "ERP Implementation",
+                  title: "ERP Implementation",
                   hash: "erp-implementation",
                   desc: "Odoo and ERPNext tailored to streamline your entire workflow — unifying finance, sales, HR, and operations for real-time insights.",
                 },
@@ -697,9 +697,9 @@ const Homepage: React.FC = () => {
                     <Layers className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-black mb-2">ERP Next experts</h3>
+                    <h3 className="text-xl font-bold text-black mb-2">ERPNext experts</h3>
                     <p className="text-base font-normal text-black">
-                      ERP Next specialists delivering open-source ERP implementations at any scale.
+                      ERPNext specialists delivering open-source ERP implementations at any scale.
                     </p>
                   </div>
                 </div>
@@ -780,17 +780,21 @@ const Homepage: React.FC = () => {
                   <div className="p-6 flex flex-col flex-1">
                     <h3 className="mb-3" style={{ fontFamily: 'Inter', fontSize: '21px', fontWeight: 800 }}>{product.title}</h3>
                     <p className="mb-6 flex-1" style={{ fontFamily: 'Inter', fontSize: '16px', fontWeight: 400 }}>{product.description}</p>
-                    {product.link && (
-                      <a
-                        href={product.link}
-                        target={product.link.startsWith("http") ? "_blank" : undefined}
-                        rel={product.link.startsWith("http") ? "noreferrer" : undefined}
-                        className="inline-flex items-center gap-1 text-[#0078B7] font-semibold hover:gap-2 transition-all cursor-pointer"
-                      >
-                        Learn More
-                        <ArrowRight className="h-4 w-4" />
-                      </a>
-                    )}
+                    <a
+                      href={product.link || "#"}
+                      onClick={(e) => {
+                        if (!product.link) {
+                          e.preventDefault();
+                          window.location.href = "/contact";
+                        }
+                      }}
+                      target={product.link && product.link.startsWith("http") ? "_blank" : undefined}
+                      rel={product.link && product.link.startsWith("http") ? "noreferrer" : undefined}
+                      className="inline-flex items-center gap-1 text-[#0078B7] font-semibold hover:gap-2 transition-all cursor-pointer"
+                    >
+                      Learn More
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
                   </div>
                 </div>
               ))}
@@ -888,7 +892,7 @@ const Homepage: React.FC = () => {
                 Why ERPNext?
               </h2>
               <p className="text-xl font-normal text-black max-w-3xl mx-auto">
-                ERP Next is a powerful open-source ERP trusted by businesses across the globe.
+                ERPNext is a powerful open-source ERP trusted by businesses across the globe.
               </p>
             </div>
 
@@ -897,7 +901,7 @@ const Homepage: React.FC = () => {
               <div className="flex h-full">
                 <img
                   src={whyErpNextImg}
-                  alt="ERP Next Interface"
+                  alt="ERPNext Interface"
                   className="w-full h-full rounded-2xl"
                   style={{ height: "108%", width: "108%" }}
                 />

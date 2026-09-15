@@ -90,17 +90,17 @@ const Contact = () => {
       <Toaster position="top-right" />
 
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen overflow-hidden">
-        <div
-          className="absolute inset-0 w-full h-full"
-          style={{
-            backgroundImage: `url(${contactHero})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundColor: "black",
-          }}
-        ></div>
+      <section
+        className="relative text-white flex items-center justify-center"
+        style={{
+          backgroundImage: `url(${contactHero})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundColor: "black",
+          minHeight: "100vh",
+        }}
+      >
         <div
           className="absolute inset-0"
           style={{
@@ -110,15 +110,15 @@ const Contact = () => {
             `,
           }}
         ></div>
-        <div className="absolute inset-0 flex items-center">
-          <div className="w-full px-4 lg:px-25 text-white">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center pt-28">
+          <div className="flex flex-col items-center text-center w-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Streamline. Automate. Scale.</h1>
-              <p className="mt-4 text-lg md:text-xl max-w-2xl">
+              <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
                 Want to discuss a project or ask questions? <br />
                 Let us transform your business with smart software and a tailored ERP.
               </p>
