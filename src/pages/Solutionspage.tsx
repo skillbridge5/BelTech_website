@@ -1,212 +1,172 @@
-import { Button } from '../components/ui/button';
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Button } from "../components/ui/button";
+import { getSolutions } from "../api/client";
+import type { Solution } from "../api/client";
 import solutionHero from "../assets/solutionpage/heroNew.png";
-import importEport from "./../assets/solutionpage/importExport.jpg";
-import eLearning from "./../assets/solutionpage/eLearning.jpg";
-import DigitalMarketingDetail from "../assets/solutionpage/digitalMarketing.jpg";
 import above_the_footer from "../assets/above_the_footer.png";
-import { motion } from "framer-motion";
-import { getSolutions } from '../api/client';
-import type { Solution } from '../api/client';
+import diligent from "../assets/clientLogo/diligent-mark.png";
+import skillBridge from "../assets/clientLogo/skillBridge-mark.png";
+import eyoha from "../assets/clientLogo/eyoha-mark.png";
+import PageIntro from "../components/PageIntro";
+import ProjectMark from "../components/ProjectMark";
 
-type SolutionCard = Omit<Solution, "_id"> & { _id?: string };
+type Project = {
+  client: string;
+  kind: string;
+  summary: string;
+  logo?: string;
+  imageUrl?: string;
+  link: string;
+};
 
-const fallbackSolutions: SolutionCard[] = [
+const projects: Project[] = [
   {
-    title: "ERP for Import-Export company",
-    description: "Deployed a full-scale Odoo ERP to manage production, sales, inventory, and logistics.",
-    imageUrl: importEport,
-    link: "/ERPDetail",
-    detail: "",
-    priority: 1,
+    client: "Diligent Trade",
+    kind: "Odoo ERP",
+    summary:
+      "An import-export company running orders, inventory, and finance in one Odoo system.",
+    logo: diligent,
+    link: "/projects/diligent-trade",
   },
   {
-    title: "Website for SkillBridge Institute Of Technology",
-    description: "Built custom software with tailored features, secure workflows, and automated reporting feature",
-    imageUrl: eLearning,
-    link: "/CharityPlatform",
-    detail: "",
-    priority: 2,
+    client: "SkillBridge Institute of Technology",
+    kind: "Website",
+    summary:
+      "A site where the institute presents its programs and prospective students can enquire.",
+    logo: skillBridge,
+    link: "/projects/skillbridge",
   },
   {
-    title: "Website for Eyoha media",
-    description: "Built custom software with tailored features, secure workflows, and automated reporting feature",
-    imageUrl: DigitalMarketingDetail,
-    link: "/RetailAuto",
-    detail: "",
-    priority: 3,
+    client: "Eyoha Digitals",
+    kind: "Website",
+    summary:
+      "A site for the studio’s services, portfolio, and consultation requests.",
+    logo: eyoha,
+    link: "/projects/eyoha-digitals",
   },
 ];
 
+const coveredLinks = new Set([
+  ...projects.map((project) => project.link),
+  "/ERPDetail",
+  "/CharityPlatform",
+  "/RetailAuto",
+]);
+
 const SolutionsPage = () => {
-  const [solutions, setSolutions] = useState<SolutionCard[]>(fallbackSolutions);
-  const [loaded, setLoaded] = useState(false);
+  const [extraProjects, setExtraProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     let mounted = true;
-    (async () => {
-      try {
-        const data = await getSolutions();
-        if (mounted && Array.isArray(data) && data.length > 0) {
-          setSolutions(data);
-        }
-      } catch (err) {
-        console.error("Failed to load solutions, using fallback", err);
-      } finally {
-        if (mounted) setLoaded(true);
-      }
-    })();
+    getSolutions()
+      .then((data: Solution[]) => {
+        if (!mounted || !Array.isArray(data)) return;
+        const extras = data
+          .filter((item) => item.link && !coveredLinks.has(item.link))
+          .map((item) => ({
+            client: item.title,
+            kind: "Project",
+            summary: item.description,
+            imageUrl: item.imageUrl,
+            link: item.link,
+          }));
+        setExtraProjects(extras);
+      })
+      .catch(() => {
+        if (mounted) setExtraProjects([]);
+      });
     return () => {
       mounted = false;
     };
   }, []);
 
-  return (
-    <div className="min-h-screen bg-white font-sans text-gray-800 antialiased">
+  const allProjects = [...projects, ...extraProjects];
 
-      <section
-        className="relative text-white flex items-center justify-center"
-        style={{
-          backgroundImage: `url(${solutionHero})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundColor: "black",
-          minHeight: "100vh",
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)),
-              linear-gradient(to left, rgba(39,162,216,0.5) 0%, rgba(39,162,216,0.0) 40%)
-            `,
-          }}
-        ></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center pt-28">
-          <div className="flex flex-col items-center text-center w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
-                Streamline. Automate. Scale.
-              </h1>
-              <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
-                Real projects. Real impact. Discover how we help businesses work smarter.
-              </p>
-            </motion.div>
+  return (
+    <div className="min-h-screen bg-white text-gray-800 antialiased">
+      <PageIntro image={solutionHero} title="Projects we have delivered.">
+        ERP systems and websites built for the companies BelTech works with.
+      </PageIntro>
+
+      <section className="bg-[#f7f8fa] py-20">
+        <div className="site-wide">
+          <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {allProjects.map((project) => (
+              <article
+                key={project.link}
+                className="flex h-full flex-col overflow-hidden rounded-[28px] bg-white shadow-md"
+              >
+                <div className="relative bg-gradient-to-b from-[#2B9AD4] to-[#0078B7] px-6 pb-14 pt-6 text-white">
+                  <div className="pointer-events-none absolute -right-8 -top-10 h-32 w-32 rounded-full bg-white/10" />
+                  <div className="relative flex items-start justify-between gap-4">
+                    <p className="text-[1.7rem] font-extrabold uppercase leading-[0.95] tracking-tight">
+                      {project.kind}
+                    </p>
+                    <p className="max-w-[8.5rem] text-right text-[11px] font-semibold uppercase leading-tight tracking-wide text-white/85">
+                      {project.client}
+                    </p>
+                  </div>
+                  <div className="relative mt-5">
+                    <span className="inline-flex rounded-full border border-white/35 bg-white/15 px-3 py-1 text-xs font-semibold">
+                      {project.kind}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 translate-y-[54%]">
+                    <ProjectMark src={project.logo || project.imageUrl} alt="" />
+                  </div>
+                </div>
+
+                <div className="flex flex-1 flex-col px-6 pb-6 pt-14">
+                  <h2 className="text-center text-lg font-extrabold uppercase leading-snug tracking-tight text-gray-900">
+                    {project.client}
+                  </h2>
+                  <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+                    <span className="text-sm font-semibold text-[#0078B7]">BelTech Solutions</span>
+                    <span className="rounded-full bg-[#E8F4FB] px-3 py-1 text-xs font-semibold text-[#5B7C99]">
+                      {project.kind}
+                    </span>
+                  </div>
+                  <div className="mt-5 rounded-2xl bg-[#E8F4FB] px-4 py-4 text-center">
+                    <p className="text-sm font-semibold leading-relaxed text-[#0078B7]">{project.summary}</p>
+                  </div>
+                  <Link
+                    to={project.link}
+                    className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-[#0078B7] px-4 py-3 text-sm font-semibold text-white hover:bg-[#005C8A]"
+                  >
+                    Read the project
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
-
-      </section>
-
-      <section className="container mx-auto px-4 md:px-8 lg:px-12 mt-0">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Success Stories
-          </h2>
-          <p className="text-xl font-normal text-black mb-12 max-w-3xl mx-auto">
-            Explore how our solutions have helped businesses overcome challenges and achieve growth.
-          </p>
-        </motion.div>
-
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {solutions.length === 0 && loaded ? (
-          <p className="text-center text-gray-500 col-span-full">
-            No solutions available yet.
-          </p>
-        ) : (
-          solutions.map((solution, index) => (
-            <motion.div
-              key={solution._id || solution.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
-              className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden"
-            >
-              <img
-                src={solution.imageUrl}
-                alt={solution.title}
-                className="w-full aspect-video object-cover"
-              />
-              <div className="px-6 pt-4 pb-3">
-                <h3 className="text-xl font-bold leading-snug mb-1">
-                  {solution.title}
-                </h3>
-              </div>
-              <div className="px-6 pb-6">
-                <p className="text-base font-normal text-gray-700 leading-relaxed">
-                  {solution.description}
-                </p>
-                <Link
-                  to={solution.link || "/solutions"}
-                  className="mt-4 inline-block text-[#0078B7] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
-                >
-                  Read More
-                </Link>
-              </div>
-            </motion.div>
-          ))
-        )}
-      </div>
-
       </section>
 
       <section
-        className="relative py-10 text-white"
+        className="relative py-20 text-white"
         style={{
           backgroundImage: `url(${above_the_footer})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundColor: "rgba(0, 0, 0, 0.6)",
-          }}
-        ></div>
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            background: "linear-gradient(to right, #0078B7, #005C8A)",
-            opacity: 0.5,
-          }}
-        ></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-xl font-normal mb-8 max-w-3xl mx-auto">
-            Join hundreds of African businesses that have streamlined their operations with BelTech Solutions.
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0078B7] to-[#005C8A] opacity-50" />
+        <div className="site-shell relative z-10 text-center">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">Let's discuss your project.</h2>
+          <p className="mx-auto mb-8 max-w-3xl text-xl font-normal">
+            Based in Addis Ababa, BelTech helps businesses put ERP, corporate training, automation, and custom software into daily operations.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7] text-white"
-              onClick={() => window.location.href = '/contact'}
-            >
-              Start Your Digital Journey
-            </Button>
-          </div>
-          </motion.div>
+          <Button
+            size="lg"
+            className="bg-[#0078B7] px-8 py-3 text-lg text-white hover:bg-[#005C8A]"
+            onClick={() => {
+              window.location.href = "/contact";
+            }}
+          >
+            Contact the team
+          </Button>
         </div>
       </section>
     </div>

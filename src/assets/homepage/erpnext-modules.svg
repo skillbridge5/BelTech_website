@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780" width="960" height="780">
+  <rect width="960" height="780" fill="#f4f4f5"/>
+  <rect width="960" height="72" fill="#111111"/>
+  <rect x="28" y="18" width="36" height="36" rx="8" fill="#ffffff"/>
+  <text x="46" y="43" text-anchor="middle" font-family="Inter, 'Open Sans', sans-serif" font-size="20" font-weight="700" fill="#111111">E</text>
+  <text x="76" y="44" font-family="Inter, 'Open Sans', sans-serif" font-size="20" font-weight="700" fill="#ffffff">ERPNext</text>
+  <rect x="640" y="20" width="292" height="32" rx="8" fill="#2a2a2a"/>
+  <text x="656" y="41" font-family="Inter, 'Open Sans', sans-serif" font-size="13" fill="#a3a3a3">Search modules</text>
+
+  <g>
+    <rect x="50.0" y="118" width="200" height="168" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+    <g transform="translate(134.0 154)" fill="none" stroke="#111111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="scale(1.3333)" fill="#111111" stroke="none"><rect x="4" y="14" width="3.2" height="6" rx="0.6"/><rect x="10.4" y="9" width="3.2" height="11" rx="0.6"/><rect x="16.8" y="4" width="3.2" height="16" rx="0.6"/></g>
+    </g>
+    <text x="150.0" y="246" text-anchor="middle" font-family="Inter, 'Open Sans', sans-serif" font-size="16" font-weight="600" fill="#111111">Accounting</text>
+  </g>
+  <g>
+    <rect x="270.0" y="118" width="200" height="168" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+    <g transform="translate(354.0 154)" fill="none" stroke="#111111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="scale(1.3333)"><path d="M6 7h12l-1.2 8.5H7.4L6 7z"/><path d="M9 7c0-2 1.3-3.2 3-3.2S15 5 15 7"/><circle cx="9.2" cy="18.2" r="1.2"/><circle cx="15.2" cy="18.2" r="1.2"/></g>
+    </g>
+    <text x="370.0" y="246" text-anchor="middle" font-family="Inter, 'Open Sans', sans-serif" font-size="16" font-weight="600" fill="#111111">Buying</text>
+  </g>
+  <g>
+    <rect x="490.0" y="118" width="200" height="168" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+    <g transform="translate(574.0 154)" fill="none" stroke="#111111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="scale(1.3333)"><path d="M5 8.5h9.2l2.2 2.2V19H5V8.5z"/><path d="M14.2 8.5V6.2H9.2"/><path d="M8 13.2h5.2"/></g>
+    </g>
+    <text x="590.0" y="246" text-anchor="middle" font-family="Inter, 'Open Sans', sans-serif" font-size="16" font-weight="600" fill="#111111">Selling</text>
+  </g>
+  <g>
+    <rect x="710.0" y="118" width="200" height="168" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+    <g transform="translate(794.0 154)" fill="none" stroke="#111111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="scale(1.3333)"><path d="M4 9.2 12 5l8 4.2v9.2L12 18.4 4 14.4V9.2z"/><path d="M12 9.2v9.2M4 9.2l8 4.2 8-4.2"/></g>
+    </g>
+    <text x="810.0" y="246" text-anchor="middle" font-family="Inter, 'Open Sans', sans-serif" font-size="16" font-weight="600" fill="#111111">Stock</text>
+  </g>
+  <g>
+    <rect x="50.0" y="304" width="200" height="168" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+    <g transform="translate(134.0 340)" fill="none" stroke="#111111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="scale(1.3333)"><circle cx="9" cy="9" r="2.2"/><circle cx="15.2" cy="9.6" r="1.8"/><path d="M5.2 17.2c.4-2.4 2-3.6 3.8-3.6s3.4 1.2 3.8 3.6"/><path d="M13 17.2c.3-1.8 1.3-2.8 2.6-2.8 1.2 0 2.1.8 2.4 2.4"/></g>
+    </g>
+    <text x="150.0" y="432" text-anchor="middle" font-family="Inter, 'Open Sans', sans-serif" font-size="16" font-weight="600" fill="#111111">CRM</text>
+  </g>
+  <g>
+    <rect x="270.0" y="304" width="200" height="168" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+    <g transform="translate(354.0 340)" fill="none" stroke="#111111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="scale(1.3333)"><circle cx="12" cy="8" r="2.6"/><path d="M6.5 18.2c.6-3.2 2.8-4.8 5.5-4.8s4.9 1.6 5.5 4.8"/></g>
+    </g>
+    <text x="370.0" y="432" text-anchor="middle" font-family="Inter, 'Open Sans', sans-serif" font-size="16" font-weight="600" fill="#111111">HR</text>
+  </g>
+  <g>
+    <rect x="490.0" y="304" width="200" height="168" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+    <g transform="translate(574.0 340)" fill="none" stroke="#111111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="scale(1.3333)"><circle cx="12" cy="12" r="3"/><path d="M12 4.2v2.2M12 17.6v2.2M4.2 12h2.2M17.6 12h2.2M6.4 6.4l1.6 1.6M16 16l1.6 1.6M17.6 6.4 16 8M8 16l-1.6 1.6"/></g>
+    </g>
+    <text x="590.0" y="432" text-anchor="middle" font-family="Inter, 'Open Sans', sans-serif" font-size="16" font-weight="600" fill="#111111">Manufacturing</text>
+  </g>
+  <g>
+    <rect x="710.0" y="304" width="200" height="168" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+    <g transform="translate(794.0 340)" fill="none" stroke="#111111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="scale(1.3333)"><rect x="4" y="5" width="4.6" height="14" rx="1"/><rect x="9.7" y="5" width="4.6" height="14" rx="1"/><rect x="15.4" y="5" width="4.6" height="14" rx="1"/></g>
+    </g>
+    <text x="810.0" y="432" text-anchor="middle" font-family="Inter, 'Open Sans', sans-serif" font-size="16" font-weight="600" fill="#111111">Projects</text>
+  </g>
+  <g>
+    <rect x="50.0" y="490" width="200" height="168" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+    <g transform="translate(134.0 526)" fill="none" stroke="#111111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="scale(1.3333)"><path d="M4 18.5h16"/><path d="M6 18.5V8.5L12 5l6 3.5v10"/><path d="M10 18.5v-5h4v5"/></g>
+    </g>
+    <text x="150.0" y="618" text-anchor="middle" font-family="Inter, 'Open Sans', sans-serif" font-size="16" font-weight="600" fill="#111111">Assets</text>
+  </g>
+  <g>
+    <rect x="270.0" y="490" width="200" height="168" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+    <g transform="translate(354.0 526)" fill="none" stroke="#111111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="scale(1.3333)"><circle cx="12" cy="12" r="7"/><path d="M8.6 12.2 11 14.6 15.6 9.6"/></g>
+    </g>
+    <text x="370.0" y="618" text-anchor="middle" font-family="Inter, 'Open Sans', sans-serif" font-size="16" font-weight="600" fill="#111111">Quality</text>
+  </g>
+  <g>
+    <rect x="490.0" y="490" width="200" height="168" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+    <g transform="translate(574.0 526)" fill="none" stroke="#111111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="scale(1.3333)"><path d="M6 12a6 6 0 0 1 12 0"/><path d="M6 12v3.2a1.6 1.6 0 0 0 1.6 1.6H9"/><path d="M18 12v3.2a1.6 1.6 0 0 1-1.6 1.6H15"/><path d="M10 17.6h4"/></g>
+    </g>
+    <text x="590.0" y="618" text-anchor="middle" font-family="Inter, 'Open Sans', sans-serif" font-size="16" font-weight="600" fill="#111111">Support</text>
+  </g>
+  <g>
+    <rect x="710.0" y="490" width="200" height="168" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+    <g transform="translate(794.0 526)" fill="none" stroke="#111111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="scale(1.3333)"><circle cx="12" cy="12" r="7"/><path d="M5 12h14M12 5c2 2.2 3 4.6 3 7s-1 4.8-3 7c-2-2.2-3-4.6-3-7s1-4.8 3-7"/></g>
+    </g>
+    <text x="810.0" y="618" text-anchor="middle" font-family="Inter, 'Open Sans', sans-serif" font-size="16" font-weight="600" fill="#111111">Website</text>
+  </g>
+</svg>

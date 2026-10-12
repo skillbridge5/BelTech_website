@@ -1,119 +1,28 @@
-import { Button } from "../components/ui/button";
-import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import importEport from "./../assets/solutionpage/importExport.jpg";
-import above_the_footer from "../assets/above_the_footer.png";
+import ProjectCase from "../components/ProjectCase";
+import diligent from "../assets/clientLogo/diligent-mark.png";
 
 const ERPDetail = () => {
-  const navigate = useNavigate();
-
   return (
-    <div className="min-h-screen bg-[#f7f8fa] font-sans antialiased text-gray-800 pt-20">
-      <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 relative">
-        <div className="lg:col-span-2 relative">
-          <img
-            src={importEport}
-            alt="Diligent Trade Solution"
-            className="w-full h-[400px] object-cover rounded-lg"
-          />
-          <button
-            onClick={() => navigate(-1)}
-            className="absolute top-4 left-4 flex items-center text-black bg-white/70 hover:bg-white transition px-2 py-1 rounded z-10"
-          >
-            <ArrowLeft className="mr-2 h-5 w-5" />
-            Back
-          </button>
-          <div className="mt-4">
-            <h1 className="text-2xl font-bold mb-2 text-gray-900">
-             ERP for Import-Export Companies
-            </h1>
-            <div className="h-0.5 bg-[#858585] w-full rounded mb-6"></div>
-
-            <p className="text-gray-700 mb-4">
-              At <strong>Beltech Solutions</strong>, we understand the complexities of the import-export business. Managing logistics, compliance, inventory, and finance across borders can be challenging. That’s why we developed <strong>Diligent Trade Solution</strong>, an advanced ERP system designed to streamline operations, improve efficiency, and drive growth for import-export companies.
-            </p>
-
-            <h2 className="text-xl font-semibold mb-2">Key Features</h2>
-            <ul className="list-disc list-inside mb-4 text-gray-700">
-              <li>Comprehensive Trade Management: Track orders, shipments, and compliance with international trade regulations.</li>
-              <li>Inventory Control: Optimize stock levels and reduce holding costs with automated tracking.</li>
-              <li>Financial Management: Monitor accounts, generate reports, and manage finances with ease.</li>
-              <li>Reporting & Analytics: Make informed decisions with dashboards, KPIs, and predictive insights.</li>
-              <li>User-Friendly Interface: Navigate complex operations effortlessly with an intuitive design.</li>
-            </ul>
-
-            <h2 className="text-xl font-semibold mb-2">Benefits</h2>
-            <ul className="list-disc list-inside mb-4 text-gray-700">
-              <li>Efficiency: Automate repetitive tasks and reduce errors.</li>
-              <li>Visibility: Gain complete oversight of operations from procurement to delivery.</li>
-              <li>Compliance: Ensure trade activities meet regulations, minimizing risks.</li>
-              <li>Scalability: Grow your business without worrying about system limitations.</li>
-            </ul>
-
-            <p className="text-gray-700">
-              Partner with <strong>Beltech Solutions</strong> and experience a smarter way to manage your import-export operations. Diligent Trade Solution isn’t just software—it’s a strategic tool that empowers your business to operate efficiently, profitably, and confidently.
-            </p>
-          </div>
-        </div>
-
-        <div className="border-0 rounded-lg p-6 bg-gray-100 flex flex-col items-center text-center justify-center">
-          <h2 className="text-2xl font-bold mb-4">Subscribe</h2>
-          <p className="text-gray-600 mb-4 text-sm">
-            Stay informed with tips on business solutions, ERP insights, and Beltech’s latest offerings. You’ll also receive updates on our upcoming events and workshops.
-          </p>
-          <label htmlFor="email" className="block text-gray-700 font-medium mb-1 self-start">Email</label>
-          <input
-            type="email"
-            id="email"
-            placeholder=""
-            className="w-full rounded-md px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-[#0078B7] bg-white"
-          />
-          <Button className="w-full bg-[#0078B7] hover:bg-[#005C8A] text-white font-semibold py-2">
-            Subscribe
-          </Button>
-        </div>
-      </div>
-
-      <section
-        className="relative py-10 text-white"
-        style={{
-          backgroundImage: `url(${above_the_footer})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundColor: "rgba(0, 0, 0, 0.6)", 
-          }}
-        ></div>
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            background: "linear-gradient(to right, #0078B7, #005C8A)",
-            opacity: 0.5,
-          }}
-        ></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-xl font-normal mb-8 max-w-3xl mx-auto">
-            Join hundreds of African businesses that have streamlined their operations with BelTech Solutions.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7] text-white"
-              onClick={() => window.location.href = '/contact'}
-            >
-              Start Your Digital Journey
-            </Button>
-          </div>
-        </div>
-      </section>
-    </div>
+    <ProjectCase
+      kind="Odoo ERP"
+      title="Diligent Trade"
+      summary="An import-export company running orders, inventory, and finance in one Odoo system."
+      logo={diligent}
+      sections={[
+        {
+          title: "The situation",
+          body: "Import and export work was split across orders, shipments, stock, and accounts. The company needed one system that could follow a shipment from the supplier through the warehouse and into the books.",
+        },
+        {
+          title: "What BelTech built",
+          body: "Diligent Trade on Odoo. The system covers trade orders and shipments, inventory, and financial reporting for the import-export operation.",
+        },
+        {
+          title: "What changed",
+          body: "The team follows an order through stock and accounts in the same system, instead of keeping those records apart.",
+        },
+      ]}
+    />
   );
 };
 
