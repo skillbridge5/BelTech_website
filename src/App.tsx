@@ -12,6 +12,7 @@ import RetailAuto from "./pages/RetailAuto";
 import Blog from "./pages/blog";
 import Contact from "./pages/Contact";
 import Industries from "./pages/Industries";
+import ProductDetail from "./pages/ProductDetail";
 import Login from "./pages/admin/Login";
 import AdminLayout from "./pages/admin/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
@@ -41,6 +42,10 @@ export default function App() {
             <Route path="/about" element={<Aboutpage />} />
             <Route path="/services" element={<Servicespage />} />
             <Route path="/solutions" element={<SolutionsPage />} />
+            <Route path="/Solutions" element={<SolutionsPage />} />
+            <Route path="/projects/diligent-trade" element={<ERPDetail />} />
+            <Route path="/projects/skillbridge" element={<CharityPlatform />} />
+            <Route path="/projects/eyoha-digitals" element={<RetailAuto />} />
             <Route path="/ERPDetail" element={<ERPDetail />} />
             <Route path="/CharityPlatform" element={<CharityPlatform />} />
             <Route path="/RetailAuto" element={<RetailAuto />} />
@@ -49,6 +54,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/Contact" element={<Contact />} />
             <Route path="/industries" element={<Industries />} />
+            <Route path="/products/:slug" element={<ProductDetail />} />
           </Route>
 
           {/* Admin login (standalone) */}

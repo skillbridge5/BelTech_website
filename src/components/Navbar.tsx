@@ -16,16 +16,21 @@ const Navbar = () => {
 
   const solutionsPaths = [
     "/solutions",
+    "/Solutions",
     "/ERPDetail",
     "/CharityPlatform",
+    "/RetailAuto",
     "/DigitalMarketingDetail",
+    "/projects/diligent-trade",
+    "/projects/skillbridge",
+    "/projects/eyoha-digitals",
   ];
 
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
     { name: "About", path: "/about" },
-    { name: "Solutions", path: "/solutions" },
+    { name: "Projects", path: "/solutions" },
     { name: "Industries", path: "/industries" },
     { name: "Blog", path: "/blog" },
     { name: "Contact", path: "/contact" },
@@ -39,42 +44,33 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white/90 backdrop-blur-md border-b border-gray-100 fixed top-0 w-full z-50 shadow-[0_1px_10px_rgba(0,0,0,0.06)]">
-      <div className="flex items-center justify-between h-16 px-4 lg:px-8">
-        {/* Logo — left side */}
+    <nav className="fixed top-0 z-50 w-full border-b border-gray-200/80 bg-white/95 backdrop-blur-md">
+      <div className="site-wide flex h-20 items-center justify-between">
         <Link to="/" className="flex-shrink-0">
           <img
             src={logo}
             alt="BelTech Logo"
-            className="h-12 w-auto object-contain drop-shadow-sm transition-transform duration-200 hover:scale-105"
+            className="h-[4.5rem] w-auto object-contain"
           />
         </Link>
 
-        {/* Links + button — right side */}
-        <div className="hidden md:flex items-center gap-7">
+        <div className="hidden items-center gap-8 md:flex lg:gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.path}
-              className={`group relative text-[15px] font-medium py-2 transition-colors duration-300 ${
+              className={`relative py-1 text-[15px] font-medium transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:bg-[#0078B7] after:transition-transform after:duration-200 ${
                 isActiveLink(link.path)
-                  ? "text-[#0078B7]"
-                  : "text-gray-700 hover:text-[#0078B7]"
+                  ? "text-[#0078B7] after:scale-x-100"
+                  : "text-gray-700 after:scale-x-0 hover:text-[#0078B7] hover:after:scale-x-100"
               }`}
             >
               {link.name}
-              <span
-                className={`absolute left-0 -bottom-px h-0.5 bg-gradient-to-r from-[#0078B7] to-[#27A2D8] rounded-full transition-all duration-300 ${
-                  isActiveLink(link.path)
-                    ? "w-full"
-                    : "w-0 group-hover:w-full"
-                }`}
-              ></span>
             </Link>
           ))}
 
           <Button
-            className="ml-2 text-white px-6 py-2 text-sm font-semibold rounded-full shadow-md shadow-[#0078B7]/30 bg-gradient-to-r from-[#0078B7] to-[#27A2D8] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#0078B7]/40"
+            className="ml-2 rounded-full bg-[#0078B7] px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#005C8A]"
             onClick={() =>
               window.open("https://beltech-erp.blsglob.com/", "_blank")
             }
@@ -97,16 +93,16 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-md shadow-lg">
-          <div className="px-6 py-4 space-y-1">
+        <div className="border-t border-gray-100 bg-white shadow-lg md:hidden">
+          <div className="space-y-2 px-6 py-5">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className={`block font-medium px-4 py-2.5 rounded-lg transition-colors duration-200 ${
+                className={`block border-l-2 px-4 py-2.5 text-[15px] font-medium transition-colors duration-200 ${
                   isActiveLink(link.path)
-                    ? "text-[#0078B7] bg-[#0078B7]/10"
-                    : "text-gray-700 hover:text-[#0078B7] hover:bg-gray-50"
+                    ? "border-[#0078B7] text-[#0078B7]"
+                    : "border-transparent text-gray-700 hover:border-[#0078B7] hover:text-[#0078B7]"
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >

@@ -5,6 +5,7 @@ import { loadInsights } from "../api/client"; // named import
 import Hero from "./../assets/insightpage/heroNew.png";
 import above_the_footer from "./../assets/above_the_footer.png";
 import { motion } from "framer-motion";
+import PageIntro from "../components/PageIntro";
 
 interface InsightType {
   _id: string;
@@ -64,46 +65,13 @@ const Blog = () => {
 
   return (
     <div className="font-sans antialiased bg-white text-gray-900">
-      {/* Hero Section */}
-      <section
-        className="relative text-white flex items-center justify-center"
-        style={{
-          backgroundImage: `url(${Hero})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundColor: "black",
-          minHeight: "100vh",
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)),
-              linear-gradient(to left, rgba(39,162,216,0.5) 0%, rgba(39,162,216,0.0) 40%)
-            `,
-          }}
-        ></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center pt-28">
-          <div className="flex flex-col items-center text-center w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Streamline. Automate. Scale.</h1>
-              <p className="mt-5 text-lg md:text-xl max-w-2xl mx-auto leading-snug">
-                Explore our latest articles and guides on digital transformation and technology in Africa.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <PageIntro image={Hero} title="Ideas on ERP and digital operations.">
+        Articles and notes on ERP, corporate team training, and digital operations in Africa.
+      </PageIntro>
 
       {/* Articles Section */}
-      <section className="py-8 px-4 sm:px-8 lg:px-16">
-        <div className="container mx-auto max-w-7xl">
+      <section className="py-16">
+        <div className="site-wide">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -167,7 +135,7 @@ const Blog = () => {
       >
         <div className="absolute inset-0 z-0" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}></div>
         <div className="absolute inset-0 z-0" style={{ background: "linear-gradient(to right, #0078B7, #005C8A)", opacity: 0.5 }}></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="site-shell relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

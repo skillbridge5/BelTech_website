@@ -8,6 +8,7 @@ import above_the_footer from "./../assets/above_the_footer.png";
 import { Dot } from "lucide-react";
 import { submitContact, getErrorMessage } from "../api/client";
 import { motion } from "framer-motion";
+import PageIntro from "../components/PageIntro";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -89,47 +90,13 @@ const Contact = () => {
     <div className="font-sans antialiased bg-[#f7f8fa] text-gray-900">
       <Toaster position="top-right" />
 
-      {/* Hero Section */}
-      <section
-        className="relative text-white flex items-center justify-center"
-        style={{
-          backgroundImage: `url(${contactHero})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundColor: "black",
-          minHeight: "100vh",
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)),
-              linear-gradient(to left, rgba(39,162,216,0.5) 0%, rgba(39,162,216,0.0) 40%)
-            `,
-          }}
-        ></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center pt-28">
-          <div className="flex flex-col items-center text-center w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Streamline. Automate. Scale.</h1>
-              <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
-                Want to discuss a project or ask questions? <br />
-                Let us transform your business with smart software and a tailored ERP.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <PageIntro image={contactHero} title="Talk with the BelTech team.">
+        Want to discuss a project, corporate ERP training, or ask a question? We set up ERP, train your team, and build the software around your operations.
+      </PageIntro>
 
       {/* Contact Form Section */}
-      <section className="py-16 px-4 sm:px-8 lg:px-16 flex justify-center">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start max-w-6xl">
+      <section className="py-16">
+        <div className="site-shell grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
           {/* Left Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -192,7 +159,7 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="w-full flex justify-center"
           >
-            <form className="w-full max-w-md space-y-6" onSubmit={handleSubmit}>
+            <form className="w-full space-y-6" onSubmit={handleSubmit}>
               <p className="text-gray-600 mb-6">
                 Questions, comments, or suggestions? Simply fill in the form and we'll be in touch shortly.
               </p>
@@ -270,16 +237,16 @@ const Contact = () => {
       >
         <div className="absolute inset-0 z-0" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}></div>
         <div className="absolute inset-0 z-0" style={{ background: "linear-gradient(to right, #0078B7, #005C8A)", opacity: 0.5 }}></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="site-shell relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's discuss your project.</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Join hundreds of African businesses that have streamlined their operations with BelTech Solutions.
+            Based in Addis Ababa, BelTech helps businesses put ERP, corporate training, automation, and custom software into daily operations.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

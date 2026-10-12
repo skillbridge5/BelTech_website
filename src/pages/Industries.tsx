@@ -7,6 +7,7 @@ import hos from "../../src/assets/in/hospital.png"
 import market from "../../src/assets/in/market.png"
 import importexport from "../../src/assets/in/import.png"
 import acc from "../../src/assets/in/acc.png"
+import PageIntro from "../components/PageIntro";
 const industries = [
   {
     id: "retail",
@@ -125,35 +126,9 @@ const industries = [
 const Industries = () => {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section
-        className="relative text-white flex items-center justify-center"
-        style={{
-          backgroundImage: `url(${hero})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundColor: "black",
-          minHeight: "100vh",
-        }}
-      >
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center pt-28">
-          <div className="flex flex-col items-center text-center w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl leading-tight">
-                Streamline. Automate. Scale.
-              </h1>
-              <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
-                We automate business operations so you stop managing chaos and start managing growth.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <PageIntro image={hero} title="Industries we serve.">
+        We implement ERP, train your team, and automate operations so the business can grow with clearer daily work.
+      </PageIntro>
 
       {/* Industries Grid */}
       {industries.map((industry, index) => {
@@ -163,7 +138,7 @@ const Industries = () => {
 
         return (
           <section key={industry.id} className={`py-20 ${bgColor}`}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="site-wide">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -270,13 +245,12 @@ const Industries = () => {
               opacity: 0.5,
             }}
           ></div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="site-shell relative z-10 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Transform Your Business?
+              Let's discuss your project.
             </h2>
             <p className="text-xl font-normal mb-8 max-w-3xl mx-auto">
-              Join hundreds of African businesses that have streamlined their
-              operations with BelTech Solutions.
+              Based in Addis Ababa, BelTech helps businesses put ERP, corporate training, automation, and custom software into daily operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -284,7 +258,7 @@ const Industries = () => {
                 className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7]  text-white hover:bg-[#005C8A]"
                 onClick={() => (window.location.href = "/contact")}
               >
-                Start Your Digital Journey
+                Contact the team
               </Button>
               <Button
                 size="lg"
