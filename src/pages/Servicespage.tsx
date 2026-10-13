@@ -6,10 +6,11 @@ import HeroMobile from "./../assets/servicepage/heroMobile.png";
 import ERPImp from "./../assets/homepage/oddoNew.png";
 import customSoft from "./../assets/servicepage/customSoftNew.png";
 import bussinesAuto from "./../assets/servicepage/businessAuto.png";
-import trainingImg from "./../assets/solutionpage/eLearning.jpg";
 import above_the_footer from "./../assets/above_the_footer.png";
 import { motion } from "framer-motion";
 import PageIntro from "../components/PageIntro";
+
+const trainingImg = "/training.jpg";
 
 type IconType = ComponentType<{ className?: string }>;
 
@@ -40,13 +41,13 @@ const FeatureCard = ({
   </article>
 );
 
-const ServicePhoto = ({ src, alt }: { src: string; alt: string }) => (
+const ServicePhoto = ({ src, alt, fromLeft = false }: { src: string; alt: string; fromLeft?: boolean }) => (
   <motion.div
-    initial={{ opacity: 0, x: 20 }}
+    initial={{ opacity: 0, x: fromLeft ? -20 : 20 }}
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay: 0.2 }}
-    className="w-full overflow-hidden rounded-2xl border border-gray-200 bg-[#f4f7fb] shadow-md lg:w-1/2"
+    className={`w-full overflow-hidden rounded-2xl border border-gray-200 bg-[#f4f7fb] shadow-md lg:w-1/2 ${fromLeft ? "lg:order-1" : ""}`}
   >
     <img
       src={src}
@@ -136,7 +137,7 @@ const Servicespage = () => {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center gap-10 lg:flex-row lg:gap-14"
           >
-            <div className="w-full lg:w-1/2">
+            <div className="w-full lg:order-2 lg:w-1/2">
               <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">Business Process Automation</h2>
               <p className="mb-8 text-base leading-relaxed text-gray-600">
                 Streamline your operations with intelligent automation that reduces manual work and increases efficiency. We help you connect systems and automate everyday tasks — reducing manual work and boosting efficiency. You can request:
@@ -149,7 +150,7 @@ const Servicespage = () => {
                 <CheckItem>System Integration</CheckItem>
               </ul>
             </div>
-            <ServicePhoto src={bussinesAuto} alt="Business Process Automation" />
+            <ServicePhoto src={bussinesAuto} alt="Business Process Automation" fromLeft />
           </motion.div>
 
           <motion.div
@@ -233,7 +234,7 @@ const Servicespage = () => {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center gap-10 lg:flex-row lg:gap-14"
           >
-            <div className="w-full lg:w-1/2">
+            <div className="w-full lg:order-2 lg:w-1/2">
               <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">Corporate ERP Training</h2>
               <p className="mb-8 text-base leading-relaxed text-gray-600">
                 BelTech trains company teams on Odoo and ERPNext. Sessions are for the people who will use the system every day, not only for IT. The training includes:
@@ -245,7 +246,7 @@ const Servicespage = () => {
                 <CheckItem>Daily work covered for the people who use the system, not only IT</CheckItem>
               </ul>
             </div>
-            <ServicePhoto src={trainingImg} alt="Corporate ERP Training" />
+            <ServicePhoto src={trainingImg} alt="Corporate ERP Training" fromLeft />
           </motion.div>
 
           <motion.div

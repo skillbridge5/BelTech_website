@@ -26,7 +26,7 @@ import {
   IdCard,
   Landmark,
   LayoutDashboard,
-  MessageSquare,
+  LogOut,
   MessagesSquare,
   Pill,
   PieChart,
@@ -40,11 +40,9 @@ import {
   ShieldAlert,
   Stethoscope,
   Target,
-  TrendingUp,
   UserRound,
   Users,
   Wallet,
-  Workflow,
 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "../components/ui/button";
@@ -65,7 +63,13 @@ type ProductPage = {
   summary: string;
   image: string;
   modules: ProductModule[];
-  more?: { intro: string; items: { title: string; icon: LucideIcon }[] };
+  more?: { heading?: string; intro: string; items: { title: string; icon: LucideIcon }[] };
+  flow?: {
+    heading: string;
+    intro: string;
+    steps: { title: string; body: string; icon: LucideIcon }[];
+  };
+  spotlight?: { kicker: string; title: string; body: string; image: string; imageAlt: string };
   closing?: { title: string; body: string; options?: { title: string; body: string; icon: LucideIcon }[] };
 };
 
@@ -73,32 +77,73 @@ const tones = ["#0078B7", "#1493D4", "#0C6A8A", "#3D8EB5"];
 
 const products: Record<string, ProductPage> = {
   "ethiopian-hrms": {
-    title: "Ethiopian HRMS",
-    kicker: "Human resource management on Odoo",
+    title: "BelTech Ethiopian HRMS",
+    kicker: "Complete HR and payroll management for Ethiopian businesses",
     summary:
-      "A configurable HR system on Odoo for the full employee lifecycle. Each company sets its own schedules, leave, overtime, and approvals, while contracts, biometric attendance, and payroll follow Ethiopian labor, tax, and pension rules.",
+      "BelTech Ethiopian HRMS is an Odoo-based human resource management system designed to automate HR operations, simplify employee management, and support Ethiopian labor regulations.",
     image: humanResource,
     modules: [
-      { title: "Employees and contracts", body: "Records, contracts, departments, positions, and employment history.", icon: IdCard },
-      { title: "Attendance", body: "Fingerprint and face devices, lateness, and absences.", icon: Fingerprint },
-      { title: "Payroll", body: "Ethiopian income tax, pension, allowances, deductions, and payslips.", icon: Banknote },
-      { title: "Time off", body: "Leave policies, accruals, balances, requests, and approvals.", icon: CalendarOff },
-      { title: "Appraisals", body: "Evaluations, KPIs, scoring, and reviews.", icon: Target },
-      { title: "Shifts", body: "Calendars, fixed and rotating shifts, and scheduling.", icon: CalendarClock },
-      { title: "Overtime", body: "Requests, approvals, calculations, and payroll.", icon: Clock },
-      { title: "Loans", body: "Requests, repayment schedules, and payroll deductions.", icon: HandCoins },
-      { title: "Self-service", body: "Payslips, attendance, leave, and HR requests for each employee.", icon: UserRound },
-      { title: "Approvals", body: "Approval processes across HR operations.", icon: Workflow },
-      { title: "Reports", body: "Workforce, payroll, attendance, leave, and performance.", icon: PieChart },
-      { title: "Calendar", body: "Ethiopian and Gregorian dates, and public holidays.", icon: CalendarDays },
-      { title: "Discipline", body: "Cases, warnings, investigations, and actions.", icon: ShieldAlert },
-      { title: "Grievances", body: "Confidential complaints, escalation, and resolution.", icon: MessageSquare },
-      { title: "Promotions", body: "Job-grade changes, salary revisions, and approvals.", icon: TrendingUp },
-      { title: "Bonuses", body: "Incentives, eligibility rules, and payroll.", icon: Gift },
+      { title: "Employee management", body: "Employee profiles, contracts, departments, promotions, and career history.", icon: IdCard },
+      { title: "Biometric attendance", body: "ZKTeco integration, attendance tracking, lateness, absences, and corrections.", icon: Fingerprint },
+      { title: "Shift management", body: "Fixed, rotating, and overnight shifts with flexible work schedules.", icon: CalendarClock },
+      { title: "Ethiopian payroll and pension", body: "Salary calculations, income tax, pension contributions, allowances, deductions, and payslips.", icon: Banknote },
+      { title: "Leave management", body: "Annual, sick, maternity, and other leave types with automated balances and approvals.", icon: CalendarOff },
+      { title: "Overtime management", body: "Overtime calculations, approvals, and payroll integration.", icon: Clock },
+      { title: "Loans and salary advances", body: "Employee loans, repayment schedules, and payroll deductions.", icon: HandCoins },
+      { title: "Performance and promotions", body: "KPI evaluations, appraisals, promotions, and salary adjustments.", icon: Target },
+      { title: "Bonuses and incentives", body: "Performance bonuses, incentives, and approval workflows.", icon: Gift },
+      { title: "Disciplinary and grievance management", body: "Employee complaints, warnings, investigations, and resolutions.", icon: ShieldAlert },
+      { title: "Employee self-service", body: "Leave requests, attendance history, payslips, HR requests, and approvals.", icon: UserRound },
+      { title: "Ethiopian calendar", body: "Ethiopian date conversion and public holiday management.", icon: CalendarDays },
+      { title: "HR reports and dashboards", body: "Workforce analytics, attendance, payroll, tax, pension, and performance reports.", icon: PieChart },
+      { title: "Employee offboarding", body: "Resignations, clearance, final settlements, and exit management.", icon: LogOut },
     ],
+    flow: {
+      heading: "The HRMS flow",
+      intro: "One path from the employee record through attendance, time, and payroll.",
+      steps: [
+        {
+          title: "Employee record",
+          body: "Profiles, contracts, departments, promotions, and career history sit in one record.",
+          icon: IdCard,
+        },
+        {
+          title: "Biometric attendance",
+          body: "Staff check in on a ZKTeco device. The system records attendance, lateness, absences, and corrections.",
+          icon: Fingerprint,
+        },
+        {
+          title: "Shifts, leave, and overtime",
+          body: "Fixed, rotating, and overnight shifts, leave balances, and overtime feed the same time record.",
+          icon: CalendarClock,
+        },
+        {
+          title: "Payroll and pension",
+          body: "Salary, income tax, pension, allowances, deductions, loans, and bonuses become the payslip.",
+          icon: Banknote,
+        },
+        {
+          title: "Self-service",
+          body: "Employees request leave, read attendance, open payslips, and follow approvals.",
+          icon: UserRound,
+        },
+        {
+          title: "Offboarding",
+          body: "Resignation, clearance, and the final settlement close the record.",
+          icon: LogOut,
+        },
+      ],
+    },
+    spotlight: {
+      kicker: "Attendance and payroll",
+      title: "From the fingerprint to the payslip.",
+      body: "Staff check in once. BelTech Ethiopian HRMS carries that day into salary, income tax, pension, allowances, and deductions, so the payslip is ready without a second spreadsheet.",
+      image: "/attendance.jpg",
+      imageAlt: "Fingerprint attendance device showing Check-In",
+    },
     closing: {
-      title: "Each company sets its own policy",
-      body: "Schedules, leave, overtime, allowances, loans, approvals, performance, and promotions are configured without changing the source code. Mandatory Ethiopian labor, tax, and pension rules stay in place.",
+      title: "One platform for complete human resource and payroll management",
+      body: "Built on Odoo. Designed for Ethiopian businesses.",
     },
   },
   carecentral: {
@@ -115,6 +160,49 @@ const products: Record<string, ProductPage> = {
       { title: "Dashboards", body: "Operational statistics, analytics, and management reports.", icon: LayoutDashboard },
       { title: "Access", body: "Staff accounts, role-based permissions, and administration.", icon: Shield },
     ],
+    spotlight: {
+      kicker: "Patients and clinical work",
+      title: "From the front desk to the ward.",
+      body: "Registration, the outpatient visit, the laboratory, and intensive care stay on one patient record. The people running the hospital see that work on the same dashboards.",
+      image: care,
+      imageAlt: "CareCentral healthcare management system",
+    },
+    flow: {
+      heading: "The CareCentral flow",
+      intro: "One path from the patient arriving to the team running the hospital.",
+      steps: [
+        {
+          title: "Patient record",
+          body: "Registration, medical history, and the profile open the record.",
+          icon: Users,
+        },
+        {
+          title: "Outpatient visit",
+          body: "Consultations, appointments, diagnoses, prescriptions, and follow-ups stay on that record.",
+          icon: Stethoscope,
+        },
+        {
+          title: "Laboratory",
+          body: "Requests, sample tracking, results, and reports come back to the same patient.",
+          icon: FlaskConical,
+        },
+        {
+          title: "Intensive care",
+          body: "Admissions, monitoring, observations, and treatment records continue the chart.",
+          icon: HeartPulse,
+        },
+        {
+          title: "Dashboards",
+          body: "Operational statistics and management reports show how the hospital is running.",
+          icon: LayoutDashboard,
+        },
+        {
+          title: "Access",
+          body: "Staff accounts and role-based permissions decide who can see and change each part.",
+          icon: Shield,
+        },
+      ],
+    },
     more: {
       intro: "A hospital can start with the core and add these as the operation grows.",
       items: [
@@ -149,7 +237,7 @@ const products: Record<string, ProductPage> = {
     title: "School360",
     kicker: "End-to-end school management on Odoo",
     summary:
-      "School360 is an end-to-end school management system on Odoo. Administration, attendance, exams, fees, and parent communication run in one system.",
+      "Digitize academics, admissions, attendance, examinations, fees, communication, and administration—all from one integrated, modular ERP platform engineered for educational institutions.",
     image: school,
     modules: [
       { title: "Administration", body: "School records and the day-to-day running of the school.", icon: Building2 },
@@ -158,6 +246,48 @@ const products: Record<string, ProductPage> = {
       { title: "Fees", body: "School fees handled with administration and the student record.", icon: Wallet },
       { title: "Parents", body: "The school reaches parents from the same system.", icon: MessagesSquare },
     ],
+    spotlight: {
+      kicker: "The school day",
+      title: "From the register to the parent.",
+      body: "Attendance, exams, and fees sit with the student record. The school reaches parents from that same system, so the day is not split across separate books.",
+      image: school,
+      imageAlt: "School360 school management system",
+    },
+    flow: {
+      heading: "The School360 flow",
+      intro: "One path from the school office to the parent.",
+      steps: [
+        {
+          title: "Administration",
+          body: "School records and the day-to-day running of the school sit in one place.",
+          icon: Building2,
+        },
+        {
+          title: "Attendance",
+          body: "Attendance is kept with the rest of the student record.",
+          icon: CalendarCheck,
+        },
+        {
+          title: "Exams",
+          body: "Exams are recorded in the same system as attendance and fees.",
+          icon: GraduationCap,
+        },
+        {
+          title: "Fees",
+          body: "School fees are handled with administration and the student record.",
+          icon: Wallet,
+        },
+        {
+          title: "Parents",
+          body: "The school reaches parents from the same system.",
+          icon: MessagesSquare,
+        },
+      ],
+    },
+    closing: {
+      title: "One system for the school day",
+      body: "Built on Odoo. Administration, attendance, exams, fees, and parents in one place.",
+    },
   },
 };
 
@@ -235,10 +365,61 @@ const ProductDetail = () => {
         </div>
       </section>
 
+      {product.spotlight ? (
+        <section className="bg-white pb-4 pt-4">
+          <div className="site-wide">
+            <div className="grid items-center overflow-hidden rounded-[2rem] bg-[#f3f8fb] lg:grid-cols-5">
+              <div className="flex items-center justify-center bg-white px-6 py-8 lg:col-span-2">
+                <img
+                  src={product.spotlight.image}
+                  alt={product.spotlight.imageAlt}
+                  className="h-72 w-full object-contain sm:h-80"
+                />
+              </div>
+              <div className="px-8 py-10 lg:col-span-3 lg:py-12 lg:pr-12">
+                <p className="text-sm font-bold tracking-wide text-[#0078B7]">{product.spotlight.kicker}</p>
+                <h2 className="mt-3 max-w-xl text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">{product.spotlight.title}</h2>
+                <p className="mt-4 max-w-xl text-lg leading-relaxed text-gray-600">{product.spotlight.body}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {product.flow ? (
+        <section className="bg-[#f3f8fb] py-20">
+          <div className="site-wide">
+            <h2 className="text-center text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{product.flow.heading}</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-gray-600">{product.flow.intro}</p>
+            <ol className="mx-auto mt-16 max-w-5xl">
+              {product.flow.steps.map((step, index) => {
+                const Icon = step.icon;
+                const last = index === product.flow!.steps.length - 1;
+                return (
+                  <li key={step.title} className="flex gap-5">
+                    <div className="flex w-14 shrink-0 flex-col items-center">
+                      <div className="transition duration-300 hover:-translate-y-1">
+                        <AppMark icon={Icon} tone={tones[index % tones.length]} size="sm" />
+                      </div>
+                      {last ? null : <div className="my-2 w-px flex-1 bg-[#0078B7]/25" aria-hidden="true" />}
+                    </div>
+                    <div className={`min-w-0 flex-1 ${last ? "pb-0" : "pb-10"}`}>
+                      <p className="text-sm font-bold text-[#0078B7]">Step {index + 1}</p>
+                      <h3 className="mt-1 text-xl font-bold text-gray-900">{step.title}</h3>
+                      <p className="mt-2 max-w-xl text-base leading-relaxed text-gray-600">{step.body}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        </section>
+      ) : null}
+
       {product.more ? (
         <section className="bg-[#f3f8fb] py-20">
           <div className="site-wide">
-            <h2 className="text-center text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">Expand as you grow</h2>
+            <h2 className="text-center text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{product.more.heading ?? "Expand as you grow"}</h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-gray-600">{product.more.intro}</p>
             <ul className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
               {product.more.items.map((item, index) => (
