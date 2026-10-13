@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
 import { getSolutions } from "../api/client";
 import type { Solution } from "../api/client";
-import solutionHero from "../assets/solutionpage/heroNew.png";
+import solutionHero from "../assets/solutionpage/projects-intro.jpg";
 import above_the_footer from "../assets/above_the_footer.png";
 import diligent from "../assets/clientLogo/diligent-mark.png";
 import skillBridge from "../assets/clientLogo/skillBridge-mark.png";
@@ -85,7 +85,11 @@ const SolutionsPage = () => {
 
   return (
     <div className="min-h-screen bg-white text-gray-800 antialiased">
-      <PageIntro image={solutionHero} title="Projects we have delivered.">
+      <PageIntro
+        image={solutionHero}
+        overlayClassName="bg-gradient-to-b from-black/55 via-black/45 to-black/60"
+        title="Projects we have delivered."
+      >
         ERP systems and websites built for the companies BelTech works with.
       </PageIntro>
 

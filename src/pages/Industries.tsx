@@ -2,7 +2,7 @@ import { ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCr
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
 import above_the_footer from "./../assets/above_the_footer.png";
-import hero from "../../src/assets/in/hero1.png"
+import hero from "../../src/assets/in/industries-intro.jpg"
 import hos from "../../src/assets/in/hospital.png"
 import market from "../../src/assets/in/market.png"
 import importexport from "../../src/assets/in/import.png"
@@ -126,7 +126,11 @@ const industries = [
 const Industries = () => {
   return (
     <div className="min-h-screen bg-white">
-      <PageIntro image={hero} title="Industries we serve.">
+      <PageIntro
+        image={hero}
+        overlayClassName="bg-gradient-to-b from-black/55 via-black/45 to-black/60"
+        title="Industries we serve."
+      >
         We implement ERP, train your team, and automate operations so the business can grow with clearer daily work.
       </PageIntro>
 
