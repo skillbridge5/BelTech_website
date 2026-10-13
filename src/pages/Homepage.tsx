@@ -12,7 +12,7 @@ import {
   Boxes, ListTodo, Cloud, Bot, Workflow, Rocket, Receipt
 } from "lucide-react";
 import { motion } from "framer-motion";
-import hero from "./../assets/homepage/hero.png";
+import hero from "./../assets/homepage/beltech-hero.jpg";
 import odoo from "./../assets/homepage/odoo.png";
 import odooErp from "./../assets/homepage/oddoNew.png";
 import bussiness_automation_int from "./../assets/homepage/automationAndIntegration.jpg";
@@ -38,12 +38,11 @@ import {
 import school from "./../assets/homepage/school.jpg";
 import humanResource from "./../assets/homepage/human-resource.svg";
 import care from "./../assets/homepage/care.jpg";
+import solutionTraining from "./../assets/homepage/erp-training-card.jpg";
+import erpnextShot from "./../assets/homepage/erpnext.jpg";
 import { Link } from "react-router-dom";
 import { fetchTestimonials, getProducts } from "../api/client";
 import type { Product } from "../api/client";
-
-const solutionTraining = "/erp-training-card.jpg";
-const erpnextShot = "/erpnext.jpg";
 
 const defaultClients = [
   { name: "Eyoha Digitals", img: eyoha, testimonial: "Eyoha Digitals loved our website!" },
@@ -653,7 +652,8 @@ const Homepage: React.FC = () => {
             minHeight: "100vh",
           }}
         >
-          <div className="site-shell relative flex flex-col items-center justify-center pt-28">
+          <div className="absolute inset-0 bg-black/45" aria-hidden="true" />
+          <div className="site-shell relative z-10 flex flex-col items-center justify-center pt-28">
             <div className="flex flex-col items-center text-center w-full">
               <div className="mb-6 relative w-full max-w-3xl mx-auto flex justify-center md:justify-start">
                 <div className="relative inline-flex items-center text-left -translate-x-6 md:-translate-x-25">

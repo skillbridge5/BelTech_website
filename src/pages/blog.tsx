@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
 import { loadInsights } from "../api/client"; // named import
-import Hero from "./../assets/insightpage/heroNew.png";
+import Hero from "./../assets/insightpage/blog-intro.jpg";
 import above_the_footer from "./../assets/above_the_footer.png";
 import { motion } from "framer-motion";
 import PageIntro from "../components/PageIntro";
@@ -65,7 +65,11 @@ const Blog = () => {
 
   return (
     <div className="font-sans antialiased bg-white text-gray-900">
-      <PageIntro image={Hero} title="Ideas on ERP and digital operations.">
+      <PageIntro
+        image={Hero}
+        overlayClassName="bg-gradient-to-b from-black/55 via-black/45 to-black/60"
+        title="Ideas on ERP and digital operations."
+      >
         Articles and notes on ERP, corporate team training, and digital operations in Africa.
       </PageIntro>
 

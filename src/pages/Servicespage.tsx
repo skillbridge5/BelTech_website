@@ -1,16 +1,14 @@
 import { Button } from '../components/ui/button';
 import { useEffect, type ComponentType, type ReactNode } from 'react';
 import { CheckCircle, Zap, Users, Globe, Settings, GraduationCap } from 'lucide-react';
-import Hero from "./../assets/servicepage/hero1.png";
-import HeroMobile from "./../assets/servicepage/heroMobile.png";
-import ERPImp from "./../assets/homepage/oddoNew.png";
 import customSoft from "./../assets/servicepage/customSoftNew.png";
-import bussinesAuto from "./../assets/servicepage/businessAuto.png";
+import servicesIntro from "./../assets/servicepage/services-intro.jpg";
+import bussinesAuto from "./../assets/servicepage/business-automation.jpg";
+import trainingImg from "./../assets/servicepage/training.jpg";
+import ERPImp from "./../assets/servicepage/erp_implementation.jpg";
 import above_the_footer from "./../assets/above_the_footer.png";
 import { motion } from "framer-motion";
 import PageIntro from "../components/PageIntro";
-
-const trainingImg = "/training.jpg";
 
 type IconType = ComponentType<{ className?: string }>;
 
@@ -41,7 +39,17 @@ const FeatureCard = ({
   </article>
 );
 
-const ServicePhoto = ({ src, alt, fromLeft = false }: { src: string; alt: string; fromLeft?: boolean }) => (
+const ServicePhoto = ({
+  src,
+  alt,
+  fromLeft = false,
+  objectPosition = "center top",
+}: {
+  src: string;
+  alt: string;
+  fromLeft?: boolean;
+  objectPosition?: string;
+}) => (
   <motion.div
     initial={{ opacity: 0, x: fromLeft ? -20 : 20 }}
     whileInView={{ opacity: 1, x: 0 }}
@@ -53,7 +61,7 @@ const ServicePhoto = ({ src, alt, fromLeft = false }: { src: string; alt: string
       src={src}
       alt={alt}
       className="h-[280px] w-full object-cover sm:h-[360px] lg:h-[425px]"
-      style={{ objectPosition: "center top" }}
+      style={{ objectPosition }}
     />
   </motion.div>
 );
@@ -72,8 +80,8 @@ const Servicespage = () => {
   return (
     <div className="min-h-screen bg-[#f7f8fa] font-sans text-gray-800 antialiased">
       <PageIntro
-        image={Hero}
-        mobileImage={HeroMobile}
+        image={servicesIntro}
+        overlayClassName="bg-gradient-to-b from-black/55 via-black/45 to-black/60"
         title="ERP, training, automation, and software for your operations."
       >
         ERP setup, corporate team training, system integration, and custom software for daily operations.
@@ -99,7 +107,7 @@ const Servicespage = () => {
                 <CheckItem>Full Support</CheckItem>
               </ul>
             </div>
-            <ServicePhoto src={ERPImp} alt="ERP Implementation" />
+            <ServicePhoto src={ERPImp} alt="ERP Implementation" objectPosition="center" />
           </motion.div>
 
           <motion.div
@@ -150,7 +158,7 @@ const Servicespage = () => {
                 <CheckItem>System Integration</CheckItem>
               </ul>
             </div>
-            <ServicePhoto src={bussinesAuto} alt="Business Process Automation" fromLeft />
+            <ServicePhoto src={bussinesAuto} alt="Business Process Automation" fromLeft objectPosition="left center" />
           </motion.div>
 
           <motion.div

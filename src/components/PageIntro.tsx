@@ -5,9 +5,16 @@ type PageIntroProps = {
   mobileImage?: string;
   title: string;
   children: ReactNode;
+  overlayClassName?: string;
 };
 
-const PageIntro = ({ image, mobileImage, title, children }: PageIntroProps) => {
+const PageIntro = ({
+  image,
+  mobileImage,
+  title,
+  children,
+  overlayClassName = "bg-gradient-to-b from-black/60 via-black/45 to-black/65",
+}: PageIntroProps) => {
   return (
     <section
       className="relative flex min-h-screen items-center justify-center overflow-hidden text-white"
@@ -23,7 +30,7 @@ const PageIntro = ({ image, mobileImage, title, children }: PageIntroProps) => {
           style={{ backgroundImage: `url(${mobileImage})` }}
         />
       ) : null}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/65" />
+      <div className={`absolute inset-0 ${overlayClassName}`} />
       <div className="site-shell relative pt-28 text-center">
         <h1
           className="text-4xl leading-tight md:text-5xl lg:text-6xl"
