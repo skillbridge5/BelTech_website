@@ -51,6 +51,7 @@ import humanResource from "../assets/homepage/human-resource.svg";
 import care from "../assets/homepage/care.jpg";
 import school from "../assets/homepage/school.jpg";
 import attendanceShot from "../assets/homepage/attendance.jpg";
+import payrollShot from "../assets/homepage/payroll-month.jpg";
 
 type ProductModule = {
   title: string;
@@ -70,7 +71,8 @@ type ProductPage = {
     intro: string;
     steps: { title: string; body: string; icon: LucideIcon }[];
   };
-  spotlight?: { kicker: string; title: string; body: string; image: string; imageAlt: string };
+  spotlight?: { kicker: string; title: string; titleAccent?: string; body: string; image: string; imageAlt: string; flip?: boolean };
+  companion?: { kicker: string; title: string; titleAccent?: string; body: string; image: string; imageAlt: string; flip?: boolean };
   closing?: { title: string; body: string; options?: { title: string; body: string; icon: LucideIcon }[] };
 };
 
@@ -136,15 +138,21 @@ const products: Record<string, ProductPage> = {
       ],
     },
     spotlight: {
-      kicker: "Attendance and payroll",
-      title: "From the fingerprint to the payslip.",
-      body: "Staff check in once. BelTech Ethiopian HRMS carries that day into salary, income tax, pension, allowances, and deductions, so the payslip is ready without a second spreadsheet.",
+      kicker: "Attendance",
+      title: "The day starts",
+      titleAccent: "at the fingerprint.",
+      body: "One check-in, and lateness, absences, and corrections are already on the record. Managers stop collecting paper timesheets.",
       image: attendanceShot,
       imageAlt: "Fingerprint attendance device showing Check-In",
     },
-    closing: {
-      title: "One platform for complete human resource and payroll management",
-      body: "Built on Odoo. Designed for Ethiopian businesses.",
+    companion: {
+      kicker: "Payroll",
+      title: "The month closes",
+      titleAccent: "on one payslip.",
+      body: "Salary, income tax, pension, allowances, and deductions come together when the month ends. The payslip is ready without a second spreadsheet.",
+      image: payrollShot,
+      imageAlt: "A month closing into one payslip",
+      flip: true,
     },
   },
   carecentral: {
@@ -366,23 +374,28 @@ const ProductDetail = () => {
         </div>
       </section>
 
-      {product.spotlight ? (
-        <section className="bg-white pb-4 pt-4">
-          <div className="site-wide">
-            <div className="grid items-center overflow-hidden rounded-[2rem] bg-[#f3f8fb] lg:grid-cols-5">
-              <div className="flex items-center justify-center bg-white px-6 py-8 lg:col-span-2">
-                <img
-                  src={product.spotlight.image}
-                  alt={product.spotlight.imageAlt}
-                  className="h-72 w-full object-contain sm:h-80"
-                />
+      {[product.spotlight, product.companion].some(Boolean) ? (
+        <section className="bg-white py-8">
+          <div className="site-wide space-y-8">
+            {[product.spotlight, product.companion].filter(Boolean).map((panel) => (
+              <div key={panel!.kicker} className="grid items-center overflow-hidden rounded-[2rem] bg-[#f3f8fb] lg:grid-cols-5">
+                <div className={`flex items-center justify-center bg-white px-8 py-10 lg:col-span-2 ${panel!.flip ? "order-2 lg:order-2" : ""}`}>
+                  <img
+                    src={panel!.image}
+                    alt={panel!.imageAlt}
+                    className={product.companion ? "h-80 w-full object-contain sm:h-96" : "h-72 w-full object-contain sm:h-80"}
+                  />
+                </div>
+                <div className={`px-8 lg:col-span-3 ${panel!.flip ? "order-1 lg:order-1 lg:pl-14" : "lg:pr-14"} ${product.companion ? "py-12 lg:py-16" : "py-10 lg:py-12"}`}>
+                  <p className="text-sm font-bold tracking-wide text-[#0078B7]">{panel!.kicker}</p>
+                  <h2 className={`mt-3 max-w-xl font-bold tracking-tight text-gray-900 ${product.companion ? "text-4xl md:text-5xl" : "text-3xl md:text-4xl"}`}>
+                    {panel!.title}
+                    {panel!.titleAccent ? <span className="text-[#0078B7]"> {panel!.titleAccent}</span> : null}
+                  </h2>
+                  <p className="mt-4 max-w-xl text-lg leading-relaxed text-gray-600">{panel!.body}</p>
+                </div>
               </div>
-              <div className="px-8 py-10 lg:col-span-3 lg:py-12 lg:pr-12">
-                <p className="text-sm font-bold tracking-wide text-[#0078B7]">{product.spotlight.kicker}</p>
-                <h2 className="mt-3 max-w-xl text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">{product.spotlight.title}</h2>
-                <p className="mt-4 max-w-xl text-lg leading-relaxed text-gray-600">{product.spotlight.body}</p>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
       ) : null}

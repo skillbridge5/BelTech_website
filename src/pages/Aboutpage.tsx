@@ -1,6 +1,6 @@
 import { Target, Flag, Handshake, LineChart, Eye } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription } from "../components/ui/card";
-import abouthero from "./../assets/aboutPage/hero1.png"
+import abouthero from "./../assets/aboutPage/about-intro.jpg"
 import beltechMark from "./../assets/new-logo-free.png";
 import { Button } from "../components/ui/button";
 import above_the_footer from "./../assets/above_the_footer.png"
@@ -15,7 +15,11 @@ const About = () => {
     return (
         <div className="min-h-screen bg-white font-sans text-gray-800 antialiased">
             <main>
-                <PageIntro image={abouthero} title="Built in Addis Ababa for African businesses.">
+                <PageIntro
+                  image={abouthero}
+                  overlayClassName="bg-gradient-to-b from-black/55 via-black/45 to-black/60"
+                  title="Built in Addis Ababa for African businesses."
+                >
                   A company born in Ethiopia, supporting businesses across Africa with ERP, corporate training, and digital solutions.
                 </PageIntro>
 

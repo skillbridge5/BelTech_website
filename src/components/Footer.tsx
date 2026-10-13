@@ -111,7 +111,7 @@ const Footer = () => {
 
         <div className="mt-12 border-t border-white/10 pt-6">
           <p className="text-sm text-white/60">
-            © 2025 BelTech Solutions. All rights reserved. | Addis Ababa, Ethiopia
+            © {new Date().getFullYear()} BelTech Solutions. All rights reserved. | Addis Ababa, Ethiopia
           </p>
         </div>
       </div>
