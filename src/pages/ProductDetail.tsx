@@ -50,6 +50,7 @@ import above_the_footer from "../assets/above_the_footer.png";
 import humanResource from "../assets/homepage/human-resource.svg";
 import care from "../assets/homepage/care.jpg";
 import school from "../assets/homepage/school.jpg";
+import attendanceShot from "../assets/homepage/attendance.jpg";
 
 type ProductModule = {
   title: string;
@@ -138,7 +139,7 @@ const products: Record<string, ProductPage> = {
       kicker: "Attendance and payroll",
       title: "From the fingerprint to the payslip.",
       body: "Staff check in once. BelTech Ethiopian HRMS carries that day into salary, income tax, pension, allowances, and deductions, so the payslip is ready without a second spreadsheet.",
-      image: "/attendance.jpg",
+      image: attendanceShot,
       imageAlt: "Fingerprint attendance device showing Check-In",
     },
     closing: {
