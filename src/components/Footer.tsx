@@ -1,5 +1,6 @@
-import { Mail, Linkedin, Send, Youtube, MapPin, Phone } from "lucide-react";
+import { Mail, Linkedin, Send, Youtube, MapPin, Phone, type LucideIcon } from "lucide-react";
 import { Button } from "./ui/button";
+import { WhatsAppIcon } from "./WhatsAppButton";
 import logo from "../assets/new-logo-free.png";
 import { Link } from "react-router-dom";
 
@@ -14,11 +15,12 @@ const Footer = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  const socialLinks = [
+  const socialLinks: { icon: LucideIcon | typeof WhatsAppIcon; url: string; label: string }[] = [
     { icon: Mail, url: "mailto:beltechsolns@gmail.com", label: "Email" },
     { icon: Linkedin, url: "https://www.linkedin.com/company/beltech-solution/", label: "LinkedIn" },
     { icon: Send, url: "https://t.me/belTechSolns", label: "Telegram" },
     { icon: Youtube, url: "https://www.youtube.com/@BeltechSolns", label: "YouTube" },
+    { icon: WhatsAppIcon, url: "https://wa.me/251955935455", label: "WhatsApp" },
   ];
 
   return (

@@ -17,8 +17,6 @@ import odoo from "./../assets/homepage/odoo.png";
 import odooErp from "./../assets/homepage/oddoNew.png";
 import bussiness_automation_int from "./../assets/homepage/automationAndIntegration.jpg";
 import custom_soft_dev from "./../assets/homepage/customSoftNew.png";
-import trainingImg from "./../assets/solutionpage/eLearning.jpg";
-import erpnextModules from "./../assets/homepage/erpnext-modules.svg";
 import eyoha from "./../assets/clientLogo/eyoha.png";
 import Roha from "./../assets/clientLogo/RohaCake.png";
 import SkillsBridge from "./../assets/clientLogo/skillBridge.png";
@@ -44,6 +42,9 @@ import { Link } from "react-router-dom";
 import { fetchTestimonials, getProducts } from "../api/client";
 import type { Product } from "../api/client";
 
+const solutionTraining = "/erp-training-card.jpg";
+const erpnextShot = "/erpnext.jpg";
+
 const defaultClients = [
   { name: "Eyoha Digitals", img: eyoha, testimonial: "Eyoha Digitals loved our website!" },
   { name: "Roha Cake and Bread Bakery", img: Roha, testimonial: "Roha Bakery saw amazing growth with our product." },
@@ -57,7 +58,7 @@ const defaultProducts = [
     _id: "default-human-resource",
     title: "Ethiopian HRMS",
     description:
-      "A configurable HR system on Odoo for the full employee lifecycle. Each company sets its own schedules, leave, overtime, and approvals, while contracts, biometric attendance, and payroll follow Ethiopian labor, tax, and pension rules.",
+      "An Odoo-based HR and payroll system for Ethiopian businesses, from employees and biometric attendance through payroll, leave, and self-service.",
     imageUrl: humanResource,
     link: "/products/ethiopian-hrms",
     priority: 0,
@@ -73,7 +74,8 @@ const defaultProducts = [
   {
     _id: "default-school360",
     title: "School360",
-    description: "An end-to-end school management system on Odoo.",
+    description:
+      "Digitize academics, admissions, attendance, examinations, fees, communication, and administration—all from one integrated, modular ERP platform engineered for educational institutions.",
     imageUrl: school,
     link: "/products/school360",
     priority: 2,
@@ -496,7 +498,8 @@ const solutionItems = [
     points: ["Web and mobile applications", "Tools for one clear process", "Built around the team using them"],
   },
   {
-    img: trainingImg,
+    img: solutionTraining,
+    objectPosition: "center top",
     alt: "Corporate ERP Training",
     title: "Corporate ERP Training",
     hash: "corporate-erp-training",
@@ -551,11 +554,12 @@ const SolutionsSection = () => {
               to={"/services#" + item.hash}
               className="group grid overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm outline-none transition duration-300 hover:-translate-y-1 hover:border-[#0078B7] hover:shadow-lg focus-visible:ring-2 focus-visible:ring-[#0078B7] focus-visible:ring-offset-2 lg:grid-cols-5"
             >
-              <div className="relative h-52 overflow-hidden bg-[#f4f7fb] lg:col-span-2 lg:h-full lg:min-h-64">
+              <div className="relative h-52 overflow-hidden bg-[#01143f] lg:col-span-2 lg:h-full lg:min-h-64">
                 <img
                   src={item.img}
                   alt={item.alt}
                   className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  style={"objectPosition" in item ? { objectPosition: item.objectPosition } : undefined}
                 />
                 <div className="absolute inset-0 bg-[#0078B7]/0 transition duration-300 group-hover:bg-[#0078B7]/15" />
                 <div className="absolute bottom-0 left-0 h-1 w-0 bg-[#0078B7] transition-all duration-300 group-hover:w-full" />
@@ -836,9 +840,9 @@ const Homepage: React.FC = () => {
             <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
 
               <img
-                src={erpnextModules}
+                src={erpnextShot}
                 alt="ERPNext modules"
-                className="h-full min-h-[24rem] w-full rounded-2xl bg-[#f4f4f5] object-contain object-center sm:min-h-[28rem] lg:min-h-[36rem]"
+                className="h-auto w-full self-center rounded-2xl bg-white object-contain"
               />
 
               <div className="flex flex-col gap-5">

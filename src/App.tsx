@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom
 import { AuthProvider } from "./contexts/AuthContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import WhatsAppButton from "./components/WhatsAppButton";
 import Homepage from "./pages/Homepage";
 import Aboutpage from "./pages/Aboutpage";
 import Servicespage from "./pages/Servicespage";
@@ -28,6 +29,7 @@ const PublicLayout = () => (
     <Navbar />
     <Outlet />
     <Footer />
+    <WhatsAppButton />
   </>
 );
 
