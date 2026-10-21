@@ -3,14 +3,56 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { supabase } from "../db/supabase.js";
 import { requireAuth } from "../middleware/auth.js";
+import {
+  ensureLocalAdmin,
+  findLocalAdminByEmail,
+  findLocalAdminById,
+  updateLocalAdmin,
+} from "../lib/adminStore.js";
 
 const router = Router();
+
+function isMissingOrAuthError(error) {
+  const msg = String(error?.message || error || "").toLowerCase();
+  return (
+    msg.includes("invalid api key") ||
+    msg.includes("jwt") ||
+    msg.includes("could not find the table") ||
+    msg.includes("does not exist") ||
+    error?.code === "42P01" ||
+    error?.code === "PGRST205"
+  );
+}
+
+async function trySupabaseAdmin(email) {
+  try {
+    const { data, error } = await supabase
+      .from("admins")
+      .select("id, email, password_hash")
+      .eq("email", email.toLowerCase())
+      .maybeSingle();
+    if (error) {
+      if (isMissingOrAuthError(error)) return { unavailable: true, error };
+      return { unavailable: false, error };
+    }
+    return { unavailable: false, data };
+  } catch (error) {
+    return { unavailable: true, error };
+  }
+}
 
 // Ensure the admin user exists (seeded from env vars on first run)
 export const seedAdmin = async () => {
   const email = process.env.ADMIN_EMAIL;
   const password = process.env.ADMIN_PASSWORD;
   if (!email || !password) return;
+
+  // Always ensure a local fallback admin for development.
+  try {
+    await ensureLocalAdmin(email, password);
+  } catch (err) {
+    console.error("Seed local admin error:", err.message);
+  }
 
   const { data, error } = await supabase
     .from("admins")
@@ -20,6 +62,7 @@ export const seedAdmin = async () => {
 
   if (error) {
     console.error("Seed admin: query error", error.message);
+    console.log(`Using local admin fallback: ${email}`);
     return;
   }
 
@@ -44,23 +87,39 @@ router.post("/login", async (req, res) => {
     return res.status(400).json({ message: "Email and password are required" });
   }
 
-  const { data, error } = await supabase
-    .from("admins")
-    .select("id, email, password_hash")
-    .eq("email", email.toLowerCase())
-    .maybeSingle();
+  const normalized = email.toLowerCase();
+  const sb = await trySupabaseAdmin(normalized);
 
-  if (error || !data) {
+  if (!sb.unavailable && sb.data) {
+    const valid = await bcrypt.compare(password, sb.data.password_hash);
+    if (!valid) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+    const token = jwt.sign(
+      { sub: sb.data.id, email: sb.data.email, source: "supabase" },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
+    );
+    return res.json({ token });
+  }
+
+  // Local fallback when Supabase is misconfigured / unreachable
+  let local = await findLocalAdminByEmail(normalized);
+  if (!local && process.env.ADMIN_EMAIL && process.env.ADMIN_PASSWORD) {
+    local = await ensureLocalAdmin(process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD);
+  }
+
+  if (!local || local.email !== normalized) {
     return res.status(401).json({ message: "Invalid credentials" });
   }
 
-  const valid = await bcrypt.compare(password, data.password_hash);
+  const valid = await bcrypt.compare(password, local.password_hash);
   if (!valid) {
     return res.status(401).json({ message: "Invalid credentials" });
   }
 
   const token = jwt.sign(
-    { sub: data.id, email: data.email },
+    { sub: local.id, email: local.email, source: "local" },
     process.env.JWT_SECRET,
     { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
   );
@@ -71,17 +130,30 @@ router.post("/login", async (req, res) => {
 // PUT /auth/account — update the logged-in admin's email and/or password
 router.put("/account", requireAuth, async (req, res) => {
   const { currentPassword, email, password } = req.body || {};
+  const source = req.user.source || "supabase";
 
-  const { data: admin, error } = await supabase
-    .from("admins")
-    .select("id, email, password_hash")
-    .eq("id", req.user.sub)
-    .maybeSingle();
+  let admin = null;
 
-  if (error || !admin) {
-    return res
-      .status(401)
-      .json({ message: error ? error.message : "Admin not found" });
+  if (source === "local") {
+    admin = await findLocalAdminById(req.user.sub);
+  } else {
+    const { data, error } = await supabase
+      .from("admins")
+      .select("id, email, password_hash")
+      .eq("id", req.user.sub)
+      .maybeSingle();
+
+    if (error && isMissingOrAuthError(error)) {
+      admin = await findLocalAdminById(req.user.sub);
+    } else if (!error) {
+      admin = data;
+    } else {
+      return res.status(401).json({ message: error.message });
+    }
+  }
+
+  if (!admin) {
+    return res.status(401).json({ message: "Admin not found" });
   }
 
   const valid = await bcrypt.compare(currentPassword || "", admin.password_hash);
@@ -109,19 +181,28 @@ router.put("/account", requireAuth, async (req, res) => {
   if (newEmail) updates.email = newEmail;
   if (newPassword) updates.password_hash = await bcrypt.hash(newPassword, 10);
 
-  const { data: updated, error: updateError } = await supabase
-    .from("admins")
-    .update(updates)
-    .eq("id", admin.id)
-    .select("id, email")
-    .single();
+  let updated;
+  if (source === "local" || !(await trySupabaseAdmin(admin.email)).data) {
+    updated = await updateLocalAdmin(admin.id, updates);
+  } else {
+    const { data, error: updateError } = await supabase
+      .from("admins")
+      .update(updates)
+      .eq("id", admin.id)
+      .select("id, email")
+      .single();
+    if (updateError) {
+      return res.status(500).json({ message: updateError.message });
+    }
+    updated = data;
+  }
 
-  if (updateError) {
-    return res.status(500).json({ message: updateError.message });
+  if (!updated) {
+    return res.status(500).json({ message: "Failed to update account" });
   }
 
   const token = jwt.sign(
-    { sub: updated.id, email: updated.email },
+    { sub: updated.id, email: updated.email, source },
     process.env.JWT_SECRET,
     { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
   );

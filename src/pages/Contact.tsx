@@ -159,7 +159,11 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="w-full flex justify-center"
           >
-            <form className="w-full space-y-6" onSubmit={handleSubmit}>
+            <form
+              className="w-full space-y-6"
+              onSubmit={handleSubmit}
+              data-analytics-form="contact_form"
+            >
               <p className="text-gray-600 mb-6">
                 Questions, comments, or suggestions? Simply fill in the form and we'll be in touch shortly.
               </p>

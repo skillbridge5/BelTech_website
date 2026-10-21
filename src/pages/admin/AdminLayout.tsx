@@ -4,13 +4,14 @@ import { useAuth } from "../../hooks/useAuth";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { updateAdminAccount, getErrorMessage } from "../../api/client";
-import { LayoutDashboard, FileText, FolderKanban, Mail, LogOut, MessageCircle, User, X, Package } from "lucide-react";
+import { LayoutDashboard, FileText, FolderKanban, Mail, LogOut, MessageCircle, User, X, Package, LineChart } from "lucide-react";
 import NotificationsBell from "./NotificationsBell";
 import logo from "../../assets/new_logo.png";
 import toast, { Toaster } from "react-hot-toast";
 
 const navItems = [
   { name: "Dashboard", path: "/admin", icon: LayoutDashboard, end: true },
+  { name: "Analytics", path: "/admin/analytics", icon: LineChart, end: false },
   { name: "Solutions", path: "/admin/solutions", icon: FolderKanban, end: false },
   { name: "Products", path: "/admin/products", icon: Package, end: false },
   { name: "Blog", path: "/admin/blog", icon: FileText, end: false },
