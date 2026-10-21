@@ -70,6 +70,7 @@ const Navbar = () => {
           ))}
 
           <Button
+            data-analytics-cta="nav_get_demo"
             className="ml-2 rounded-full bg-[#0078B7] px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#005C8A]"
             onClick={() =>
               window.open("https://beltech-erp.blsglob.com/", "_blank")
@@ -111,6 +112,7 @@ const Navbar = () => {
             ))}
 
             <Button
+              data-analytics-cta="nav_get_demo_mobile"
               className="w-full mt-3 text-white rounded-full bg-gradient-to-r from-[#0078B7] to-[#27A2D8] shadow-md shadow-[#0078B7]/30"
               onClick={() => {
                 setIsMenuOpen(false);

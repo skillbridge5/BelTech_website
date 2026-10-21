@@ -22,10 +22,13 @@ import InsightsAdmin from "./pages/admin/InsightsAdmin";
 import ContactsAdmin from "./pages/admin/ContactsAdmin";
 import TestimonialsAdmin from "./pages/admin/TestimonialsAdmin";
 import ProductsAdmin from "./pages/admin/ProductsAdmin";
+import AnalyticsAdmin from "./pages/admin/AnalyticsAdmin";
 import ProtectedRoute from "./components/ProtectedRoute";
+import VisitorTracker from "./components/VisitorTracker";
 
 const PublicLayout = () => (
   <>
+    <VisitorTracker />
     <Navbar />
     <Outlet />
     <Footer />
@@ -66,6 +69,7 @@ export default function App() {
           <Route path="/admin" element={<ProtectedRoute />}>
             <Route element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
+              <Route path="analytics" element={<AnalyticsAdmin />} />
               <Route path="solutions" element={<SolutionsAdmin />} />
               <Route path="products" element={<ProductsAdmin />} />
               <Route path="blog" element={<InsightsAdmin />} />

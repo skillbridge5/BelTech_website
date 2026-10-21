@@ -211,3 +211,99 @@ export const updateProduct = (
 ) => api.put(`/products/${id}`, payload);
 
 export const deleteProduct = (id: string) => api.delete(`/products/${id}`);
+
+// ===== Analytics =====
+export type AnalyticsRange = "today" | "week" | "month" | "year";
+
+export interface AnalyticsSummary {
+  range: AnalyticsRange;
+  storage?: string;
+  kpis: {
+    uniqueVisitors: number;
+    totalPageviews: number;
+    avgSessionDuration: number;
+    bounceRate: number;
+    engagementRate: number;
+    avgScrollDepth: number;
+    totalClicks: number;
+    ctaClicks: number;
+  };
+  trafficTrend: {
+    label: string;
+    visitors: number;
+    pageviews: number;
+    engaged?: number;
+  }[];
+  trafficSources: {
+    name: string;
+    key: string;
+    value: number;
+    percent: number;
+  }[];
+  devices: {
+    name: string;
+    key: string;
+    value: number;
+    percent: number;
+  }[];
+  scrollDistribution: {
+    key: string;
+    label: string;
+    value: number;
+    percent: number;
+  }[];
+  topCtas: {
+    label: string;
+    count: number;
+    type: string;
+    path?: string;
+  }[];
+  topPages: {
+    path: string;
+    pageviews: number;
+    avgDwellMs: number;
+    avgScrollDepth?: number;
+    clicks?: number;
+    topSections: { sectionId: string; dwellMs: number; hits: number }[];
+  }[];
+  topSections: {
+    sectionId: string;
+    dwellMs: number;
+    hits: number;
+  }[];
+  recentEvents: {
+    id: string;
+    type: string;
+    label: string;
+    path: string;
+    createdAt: string;
+    href?: string;
+  }[];
+}
+
+export interface AnalyticsLiveVisitor {
+  id: string;
+  visitorId: string;
+  location: string;
+  country: string;
+  city: string;
+  device: string;
+  currentPage: string;
+  lastSeenAt: string;
+  durationMs?: number;
+  scrollDepth?: number;
+  clickCount?: number;
+  engaged?: boolean;
+}
+
+export const fetchAnalyticsSummary = async (
+  range: AnalyticsRange = "week"
+): Promise<AnalyticsSummary> => {
+  const res = await api.get(`/analytics/summary?range=${range}`);
+  return res.data?.data || res.data;
+};
+
+export const fetchAnalyticsLive = async (): Promise<AnalyticsLiveVisitor[]> => {
+  const res = await api.get("/analytics/live");
+  return res.data?.data?.visitors || res.data?.visitors || [];
+};

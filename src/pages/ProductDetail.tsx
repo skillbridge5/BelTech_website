@@ -13,7 +13,6 @@ import {
   CalendarOff,
   Calculator,
   Clock,
-  Cloud,
   Droplet,
   Dumbbell,
   Fingerprint,
@@ -32,7 +31,6 @@ import {
   PieChart,
   ScanLine,
   Scissors,
-  Server,
   Siren,
   Smile,
   Syringe,
@@ -51,7 +49,7 @@ import humanResource from "../assets/homepage/human-resource.svg";
 import care from "../assets/homepage/care.jpg";
 import school from "../assets/homepage/school.jpg";
 import attendanceShot from "../assets/homepage/attendance.jpg";
-import payrollShot from "../assets/homepage/payroll-month.jpg";
+import payrollShot from "../assets/payroll.jpeg";
 
 type ProductModule = {
   title: string;
@@ -71,8 +69,8 @@ type ProductPage = {
     intro: string;
     steps: { title: string; body: string; icon: LucideIcon }[];
   };
-  spotlight?: { kicker: string; title: string; titleAccent?: string; body: string; image: string; imageAlt: string; flip?: boolean };
-  companion?: { kicker: string; title: string; titleAccent?: string; body: string; image: string; imageAlt: string; flip?: boolean };
+  spotlight?: { kicker: string; title: string; titleAccent?: string; body: string; image: string; imageAlt: string; flip?: boolean; objectPosition?: string };
+  companion?: { kicker: string; title: string; titleAccent?: string; body: string; image: string; imageAlt: string; flip?: boolean; objectPosition?: string };
   closing?: { title: string; body: string; options?: { title: string; body: string; icon: LucideIcon }[] };
 };
 
@@ -144,6 +142,7 @@ const products: Record<string, ProductPage> = {
       body: "One check-in, and lateness, absences, and corrections are already on the record. Managers stop collecting paper timesheets.",
       image: attendanceShot,
       imageAlt: "Fingerprint attendance device showing Check-In",
+      objectPosition: "center",
     },
     companion: {
       kicker: "Payroll",
@@ -151,8 +150,9 @@ const products: Record<string, ProductPage> = {
       titleAccent: "on one payslip.",
       body: "Salary, income tax, pension, allowances, and deductions come together when the month ends. The payslip is ready without a second spreadsheet.",
       image: payrollShot,
-      imageAlt: "A month closing into one payslip",
+      imageAlt: "Employee payslips list on a payroll system",
       flip: true,
+      objectPosition: "top",
     },
   },
   carecentral: {
@@ -231,14 +231,6 @@ const products: Record<string, ProductPage> = {
         { title: "Human resources, payroll, and attendance", icon: Users },
         { title: "Asset management", icon: Landmark },
         { title: "Fleet and ambulance", icon: Ambulance },
-      ],
-    },
-    closing: {
-      title: "Run it your way",
-      body: "CareCentral is available as a cloud subscription or a self-hosted system, so an institution can start with the essential modules and expand as it needs to.",
-      options: [
-        { title: "Cloud", body: "A subscription, run for the hospital without hosting the system itself.", icon: Cloud },
-        { title: "Self-hosted", body: "Installed for the institution, on the infrastructure it chooses to run.", icon: Server },
       ],
     },
   },
@@ -378,17 +370,18 @@ const ProductDetail = () => {
         <section className="bg-white py-8">
           <div className="site-wide space-y-8">
             {[product.spotlight, product.companion].filter(Boolean).map((panel) => (
-              <div key={panel!.kicker} className="grid items-center overflow-hidden rounded-[2rem] bg-[#f3f8fb] lg:grid-cols-5">
-                <div className={`flex items-center justify-center bg-white px-8 py-10 lg:col-span-2 ${panel!.flip ? "order-2 lg:order-2" : ""}`}>
+              <div key={panel!.kicker} className="grid min-h-80 items-stretch overflow-hidden rounded-[2rem] bg-[#f3f8fb] sm:min-h-96 lg:grid-cols-2">
+                <div className={`relative min-h-80 bg-white sm:min-h-96 ${panel!.flip ? "order-2 lg:order-2" : ""}`}>
                   <img
                     src={panel!.image}
                     alt={panel!.imageAlt}
-                    className={product.companion ? "h-80 w-full object-contain sm:h-96" : "h-72 w-full object-contain sm:h-80"}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    style={{ objectPosition: panel!.objectPosition ?? "center" }}
                   />
                 </div>
-                <div className={`px-8 lg:col-span-3 ${panel!.flip ? "order-1 lg:order-1 lg:pl-14" : "lg:pr-14"} ${product.companion ? "py-12 lg:py-16" : "py-10 lg:py-12"}`}>
+                <div className={`flex min-h-80 flex-col justify-center px-8 py-12 sm:min-h-96 lg:px-12 lg:py-16 ${panel!.flip ? "order-1 lg:order-1" : ""}`}>
                   <p className="text-sm font-bold tracking-wide text-[#0078B7]">{panel!.kicker}</p>
-                  <h2 className={`mt-3 max-w-xl font-bold tracking-tight text-gray-900 ${product.companion ? "text-4xl md:text-5xl" : "text-3xl md:text-4xl"}`}>
+                  <h2 className="mt-3 max-w-xl text-3xl font-bold tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
                     {panel!.title}
                     {panel!.titleAccent ? <span className="text-[#0078B7]"> {panel!.titleAccent}</span> : null}
                   </h2>

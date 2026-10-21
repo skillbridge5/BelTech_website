@@ -642,6 +642,7 @@ const Homepage: React.FC = () => {
       <main className="flex-grow">
         {/* hero section */}
         <section
+          id="hero-section"
           className="relative text-white flex items-center justify-center"
           style={{
             backgroundImage: `url(${hero})`,
@@ -674,6 +675,7 @@ const Homepage: React.FC = () => {
 
               <Button
                 size="lg"
+                data-analytics-cta="hero_free_consultation"
                 className="w-full sm:w-auto text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-[#0078B7]"
                 style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
                 onClick={() => (window.location.href = "/Contact")}
@@ -719,6 +721,7 @@ const Homepage: React.FC = () => {
               <Button
                 size="lg"
                 variant="outline"
+                data-analytics-cta="hero_book_demo"
                 className="w-full sm:w-auto border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
                 style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
                 onClick={() => (window.location.href = "/Contact")}
@@ -747,7 +750,7 @@ const Homepage: React.FC = () => {
         <SolutionsSection />
 
           {/* why oddo part */}
-        <section className="py-20 bg-white">
+        <section id="features-section" className="py-20 bg-white">
           <div className="site-wide">
             <div className="text-center mb-16">
               <SectionHeading>
@@ -826,7 +829,7 @@ const Homepage: React.FC = () => {
         </section>
 
           {/* why erp next part */}
-        <section className="py-20 bg-white">
+        <section id="erpnext-section" className="py-20 bg-white">
           <div className="site-wide">
             <div className="text-center mb-16">
               <SectionHeading>
@@ -1078,7 +1081,7 @@ const Homepage: React.FC = () => {
         </section>
 
         {/* Automation Tools section */}
-        <section className="py-20 bg-[#F0F5F9]">
+        <section id="automation-section" className="py-20 bg-[#F0F5F9]">
           <div className="site-wide">
             <div className="text-center mb-16">
               <SectionHeading>Automation</SectionHeading>
@@ -1145,7 +1148,7 @@ const Homepage: React.FC = () => {
         <BusinessOperations />
 
         {/*  Industries We Serve section*/}
-        <section className="py-24 bg-white">
+        <section id="industries-section" className="py-24 bg-white">
           <div className="site-wide">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1166,7 +1169,7 @@ const Homepage: React.FC = () => {
           </div>
         </section>
 
-        <section className="py-24 bg-[#f7f8fa]">
+        <section id="pricing-section" className="py-24 bg-[#f7f8fa]">
           <div className="site-wide">
             <div className="text-center mb-16">
               <SectionHeading>
@@ -1216,6 +1219,7 @@ const Homepage: React.FC = () => {
 
                   <Button
                     size="lg"
+                    data-analytics-cta="pricing_starter_get_started"
                     className="w-full text-white bg-[#0078B7] hover:bg-[#005C8A] transition-all duration-200 font-semibold"
                     onClick={() => (window.location.href = "/contact")}
                   >
@@ -1267,6 +1271,7 @@ const Homepage: React.FC = () => {
 
                   <Button
                     size="lg"
+                    data-analytics-cta="pricing_pro_request_demo"
                     className="w-full bg-white text-[#0078B7] hover:bg-gray-50 transition-all duration-200 font-semibold"
                     onClick={() => (window.location.href = "/contact")}
                   >
@@ -1314,6 +1319,7 @@ const Homepage: React.FC = () => {
 
                   <Button
                     size="lg"
+                    data-analytics-cta="pricing_enterprise_contact_sales"
                     className="w-full text-white bg-[#0078B7] hover:bg-[#005C8A] transition-all duration-200 font-semibold"
                     onClick={() => (window.location.href = "/contact")}
                   >
@@ -1327,7 +1333,7 @@ const Homepage: React.FC = () => {
 
 
         {/* testimonial section */}
-        <section className="py-20 bg-white relative overflow-hidden">
+        <section id="testimonials-section" className="py-20 bg-white relative overflow-hidden">
           <div className="site-wide">
             <div className="text-center mb-16">
               <SectionHeading>
@@ -1444,6 +1450,7 @@ const Homepage: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
+                data-analytics-cta="footer_cta_start_journey"
                 className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7]  text-white hover:bg-[#005C8A]"
                 onClick={() => (window.location.href = "/contact")}
               >
@@ -1451,6 +1458,7 @@ const Homepage: React.FC = () => {
               </Button>
               <Button
                 size="lg"
+                data-analytics-cta="footer_cta_success_stories"
                 className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7]  text-white hover:bg-[#005C8A]"
                 onClick={() => (window.location.href = "/solutions")}
               >
