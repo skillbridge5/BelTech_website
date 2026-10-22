@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import hero from "./../assets/homepage/beltech-hero.jpg";
-import odoo from "./../assets/homepage/odoo.jpg";
+import odoo from "./../assets/homepage/odoo.jpeg";
 import odooErp from "./../assets/homepage/oddoNew.jpg";
 import bussiness_automation_int from "./../assets/homepage/automationAndIntegration.jpg";
 import custom_soft_dev from "./../assets/homepage/customSoftNew.jpg";
