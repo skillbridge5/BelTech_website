@@ -840,7 +840,7 @@ const Homepage: React.FC = () => {
           <div className="site-wide">
             <div className="text-center mb-16">
               <SectionHeading>
-                Why <span className="text-[#0078B7]">ERPNext?</span>
+                Advantages of <span className="text-[#0078B7]">ERPNext?</span>
               </SectionHeading>
               <p className="text-xl font-normal text-black max-w-3xl mx-auto">
                 ERPNext is a powerful open-source ERP trusted by businesses across the globe.
