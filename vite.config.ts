@@ -13,14 +13,13 @@ export default defineConfig({
     assetsInlineLimit: 4096,
     rollupOptions: {
       output: {
+        // Only split heavy libs that do not share React's init graph.
+        // Splitting react / react-dom / react-router into separate chunks
+        // causes "Cannot access before initialization" with React 19 + lazy().
         manualChunks(id) {
-          if (!id.includes("node_modules")) return;
-          if (id.includes("framer-motion")) return "motion";
-          if (id.includes("lucide-react")) return "icons";
-          if (id.includes("react-router")) return "router";
-          if (id.includes("axios")) return "http";
-          if (id.includes("react-dom") || id.includes("/react/")) return "react-vendor";
-          return "vendor";
+          if (id.includes("node_modules/framer-motion")) return "motion";
+          if (id.includes("node_modules/lucide-react")) return "icons";
+          if (id.includes("node_modules/axios")) return "http";
         },
       },
     },
