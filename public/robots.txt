@@ -1,0 +1,7 @@
+# BelTech Solutions — crawl rules
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+Sitemap: https://beltechsolns.et/sitemap.xml

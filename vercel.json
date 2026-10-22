@@ -1,4 +1,47 @@
 {
+  "redirects": [
+    { "source": "/Contact", "destination": "/contact", "permanent": true },
+    { "source": "/Solutions", "destination": "/solutions", "permanent": true },
+    { "source": "/ERPDetail", "destination": "/projects/diligent-trade", "permanent": true },
+    { "source": "/CharityPlatform", "destination": "/projects/skillbridge", "permanent": true },
+    { "source": "/RetailAuto", "destination": "/projects/eyoha-digitals", "permanent": true },
+    { "source": "/insights", "destination": "/blog", "permanent": true },
+    { "source": "/DigitalMarketingDetail", "destination": "/solutions", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(favicon.png|og-default.jpg)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]

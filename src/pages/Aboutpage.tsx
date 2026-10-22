@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardDescription } from "../components/ui/c
 import abouthero from "./../assets/aboutPage/about-intro.jpg"
 import beltechMark from "./../assets/new-logo-free.png";
 import { Button } from "../components/ui/button";
-import above_the_footer from "./../assets/above_the_footer.png"
+import above_the_footer from "./../assets/above_the_footer.jpg"
 import { motion } from "framer-motion";
 import PageIntro from "../components/PageIntro";
 
@@ -18,9 +18,9 @@ const About = () => {
                 <PageIntro
                   image={abouthero}
                   overlayClassName="bg-gradient-to-b from-black/55 via-black/45 to-black/60"
-                  title="Built in Addis Ababa for African businesses."
+                  title="BelTech Solutions — built in Addis Ababa."
                 >
-                  A company born in Ethiopia, supporting businesses across Africa with ERP, corporate training, and digital solutions.
+                  Founded in Ethiopia in 2024 to help African businesses with Odoo and ERPNext implementation, corporate ERP training, and digital solutions.
                 </PageIntro>
 
 
@@ -235,14 +235,14 @@ const About = () => {
                             <Button
                                 size="lg"
                                 className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7] text-white"
-                                onClick={() => window.location.href = '/Contact'}
+                                onClick={() => window.location.href = '/contact'}
                             >
                                 Contact the team
                             </Button>
                             <Button
                                 size="lg"
                                 className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7] text-white"
-                                onClick={() => window.location.href = '/Solutions'}
+                                onClick={() => window.location.href = '/solutions'}
                             >
                                 View Success Stories
                             </Button>

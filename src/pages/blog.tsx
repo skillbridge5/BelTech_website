@@ -3,7 +3,7 @@ import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
 import { loadInsights } from "../api/client"; // named import
 import Hero from "./../assets/insightpage/blog-intro.jpg";
-import above_the_footer from "./../assets/above_the_footer.png";
+import above_the_footer from "./../assets/above_the_footer.jpg";
 import { motion } from "framer-motion";
 import PageIntro from "../components/PageIntro";
 

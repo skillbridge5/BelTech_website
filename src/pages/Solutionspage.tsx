@@ -4,7 +4,7 @@ import { Button } from "../components/ui/button";
 import { getSolutions } from "../api/client";
 import type { Solution } from "../api/client";
 import solutionHero from "../assets/solutionpage/projects-intro.jpg";
-import above_the_footer from "../assets/above_the_footer.png";
+import above_the_footer from "../assets/above_the_footer.jpg";
 import diligent from "../assets/clientLogo/diligent-mark.png";
 import skillBridge from "../assets/clientLogo/skillBridge-mark.png";
 import eyoha from "../assets/clientLogo/eyoha-mark.png";
@@ -104,10 +104,10 @@ const SolutionsPage = () => {
                 <div className="relative bg-gradient-to-b from-[#2B9AD4] to-[#0078B7] px-6 pb-14 pt-6 text-white">
                   <div className="pointer-events-none absolute -right-8 -top-10 h-32 w-32 rounded-full bg-white/10" />
                   <div className="relative flex items-start justify-between gap-4">
-                    <p className="text-[1.7rem] font-extrabold uppercase leading-[0.95] tracking-tight">
+                    <p className="text-[1.7rem] font-extrabold leading-[0.95] tracking-tight">
                       {project.kind}
                     </p>
-                    <p className="max-w-[8.5rem] text-right text-[11px] font-semibold uppercase leading-tight tracking-wide text-white/85">
+                    <p className="max-w-[8.5rem] text-right text-[11px] font-semibold leading-tight tracking-wide text-white/85">
                       {project.client}
                     </p>
                   </div>
@@ -122,7 +122,7 @@ const SolutionsPage = () => {
                 </div>
 
                 <div className="flex flex-1 flex-col px-6 pb-6 pt-14">
-                  <h2 className="text-center text-lg font-extrabold uppercase leading-snug tracking-tight text-gray-900">
+                  <h2 className="text-center text-lg font-extrabold leading-snug tracking-tight text-gray-900">
                     {project.client}
                   </h2>
                   <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
