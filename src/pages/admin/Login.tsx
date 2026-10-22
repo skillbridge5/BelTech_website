@@ -4,7 +4,7 @@ import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
 import { useAuth } from "../../hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
-import { Lock, Mail } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import logo from "../../assets/new_logo.png";
 import { getErrorMessage } from "../../api/client";
 
@@ -13,6 +13,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -88,13 +89,25 @@ const Login = () => {
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                   <Input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="pl-10 py-3 border-gray-300 rounded-lg focus:border-[#0078B7] focus:ring-[#0078B7]"
+                    className="pl-10 pr-11 py-3 border-gray-300 rounded-lg focus:border-[#0078B7] focus:ring-[#0078B7]"
                     autoComplete="current-password"
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 transition-colors"
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-5 w-5" />
+                    ) : (
+                      <Eye className="h-5 w-5" />
+                    )}
+                  </button>
                 </div>
               </div>
 

@@ -88,43 +88,58 @@ router.post("/login", async (req, res) => {
   }
 
   const normalized = email.toLowerCase();
-  const sb = await trySupabaseAdmin(normalized);
 
+  // Prefer local .env admin for local development (Supabase key is often a placeholder).
+  if (
+    process.env.ADMIN_EMAIL &&
+    process.env.ADMIN_PASSWORD &&
+    normalized === process.env.ADMIN_EMAIL.toLowerCase()
+  ) {
+    const local = await ensureLocalAdmin(
+      process.env.ADMIN_EMAIL,
+      process.env.ADMIN_PASSWORD
+    );
+    if (local) {
+      const validLocal = await bcrypt.compare(password, local.password_hash);
+      if (validLocal) {
+        const token = jwt.sign(
+          { sub: local.id, email: local.email, source: "local" },
+          process.env.JWT_SECRET,
+          { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
+        );
+        return res.json({ token });
+      }
+    }
+  }
+
+  const sb = await trySupabaseAdmin(normalized);
   if (!sb.unavailable && sb.data) {
     const valid = await bcrypt.compare(password, sb.data.password_hash);
-    if (!valid) {
-      return res.status(401).json({ message: "Invalid credentials" });
+    if (valid) {
+      const token = jwt.sign(
+        { sub: sb.data.id, email: sb.data.email, source: "supabase" },
+        process.env.JWT_SECRET,
+        { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
+      );
+      return res.json({ token });
     }
-    const token = jwt.sign(
-      { sub: sb.data.id, email: sb.data.email, source: "supabase" },
-      process.env.JWT_SECRET,
-      { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
-    );
-    return res.json({ token });
   }
 
-  // Local fallback when Supabase is misconfigured / unreachable
-  let local = await findLocalAdminByEmail(normalized);
-  if (!local && process.env.ADMIN_EMAIL && process.env.ADMIN_PASSWORD) {
-    local = await ensureLocalAdmin(process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD);
+  // Last resort: any stored local admin for this email
+  const local = await findLocalAdminByEmail(normalized);
+  if (local) {
+    const valid = await bcrypt.compare(password, local.password_hash);
+    if (valid) {
+      const token = jwt.sign(
+        { sub: local.id, email: local.email, source: "local" },
+        process.env.JWT_SECRET,
+        { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
+      );
+      return res.json({ token });
+    }
   }
 
-  if (!local || local.email !== normalized) {
-    return res.status(401).json({ message: "Invalid credentials" });
-  }
-
-  const valid = await bcrypt.compare(password, local.password_hash);
-  if (!valid) {
-    return res.status(401).json({ message: "Invalid credentials" });
-  }
-
-  const token = jwt.sign(
-    { sub: local.id, email: local.email, source: "local" },
-    process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
-  );
-
-  return res.json({ token });
+  return res.status(401).json({ message: "Invalid credentials" });
 });
 
 // PUT /auth/account — update the logged-in admin's email and/or password
