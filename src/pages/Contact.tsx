@@ -4,7 +4,7 @@ import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import toast, { Toaster } from "react-hot-toast";
 import contactHero from "./../assets/contactHero.png";
-import above_the_footer from "./../assets/above_the_footer.png";
+import above_the_footer from "./../assets/above_the_footer.jpg";
 import { Dot } from "lucide-react";
 import { submitContact, getErrorMessage } from "../api/client";
 import { motion } from "framer-motion";
@@ -127,11 +127,11 @@ const Contact = () => {
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center gap-0.4">
                     <Dot className="h-8 w-8 text-black" />
-                    <p className="font-semibold">+251 955 935 455</p>
+                    <a href="tel:+251955935455" className="font-semibold hover:text-[#0078B7]">+251 955 935 455</a>
                   </div>
                   <div className="flex items-center gap-0.4">
                     <Dot className="h-8 w-8 text-black" />
-                    <p className="font-semibold">+251 932 058 398</p>
+                    <a href="tel:+251932058398" className="font-semibold hover:text-[#0078B7]">+251 932 058 398</a>
                   </div>
                 </div>
               </div>
@@ -144,7 +144,7 @@ const Contact = () => {
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center gap-0.4">
                     <Dot className="h-8 w-8 text-black" />
-                    <p className="font-semibold">beltechsolns@gmail.com</p>
+                    <a href="mailto:beltechsolns@gmail.com" className="font-semibold hover:text-[#0078B7]">beltechsolns@gmail.com</a>
                   </div>
                 </div>
               </div>
@@ -256,7 +256,7 @@ const Contact = () => {
             <Button
               size="lg"
               className="px-8 py-3 text-lg transition-all duration-200 hover:scale-105 bg-[#0078B7] text-white"
-              onClick={() => (window.location.href = "solutions")}
+              onClick={() => (window.location.href = "/solutions")}
             >
               View Success Stories
             </Button>

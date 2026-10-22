@@ -1,12 +1,12 @@
 import { Button } from '../components/ui/button';
 import { useEffect, type ComponentType, type ReactNode } from 'react';
 import { CheckCircle, Zap, Users, Globe, Settings, GraduationCap } from 'lucide-react';
-import customSoft from "./../assets/servicepage/customSoftNew.png";
+import customSoft from "./../assets/servicepage/customSoftNew.jpg";
 import servicesIntro from "./../assets/servicepage/services-intro.jpg";
 import bussinesAuto from "./../assets/servicepage/business-automation.jpg";
 import trainingImg from "./../assets/servicepage/training.jpg";
 import ERPImp from "./../assets/servicepage/erp_implementation.jpg";
-import above_the_footer from "./../assets/above_the_footer.png";
+import above_the_footer from "./../assets/above_the_footer.jpg";
 import { motion } from "framer-motion";
 import PageIntro from "../components/PageIntro";
 
@@ -60,6 +60,10 @@ const ServicePhoto = ({
     <img
       src={src}
       alt={alt}
+      loading="lazy"
+      decoding="async"
+      width={800}
+      height={425}
       className="h-[280px] w-full object-cover sm:h-[360px] lg:h-[425px]"
       style={{ objectPosition }}
     />
@@ -82,9 +86,9 @@ const Servicespage = () => {
       <PageIntro
         image={servicesIntro}
         overlayClassName="bg-gradient-to-b from-black/55 via-black/45 to-black/60"
-        title="ERP, training, automation, and software for your operations."
+        title="Odoo & ERPNext implementation, training, and software."
       >
-        ERP setup, corporate team training, system integration, and custom software for daily operations.
+        BelTech sets up ERP, trains your team on Odoo or ERPNext, integrates systems, and builds custom software for daily operations in Ethiopia and across Africa.
       </PageIntro>
 
       <section id="erp-implementation" className="scroll-mt-24 bg-white py-20">
@@ -285,6 +289,43 @@ const Servicespage = () => {
               description="Sessions are for the people who use the system, not only IT"
             />
           </motion.div>
+        </div>
+      </section>
+
+      <section id="faq" className="scroll-mt-24 bg-white py-20">
+        <div className="site-wide max-w-3xl">
+          <h2 className="mb-4 text-center text-3xl font-bold text-gray-900 md:text-4xl">
+            Frequently asked questions
+          </h2>
+          <p className="mx-auto mb-10 max-w-2xl text-center text-base text-gray-600">
+            Straight answers about BelTech ERP implementation and training in Addis Ababa.
+          </p>
+          <div className="space-y-6">
+            <article className="rounded-2xl border border-gray-200 bg-[#f7f8fa] p-6">
+              <h3 className="text-lg font-bold text-gray-900">What ERP systems does BelTech implement?</h3>
+              <p className="mt-2 text-base leading-relaxed text-gray-600">
+                BelTech implements and customizes Odoo and ERPNext for finance, sales, inventory, HR, manufacturing, and related operations.
+              </p>
+            </article>
+            <article className="rounded-2xl border border-gray-200 bg-[#f7f8fa] p-6">
+              <h3 className="text-lg font-bold text-gray-900">Do you train the company team after go-live?</h3>
+              <p className="mt-2 text-base leading-relaxed text-gray-600">
+                Yes. Corporate ERP training is part of how BelTech works. Sessions are organised by role for the people who will use the system every day, not only for IT.
+              </p>
+            </article>
+            <article className="rounded-2xl border border-gray-200 bg-[#f7f8fa] p-6">
+              <h3 className="text-lg font-bold text-gray-900">Where is BelTech based, and who do you work with?</h3>
+              <p className="mt-2 text-base leading-relaxed text-gray-600">
+                BelTech Solutions is based in Addis Ababa, Ethiopia, and supports businesses across Africa that need ERP, automation, training, or custom software.
+              </p>
+            </article>
+            <article className="rounded-2xl border border-gray-200 bg-[#f7f8fa] p-6">
+              <h3 className="text-lg font-bold text-gray-900">What products does BelTech offer besides implementation?</h3>
+              <p className="mt-2 text-base leading-relaxed text-gray-600">
+                Products include Ethiopian HRMS for payroll and attendance, CareCentral for hospitals and clinics, and School360 for school management — all built around Odoo where relevant.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 

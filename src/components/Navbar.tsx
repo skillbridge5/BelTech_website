@@ -49,7 +49,7 @@ const Navbar = () => {
         <Link to="/" className="flex-shrink-0">
           <img
             src={logo}
-            alt="BelTech Logo"
+            alt="BelTech Solutions"
             className="h-[4.5rem] w-auto object-contain"
           />
         </Link>

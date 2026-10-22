@@ -44,7 +44,7 @@ import {
 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "../components/ui/button";
-import above_the_footer from "../assets/above_the_footer.png";
+import above_the_footer from "../assets/above_the_footer.jpg";
 import humanResource from "../assets/homepage/human-resource.svg";
 import care from "../assets/homepage/care.jpg";
 import school from "../assets/homepage/school.jpg";

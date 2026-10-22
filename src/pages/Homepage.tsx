@@ -13,22 +13,22 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import hero from "./../assets/homepage/beltech-hero.jpg";
-import odoo from "./../assets/homepage/odoo.png";
-import odooErp from "./../assets/homepage/oddoNew.png";
+import odoo from "./../assets/homepage/odoo.jpg";
+import odooErp from "./../assets/homepage/oddoNew.jpg";
 import bussiness_automation_int from "./../assets/homepage/automationAndIntegration.jpg";
-import custom_soft_dev from "./../assets/homepage/customSoftNew.png";
+import custom_soft_dev from "./../assets/homepage/customSoftNew.jpg";
 import eyoha from "./../assets/clientLogo/eyoha.png";
 import Roha from "./../assets/clientLogo/RohaCake.png";
 import SkillsBridge from "./../assets/clientLogo/skillBridge.png";
 import diligent from "./../assets/clientLogo/diligent.png";
 import firma from "./../assets/clientLogo/firma.jpg";
-import above_the_footer from "./../assets/above_the_footer.png";
+import above_the_footer from "./../assets/above_the_footer.jpg";
 import operationsScene from "./../assets/homepage/operations-scene.jpg";
 import beltechMark from "./../assets/new-logo-free.png";
-import market from "../../src/assets/in/market.png";
-import importexport from "../../src/assets/in/import.png";
-import acc from "../../src/assets/in/acc.png";
-import hos from "../../src/assets/in/hospital.png";
+import market from "../../src/assets/in/market.jpg";
+import importexport from "../../src/assets/in/import.jpg";
+import acc from "../../src/assets/in/acc.jpg";
+import hos from "../../src/assets/in/hospital.jpg";
 import {
   Tooltip,
   TooltipContent,
@@ -557,6 +557,8 @@ const SolutionsSection = () => {
                 <img
                   src={item.img}
                   alt={item.alt}
+                  loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   style={"objectPosition" in item ? { objectPosition: item.objectPosition } : undefined}
                 />
@@ -665,10 +667,13 @@ const Homepage: React.FC = () => {
                 </div>
               </div>
               <h1 className="text-4xl md:text-[64px] mb-6 leading-tight" style={{ fontFamily: 'Poppins', fontWeight: 90 }}>
-                Streamline. Automate. Scale.
+                BelTech Solutions
               </h1>
+              <p className="text-2xl md:text-3xl text-white/95 max-w-2xl mx-auto mb-4 font-semibold" style={{ fontFamily: 'Poppins', fontWeight: 600 }}>
+                Streamline. Automate. Scale.
+              </p>
               <p className="text-[20px] text-white max-w-2xl mx-auto mb-0" style={{ fontFamily: 'Open Sans', fontWeight: 200 }}>
-                Transforming African businesses with ERP, corporate training, automation, and smart software.
+                ERP implementer in Addis Ababa — Odoo, ERPNext, corporate training, automation, and custom software for African businesses.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -678,7 +683,7 @@ const Homepage: React.FC = () => {
                 data-analytics-cta="hero_free_consultation"
                 className="w-full sm:w-auto text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-[#0078B7]"
                 style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
-                onClick={() => (window.location.href = "/Contact")}
+                onClick={() => (window.location.href = "/contact")}
               >
                 Get a Free Consultation
               </Button>
@@ -724,7 +729,7 @@ const Homepage: React.FC = () => {
                 data-analytics-cta="hero_book_demo"
                 className="w-full sm:w-auto border-white text-white px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
                 style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 200 }}
-                onClick={() => (window.location.href = "/Contact")}
+                onClick={() => (window.location.href = "/contact")}
               >
                 Book a Demo
               </Button>
@@ -822,6 +827,8 @@ const Homepage: React.FC = () => {
               <img
                 src={odoo}
                 alt="Odoo Interface"
+                loading="lazy"
+                decoding="async"
                 className="h-full min-h-[24rem] w-full rounded-2xl object-cover sm:min-h-[28rem] lg:min-h-[36rem]"
               />
             </div>
@@ -845,6 +852,8 @@ const Homepage: React.FC = () => {
               <img
                 src={erpnextShot}
                 alt="ERPNext modules"
+                loading="lazy"
+                decoding="async"
                 className="h-auto w-full self-center rounded-2xl bg-white object-contain"
               />
 

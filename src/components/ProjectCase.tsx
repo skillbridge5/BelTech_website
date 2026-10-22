@@ -1,7 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
-import above_the_footer from "../assets/above_the_footer.png";
+import above_the_footer from "../assets/above_the_footer.jpg";
 import ProjectMark from "./ProjectMark";
 
 type Section = {
@@ -30,8 +30,8 @@ const ProjectCase = ({ kind, title, summary, logo, sections }: ProjectCaseProps)
             Back to projects
           </Link>
           <div className="mt-8 flex items-start justify-between gap-6">
-            <p className="text-4xl font-extrabold uppercase leading-[0.95] tracking-tight md:text-5xl">{kind}</p>
-            <p className="max-w-[12rem] text-right text-sm font-semibold uppercase leading-tight tracking-wide text-white/85">
+            <p className="text-4xl font-extrabold leading-[0.95] tracking-tight md:text-5xl">{kind}</p>
+            <p className="max-w-[12rem] text-right text-sm font-semibold leading-tight tracking-wide text-white/85">
               {title}
             </p>
           </div>
@@ -47,7 +47,7 @@ const ProjectCase = ({ kind, title, summary, logo, sections }: ProjectCaseProps)
       </section>
 
       <article className="mx-auto w-full max-w-3xl px-4 pb-20 pt-20 sm:px-6">
-        <h1 className="text-center text-3xl font-extrabold uppercase leading-tight tracking-tight text-gray-900 md:text-4xl">
+        <h1 className="text-center text-3xl font-extrabold leading-tight tracking-tight text-gray-900 md:text-4xl">
           {title}
         </h1>
         <div className="mt-4 flex flex-wrap items-center justify-center gap-2">

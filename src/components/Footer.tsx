@@ -8,6 +8,7 @@ const Footer = () => {
   const quickLinks = [
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
+    { name: "Ethiopian HRMS", path: "/products/ethiopian-hrms" },
     { name: "About", path: "/about" },
     { name: "Projects", path: "/solutions" },
     { name: "Industries", path: "/industries" },
@@ -30,7 +31,7 @@ const Footer = () => {
           <div>
             <div className="mb-4 flex items-center gap-3">
               <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-white p-2">
-                <img src={logo} alt="" className="h-full w-full object-contain" />
+                <img src={logo} alt="BelTech Solutions logo" className="h-full w-full object-contain" />
               </div>
               <div>
                 <p className="text-lg font-semibold">BelTech Solutions</p>

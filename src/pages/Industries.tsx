@@ -1,13 +1,14 @@
 import { ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed, CheckCircle, GraduationCap } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
-import above_the_footer from "./../assets/above_the_footer.png";
+import above_the_footer from "./../assets/above_the_footer.jpg";
 import hero from "../../src/assets/in/industries-intro.jpg"
-import hos from "../../src/assets/in/hospital.png"
-import market from "../../src/assets/in/market.png"
-import importexport from "../../src/assets/in/import.png"
-import acc from "../../src/assets/in/acc.png"
+import hos from "../../src/assets/in/hospital.jpg"
+import market from "../../src/assets/in/market.jpg"
+import importexport from "../../src/assets/in/import.jpg"
+import acc from "../../src/assets/in/acc.jpg"
 import PageIntro from "../components/PageIntro";
+
 const industries = [
   {
     id: "retail",
@@ -129,9 +130,9 @@ const Industries = () => {
       <PageIntro
         image={hero}
         overlayClassName="bg-gradient-to-b from-black/55 via-black/45 to-black/60"
-        title="Industries we serve."
+        title="ERP for retail, manufacturing, healthcare, and more."
       >
-        We implement ERP, train your team, and automate operations so the business can grow with clearer daily work.
+        BelTech implements Odoo and ERPNext, trains your team, and automates operations for industries across Ethiopia and Africa.
       </PageIntro>
 
       {/* Industries Grid */}
