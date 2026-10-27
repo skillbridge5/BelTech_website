@@ -1,85 +1,89 @@
 import { Router } from "express";
-import { supabase } from "../db/supabase.js";
 import { requireAuth } from "../middleware/auth.js";
+import {
+  getTestimonials,
+  getTestimonialById,
+  createTestimonial,
+  updateTestimonial,
+  deleteTestimonial,
+} from "../db/repository.js";
 
 const router = Router();
 
 const sanitize = (body = {}) => {
-  const name = body.name ?? body.testimonialName ?? "";
+  const name = String(body.name ?? body.testimonialName ?? "").trim();
   return {
     name,
-    testimonial: body.testimonial ?? "",
-    image_url: body.imageUrl ?? body.image_url ?? "",
+    testimonial: String(body.testimonial ?? "").trim(),
+    image_url: String(body.imageUrl ?? body.image_url ?? "").trim(),
     priority:
-      typeof body.priority === "number" && body.priority >= 0
+      typeof body.priority === "number" && !isNaN(body.priority)
         ? Math.round(body.priority)
-        : 0,
+        : parseInt(body.priority, 10) || 0,
   };
 };
 
-const mapRow = (row) => ({
-  _id: row.id,
-  name: row.name,
-  testimonial: row.testimonial,
-  imageUrl: row.image_url,
-  priority: row.priority ?? 0,
-  createdAt: row.created_at,
-});
-
 // GET /testimonials (public)
 router.get("/", async (req, res) => {
-  const { data, error } = await supabase
-    .from("testimonials")
-    .select("*")
-    .order("priority", { ascending: true, nullsFirst: false })
-    .order("created_at", { ascending: false });
+  try {
+    const testimonials = await getTestimonials();
+    return res.json({ data: { testimonials } });
+  } catch (err) {
+    console.error("GET /testimonials error:", err);
+    return res.status(500).json({ message: "Failed to load testimonials" });
+  }
+});
 
-  if (error) return res.status(500).json({ message: error.message });
-  return res.json({ data: { testimonials: (data || []).map(mapRow) } });
+// GET /testimonials/:id (public)
+router.get("/:id", async (req, res) => {
+  try {
+    const testimonial = await getTestimonialById(req.params.id);
+    if (!testimonial) return res.status(404).json({ message: "Testimonial not found" });
+    return res.json({ data: testimonial });
+  } catch (err) {
+    console.error("GET /testimonials/:id error:", err);
+    return res.status(500).json({ message: "Failed to load testimonial" });
+  }
 });
 
 // POST /testimonials (admin)
 router.post("/", requireAuth, async (req, res) => {
-  const body = sanitize(req.body);
-  if (!body.name || !body.testimonial) {
-    return res
-      .status(400)
-      .json({ message: "Name and testimonial are required" });
+  try {
+    const body = sanitize(req.body);
+    if (!body.name || !body.testimonial) {
+      return res.status(400).json({ message: "Name and testimonial are required" });
+    }
+    const created = await createTestimonial(body);
+    return res.status(201).json({ data: created });
+  } catch (err) {
+    console.error("POST /testimonials error:", err);
+    return res.status(500).json({ message: "Failed to create testimonial" });
   }
-
-  const { data, error } = await supabase
-    .from("testimonials")
-    .insert(body)
-    .select()
-    .single();
-
-  if (error) return res.status(500).json({ message: error.message });
-  return res.status(201).json({ data: mapRow(data) });
 });
 
 // PUT /testimonials/:id (admin)
 router.put("/:id", requireAuth, async (req, res) => {
-  const { data, error } = await supabase
-    .from("testimonials")
-    .update(sanitize(req.body))
-    .eq("id", req.params.id)
-    .select()
-    .single();
-
-  if (error) return res.status(500).json({ message: error.message });
-  if (!data) return res.status(404).json({ message: "Testimonial not found" });
-  return res.json({ data: mapRow(data) });
+  try {
+    const body = sanitize(req.body);
+    const updated = await updateTestimonial(req.params.id, body);
+    if (!updated) return res.status(404).json({ message: "Testimonial not found" });
+    return res.json({ data: updated });
+  } catch (err) {
+    console.error("PUT /testimonials/:id error:", err);
+    return res.status(500).json({ message: "Failed to update testimonial" });
+  }
 });
 
 // DELETE /testimonials/:id (admin)
 router.delete("/:id", requireAuth, async (req, res) => {
-  const { error } = await supabase
-    .from("testimonials")
-    .delete()
-    .eq("id", req.params.id);
-
-  if (error) return res.status(500).json({ message: error.message });
-  return res.status(204).send();
+  try {
+    const deleted = await deleteTestimonial(req.params.id);
+    if (!deleted) return res.status(404).json({ message: "Testimonial not found" });
+    return res.status(204).send();
+  } catch (err) {
+    console.error("DELETE /testimonials/:id error:", err);
+    return res.status(500).json({ message: "Failed to delete testimonial" });
+  }
 });
 
 export default router;

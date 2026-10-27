@@ -13,10 +13,14 @@ import type { Product } from "../../api/client";
 import { getErrorMessage } from "../../api/client";
 import { Plus, Pencil, Trash2, X, Search, ExternalLink } from "lucide-react";
 import ImageUpload from "../../components/ImageUpload";
+import { resolveImageUrl } from "../../lib/image";
 
 interface FormState {
   title: string;
   description: string;
+  kicker: string;
+  detail: string;
+  modules: string;
   imageUrl: string;
   link: string;
   priority: number;
@@ -25,6 +29,9 @@ interface FormState {
 const emptyForm: FormState = {
   title: "",
   description: "",
+  kicker: "",
+  detail: "",
+  modules: "",
   imageUrl: "",
   link: "",
   priority: 0,
@@ -70,6 +77,9 @@ const ProductsAdmin = () => {
     setForm({
       title: product.title,
       description: product.description,
+      kicker: product.kicker || "",
+      detail: product.detail || "",
+      modules: product.modules || "",
       imageUrl: product.imageUrl,
       link: product.link,
       priority: product.priority ?? 0,
@@ -197,9 +207,12 @@ const ProductsAdmin = () => {
                   <td className="px-4 py-3">
                     {product.imageUrl ? (
                       <img
-                        src={product.imageUrl}
+                        src={resolveImageUrl(product.imageUrl)}
                         alt={product.title}
-                        className="h-12 w-16 object-cover rounded"
+                        className="h-12 w-16 object-cover rounded border border-gray-100 bg-gray-50"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = "/assets/new-logo-free.png";
+                        }}
                       />
                     ) : (
                       <div className="h-12 w-16 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs">
@@ -208,7 +221,10 @@ const ProductsAdmin = () => {
                     )}
                   </td>
                   <td className="px-4 py-3 font-medium text-gray-900">
-                    {product.title}
+                    <div>{product.title}</div>
+                    {product.kicker && (
+                      <div className="text-xs text-[#0078B7] font-normal truncate max-w-xs">{product.kicker}</div>
+                    )}
                   </td>
                   <td className="px-4 py-3 text-gray-600 hidden md:table-cell max-w-xs">
                     <span className="line-clamp-2">
@@ -221,13 +237,13 @@ const ProductsAdmin = () => {
                         href={product.link}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1 text-[#0078B7] hover:underline max-w-[160px] truncate"
+                        className="inline-flex items-center gap-1 text-[#0078B7] hover:underline max-w-[160px] truncate text-xs font-semibold"
                       >
                         <ExternalLink className="h-3.5 w-3.5 flex-shrink-0" />
                         <span className="truncate">{product.link}</span>
                       </a>
                     ) : (
-                      <span className="text-gray-400 text-xs">No link</span>
+                      <span className="text-gray-400 text-xs">/products/{product.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}</span>
                     )}
                   </td>
                   <td className="px-4 py-3">
@@ -319,17 +335,74 @@ const ProductsAdmin = () => {
                   className="border-gray-300 rounded-lg"
                 />
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Link (destination for the Learn More button)
-                </label>
-                <Input
-                  name="link"
-                  value={form.link}
-                  onChange={handleChange}
-                  placeholder="e.g. https://school360.beltech.com or /about"
-                  className="border-gray-300 rounded-lg"
-                />
+              {/* Detail Page Setup Section */}
+              <div className="p-4 bg-sky-50/70 rounded-xl border border-sky-100 space-y-3">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-bold text-[#0078B7] flex items-center gap-1.5">
+                    <span>📄</span> Product Detail Page Setup
+                  </h3>
+                  <span className="text-[11px] bg-white px-2 py-0.5 rounded border border-sky-200 text-sky-800 font-medium">
+                    Triggered by &quot;Learn More&quot;
+                  </span>
+                </div>
+                <p className="text-xs text-gray-600">
+                  Configure the dedicated page visitors see when clicking &quot;Learn More&quot; on this product.
+                </p>
+
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">
+                    Detail Page Subtitle / Kicker
+                  </label>
+                  <Input
+                    name="kicker"
+                    value={form.kicker}
+                    onChange={handleChange}
+                    placeholder="e.g. Complete healthcare ERP and hospital operations"
+                    className="border-gray-300 rounded-lg bg-white text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">
+                    In-Depth Overview / About this Product
+                  </label>
+                  <Textarea
+                    name="detail"
+                    value={form.detail}
+                    onChange={handleChange}
+                    placeholder="Provide full product background, capabilities, workflow overview, and benefits..."
+                    className="border-gray-300 rounded-lg bg-white min-h-[90px] text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">
+                    Key Modules / Capabilities (one per line)
+                  </label>
+                  <Textarea
+                    name="modules"
+                    value={form.modules}
+                    onChange={handleChange}
+                    placeholder={"Patient Registration: Digital intake and medical records\nBiometric Attendance: ZKTeco fingerprint device integration\nPharmacy Management: Drug inventory and prescription tracking\nBilling: Automated invoicing and insurance claims"}
+                    className="border-gray-300 rounded-lg bg-white min-h-[90px] text-xs font-mono"
+                  />
+                  <p className="text-[11px] text-gray-500 mt-1">
+                    Format: <code>Module Name: Description</code> on each line.
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">
+                    Detail Page Route (defaults to /products/your-title)
+                  </label>
+                  <Input
+                    name="link"
+                    value={form.link}
+                    onChange={handleChange}
+                    placeholder="e.g. /products/carecentral (leave blank to auto-generate)"
+                    className="border-gray-300 rounded-lg bg-white text-sm"
+                  />
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">

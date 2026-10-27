@@ -1,3 +1,5 @@
+import { resolveImageUrl } from "../lib/image";
+
 type ProjectMarkProps = {
   src?: string;
   alt: string;
@@ -21,9 +23,12 @@ const ProjectMark = ({ src, alt, large = false }: ProjectMarkProps) => {
       >
         {src ? (
           <img
-            src={src}
+            src={resolveImageUrl(src)}
             alt={alt}
             className={`w-auto object-contain ${large ? "max-h-14 max-w-[8rem]" : "max-h-9 max-w-[6rem]"}`}
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = "/assets/placeholder.jpg";
+            }}
           />
         ) : (
           <span className="text-lg font-bold text-[#0078B7]">{alt.slice(0, 1)}</span>

@@ -8,6 +8,18 @@ export default defineConfig({
   resolve: {
     dedupe: ["react", "react-dom"],
   },
+  server: {
+    proxy: {
+      "/uploads": {
+        target: "http://localhost:4000",
+        changeOrigin: true,
+      },
+      "/api": {
+        target: "http://localhost:4000",
+        changeOrigin: true,
+      },
+    },
+  },
   build: {
     cssCodeSplit: true,
     assetsInlineLimit: 4096,

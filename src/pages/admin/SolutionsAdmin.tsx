@@ -13,11 +13,15 @@ import type { Solution } from "../../api/client";
 import { getErrorMessage } from "../../api/client";
 import { Plus, Pencil, Trash2, X, Search } from "lucide-react";
 import ImageUpload from "../../components/ImageUpload";
+import { resolveImageUrl } from "../../lib/image";
 
 interface FormState {
   title: string;
   description: string;
   detail: string;
+  situation: string;
+  built: string;
+  impact: string;
   imageUrl: string;
   link: string;
   priority: number;
@@ -27,6 +31,9 @@ const emptyForm: FormState = {
   title: "",
   description: "",
   detail: "",
+  situation: "",
+  built: "",
+  impact: "",
   imageUrl: "",
   link: "",
   priority: 0,
@@ -72,7 +79,10 @@ const SolutionsAdmin = () => {
     setForm({
       title: solution.title,
       description: solution.description,
-      detail: solution.detail,
+      detail: solution.detail || "",
+      situation: solution.situation || "",
+      built: solution.built || "",
+      impact: solution.impact || "",
       imageUrl: solution.imageUrl,
       link: solution.link,
       priority: solution.priority ?? 0,
@@ -191,9 +201,12 @@ const SolutionsAdmin = () => {
                   <td className="px-4 py-3">
                     {solution.imageUrl ? (
                       <img
-                        src={solution.imageUrl}
+                        src={resolveImageUrl(solution.imageUrl)}
                         alt={solution.title}
-                        className="h-12 w-16 object-cover rounded"
+                        className="h-12 w-16 object-contain rounded border border-gray-100 bg-gray-50"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = "/assets/new-logo-free.png";
+                        }}
                       />
                     ) : (
                       <div className="h-12 w-16 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs">
@@ -202,7 +215,10 @@ const SolutionsAdmin = () => {
                     )}
                   </td>
                   <td className="px-4 py-3 font-medium text-gray-900">
-                    {solution.title}
+                    <div>{solution.title}</div>
+                    {solution.detail && (
+                      <div className="text-xs text-[#0078B7] font-normal">{solution.detail}</div>
+                    )}
                   </td>
                   <td className="px-4 py-3 text-gray-600 hidden md:table-cell max-w-xs">
                     <span className="line-clamp-2">
@@ -216,6 +232,17 @@ const SolutionsAdmin = () => {
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end gap-2">
+                      {solution.link && (
+                        <a
+                          href={solution.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="p-2 text-gray-500 hover:text-[#0078B7] hover:bg-gray-100 rounded-lg transition-colors"
+                          title="View Case Study Page"
+                        >
+                          <span className="text-xs font-medium underline">View</span>
+                        </a>
+                      )}
                       <button
                         onClick={() => openEdit(solution)}
                         className="p-2 text-[#0078B7] hover:bg-[#0078B7]/10 rounded-lg transition-colors"
@@ -310,17 +337,71 @@ const SolutionsAdmin = () => {
                   className="border-gray-300 rounded-lg"
                 />
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Link (route)
-                </label>
-                <Input
-                  name="link"
-                  value={form.link}
-                  onChange={handleChange}
-                  placeholder="e.g. /ERPDetail"
-                  className="border-gray-300 rounded-lg"
-                />
+              {/* Case Study Detail Setup */}
+              <div className="p-4 bg-sky-50/70 rounded-xl border border-sky-100 space-y-3">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-bold text-[#0078B7] flex items-center gap-1.5">
+                    <span>📁</span> Project Case Study Setup
+                  </h3>
+                  <span className="text-[11px] bg-white px-2 py-0.5 rounded border border-sky-200 text-sky-800 font-medium">
+                    Triggered by &quot;Read the project&quot;
+                  </span>
+                </div>
+                <p className="text-xs text-gray-600">
+                  Configure the 3 case study sections shown on the dedicated project detail page.
+                </p>
+
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">
+                    1. The Situation / Client Need
+                  </label>
+                  <Textarea
+                    name="situation"
+                    value={form.situation}
+                    onChange={handleChange}
+                    placeholder="Describe the initial challenges, fragmented tools, or manual processes..."
+                    className="border-gray-300 rounded-lg bg-white min-h-[70px] text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">
+                    2. What BelTech Built
+                  </label>
+                  <Textarea
+                    name="built"
+                    value={form.built}
+                    onChange={handleChange}
+                    placeholder="Describe the tailored system, modules, ERP implementation, or digital platform..."
+                    className="border-gray-300 rounded-lg bg-white min-h-[70px] text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">
+                    3. What Changed / Business Impact
+                  </label>
+                  <Textarea
+                    name="impact"
+                    value={form.impact}
+                    onChange={handleChange}
+                    placeholder="Describe the measurable improvements, speed, transparency, and operational growth..."
+                    className="border-gray-300 rounded-lg bg-white min-h-[70px] text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">
+                    Project Detail Route (defaults to /projects/client-name)
+                  </label>
+                  <Input
+                    name="link"
+                    value={form.link}
+                    onChange={handleChange}
+                    placeholder="e.g. /projects/diligent-trade (leave blank to auto-generate)"
+                    className="border-gray-300 rounded-lg bg-white text-sm"
+                  />
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">

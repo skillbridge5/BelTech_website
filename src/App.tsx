@@ -19,6 +19,8 @@ const Blog = lazy(() => import("./pages/blog"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Industries = lazy(() => import("./pages/Industries"));
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
+const ProjectCaseDetail = lazy(() => import("./pages/ProjectCaseDetail"));
+const BlogDetail = lazy(() => import("./pages/BlogDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Login = lazy(() => import("./pages/admin/Login"));
 const AdminLayout = lazy(() => import("./pages/admin/AdminLayout"));
@@ -65,11 +67,15 @@ export default function App() {
               <Route path="/projects/diligent-trade" element={<ERPDetail />} />
               <Route path="/projects/skillbridge" element={<CharityPlatform />} />
               <Route path="/projects/eyoha-digitals" element={<RetailAuto />} />
+              <Route path="/projects/:slug" element={<ProjectCaseDetail />} />
+              <Route path="/solutions/:slug" element={<ProjectCaseDetail />} />
               <Route path="/ERPDetail" element={<ERPDetail />} />
               <Route path="/CharityPlatform" element={<CharityPlatform />} />
               <Route path="/RetailAuto" element={<RetailAuto />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogDetail />} />
               <Route path="/insights" element={<Blog />} />
+              <Route path="/insights/:id" element={<BlogDetail />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/Contact" element={<Contact />} />
               <Route path="/industries" element={<Industries />} />

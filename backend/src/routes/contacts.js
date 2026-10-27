@@ -1,96 +1,97 @@
 import { Router } from "express";
-import { supabase } from "../db/supabase.js";
 import { requireAuth } from "../middleware/auth.js";
+import {
+  getContacts,
+  getContactById,
+  createContact,
+  updateContactStatus,
+  deleteContact,
+} from "../db/repository.js";
 
 const router = Router();
 
 // POST /contact (public - contact form)
 router.post("/", async (req, res) => {
-  const b = req.body || {};
-  const name = b.name || b.firstName || "";
-  if (!name || !b.email || !b.message) {
-    return res.status(400).json({ message: "Name, email and message are required" });
-  }
+  try {
+    const b = req.body || {};
+    const name = String(b.name || b.firstName || "").trim();
+    const email = String(b.email || "").trim();
+    const message = String(b.message || "").trim();
 
-  const { data, error } = await supabase
-    .from("contacts")
-    .insert({
+    if (!name || !email || !message) {
+      return res.status(400).json({ message: "Name, email and message are required" });
+    }
+
+    const created = await createContact({
       name,
-      last_name: b.lastName ?? "",
-      email: b.email,
-      phone: b.phone ?? "",
-      organization: b.organization ?? "",
-      message: b.message,
+      last_name: String(b.lastName || b.last_name || "").trim(),
+      email,
+      phone: String(b.phone || "").trim(),
+      organization: String(b.organization || "").trim(),
+      message,
       status: "new",
-    })
-    .select()
-    .single();
+    });
 
-  if (error) return res.status(500).json({ message: error.message });
-  return res.status(201).json({ data });
+    return res.status(201).json({ data: created });
+  } catch (err) {
+    console.error("POST /contact error:", err);
+    return res.status(500).json({ message: "Failed to submit contact message" });
+  }
 });
 
 // GET /contact (admin) - list with pagination
 router.get("/", requireAuth, async (req, res) => {
-  const page = Math.max(1, parseInt(req.query.page) || 1);
-  const limit = Math.min(100, Math.max(1, parseInt(req.query.limit) || 10));
-  const from = (page - 1) * limit;
-  const to = from + limit - 1;
+  try {
+    const page = Math.max(1, parseInt(req.query.page, 10) || 1);
+    const limit = Math.min(100, Math.max(1, parseInt(req.query.limit, 10) || 10));
 
-  const { data, error, count } = await supabase
-    .from("contacts")
-    .select("*", { count: "exact" })
-    .order("created_at", { ascending: false })
-    .range(from, to);
-
-  if (error) return res.status(500).json({ message: error.message });
-
-  return res.json({
-    data: { contacts: data || [], totalCount: count ?? 0, page, limit, count: count ?? 0 },
-  });
+    const result = await getContacts({ page, limit });
+    return res.json({ data: result });
+  } catch (err) {
+    console.error("GET /contact error:", err);
+    return res.status(500).json({ message: "Failed to load contacts" });
+  }
 });
 
 // GET /contact/:id (admin)
 router.get("/:id", requireAuth, async (req, res) => {
-  const { data, error } = await supabase
-    .from("contacts")
-    .select("*")
-    .eq("id", req.params.id)
-    .maybeSingle();
-
-  if (error) return res.status(500).json({ message: error.message });
-  if (!data) return res.status(404).json({ message: "Contact not found" });
-  return res.json({ data });
+  try {
+    const contact = await getContactById(req.params.id);
+    if (!contact) return res.status(404).json({ message: "Contact not found" });
+    return res.json({ data: contact });
+  } catch (err) {
+    console.error("GET /contact/:id error:", err);
+    return res.status(500).json({ message: "Failed to load contact" });
+  }
 });
 
 // PATCH /contact/:id/status (admin)
 router.patch("/:id/status", requireAuth, async (req, res) => {
-  const status = req.body?.status;
-  if (!["new", "read", "replied"].includes(status)) {
-    return res.status(400).json({ message: "Invalid status" });
+  try {
+    const status = req.body?.status;
+    if (!["new", "read", "replied"].includes(status)) {
+      return res.status(400).json({ message: "Invalid status" });
+    }
+
+    const updated = await updateContactStatus(req.params.id, status);
+    if (!updated) return res.status(404).json({ message: "Contact not found" });
+    return res.json({ data: updated });
+  } catch (err) {
+    console.error("PATCH /contact/:id/status error:", err);
+    return res.status(500).json({ message: "Failed to update contact status" });
   }
-
-  const { data, error } = await supabase
-    .from("contacts")
-    .update({ status })
-    .eq("id", req.params.id)
-    .select()
-    .single();
-
-  if (error) return res.status(500).json({ message: error.message });
-  if (!data) return res.status(404).json({ message: "Contact not found" });
-  return res.json({ data });
 });
 
 // DELETE /contact/:id (admin)
 router.delete("/:id", requireAuth, async (req, res) => {
-  const { error } = await supabase
-    .from("contacts")
-    .delete()
-    .eq("id", req.params.id);
-
-  if (error) return res.status(500).json({ message: error.message });
-  return res.status(204).send();
+  try {
+    const deleted = await deleteContact(req.params.id);
+    if (!deleted) return res.status(404).json({ message: "Contact not found" });
+    return res.status(204).send();
+  } catch (err) {
+    console.error("DELETE /contact/:id error:", err);
+    return res.status(500).json({ message: "Failed to delete contact" });
+  }
 });
 
 export default router;

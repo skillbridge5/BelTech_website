@@ -36,6 +36,37 @@ function getSessionId() {
   }
 }
 
+const UTM_KEY = "beltech_utm";
+
+function getUtmParams(): { source: string; medium: string; campaign: string; content: string } {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const source = params.get("utm_source") || params.get("source") || "";
+    const medium = params.get("utm_medium") || params.get("medium") || "";
+    const campaign = params.get("utm_campaign") || params.get("campaign") || params.get("post") || "";
+    const content = params.get("utm_content") || params.get("content") || "";
+
+    if (source || campaign) {
+      const data = {
+        source,
+        medium: medium || "social",
+        campaign,
+        content,
+      };
+      sessionStorage.setItem(UTM_KEY, JSON.stringify(data));
+      return data;
+    }
+
+    const saved = sessionStorage.getItem(UTM_KEY);
+    if (saved) {
+      return JSON.parse(saved);
+    }
+  } catch {
+    // ignore
+  }
+  return { source: "", medium: "", campaign: "", content: "" };
+}
+
 function detectLocale() {
   try {
     const locale = Intl.DateTimeFormat().resolvedOptions().locale || "";
@@ -136,16 +167,17 @@ export default function VisitorTracker() {
     clickCount.current = 0;
     observedNodes.current = new WeakSet();
 
-    const params = new URLSearchParams(window.location.search);
+    const utm = getUtmParams();
     const base = {
       visitorId,
       sessionId,
       path: location.pathname + location.search,
       title: document.title,
       referrer: document.referrer || "",
-      utmSource: params.get("utm_source") || "",
-      utmMedium: params.get("utm_medium") || "",
-      utmCampaign: params.get("utm_campaign") || "",
+      utmSource: utm.source,
+      utmMedium: utm.medium,
+      utmCampaign: utm.campaign,
+      utmContent: utm.content,
       country,
       city,
       language,
