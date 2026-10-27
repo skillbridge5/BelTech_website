@@ -43,6 +43,7 @@ import erpnextShot from "./../assets/homepage/erpnext.jpg";
 import { Link } from "react-router-dom";
 import { fetchTestimonials, getProducts } from "../api/client";
 import type { Product } from "../api/client";
+import { resolveImageUrl } from "../lib/image";
 
 const defaultClients = [
   { name: "Eyoha Digitals", img: eyoha, testimonial: "Eyoha Digitals loved our website!" },
@@ -90,9 +91,30 @@ const productDetailPaths: Record<string, string> = {
 };
 
 const productHref = (product: Product) => {
-  if (product.link) return product.link;
+  const link = (product.link || "").trim();
+  if (link) {
+    if (link.startsWith("http://") || link.startsWith("https://")) {
+      try {
+        const u = new URL(link);
+        if (
+          u.hostname === "localhost" ||
+          u.hostname === "127.0.0.1" ||
+          (typeof window !== "undefined" && u.host === window.location.host)
+        ) {
+          return u.pathname;
+        }
+      } catch {}
+      return link;
+    }
+    return link.startsWith("/") ? link : `/${link}`;
+  }
   const title = product.title.replace(/CareCental/g, "CareCentral");
-  return productDetailPaths[title] || "/contact";
+  if (productDetailPaths[title]) return productDetailPaths[title];
+  const slug = product.title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+  return `/products/${slug}`;
 };
 
 const operationArt: Record<string, React.ReactNode> = {
@@ -997,7 +1019,14 @@ const Homepage: React.FC = () => {
                 <div key={product._id} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col">
                   <div className="flex h-56 w-full items-center justify-center overflow-hidden bg-white">
                     {product.imageUrl ? (
-                      <img src={product.imageUrl} alt={product.title} className="h-full w-full object-contain" />
+                      <img
+                        src={resolveImageUrl(product.imageUrl)}
+                        alt={product.title}
+                        className="h-full w-full object-contain"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = humanResource;
+                        }}
+                      />
                     ) : (
                       <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400 text-sm">
                         No image
@@ -1367,7 +1396,7 @@ const Homepage: React.FC = () => {
                       >
                         {client.img ? (
                           <img
-                            src={client.img}
+                            src={resolveImageUrl(client.img)}
                             alt={client.name}
                             className="h-full w-full object-contain"
                           />

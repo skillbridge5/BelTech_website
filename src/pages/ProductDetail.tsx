@@ -42,8 +42,12 @@ import {
   Users,
   Wallet,
 } from "lucide-react";
+import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "../components/ui/button";
+import { getProducts } from "../api/client";
+import type { Product } from "../api/client";
+import { resolveImageUrl } from "../lib/image";
 import above_the_footer from "../assets/above_the_footer.jpg";
 import humanResource from "../assets/homepage/human-resource.svg";
 import care from "../assets/homepage/care.jpg";
@@ -303,9 +307,146 @@ const AppMark = ({ icon: Icon, tone, size = "lg" }: { icon: LucideIcon; tone: st
   </div>
 );
 
+const defaultModuleIcons: LucideIcon[] = [
+  Boxes,
+  Building2,
+  CalendarCheck,
+  Fingerprint,
+  Shield,
+  Target,
+  Users,
+  PieChart,
+  Wallet,
+  Clock,
+  LayoutDashboard,
+  Calculator,
+];
+
 const ProductDetail = () => {
   const { slug } = useParams();
-  const product = slug ? products[slug] : undefined;
+  const [product, setProduct] = useState<ProductPage | undefined>(() =>
+    slug ? products[slug] : undefined
+  );
+  const [loading, setLoading] = useState<boolean>(!product);
+
+  useEffect(() => {
+    let active = true;
+    getProducts()
+      .then((items: Product[]) => {
+        if (!active || !Array.isArray(items) || !slug) return;
+        const normalizedSlug = slug.toLowerCase().trim();
+
+        // Find backend product matching slug, link, or id
+        const match = items.find((p) => {
+          const pId = (p._id || p.id || "").toLowerCase();
+          const pLink = (p.link || "").toLowerCase().replace(/^\/products\//, "").replace(/^\//, "");
+          const pTitleSlug = (p.title || "")
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)/g, "");
+
+          return (
+            pId === normalizedSlug ||
+            pLink === normalizedSlug ||
+            pTitleSlug === normalizedSlug ||
+            p.link === `/products/${slug}` ||
+            p.link === slug
+          );
+        });
+
+        if (match) {
+          const builtIn = products[slug] || products[match.link.replace(/^\/products\//, "")];
+
+          // Parse modules from backend text or fallback
+          let parsedModules: ProductModule[] = [];
+          if (match.modules && match.modules.trim()) {
+            parsedModules = match.modules
+              .split("\n")
+              .filter((l) => l.trim().length > 0)
+              .map((line, idx) => {
+                const parts = line.split(/:(.+)/);
+                const title = parts[0]?.trim() || `Module ${idx + 1}`;
+                const body = parts[1]?.trim() || parts[0]?.trim();
+                return {
+                  title,
+                  body,
+                  icon: defaultModuleIcons[idx % defaultModuleIcons.length],
+                };
+              });
+          } else if (builtIn?.modules?.length) {
+            parsedModules = builtIn.modules;
+          } else {
+            parsedModules = [
+              {
+                title: "Core Operations",
+                body: match.description || "Streamlined end-to-end operational workflow.",
+                icon: LayoutDashboard,
+              },
+              {
+                title: "Real-time Visibility",
+                body: "Unified monitoring, records, and administrative controls.",
+                icon: PieChart,
+              },
+              {
+                title: "Secure & Compliant",
+                body: "Engineered to meet modern compliance, privacy, and data security standards.",
+                icon: Shield,
+              },
+              {
+                title: "Modular Integration",
+                body: "Extensible system ready to connect with your existing business processes.",
+                icon: Boxes,
+              },
+            ];
+          }
+
+          setProduct({
+            title: match.title,
+            kicker:
+              match.kicker ||
+              builtIn?.kicker ||
+              "Enterprise software engineered for high-performance operations",
+            summary: match.description || builtIn?.summary || "",
+            image: match.imageUrl ? resolveImageUrl(match.imageUrl) : builtIn?.image || humanResource,
+            modules: parsedModules,
+            spotlight: match.detail
+              ? {
+                  kicker: "Overview & Architecture",
+                  title: "Engineered for operational excellence.",
+                  body: match.detail,
+                  image: match.imageUrl ? resolveImageUrl(match.imageUrl) : builtIn?.image || humanResource,
+                  imageAlt: match.title,
+                }
+              : builtIn?.spotlight,
+            flow: builtIn?.flow,
+            more: builtIn?.more,
+            closing: {
+              title: `Ready to get started with ${match.title}?`,
+              body: "Talk to our engineering team for a full demonstration, architecture review, and deployment roadmap.",
+            },
+          });
+        }
+        setLoading(false);
+      })
+      .catch(() => {
+        if (active) setLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#f3f8fb] px-4 pb-20 pt-32 text-gray-800 flex items-center justify-center">
+        <div className="text-center">
+          <div className="h-8 w-8 border-3 border-gray-300 border-t-[#0078B7] rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-gray-500 font-medium">Loading product details...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -339,7 +480,14 @@ const ProductDetail = () => {
           <div className="relative mx-auto mt-14 max-w-3xl">
             <div className="absolute inset-x-8 top-8 h-44 rounded-[2.75rem] bg-[#0078B7] md:inset-x-16" aria-hidden="true" />
             <div className="relative flex min-h-72 items-center justify-center rounded-[2rem] bg-white px-8 py-10 shadow-[0_28px_70px_rgba(0,70,110,0.14)]">
-              <img src={product.image} alt={product.title} className="max-h-60 w-full object-contain" />
+              <img
+                src={resolveImageUrl(product.image)}
+                alt={product.title}
+                className="max-h-60 w-full object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = humanResource;
+                }}
+              />
             </div>
           </div>
         </div>
@@ -373,10 +521,13 @@ const ProductDetail = () => {
               <div key={panel!.kicker} className="grid min-h-80 items-stretch overflow-hidden rounded-[2rem] bg-[#f3f8fb] sm:min-h-96 lg:grid-cols-2">
                 <div className={`relative min-h-80 bg-white sm:min-h-96 ${panel!.flip ? "order-2 lg:order-2" : ""}`}>
                   <img
-                    src={panel!.image}
+                    src={resolveImageUrl(panel!.image)}
                     alt={panel!.imageAlt}
                     className="absolute inset-0 h-full w-full object-cover"
                     style={{ objectPosition: panel!.objectPosition ?? "center" }}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = humanResource;
+                    }}
                   />
                 </div>
                 <div className={`flex min-h-80 flex-col justify-center px-8 py-12 sm:min-h-96 lg:px-12 lg:py-16 ${panel!.flip ? "order-1 lg:order-1" : ""}`}>

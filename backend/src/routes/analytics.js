@@ -40,9 +40,63 @@ function writeStore(store) {
   fs.writeFileSync(STORE_PATH, JSON.stringify(store, null, 2));
 }
 
-function detectSource(referrer = "", utmSource = "", utmMedium = "") {
+function detectPlatform(referrer = "", utmSource = "", utmMedium = "", utmCampaign = "") {
+  const ref = String(referrer || "").toLowerCase();
+  const src = String(utmSource || "").toLowerCase().trim();
+  const med = String(utmMedium || "").toLowerCase().trim();
+
+  // 1. Check explicit UTM source first (100% reliable across apps)
+  if (src) {
+    if (src.includes("telegram") || src === "tg") return { key: "telegram", name: "Telegram" };
+    if (src.includes("linkedin") || src.includes("lnkd")) return { key: "linkedin", name: "LinkedIn" };
+    if (src.includes("tiktok") || src === "tt") return { key: "tiktok", name: "TikTok" };
+    if (src.includes("facebook") || src === "fb" || src === "meta") return { key: "facebook", name: "Facebook" };
+    if (src.includes("instagram") || src === "ig") return { key: "instagram", name: "Instagram" };
+    if (src.includes("whatsapp") || src === "wa") return { key: "whatsapp", name: "WhatsApp" };
+    if (src.includes("youtube") || src === "yt") return { key: "youtube", name: "YouTube" };
+    if (
+      src.includes("email") ||
+      src.includes("newsletter") ||
+      src.includes("signature") ||
+      med.includes("email") ||
+      med.includes("newsletter")
+    ) {
+      return { key: "email", name: "Email Newsletter" };
+    }
+    if (src.includes("twitter") || src === "x" || src === "x.com" || src.includes("tweet")) {
+      return { key: "twitter", name: "X (Twitter)" };
+    }
+    return {
+      key: src.replace(/[^a-z0-9_-]/g, "") || "custom",
+      name: src.charAt(0).toUpperCase() + src.slice(1),
+    };
+  }
+
+  // 2. Check HTTP Referrer domains if no UTM provided
+  if (ref) {
+    if (ref.includes("t.me") || ref.includes("telegram.")) return { key: "telegram", name: "Telegram" };
+    if (ref.includes("linkedin.") || ref.includes("lnkd.in")) return { key: "linkedin", name: "LinkedIn" };
+    if (ref.includes("tiktok.")) return { key: "tiktok", name: "TikTok" };
+    if (ref.includes("facebook.") || ref.includes("fb.me") || ref.includes("fb.com")) return { key: "facebook", name: "Facebook" };
+    if (ref.includes("instagram.")) return { key: "instagram", name: "Instagram" };
+    if (ref.includes("whatsapp.") || ref.includes("wa.me")) return { key: "whatsapp", name: "WhatsApp" };
+    if (ref.includes("youtube.") || ref.includes("youtu.be")) return { key: "youtube", name: "YouTube" };
+    if (ref.includes("mail.google.") || ref.includes("outlook.live.") || ref.includes("mail.yahoo.")) return { key: "email", name: "Email" };
+    if (ref.includes("twitter.") || ref.includes("t.co") || ref.includes("x.com")) return { key: "twitter", name: "X (Twitter)" };
+  }
+
+  return null;
+}
+
+function detectSource(referrer = "", utmSource = "", utmMedium = "", platform = null) {
   const ref = String(referrer || "").toLowerCase();
   const utm = `${utmSource || ""} ${utmMedium || ""}`.toLowerCase();
+
+  if (platform) {
+    if (platform.key === "email") return "referral";
+    return "social";
+  }
+
   if (utm.includes("google") || utm.includes("bing") || utm.includes("organic") || utm.includes("cpc") || utm.includes("seo")) {
     return utm.includes("cpc") || utm.includes("paid") ? "referral" : "organic";
   }
@@ -51,6 +105,10 @@ function detectSource(referrer = "", utmSource = "", utmMedium = "") {
     utm.includes("twitter") ||
     utm.includes("linkedin") ||
     utm.includes("instagram") ||
+    utm.includes("tiktok") ||
+    utm.includes("telegram") ||
+    utm.includes("whatsapp") ||
+    utm.includes("youtube") ||
     utm.includes("social")
   ) {
     return "social";
@@ -63,6 +121,11 @@ function detectSource(referrer = "", utmSource = "", utmMedium = "") {
     ref.includes("t.co") ||
     ref.includes("linkedin.") ||
     ref.includes("instagram.") ||
+    ref.includes("tiktok.") ||
+    ref.includes("t.me") ||
+    ref.includes("telegram.") ||
+    ref.includes("whatsapp.") ||
+    ref.includes("wa.me") ||
     ref.includes("youtube.")
   ) {
     return "social";
@@ -240,6 +303,12 @@ function upsertSessionFile(payload) {
       bounced: true,
       source: payload.source,
       referrer: payload.referrer || "",
+      utm_source: payload.utmSource || "",
+      utm_medium: payload.utmMedium || "",
+      utm_campaign: payload.utmCampaign || "",
+      utm_content: payload.utmContent || "",
+      platform: payload.platformName || "",
+      platform_key: payload.platformKey || "",
       country: payload.country || "Unknown",
       city: payload.city || "Unknown",
       device: payload.device,
@@ -252,6 +321,20 @@ function upsertSessionFile(payload) {
       language: payload.language || "en",
     };
     store.sessions.unshift(session);
+  } else {
+    if (!session.platform && payload.platformName) {
+      session.platform = payload.platformName;
+      session.platform_key = payload.platformKey;
+    }
+    if (!session.utm_campaign && payload.utmCampaign) {
+      session.utm_campaign = payload.utmCampaign;
+    }
+    if (!session.utm_source && payload.utmSource) {
+      session.utm_source = payload.utmSource;
+    }
+    if (!session.utm_content && payload.utmContent) {
+      session.utm_content = payload.utmContent;
+    }
   }
 
   session.last_seen_at = now;
@@ -413,6 +496,91 @@ function buildSummary(range, data) {
     percent: Math.round((sourceCounts[key] / sourceTotal) * 1000) / 10,
   }));
 
+  // Granular Social Media & Campaign Breakdown (Telegram, LinkedIn, TikTok, Facebook, etc.)
+  const platformMap = new Map();
+  let totalSocialSessions = 0;
+
+  for (const s of sessions) {
+    const isSocialOrCampaign =
+      s.source === "social" ||
+      Boolean(s.platform) ||
+      Boolean(s.platform_key) ||
+      Boolean(s.utm_source) ||
+      Boolean(s.utm_campaign);
+
+    if (!isSocialOrCampaign) continue;
+
+    const platName = s.platform || (s.utm_source ? s.utm_source.charAt(0).toUpperCase() + s.utm_source.slice(1) : "Other Social");
+    const platKey = s.platform_key || (s.utm_source ? s.utm_source.toLowerCase().replace(/[^a-z0-9_-]/g, "") : "other");
+    const campaignName = s.utm_campaign || s.utm_content || "Direct / Bio Link";
+
+    totalSocialSessions += 1;
+
+    if (!platformMap.has(platKey)) {
+      platformMap.set(platKey, {
+        name: platName,
+        key: platKey,
+        visitors: 0,
+        campaigns: new Map(),
+      });
+    }
+
+    const platEntry = platformMap.get(platKey);
+    platEntry.visitors += 1;
+    platEntry.campaigns.set(campaignName, (platEntry.campaigns.get(campaignName) || 0) + 1);
+  }
+
+  const socialPlatforms = Array.from(platformMap.values())
+    .map((p) => {
+      const posts = Array.from(p.campaigns.entries())
+        .map(([campaign, count]) => ({
+          campaign,
+          visitors: count,
+          percent: Math.round((count / (p.visitors || 1)) * 1000) / 10,
+        }))
+        .sort((a, b) => b.visitors - a.visitors);
+
+      return {
+        platform: p.name,
+        key: p.key,
+        visitors: p.visitors,
+        percent: Math.round((p.visitors / (totalSocialSessions || 1)) * 1000) / 10,
+        posts,
+      };
+    })
+    .sort((a, b) => b.visitors - a.visitors);
+
+  // Cross-platform top campaigns / posts
+  const campaignGlobalMap = new Map();
+  for (const s of sessions) {
+    if (!s.utm_campaign && !s.utm_source && !s.platform) continue;
+    const camp = s.utm_campaign || s.utm_content || "Direct / Bio Link";
+    const plat = s.platform || (s.utm_source ? s.utm_source.charAt(0).toUpperCase() + s.utm_source.slice(1) : "Social");
+    const campKey = `${plat}:::${camp}`;
+    if (!campaignGlobalMap.has(campKey)) {
+      campaignGlobalMap.set(campKey, {
+        campaign: camp,
+        platform: plat,
+        visitors: 0,
+      });
+    }
+    campaignGlobalMap.get(campKey).visitors += 1;
+  }
+
+  const topCampaigns = Array.from(campaignGlobalMap.values())
+    .map((c) => ({
+      ...c,
+      percent: Math.round((c.visitors / (totalSocialSessions || 1)) * 1000) / 10,
+    }))
+    .sort((a, b) => b.visitors - a.visitors)
+    .slice(0, 10);
+
+  const socialBreakdown = {
+    totalSocialSessions,
+    platforms: socialPlatforms,
+    topCampaigns,
+  };
+
   const deviceCounts = { desktop: 0, mobile: 0, tablet: 0 };
   for (const s of sessions) {
     const key = deviceCounts[s.device] != null ? s.device : "desktop";
@@ -572,6 +740,7 @@ function buildSummary(range, data) {
     },
     trafficTrend,
     trafficSources,
+    socialBreakdown,
     devices,
     scrollDistribution,
     topCtas,
@@ -615,6 +784,8 @@ router.post("/collect", async (req, res) => {
     const referrer = String(b.referrer || "").slice(0, 500);
     const utmSource = String(b.utmSource || "").slice(0, 100);
     const utmMedium = String(b.utmMedium || "").slice(0, 100);
+    const utmCampaign = String(b.utmCampaign || "").slice(0, 150);
+    const utmContent = String(b.utmContent || "").slice(0, 150);
     const country = String(b.country || "Unknown").slice(0, 80);
     const city = String(b.city || "Unknown").slice(0, 80);
     const language = String(b.language || "en").slice(0, 20);
@@ -629,24 +800,35 @@ router.post("/collect", async (req, res) => {
     if (!EVENT_TYPES.has(type)) return res.status(400).json({ message: "Unknown event type" });
 
     const device = detectDevice(req.headers["user-agent"] || b.userAgent || "");
-    const source = detectSource(referrer, utmSource, utmMedium);
+    const platform = detectPlatform(referrer, utmSource, utmMedium, utmCampaign);
+    const source = detectSource(referrer, utmSource, utmMedium, platform);
     const sessionId = b.sessionId ? String(b.sessionId).slice(0, 80) : null;
     const now = new Date().toISOString();
 
+    const sessionPayload = {
+      visitorId,
+      sessionId,
+      path: pathName,
+      source,
+      referrer,
+      utmSource,
+      utmMedium,
+      utmCampaign,
+      utmContent,
+      platformName: platform?.name || "",
+      platformKey: platform?.key || "",
+      country,
+      city,
+      language,
+      device,
+      durationMs,
+      scrollDepth,
+      clickCount,
+    };
+
     if (type === "heartbeat" || type === "pageview" || type === "end") {
       const session = upsertSessionFile({
-        visitorId,
-        sessionId,
-        path: pathName,
-        source,
-        referrer,
-        country,
-        city,
-        language,
-        device,
-        durationMs,
-        scrollDepth,
-        clickCount,
+        ...sessionPayload,
         pageview: type === "pageview",
         end: type === "end",
       });
@@ -689,20 +871,7 @@ router.post("/collect", async (req, res) => {
     }
 
     if (type === "section" && sectionId) {
-      const session = upsertSessionFile({
-        visitorId,
-        sessionId,
-        path: pathName,
-        source,
-        referrer,
-        country,
-        city,
-        language,
-        device,
-        durationMs,
-        scrollDepth,
-        clickCount,
-      });
+      const session = upsertSessionFile(sessionPayload);
       insertSectionFile({
         id: randomUUID(),
         visitor_id: visitorId,
@@ -717,17 +886,7 @@ router.post("/collect", async (req, res) => {
 
     if (["click", "cta", "outbound", "scroll", "form"].includes(type)) {
       const session = upsertSessionFile({
-        visitorId,
-        sessionId,
-        path: pathName,
-        source,
-        referrer,
-        country,
-        city,
-        language,
-        device,
-        durationMs,
-        scrollDepth,
+        ...sessionPayload,
         clickCount: type === "scroll" ? clickCount : Math.max(clickCount, 1),
       });
 

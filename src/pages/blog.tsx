@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
 import { loadInsights } from "../api/client"; // named import
@@ -6,9 +7,11 @@ import Hero from "./../assets/insightpage/blog-intro.jpg";
 import above_the_footer from "./../assets/above_the_footer.jpg";
 import { motion } from "framer-motion";
 import PageIntro from "../components/PageIntro";
+import { resolveImageUrl } from "../lib/image";
 
 interface InsightType {
   _id: string;
+  id?: string;
   title: string;
   description: string;
   detail: string;
@@ -18,31 +21,47 @@ interface InsightType {
 
 const ArticleCard = ({
   insight,
-  onReadMore,
 }: {
   insight: InsightType;
-  onReadMore: (insight: InsightType) => void;
 }) => {
+  const detailLink = `/blog/${insight._id || insight.id}`;
   return (
-    <Card className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden">
-      <img className="w-full aspect-video rounded-t-lg object-cover" src={insight.imageUrl} alt={insight.title} />
+    <Card className="border border-gray-200 flex flex-col rounded-lg hover:scale-[1.02] transition-all duration-300 bg-white overflow-hidden h-full">
+      <Link to={detailLink} className="block overflow-hidden">
+        <img
+          className="w-full aspect-video rounded-t-lg object-cover hover:scale-105 transition-transform duration-300"
+          src={resolveImageUrl(insight.imageUrl)}
+          alt={insight.title}
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).src = "/assets/placeholder.jpg";
+          }}
+        />
+      </Link>
 
-      <CardHeader className="px-4 pt-2 pb-0">
-        <p className="text-sm text-gray-500 font-medium leading-tight">{new Date(insight.date).toLocaleDateString()}</p>
-        <CardTitle className="text-xl font-bold leading-tight">{insight.title}</CardTitle>
+      <CardHeader className="px-4 pt-3 pb-0">
+        <p className="text-sm text-gray-500 font-medium leading-tight">
+          {insight.date ? new Date(insight.date).toLocaleDateString() : ""}
+        </p>
+        <Link to={detailLink}>
+          <CardTitle className="text-xl font-bold leading-tight hover:text-[#0078B7] transition-colors">
+            {insight.title}
+          </CardTitle>
+        </Link>
       </CardHeader>
 
-      <CardContent className="px-4 pt-1 pb-0">
-        <CardDescription className="text-gray-700 text-base leading-snug">{insight.description}</CardDescription>
+      <CardContent className="px-4 pt-2 pb-0 flex-grow">
+        <CardDescription className="text-gray-700 text-base leading-snug">
+          {insight.description}
+        </CardDescription>
       </CardContent>
 
-      <CardFooter className="px-4 pt-1 pb-2">
-        <button
-          onClick={() => onReadMore(insight)}
-          className="inline-flex items-center text-[#0078B7] font-medium hover:underline hover:translate-x-1 transition-transform duration-200"
+      <CardFooter className="px-4 pt-3 pb-4">
+        <Link
+          to={detailLink}
+          className="inline-flex items-center gap-1 text-[#0078B7] font-semibold hover:underline hover:translate-x-1 transition-transform duration-200"
         >
-          Read More
-        </button>
+          Read More &rarr;
+        </Link>
       </CardFooter>
     </Card>
   );
@@ -50,7 +69,6 @@ const ArticleCard = ({
 
 const Blog = () => {
   const [insights, setInsights] = useState<InsightType[]>([]);
-  const [selectedInsight, setSelectedInsight] = useState<InsightType | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -103,30 +121,13 @@ const Blog = () => {
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <ArticleCard insight={insight} onReadMore={setSelectedInsight} />
+                  <ArticleCard insight={insight} />
                 </motion.div>
               ))}
             </div>
           )}
         </div>
       </section>
-
-      {/* Read More Modal */}
-      {selectedInsight && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg max-w-3xl w-full p-6 relative">
-            <button
-              onClick={() => setSelectedInsight(null)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 font-bold text-xl"
-            >
-              ✕
-            </button>
-            <h2 className="text-2xl font-bold mb-2">{selectedInsight.title}</h2>
-            <p className="text-gray-700 mb-4">{selectedInsight.detail}</p>
-            <p className="text-sm text-gray-500">{new Date(selectedInsight.date).toLocaleDateString()}</p>
-          </div>
-        </div>
-      )}
 
       {/* CTA Section */}
       <section

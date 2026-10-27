@@ -11,9 +11,13 @@ export type ContactPayload = {
 
 export interface Solution {
   _id: string;
+  id?: string;
   title: string;
   description: string;
   detail: string;
+  situation?: string;
+  built?: string;
+  impact?: string;
   imageUrl: string;
   link: string;
   priority: number;
@@ -22,6 +26,7 @@ export interface Solution {
 
 export interface Insight {
   _id: string;
+  id?: string;
   title: string;
   description: string;
   detail: string;
@@ -30,11 +35,12 @@ export interface Insight {
   createdAt?: string;
 }
 
-type SolutionPayload = Omit<Solution, "_id" | "createdAt">;
-type InsightPayload = Omit<Insight, "_id" | "createdAt">;
+type SolutionPayload = Omit<Solution, "_id" | "id" | "createdAt">;
+type InsightPayload = Omit<Insight, "_id" | "id" | "createdAt">;
 
 export interface Testimonial {
   _id: string;
+  id?: string;
   name: string;
   testimonial: string;
   imageUrl: string;
@@ -44,8 +50,12 @@ export interface Testimonial {
 
 export interface Product {
   _id: string;
+  id?: string;
   title: string;
   description: string;
+  kicker?: string;
+  detail?: string;
+  modules?: string;
   imageUrl: string;
   link: string;
   priority: number;
@@ -191,29 +201,43 @@ export const getProducts = async (): Promise<Product[]> => {
   );
 };
 
-export const createProduct = (payload: {
-  title: string;
-  description: string;
-  imageUrl: string;
-  link: string;
-  priority: number;
-}) => api.post("/products", payload);
+export type ProductPayload = Omit<Product, "_id" | "id" | "createdAt">;
 
-export const updateProduct = (
-  id: string,
-  payload: {
-    title: string;
-    description: string;
-    imageUrl: string;
-    link: string;
-    priority: number;
-  }
-) => api.put(`/products/${id}`, payload);
+export const createProduct = (payload: ProductPayload) =>
+  api.post("/products", payload);
+
+export const updateProduct = (id: string, payload: ProductPayload) =>
+  api.put(`/products/${id}`, payload);
 
 export const deleteProduct = (id: string) => api.delete(`/products/${id}`);
 
 // ===== Analytics =====
 export type AnalyticsRange = "today" | "week" | "month" | "year";
+
+export interface SocialPostStat {
+  campaign: string;
+  visitors: number;
+  percent: number;
+}
+
+export interface SocialPlatformStat {
+  platform: string;
+  key: string;
+  visitors: number;
+  percent: number;
+  posts: SocialPostStat[];
+}
+
+export interface SocialBreakdown {
+  totalSocialSessions: number;
+  platforms: SocialPlatformStat[];
+  topCampaigns: {
+    campaign: string;
+    platform: string;
+    visitors: number;
+    percent: number;
+  }[];
+}
 
 export interface AnalyticsSummary {
   range: AnalyticsRange;
@@ -240,6 +264,7 @@ export interface AnalyticsSummary {
     value: number;
     percent: number;
   }[];
+  socialBreakdown?: SocialBreakdown;
   devices: {
     name: string;
     key: string;

@@ -1,74 +1,84 @@
 import { Router } from "express";
-import { supabase } from "../db/supabase.js";
 import { requireAuth } from "../middleware/auth.js";
+import {
+  getInsights,
+  getInsightById,
+  createInsight,
+  updateInsight,
+  deleteInsight,
+} from "../db/repository.js";
 
 const router = Router();
 
 const sanitize = (body = {}) => ({
-  title: body.title ?? "",
-  description: body.description ?? "",
-  detail: body.detail ?? "",
+  title: String(body.title ?? "").trim(),
+  description: String(body.description ?? "").trim(),
+  detail: String(body.detail ?? "").trim(),
   date: body.date ? new Date(body.date).toISOString() : new Date().toISOString(),
-  image_url: body.imageUrl ?? body.image_url ?? "",
-});
-
-const mapRow = (row) => ({
-  _id: row.id,
-  title: row.title,
-  description: row.description,
-  detail: row.detail,
-  date: row.date,
-  imageUrl: row.image_url,
-  createdAt: row.created_at,
+  image_url: String(body.imageUrl ?? body.image_url ?? "").trim(),
 });
 
 // GET /insights (public)
 router.get("/", async (req, res) => {
-  const { data, error } = await supabase
-    .from("insights")
-    .select("*")
-    .order("date", { ascending: false });
+  try {
+    const insights = await getInsights();
+    return res.json({ data: { insights } });
+  } catch (err) {
+    console.error("GET /insights error:", err);
+    return res.status(500).json({ message: "Failed to load insights" });
+  }
+});
 
-  if (error) return res.status(500).json({ message: error.message });
-  const insights = (data || []).map(mapRow);
-  return res.json({ data: { insights } });
+// GET /insights/:id (public)
+router.get("/:id", async (req, res) => {
+  try {
+    const insight = await getInsightById(req.params.id);
+    if (!insight) return res.status(404).json({ message: "Insight not found" });
+    return res.json({ data: insight });
+  } catch (err) {
+    console.error("GET /insights/:id error:", err);
+    return res.status(500).json({ message: "Failed to load insight" });
+  }
 });
 
 // POST /insights (admin)
 router.post("/", requireAuth, async (req, res) => {
-  const { data, error } = await supabase
-    .from("insights")
-    .insert(sanitize(req.body))
-    .select()
-    .single();
-
-  if (error) return res.status(500).json({ message: error.message });
-  return res.status(201).json({ data: mapRow(data) });
+  try {
+    const body = sanitize(req.body);
+    if (!body.title) {
+      return res.status(400).json({ message: "Title is required" });
+    }
+    const created = await createInsight(body);
+    return res.status(201).json({ data: created });
+  } catch (err) {
+    console.error("POST /insights error:", err);
+    return res.status(500).json({ message: "Failed to create insight" });
+  }
 });
 
 // PUT /insights/:id (admin)
 router.put("/:id", requireAuth, async (req, res) => {
-  const { data, error } = await supabase
-    .from("insights")
-    .update(sanitize(req.body))
-    .eq("id", req.params.id)
-    .select()
-    .single();
-
-  if (error) return res.status(500).json({ message: error.message });
-  if (!data) return res.status(404).json({ message: "Insight not found" });
-  return res.json({ data: mapRow(data) });
+  try {
+    const body = sanitize(req.body);
+    const updated = await updateInsight(req.params.id, body);
+    if (!updated) return res.status(404).json({ message: "Insight not found" });
+    return res.json({ data: updated });
+  } catch (err) {
+    console.error("PUT /insights/:id error:", err);
+    return res.status(500).json({ message: "Failed to update insight" });
+  }
 });
 
 // DELETE /insights/:id (admin)
 router.delete("/:id", requireAuth, async (req, res) => {
-  const { error } = await supabase
-    .from("insights")
-    .delete()
-    .eq("id", req.params.id);
-
-  if (error) return res.status(500).json({ message: error.message });
-  return res.status(204).send();
+  try {
+    const deleted = await deleteInsight(req.params.id);
+    if (!deleted) return res.status(404).json({ message: "Insight not found" });
+    return res.status(204).send();
+  } catch (err) {
+    console.error("DELETE /insights/:id error:", err);
+    return res.status(500).json({ message: "Failed to delete insight" });
+  }
 });
 
 export default router;

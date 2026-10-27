@@ -65,7 +65,7 @@ const Dashboard = () => {
       value: contactCount,
       icon: Users,
       color: "text-amber-600 bg-amber-50",
-      link: "/admin",
+      link: "/admin/contact",
     },
     {
       title: "Testimonials",

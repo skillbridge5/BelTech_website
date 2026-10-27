@@ -11,8 +11,9 @@ import {
 } from "../../api/client";
 import type { Insight } from "../../api/client";
 import { getErrorMessage } from "../../api/client";
-import { Plus, Pencil, Trash2, X, Search } from "lucide-react";
+import { Plus, Pencil, Trash2, X, Search, ExternalLink } from "lucide-react";
 import ImageUpload from "../../components/ImageUpload";
+import { resolveImageUrl } from "../../lib/image";
 
 interface FormState {
   title: string;
@@ -188,9 +189,12 @@ const InsightsAdmin = () => {
                   <td className="px-4 py-3">
                     {insight.imageUrl ? (
                       <img
-                        src={insight.imageUrl}
+                        src={resolveImageUrl(insight.imageUrl)}
                         alt={insight.title}
                         className="h-12 w-16 object-cover rounded"
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).src = "/assets/placeholder.jpg";
+                        }}
                       />
                     ) : (
                       <div className="h-12 w-16 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs">
@@ -208,6 +212,15 @@ const InsightsAdmin = () => {
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end gap-2">
+                      <a
+                        href={`/blog/${insight._id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                        title="View live article"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
                       <button
                         onClick={() => openEdit(insight)}
                         className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"

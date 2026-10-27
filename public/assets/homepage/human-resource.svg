@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" fill="none">
+  <rect width="1200" height="700" fill="#ffffff"/>
+  <g transform="translate(600 250)" fill="#0078B7">
+    <circle cx="-70" cy="-18" r="28"/>
+    <circle cx="0" cy="-34" r="34"/>
+    <circle cx="70" cy="-18" r="28"/>
+    <path d="M-118 78c0-36 22-58 48-58s48 22 48 58v8h-96v-8z"/>
+    <path d="M-48 86c0-42 22-70 48-70s48 28 48 70v10H-48V86z"/>
+    <path d="M22 78c0-36 22-58 48-58s48 22 48 58v8H22v-8z"/>
+  </g>
+  <text x="600" y="430" text-anchor="middle" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="700">Ethiopian HRMS</text>
+  <text x="600" y="478" text-anchor="middle" fill="#0078B7" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" letter-spacing="3">ON ODOO</text>
+</svg>

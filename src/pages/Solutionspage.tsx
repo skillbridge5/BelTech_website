@@ -12,6 +12,7 @@ import PageIntro from "../components/PageIntro";
 import ProjectMark from "../components/ProjectMark";
 
 type Project = {
+  id?: string;
   client: string;
   kind: string;
   summary: string;
@@ -20,8 +21,18 @@ type Project = {
   link: string;
 };
 
-const projects: Project[] = [
+const knownLogos: Record<string, string> = {
+  "/projects/diligent-trade": diligent,
+  "/projects/skillbridge": skillBridge,
+  "/projects/eyoha-digitals": eyoha,
+  "diligent trade": diligent,
+  "skillbridge institute of technology": skillBridge,
+  "eyoha digitals": eyoha,
+};
+
+const defaultProjects: Project[] = [
   {
+    id: "default-diligent",
     client: "Diligent Trade",
     kind: "Odoo ERP",
     summary:
@@ -30,6 +41,7 @@ const projects: Project[] = [
     link: "/projects/diligent-trade",
   },
   {
+    id: "default-skillbridge",
     client: "SkillBridge Institute of Technology",
     kind: "Website",
     summary:
@@ -38,6 +50,7 @@ const projects: Project[] = [
     link: "/projects/skillbridge",
   },
   {
+    id: "default-eyoha",
     client: "Eyoha Digitals",
     kind: "Website",
     summary:
@@ -47,41 +60,62 @@ const projects: Project[] = [
   },
 ];
 
-const coveredLinks = new Set([
-  ...projects.map((project) => project.link),
-  "/ERPDetail",
-  "/CharityPlatform",
-  "/RetailAuto",
-]);
+const normalizeProjectLink = (rawLink?: string, title?: string): string => {
+  if (!rawLink || rawLink.trim() === "" || rawLink.trim() === "#") {
+    const slug = (title || "project")
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)+/g, "");
+    return `/projects/${slug}`;
+  }
+  let link = rawLink.trim();
+  try {
+    if (link.startsWith("http://") || link.startsWith("https://")) {
+      const url = new URL(link);
+      if (url.origin === window.location.origin || url.hostname === "localhost" || url.hostname === "127.0.0.1") {
+        return url.pathname + url.search + url.hash;
+      }
+    }
+  } catch {
+    // ignore
+  }
+  return link;
+};
 
 const SolutionsPage = () => {
-  const [extraProjects, setExtraProjects] = useState<Project[]>([]);
+  const [allProjects, setAllProjects] = useState<Project[]>(defaultProjects);
 
   useEffect(() => {
     let mounted = true;
     getSolutions()
       .then((data: Solution[]) => {
-        if (!mounted || !Array.isArray(data)) return;
-        const extras = data
-          .filter((item) => item.link && !coveredLinks.has(item.link))
-          .map((item) => ({
+        if (!mounted || !Array.isArray(data) || data.length === 0) return;
+        const mapped: Project[] = data.map((item, idx) => {
+          const normTitle = (item.title || "").toLowerCase().trim();
+          const matchedLogo =
+            (item.imageUrl && item.imageUrl.trim()) ||
+            knownLogos[item.link || ""] ||
+            knownLogos[normTitle];
+          return {
+            id: item._id || (item as any).id || `sol-${idx}`,
             client: item.title,
-            kind: "Project",
+            kind: item.detail || "Project",
             summary: item.description,
             imageUrl: item.imageUrl,
-            link: item.link,
-          }));
-        setExtraProjects(extras);
+            logo: matchedLogo,
+            link: normalizeProjectLink(item.link, item.title),
+          };
+        });
+        setAllProjects(mapped);
       })
       .catch(() => {
-        if (mounted) setExtraProjects([]);
+        if (mounted) setAllProjects(defaultProjects);
       });
     return () => {
       mounted = false;
     };
   }, []);
-
-  const allProjects = [...projects, ...extraProjects];
 
   return (
     <div className="min-h-screen bg-white text-gray-800 antialiased">
@@ -96,9 +130,9 @@ const SolutionsPage = () => {
       <section className="bg-[#f7f8fa] py-20">
         <div className="site-wide">
           <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {allProjects.map((project) => (
+            {allProjects.map((project, idx) => (
               <article
-                key={project.link}
+                key={project.id || `${project.link}-${idx}`}
                 className="flex h-full flex-col overflow-hidden rounded-[28px] bg-white shadow-md"
               >
                 <div className="relative bg-gradient-to-b from-[#2B9AD4] to-[#0078B7] px-6 pb-14 pt-6 text-white">

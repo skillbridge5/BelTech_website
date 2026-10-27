@@ -13,6 +13,7 @@ import {
 import type { Testimonial } from "../../api/client";
 import { Plus, Pencil, Trash2, X, Search } from "lucide-react";
 import ImageUpload from "../../components/ImageUpload";
+import { resolveImageUrl } from "../../lib/image";
 
 interface FormState {
   name: string;
@@ -195,9 +196,12 @@ const TestimonialsAdmin = () => {
                   <td className="px-4 py-3">
                     {item.imageUrl ? (
                       <img
-                        src={item.imageUrl}
+                        src={resolveImageUrl(item.imageUrl)}
                         alt={item.name}
                         className="h-12 w-12 object-contain rounded"
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).src = "/assets/placeholder.jpg";
+                        }}
                       />
                     ) : (
                       <div className="h-12 w-12 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs">

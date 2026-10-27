@@ -1,0 +1,146 @@
+{
+  "products": [
+    {
+      "id": "prod-ethiopian-hrms",
+      "title": "Ethiopian HRMS",
+      "description": "An Odoo-based HR and payroll system for Ethiopian businesses, from employees and biometric attendance through payroll, leave, and self-service.",
+      "image_url": "/assets/homepage/human-resource.svg",
+      "link": "/products/ethiopian-hrms",
+      "priority": 0,
+      "created_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "prod-carecentral",
+      "title": "CareCentral",
+      "description": "A healthcare ERP and hospital management system for patients, clinical work, staff, and administration.",
+      "image_url": "/assets/homepage/care.jpg",
+      "link": "/products/carecentral",
+      "priority": 1,
+      "created_at": "2026-01-02T00:00:00.000Z"
+    },
+    {
+      "id": "prod-school360",
+      "title": "School360",
+      "description": "Digitize academics, admissions, attendance, examinations, fees, communication, and administration—all from one integrated, modular ERP platform engineered for educational institutions.",
+      "image_url": "/assets/homepage/school.jpg",
+      "link": "/products/school360",
+      "priority": 2,
+      "created_at": "2026-01-03T00:00:00.000Z"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-diligent",
+      "title": "Diligent Trade",
+      "description": "An import-export company running orders, inventory, and finance in one Odoo system.",
+      "detail": "Odoo ERP",
+      "image_url": "/assets/clientLogo/diligent-mark.png",
+      "link": "/projects/diligent-trade",
+      "priority": 0,
+      "created_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "sol-skillbridge",
+      "title": "SkillBridge Institute of Technology",
+      "description": "A site where the institute presents its programs and prospective students can enquire.",
+      "detail": "Website",
+      "image_url": "/assets/clientLogo/skillBridge-mark.png",
+      "link": "/projects/skillbridge",
+      "priority": 1,
+      "created_at": "2026-01-02T00:00:00.000Z"
+    },
+    {
+      "id": "sol-eyoha",
+      "title": "Eyoha Digitals",
+      "description": "A site for the studio’s services, portfolio, and consultation requests.",
+      "detail": "Website",
+      "image_url": "/assets/clientLogo/eyoha-mark.png",
+      "link": "/projects/eyoha-digitals",
+      "priority": 2,
+      "created_at": "2026-01-03T00:00:00.000Z"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "045e0067-9b16-4bbe-b0ef-be12e46c17cb",
+      "name": "Acme Corporation",
+      "testimonial": "BelTech built an exceptional system for our operations.",
+      "image_url": "https://example.com/acme.png",
+      "priority": 10,
+      "created_at": "2026-10-27T15:36:40.397Z"
+    },
+    {
+      "id": "test-eyoha",
+      "name": "Eyoha Digitals",
+      "testimonial": "Eyoha Digitals loved our website!",
+      "image_url": "/assets/clientLogo/eyoha.png",
+      "priority": 0,
+      "created_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "test-roha",
+      "name": "Roha Cake and Bread Bakery",
+      "testimonial": "Roha Bakery saw amazing growth with our product.",
+      "image_url": "/assets/clientLogo/RohaCake.png",
+      "priority": 1,
+      "created_at": "2026-01-02T00:00:00.000Z"
+    },
+    {
+      "id": "test-skillbridge",
+      "name": "SkillBridge Institute of Technology",
+      "testimonial": "SkillBridge praises the website we built.",
+      "image_url": "/assets/clientLogo/skillBridge.png",
+      "priority": 2,
+      "created_at": "2026-01-03T00:00:00.000Z"
+    },
+    {
+      "id": "test-diligent",
+      "name": "Diligent Trade Solutions",
+      "testimonial": "Diligent Trade saw great results from our ERP.",
+      "image_url": "/assets/clientLogo/diligent.png",
+      "priority": 3,
+      "created_at": "2026-01-04T00:00:00.000Z"
+    },
+    {
+      "id": "test-firma",
+      "name": "Firma Media and Communications",
+      "testimonial": "Odoo ERP Enterprise - Finance, Sales, Project",
+      "image_url": "/assets/clientLogo/firma.jpg",
+      "priority": 4,
+      "created_at": "2026-01-05T00:00:00.000Z"
+    }
+  ],
+  "insights": [
+    {
+      "id": "b351f061-d03a-4312-ab92-ad068c667d4b",
+      "title": "QA Test blog",
+      "description": "this is Blog test",
+      "detail": "teisoi",
+      "date": "2026-10-27T00:00:00.000Z",
+      "image_url": "http://localhost:4000/uploads/1793115689112-linkedin.jpeg",
+      "created_at": "2026-10-27T15:41:30.394Z"
+    },
+    {
+      "id": "insight-erp-ethiopia",
+      "title": "How ERP Systems Transform Ethiopian Businesses",
+      "description": "Why integrating sales, inventory, and finance into a single platform like Odoo or ERPNext accelerates business growth.",
+      "detail": "Implementing an ERP system allows companies to eliminate redundant data entry, ensure compliance with Ethiopian tax and payroll laws, and make data-driven operational decisions.",
+      "date": "2026-10-27T14:39:40.997Z",
+      "image_url": "/assets/homepage/business-operations.png",
+      "created_at": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "e0b540c0-1391-44e2-8de1-0f8450249dee",
+      "name": "Test",
+      "last_name": "User",
+      "email": "test.user@example.com",
+      "phone": "+251911000000",
+      "organization": "BelTech QA",
+      "message": "Automated verification test message",
+      "status": "new",
+      "created_at": "2026-10-27T15:35:04.144Z"
+    }
+  ]
+}
