@@ -3,6 +3,20 @@
  * Handles full URLs (http, https, data:), relative backend uploads (/uploads/...),
  * and public assets (/assets/...).
  */
+const getBackendBase = (): string => {
+  const apiBase = import.meta.env.VITE_API_BASE;
+  if (!apiBase || typeof apiBase !== "string") return "";
+  try {
+    if (apiBase.startsWith("http://") || apiBase.startsWith("https://")) {
+      const url = new URL(apiBase);
+      return `${url.protocol}//${url.host}`;
+    }
+  } catch {
+    // fallback
+  }
+  return "";
+};
+
 export const resolveImageUrl = (url?: string, fallback = "/assets/new-logo-free.png"): string => {
   if (!url || typeof url !== "string") return fallback;
   const trimmed = url.trim();
@@ -13,15 +27,26 @@ export const resolveImageUrl = (url?: string, fallback = "/assets/new-logo-free.
     return trimmed;
   }
 
-  // Handle localhost:4000 or absolute URLs
+  // Handle absolute URLs
   if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
     return trimmed;
   }
 
-  // Ensure leading slash for relative assets or uploads
+  // Handle uploads from backend
+  if (trimmed.startsWith("/uploads/") || trimmed.startsWith("uploads/")) {
+    const cleanPath = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+    const backendOrigin = getBackendBase();
+    if (backendOrigin) {
+      return `${backendOrigin}${cleanPath}`;
+    }
+    return cleanPath;
+  }
+
+  // Ensure leading slash for relative assets
   if (trimmed.startsWith("/")) {
     return trimmed;
   }
 
   return `/${trimmed}`;
 };
+
