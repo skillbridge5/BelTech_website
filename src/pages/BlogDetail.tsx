@@ -7,6 +7,11 @@ import { resolveImageUrl } from "../lib/image";
 import { Button } from "../components/ui/button";
 import above_the_footer from "../assets/above_the_footer.jpg";
 import toast from "react-hot-toast";
+import {
+  isHtmlContent,
+  sanitizeBlogHtml,
+  calculateReadingTime,
+} from "../lib/sanitizeHtml";
 
 const BlogDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -86,10 +91,17 @@ const BlogDetail = () => {
     );
   }
 
-  const paragraphs = (insight.detail || insight.description || "")
-    .split("\n\n")
-    .map((p) => p.trim())
-    .filter(Boolean);
+  const rawDetail = insight.detail || insight.description || "";
+  const hasHtml = isHtmlContent(rawDetail);
+  const sanitizedContent = hasHtml ? sanitizeBlogHtml(rawDetail) : "";
+  const paragraphs = !hasHtml
+    ? rawDetail
+        .split("\n\n")
+        .map((p) => p.trim())
+        .filter(Boolean)
+    : [];
+
+  const readMinutes = calculateReadingTime(rawDetail);
 
   const formattedDate = insight.date
     ? new Date(insight.date).toLocaleDateString("en-US", {
@@ -123,11 +135,11 @@ const BlogDetail = () => {
           </span>
           <span className="inline-flex items-center gap-1.5">
             <User className="h-4 w-4 text-gray-400" />
-            BelTech Engineering Team
+            BelTech Editorial Team
           </span>
           <span className="inline-flex items-center gap-1.5">
             <Clock className="h-4 w-4 text-gray-400" />
-            4 min read
+            {readMinutes} min read
           </span>
         </div>
 
@@ -135,9 +147,11 @@ const BlogDetail = () => {
           {insight.title}
         </h1>
 
-        <p className="text-xl text-gray-600 font-medium leading-relaxed mb-8">
-          {insight.description}
-        </p>
+        {insight.description && (
+          <p className="text-xl text-gray-600 font-medium leading-relaxed mb-8 border-l-3 border-[#0078B7]/40 pl-4 py-0.5">
+            {insight.description}
+          </p>
+        )}
 
         {/* Cover Image */}
         {insight.imageUrl && (
@@ -145,7 +159,7 @@ const BlogDetail = () => {
             <img
               src={resolveImageUrl(insight.imageUrl)}
               alt={insight.title}
-              className="w-full max-h-[460px] object-cover"
+              className="w-full max-h-[500px] object-cover"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = "/assets/new-logo-free.png";
               }}
@@ -153,17 +167,24 @@ const BlogDetail = () => {
           </div>
         )}
 
-        {/* Article Body */}
-        <div className="prose prose-lg max-w-none text-gray-800 space-y-6 leading-relaxed">
-          {paragraphs.map((p, idx) => (
-            <p key={idx} className="text-lg leading-relaxed text-gray-700">
-              {p}
-            </p>
-          ))}
-        </div>
+        {/* Article Body - Supports rich HTML (multiple inline images, fonts, colors, headings) or plain text */}
+        {hasHtml ? (
+          <div
+            className="blog-content leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+          />
+        ) : (
+          <div className="blog-content space-y-6 leading-relaxed">
+            {paragraphs.map((p, idx) => (
+              <p key={idx} className="text-lg leading-relaxed text-gray-700">
+                {p}
+              </p>
+            ))}
+          </div>
+        )}
 
         {/* Share & Actions */}
-        <div className="mt-12 pt-6 border-t border-gray-200 flex items-center justify-between">
+        <div className="mt-14 pt-6 border-t border-gray-200 flex items-center justify-between">
           <Link
             to="/blog"
             className="inline-flex items-center gap-2 font-semibold text-[#0078B7] hover:underline"
@@ -173,9 +194,9 @@ const BlogDetail = () => {
           </Link>
           <button
             onClick={handleShare}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors shadow-2xs"
           >
-            <Share2 className="h-4 w-4" />
+            <Share2 className="h-4 w-4 text-[#0078B7]" />
             Share Article
           </button>
         </div>

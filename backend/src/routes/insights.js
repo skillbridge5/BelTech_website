@@ -10,13 +10,22 @@ import {
 
 const router = Router();
 
-const sanitize = (body = {}) => ({
-  title: String(body.title ?? "").trim(),
-  description: String(body.description ?? "").trim(),
-  detail: String(body.detail ?? "").trim(),
-  date: body.date ? new Date(body.date).toISOString() : new Date().toISOString(),
-  image_url: String(body.imageUrl ?? body.image_url ?? "").trim(),
-});
+const sanitize = (body = {}) => {
+  let date = new Date().toISOString();
+  if (body.date) {
+    const parsed = new Date(body.date);
+    if (!isNaN(parsed.getTime())) {
+      date = parsed.toISOString();
+    }
+  }
+  return {
+    title: String(body.title ?? "").trim(),
+    description: String(body.description ?? "").trim(),
+    detail: String(body.detail ?? "").trim(),
+    date,
+    image_url: String(body.imageUrl ?? body.image_url ?? "").trim(),
+  };
+};
 
 // GET /insights (public)
 router.get("/", async (req, res) => {
