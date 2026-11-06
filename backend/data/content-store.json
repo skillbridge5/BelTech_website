@@ -112,6 +112,15 @@
   ],
   "insights": [
     {
+      "id": "d8d89417-2f5f-465f-8016-341daef1ba2c",
+      "title": "test",
+      "description": "tekjn",
+      "detail": "enlke nveian hoeaj hoe\n      <figure class=\"blog-image align-center my-6\">\n        <img src=\"http://localhost:4000/uploads/1793938575672-The_motivation_pc_wallpaper_trading.jpeg\" alt=\"The motivation pc wallpaper trading\" class=\"rounded-xl shadow-sm w-full h-auto object-cover\" loading=\"lazy\"></figure><figure class=\"blog-image align-center my-6\"><br></figure><figure class=\"blog-image align-center my-6\">fasfgjafjdashfjhdfjhFHDAFHHDFHDHFDFDFDJHFJDHFJDJFJHAJDFJDJFJAFJDJFJDFJADFJD</figure><figure class=\"blog-image align-center my-6\">\n      <figure class=\"blog-image align-right my-6\" style=\"max-width: 45%;\">\n        <img src=\"http://localhost:4000/uploads/1793938659608-self_evaluation.jpg\" alt=\"self evaluation\" class=\"rounded-xl shadow-sm w-full h-auto object-cover\" loading=\"lazy\">\n        \n      </figure>\n      <p><br></p>\n    <br></figure>\n      <p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p>\n      <figure class=\"blog-image align-center my-6\">\n        <img src=\"http://localhost:4000/uploads/1793938731646-photo_2026-09-01_15-43-05.jpg\" alt=\"photo 2026 09 01 15 43 05\" class=\"rounded-xl shadow-sm w-full h-auto object-cover\" loading=\"lazy\">\n        \n      </figure>\n      <p><br></p>\n    <br></p>",
+      "date": "2026-11-06T00:00:00.000Z",
+      "image_url": "http://localhost:4000/uploads/1793938562180-self_evaluation.jpg",
+      "created_at": "2026-11-06T04:16:19.935Z"
+    },
+    {
       "id": "b351f061-d03a-4312-ab92-ad068c667d4b",
       "title": "QA Test blog",
       "description": "this is Blog test",
@@ -139,7 +148,7 @@
       "phone": "+251911000000",
       "organization": "BelTech QA",
       "message": "Automated verification test message",
-      "status": "new",
+      "status": "read",
       "created_at": "2026-10-27T15:35:04.144Z"
     }
   ]
