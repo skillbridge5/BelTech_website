@@ -752,6 +752,9 @@ export async function deleteSolution(id) {
 // ======================== INSIGHTS ========================
 
 export async function getInsights() {
+  const defaultList = defaultStore().insights;
+  let insights = [];
+
   if (await isSupabaseAvailable()) {
     try {
       const { data, error } = await supabase
@@ -759,9 +762,8 @@ export async function getInsights() {
         .select("*")
         .order("date", { ascending: false });
       if (!error && Array.isArray(data)) {
-        return data.map(mapInsight);
-      }
-      if (isMissingOrAuthError(error)) {
+        insights = data.map(mapInsight);
+      } else if (isMissingOrAuthError(error)) {
         supabaseCheck.available = false;
       }
     } catch {
@@ -770,10 +772,27 @@ export async function getInsights() {
   }
 
   const store = readStore();
-  const sorted = [...store.insights].sort(
-    (a, b) => new Date(b.date || b.created_at || 0) - new Date(a.date || a.created_at || 0)
+  if (!insights.length) {
+    insights = store.insights.map(mapInsight);
+  }
+
+  // Ensure default flagship insights/articles are always present and never hidden when a new article is created
+  const merged = [...insights];
+  for (const def of defaultList) {
+    const exists = merged.some(
+      (i) =>
+        i.id === def.id ||
+        i._id === def.id ||
+        (i.title && i.title.toLowerCase() === def.title.toLowerCase())
+    );
+    if (!exists) {
+      merged.push(mapInsight(def));
+    }
+  }
+
+  return merged.sort(
+    (a, b) => new Date(b.date || b.created_at || b.createdAt || 0) - new Date(a.date || a.created_at || a.createdAt || 0)
   );
-  return sorted.map(mapInsight);
 }
 
 export async function getInsightById(id) {
@@ -791,7 +810,10 @@ export async function getInsightById(id) {
   }
 
   const store = readStore();
-  const row = store.insights.find((i) => i.id === id);
+  let row = store.insights.find((i) => i.id === id);
+  if (!row) {
+    row = defaultStore().insights.find((i) => i.id === id);
+  }
   return row ? mapInsight(row) : null;
 }
 
@@ -806,6 +828,7 @@ export async function createInsight(payload) {
     created_at: new Date().toISOString(),
   };
 
+  let createdInsight = null;
   if (await isSupabaseAvailable()) {
     try {
       const { data, error } = await supabase
@@ -819,19 +842,25 @@ export async function createInsight(payload) {
         })
         .select()
         .single();
-      if (!error && data) return mapInsight(data);
+      if (!error && data) {
+        createdInsight = mapInsight({ ...row, ...data });
+      }
     } catch {
       supabaseCheck.available = false;
     }
   }
 
+  // Always write to local content store so local and Supabase remain synchronized and no items disappear
   const store = readStore();
-  store.insights.unshift(row);
+  const storeRow = createdInsight ? { ...row, id: createdInsight.id } : row;
+  store.insights.unshift(storeRow);
   writeStore(store);
-  return mapInsight(row);
+
+  return createdInsight || mapInsight(row);
 }
 
 export async function updateInsight(id, updates) {
+  let updatedInsight = null;
   if (await isSupabaseAvailable()) {
     try {
       const { data, error } = await supabase
@@ -841,41 +870,46 @@ export async function updateInsight(id, updates) {
           ...(updates.description !== undefined && { description: updates.description }),
           ...(updates.detail !== undefined && { detail: updates.detail }),
           ...(updates.date !== undefined && { date: updates.date }),
-          ...(updates.image_url !== undefined && { image_url: updates.image_url }),
-          ...(updates.imageUrl !== undefined && { image_url: updates.imageUrl }),
+          ...((updates.image_url !== undefined || updates.imageUrl !== undefined) && {
+            image_url: updates.image_url ?? updates.imageUrl,
+          }),
         })
         .eq("id", id)
         .select()
         .single();
-      if (!error && data) return mapInsight(data);
+      if (!error && data) {
+        updatedInsight = mapInsight(data);
+      }
     } catch {
       supabaseCheck.available = false;
     }
   }
 
+  // Always update local content store as well
   const store = readStore();
   const idx = store.insights.findIndex((i) => i.id === id);
-  if (idx < 0) return null;
+  if (idx >= 0) {
+    store.insights[idx] = {
+      ...store.insights[idx],
+      ...(updates.title !== undefined && { title: updates.title }),
+      ...(updates.description !== undefined && { description: updates.description }),
+      ...(updates.detail !== undefined && { detail: updates.detail }),
+      ...(updates.date !== undefined && { date: updates.date }),
+      ...((updates.image_url !== undefined || updates.imageUrl !== undefined) && {
+        image_url: updates.image_url ?? updates.imageUrl,
+      }),
+    };
+    writeStore(store);
+    return mapInsight(store.insights[idx]);
+  }
 
-  store.insights[idx] = {
-    ...store.insights[idx],
-    ...(updates.title !== undefined && { title: updates.title }),
-    ...(updates.description !== undefined && { description: updates.description }),
-    ...(updates.detail !== undefined && { detail: updates.detail }),
-    ...(updates.date !== undefined && { date: updates.date }),
-    ...((updates.image_url !== undefined || updates.imageUrl !== undefined) && {
-      image_url: updates.image_url ?? updates.imageUrl,
-    }),
-  };
-  writeStore(store);
-  return mapInsight(store.insights[idx]);
+  return updatedInsight;
 }
 
 export async function deleteInsight(id) {
   if (await isSupabaseAvailable()) {
     try {
-      const { error } = await supabase.from("insights").delete().eq("id", id);
-      if (!error) return true;
+      await supabase.from("insights").delete().eq("id", id);
     } catch {
       supabaseCheck.available = false;
     }

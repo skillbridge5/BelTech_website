@@ -67,18 +67,54 @@ const ArticleCard = ({
   );
 };
 
+const defaultInsights: InsightType[] = [
+  {
+    _id: "insight-erp-ethiopia",
+    id: "insight-erp-ethiopia",
+    title: "How ERP Systems Transform Ethiopian Businesses",
+    description:
+      "Why integrating sales, inventory, and finance into a single platform like Odoo or ERPNext accelerates business growth.",
+    detail:
+      "Implementing an ERP system allows companies to eliminate redundant data entry, ensure compliance with Ethiopian tax and payroll laws, and make data-driven operational decisions.",
+    date: "2026-01-01T00:00:00.000Z",
+    imageUrl: "/assets/homepage/business-operations.png",
+  },
+];
+
 const Blog = () => {
-  const [insights, setInsights] = useState<InsightType[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [insights, setInsights] = useState<InsightType[]>(defaultInsights);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const data = await loadInsights();
-      setInsights(data);
-      setLoading(false);
+    let active = true;
+    loadInsights()
+      .then((data) => {
+        if (!active) return;
+        if (Array.isArray(data) && data.length > 0) {
+          const merged = [...data];
+          for (const def of defaultInsights) {
+            const exists = merged.some(
+              (i) =>
+                (i._id && (i._id === def._id || i._id === def.id)) ||
+                (i.id && (i.id === def._id || i.id === def.id)) ||
+                (i.title && i.title.toLowerCase() === def.title.toLowerCase())
+            );
+            if (!exists) {
+              merged.push(def);
+            }
+          }
+          merged.sort(
+            (a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime()
+          );
+          setInsights(merged);
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to load insights:", err);
+      });
+
+    return () => {
+      active = false;
     };
-    fetchData();
   }, []);
 
   return (
@@ -107,19 +143,17 @@ const Blog = () => {
             </p>
           </motion.div>
 
-          {loading ? (
-            <p className="text-center text-gray-500">Loading posts...</p>
-          ) : insights.length === 0 ? (
-            <p className="text-center text-gray-500">No posts yet.</p>
+          {insights.length === 0 ? (
+            <p className="text-center text-gray-500 py-12">No posts yet.</p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-stretch">
               {insights.map((insight, index) => (
                 <motion.div
-                  key={insight._id}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  key={insight._id || insight.id || `insight-${index}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: Math.min(index * 0.08, 0.4) }}
+                  className="w-full flex"
                 >
                   <ArticleCard insight={insight} />
                 </motion.div>

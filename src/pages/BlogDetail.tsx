@@ -13,6 +13,20 @@ import {
   calculateReadingTime,
 } from "../lib/sanitizeHtml";
 
+const defaultInsights: Insight[] = [
+  {
+    _id: "insight-erp-ethiopia",
+    id: "insight-erp-ethiopia",
+    title: "How ERP Systems Transform Ethiopian Businesses",
+    description:
+      "Why integrating sales, inventory, and finance into a single platform like Odoo or ERPNext accelerates business growth.",
+    detail:
+      "Implementing an ERP system allows companies to eliminate redundant data entry, ensure compliance with Ethiopian tax and payroll laws, and make data-driven operational decisions.",
+    date: "2026-01-01T00:00:00.000Z",
+    imageUrl: "/assets/homepage/business-operations.png",
+  },
+];
+
 const BlogDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [insight, setInsight] = useState<Insight | null>(null);
@@ -27,7 +41,7 @@ const BlogDetail = () => {
         if (!active || !Array.isArray(items)) return;
         const normalized = id.toLowerCase().trim();
 
-        const match = items.find((i) => {
+        let match = items.find((i) => {
           const iId = (i._id || i.id || "").toLowerCase();
           const iSlug = (i.title || "")
             .toLowerCase()
@@ -37,13 +51,35 @@ const BlogDetail = () => {
           return iId === normalized || iSlug === normalized;
         });
 
+        if (!match) {
+          match = defaultInsights.find((i) => {
+            const iId = (i._id || i.id || "").toLowerCase();
+            const iSlug = (i.title || "")
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, "-")
+              .replace(/(^-|-$)/g, "");
+            return iId === normalized || iSlug === normalized;
+          });
+        }
+
         if (match) {
           setInsight(match);
         }
         setLoading(false);
       })
       .catch(() => {
-        if (active) setLoading(false);
+        if (!active) return;
+        const normalized = id.toLowerCase().trim();
+        const fallback = defaultInsights.find((i) => {
+          const iId = (i._id || i.id || "").toLowerCase();
+          const iSlug = (i.title || "")
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)/g, "");
+          return iId === normalized || iSlug === normalized;
+        });
+        if (fallback) setInsight(fallback);
+        setLoading(false);
       });
 
     return () => {
