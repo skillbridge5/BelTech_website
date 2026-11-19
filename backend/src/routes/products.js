@@ -37,6 +37,7 @@ const sanitize = (body = {}) => {
     detail: String(body.detail ?? body.content ?? "").trim(),
     kicker: String(body.kicker ?? "").trim(),
     modules: String(body.modules ?? "").trim(),
+    flow: String(body.flow ?? "").trim(),
     image_url: String(body.imageUrl ?? body.image_url ?? "").trim(),
     link,
     priority:

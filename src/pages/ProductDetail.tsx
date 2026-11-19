@@ -48,6 +48,7 @@ import { Button } from "../components/ui/button";
 import { getProducts } from "../api/client";
 import type { Product } from "../api/client";
 import { resolveImageUrl } from "../lib/image";
+import { sanitizeBlogHtml, isHtmlContent } from "../lib/sanitizeHtml";
 import above_the_footer from "../assets/above_the_footer.jpg";
 import humanResource from "../assets/homepage/human-resource.svg";
 import care from "../assets/homepage/care.jpg";
@@ -65,6 +66,7 @@ type ProductPage = {
   title: string;
   kicker: string;
   summary: string;
+  detail?: string;
   image: string;
   modules: ProductModule[];
   more?: { heading?: string; intro: string; items: { title: string; icon: LucideIcon }[] };
@@ -400,6 +402,79 @@ const ProductDetail = () => {
             ];
           }
 
+          // Parse or generate Flow steps
+          let parsedFlow = builtIn?.flow;
+          if (match.flow && match.flow.trim()) {
+            const steps = match.flow
+              .split("\n")
+              .filter((l) => l.trim().length > 0)
+              .map((line, idx) => {
+                const parts = line.split(/:(.+)/);
+                const title = parts[0]?.trim() || `Step ${idx + 1}`;
+                const body = parts[1]?.trim() || parts[0]?.trim();
+                return {
+                  title,
+                  body,
+                  icon: defaultModuleIcons[idx % defaultModuleIcons.length],
+                };
+              });
+            parsedFlow = {
+              heading: `The ${match.title} flow`,
+              intro: "One connected path through your core operational lifecycle.",
+              steps,
+            };
+          } else if (!parsedFlow && parsedModules.length >= 3) {
+            parsedFlow = {
+              heading: `The ${match.title} flow`,
+              intro: "One connected path through your core operational workflow.",
+              steps: parsedModules.slice(0, 5).map((m) => ({
+                title: m.title,
+                body: m.body,
+                icon: m.icon,
+              })),
+            };
+          }
+
+          // Build Spotlights
+          const spotlight = builtIn?.spotlight || {
+            kicker: match.kicker || "Core Architecture",
+            title: `Engineered for ${match.title}`,
+            titleAccent: "excellence.",
+            body: match.description || "Streamline operations, automate repetitive workflows, and give your team real-time operational visibility.",
+            image: match.imageUrl ? resolveImageUrl(match.imageUrl) : humanResource,
+            imageAlt: match.title,
+            objectPosition: "center",
+          };
+
+          const companion = builtIn?.companion || {
+            kicker: "Integration & Scale",
+            title: "Connected operations",
+            titleAccent: "across every team.",
+            body: "Eliminate disconnected systems and manual spreadsheets. Frontline staff, supervisors, and executive management work from a unified operational database.",
+            image: match.imageUrl ? resolveImageUrl(match.imageUrl) : attendanceShot,
+            imageAlt: `${match.title} operations`,
+            flip: true,
+            objectPosition: "center",
+          };
+
+          // Build Closing
+          const closing = builtIn?.closing || {
+            title: `Ready to get started with ${match.title}?`,
+            body: "Talk to our engineering team for a full demonstration, architecture review, and deployment roadmap.",
+            options: [
+              {
+                title: "Cloud SaaS",
+                body: "Fully managed, secure cloud hosting with automatic updates, high availability, and 24/7 monitoring.",
+                icon: Shield,
+              },
+              {
+                title: "On-Premise Deployment",
+                body: "Deploy directly on your local servers for complete data residency, offline biometric sync, and internal network compliance.",
+                icon: Building2,
+              },
+            ],
+          };
+
           setProduct({
             title: match.title,
             kicker:
@@ -407,23 +482,14 @@ const ProductDetail = () => {
               builtIn?.kicker ||
               "Enterprise software engineered for high-performance operations",
             summary: match.description || builtIn?.summary || "",
+            detail: match.detail || builtIn?.detail || "",
             image: match.imageUrl ? resolveImageUrl(match.imageUrl) : builtIn?.image || humanResource,
             modules: parsedModules,
-            spotlight: match.detail
-              ? {
-                  kicker: "Overview & Architecture",
-                  title: "Engineered for operational excellence.",
-                  body: match.detail,
-                  image: match.imageUrl ? resolveImageUrl(match.imageUrl) : builtIn?.image || humanResource,
-                  imageAlt: match.title,
-                }
-              : builtIn?.spotlight,
-            flow: builtIn?.flow,
+            spotlight,
+            companion,
+            flow: parsedFlow,
             more: builtIn?.more,
-            closing: {
-              title: `Ready to get started with ${match.title}?`,
-              body: "Talk to our engineering team for a full demonstration, architecture review, and deployment roadmap.",
-            },
+            closing,
           });
         }
         setLoading(false);
@@ -462,6 +528,16 @@ const ProductDetail = () => {
     );
   }
 
+  const rawDetail = product.detail || "";
+  const hasHtml = isHtmlContent(rawDetail);
+  const detailHtml = hasHtml ? sanitizeBlogHtml(rawDetail) : "";
+  const detailParagraphs = !hasHtml && rawDetail.trim()
+    ? rawDetail
+        .split(/\n\s*\n/)
+        .map((p) => p.trim())
+        .filter(Boolean)
+    : [];
+
   return (
     <div className="min-h-screen bg-white text-gray-800 antialiased">
       <section className="relative overflow-hidden bg-[#f3f8fb] pt-28">
@@ -493,26 +569,28 @@ const ProductDetail = () => {
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="site-wide">
-          <h2 className="text-center text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">One system</h2>
-          <p className="mx-auto mt-4 max-w-xl text-center text-lg text-gray-600">The modules this product is built around.</p>
-          <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-14 sm:grid-cols-3 lg:grid-cols-4">
-            {product.modules.map((module, index) => {
-              const Icon = module.icon;
-              return (
-                <article key={module.title} className="text-center">
-                  <div className="mx-auto w-fit transition duration-300 hover:-translate-y-1">
-                    <AppMark icon={Icon} tone={tones[index % tones.length]} />
-                  </div>
-                  <h3 className="mt-4 text-base font-bold text-gray-900">{module.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-gray-600">{module.body}</p>
-                </article>
-              );
-            })}
+      {product.modules && product.modules.length > 0 ? (
+        <section className="py-20">
+          <div className="site-wide">
+            <h2 className="text-center text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">One system</h2>
+            <p className="mx-auto mt-4 max-w-xl text-center text-lg text-gray-600">The modules this product is built around.</p>
+            <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-14 sm:grid-cols-3 lg:grid-cols-4">
+              {product.modules.map((module, index) => {
+                const Icon = module.icon;
+                return (
+                  <article key={module.title} className="text-center">
+                    <div className="mx-auto w-fit transition duration-300 hover:-translate-y-1">
+                      <AppMark icon={Icon} tone={tones[index % tones.length]} />
+                    </div>
+                    <h3 className="mt-4 text-base font-bold text-gray-900">{module.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-gray-600">{module.body}</p>
+                  </article>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       {[product.spotlight, product.companion].some(Boolean) ? (
         <section className="bg-white py-8">
@@ -592,6 +670,40 @@ const ProductDetail = () => {
           </div>
         </section>
       ) : null}
+
+      {/* In-Depth Product Deep Dive & Architecture (Configured via the Rich Studio Editor) */}
+      {(detailHtml || detailParagraphs.length > 0) && (
+        <section className="bg-white py-20 border-t border-gray-100">
+          <div className="site-wide max-w-5xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <p className="text-sm font-bold tracking-wide text-[#0078B7] uppercase">Deep Dive & Technical Details</p>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 md:text-5xl">
+                Inside {product.title}
+              </h2>
+              <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                Explore comprehensive specifications, architecture workflows, and integration guides.
+              </p>
+            </div>
+
+            <div className="bg-[#fcfdfd] border border-gray-100 rounded-3xl p-6 sm:p-12 shadow-xs">
+              {detailHtml ? (
+                <div
+                  className="blog-content leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: detailHtml }}
+                />
+              ) : (
+                <div className="blog-content space-y-6 leading-relaxed">
+                  {detailParagraphs.map((p, idx) => (
+                    <p key={idx} className="text-lg leading-relaxed text-gray-700">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {product.closing ? (
         <section className="py-20">

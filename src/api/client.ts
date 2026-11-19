@@ -56,6 +56,7 @@ export interface Product {
   kicker?: string;
   detail?: string;
   modules?: string;
+  flow?: string;
   imageUrl: string;
   link: string;
   priority: number;

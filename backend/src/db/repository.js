@@ -72,8 +72,38 @@ const defaultStore = () => ({
     {
       id: "prod-ethiopian-hrms",
       title: "Ethiopian HRMS",
+      kicker: "Complete HR and payroll management for Ethiopian businesses",
       description:
         "An Odoo-based HR and payroll system for Ethiopian businesses, from employees and biometric attendance through payroll, leave, and self-service.",
+      detail: `<p class="lead"><strong>BelTech Ethiopian HRMS</strong> is an enterprise human resource management and payroll system tailored specifically for Ethiopian businesses, tax laws, and labor regulations. Built on top of robust Odoo technology, it streamlines HR operations from attendance capture to tax compliance.</p>
+
+<div class="callout-box callout-info">
+  <h4>🇪🇹 Fully Compliant with Ethiopian Labor Regulations</h4>
+  <p>Accurately automates income tax bands (0% to 35%), mandatory employee pension (7%), employer pension (11%), severance formulas, and Ethiopian holiday calendar tracking.</p>
+</div>
+
+<h2>Core Architectural Highlights</h2>
+<p>Unlike generic global HR tools that require clumsy spreadsheet workarounds for Ethiopian tax rules, BelTech HRMS handles end-to-end personnel workflows natively:</p>
+
+<ul>
+  <li><strong>Automated Biometric Integration:</strong> Connect directly with ZKTeco and IP-enabled biometric devices. Punch logs automatically calculate work hours, tardiness, and overtime.</li>
+  <li><strong>Multi-shift & Overnight Schedules:</strong> Full flexibility for manufacturing plants, hospitals, hotels, and retail chains with rotating shift support.</li>
+  <li><strong>Employee Self-Service (ESS):</strong> Staff can submit leave requests, review attendance, and view monthly payslips straight from web or mobile.</li>
+  <li><strong>Tax & Pension Reporting:</strong> Generate ready-to-submit monthly declarations for the Ministry of Revenues and Pension Agency with one click.</li>
+</ul>
+
+<h2>The Integrated Lifecycle: From Hire to Retire</h2>
+<p>Employee records maintain complete career progression histories, contract renewals, disciplinary records, salary revisions, and exit clearances in a unified database.</p>`,
+      modules: `Employee Management: Comprehensive profiles, digital contract records, departments, promotions, and career history.
+Biometric Attendance: ZKTeco fingerprint and facial recognition device synchronization with automated punch validation.
+Shift Scheduling: Fixed, rotating, overnight, and flexible work schedules with automated rest day assignments.
+Ethiopian Payroll & Pension: Tax tiered calculations according to Ethiopian labor law, employee (7%) and employer (11%) pension deductions.
+Leave Administration: Annual, sick, maternity, and compassionate leave with automatic balance tracking and multi-tier approval flows.
+Overtime Management: Standard, weekend, and public holiday overtime rates automatically calculated into monthly payslips.
+Salary Advances & Loans: Loan request approvals, customizable repayment schedules, and automatic monthly deductions.
+Employee Self-Service: Intuitive portal for leave applications, attendance records, payslip downloads, and HR inquiries.
+Ethiopian Calendar Support: Built-in Geez calendar conversion, holidays, and Ethiopian fiscal year synchronizations.
+Analytics & Reporting: Real-time workforce headcounts, attendance ratios, payroll summaries, and tax compliance export sheets.`,
       image_url: "/assets/homepage/human-resource.svg",
       link: "/products/ethiopian-hrms",
       priority: 0,
@@ -82,8 +112,31 @@ const defaultStore = () => ({
     {
       id: "prod-carecentral",
       title: "CareCentral",
+      kicker: "Healthcare ERP and hospital management system",
       description:
         "A healthcare ERP and hospital management system for patients, clinical work, staff, and administration.",
+      detail: `<p class="lead"><strong>CareCentral</strong> is an all-in-one healthcare ERP and hospital management system designed to coordinate clinical, diagnostic, pharmaceutical, and financial operations across modern medical facilities.</p>
+
+<div class="callout-box callout-tip">
+  <h4>🏥 Unified Patient Record Across All Hospital Units</h4>
+  <p>Eliminate paper charts and fragmented departments. From front-desk triage and outpatient consultation to laboratory tests, pharmacy fulfillment, and inpatient wards, every interaction updates the patient’s central electronic health record.</p>
+</div>
+
+<h2>Key System Capabilities</h2>
+<ul>
+  <li><strong>Outpatient & Inpatient Management:</strong> Real-time bed occupancy maps, surgical scheduling, vitals monitoring, and nurse handover notes.</li>
+  <li><strong>Laboratory & Imaging Integration:</strong> Barcoded specimen tracking, digital requisition forms, and validated lab result publication directly to patient profiles.</li>
+  <li><strong>Pharmacy & Controlled Inventory:</strong> Automated prescription queues, batch number and expiry date tracking, and automated reorder triggers for essential medicines.</li>
+  <li><strong>Consolidated Billing:</strong> Multi-department bill collation combining consultation fees, lab procedures, medication dispensing, and bed days into a single transparent invoice with private insurance claims support.</li>
+</ul>`,
+      modules: `Patient Registration & Records: Digital intake, demographic capture, insurance identification, and medical records.
+Outpatient Department (OPD): Doctor consultations, vitals logging, clinical notes, diagnosis coding, and electronic prescriptions.
+Inpatient Department (IPD): Admission processing, ward and bed management, nurse charts, and discharge summaries.
+Pharmacy & Medication: Prescription queues, barcode dispensing, batch/expiry tracking, and automated stock reordering.
+Laboratory Information System (LIS): Test requisition, barcode sample labeling, specimen tracking, and validated lab results.
+Billing & Insurance: Unified bill aggregation for consultation, lab, pharmacy, and bed charges with private insurance claims.
+Emergency & Triage: Fast-track trauma intake, triage level tagging, and rapid doctor routing.
+Hospital Administration & Analytics: Bed occupancy dashboards, department revenue metrics, and staffing allocations.`,
       image_url: "/assets/homepage/care.jpg",
       link: "/products/carecentral",
       priority: 1,
@@ -92,8 +145,31 @@ const defaultStore = () => ({
     {
       id: "prod-school360",
       title: "School360",
+      kicker: "End-to-end school management platform engineered for educational excellence",
       description:
         "Digitize academics, admissions, attendance, examinations, fees, communication, and administration—all from one integrated, modular ERP platform engineered for educational institutions.",
+      detail: `<p class="lead"><strong>School360</strong> is an end-to-end educational institution ERP designed for K-12 schools, colleges, and training institutes. It digitizes student admissions, academic progress, examinations, fee collection, and administrative workflows into one seamless portal.</p>
+
+<div class="callout-box callout-info">
+  <h4>🎓 Integrated Academic & Administrative Operations</h4>
+  <p>Bridge the gap between administrators, teachers, parents, and students with real-time academic records, biometric student attendance, automated grade books, and secure fee processing.</p>
+</div>
+
+<h2>Comprehensive Institutional Capabilities</h2>
+<ul>
+  <li><strong>Digital Admissions & Enrollment:</strong> Manage student applications, interview scheduling, document verification, and automated student ID generation.</li>
+  <li><strong>Fee Management & Billing:</strong> Configurable tuition fee structures, term invoice generation, payment receipts, and automated SMS reminders for pending balances.</li>
+  <li><strong>Exams & Continuous Assessment:</strong> Mark entry, customized grading rubrics, automatic GPA computation, and one-click report card printing.</li>
+  <li><strong>Parent Portal & Mobile Communication:</strong> Give guardians real-time visibility into attendance records, homework assignments, exam schedules, and teacher feedback.</li>
+</ul>`,
+      modules: `Student Admissions & Enrollment: Online application forms, document verification, interview scheduling, and student ID generation.
+Academic Management: Curriculum planning, class section division, subject assignments, and teacher scheduling.
+Fee Management & Invoicing: Tuition fee structures, automated term invoices, bank transfer reconciliations, and penalty tracking.
+Attendance Tracking: Daily classroom roll-call, biometric gate logging, and automated SMS alerts to parents for absent students.
+Examinations & Report Cards: Exam timetables, continuous assessment recording, GPA calculations, and printable report cards.
+Parent & Student Portal: Dedicated web and mobile view for grades, fee payment receipts, upcoming schedules, and school announcements.
+Library Automation: Book cataloging, barcode scanning for borrow/return, and automated overdue book alerts.
+Staff & Payroll Administration: Teacher qualification tracking, workload monitoring, and monthly staff salary processing.`,
       image_url: "/assets/homepage/school.jpg",
       link: "/products/school360",
       priority: 2,
@@ -230,6 +306,7 @@ export const mapProduct = (row) => ({
   detail: row.detail || row.content || "",
   kicker: row.kicker || "",
   modules: row.modules || "",
+  flow: row.flow || "",
   imageUrl: row.image_url || "",
   image_url: row.image_url || "",
   link: row.link || "",
@@ -294,6 +371,9 @@ export const mapContact = (row) => ({
 // ======================== PRODUCTS ========================
 
 export async function getProducts() {
+  const defaultList = defaultStore().products;
+  let products = [];
+
   if (await isSupabaseAvailable()) {
     try {
       const { data, error } = await supabase
@@ -302,9 +382,8 @@ export async function getProducts() {
         .order("priority", { ascending: true, nullsFirst: false })
         .order("created_at", { ascending: false });
       if (!error && Array.isArray(data)) {
-        return data.map(mapProduct);
-      }
-      if (isMissingOrAuthError(error)) {
+        products = data.map(mapProduct);
+      } else if (isMissingOrAuthError(error)) {
         supabaseCheck.available = false;
       }
     } catch {
@@ -313,13 +392,31 @@ export async function getProducts() {
   }
 
   const store = readStore();
-  const sorted = [...store.products].sort((a, b) => {
+  if (!products.length) {
+    products = store.products.map(mapProduct);
+  }
+
+  // Ensure default flagship products are always present and never hidden when a new product is created
+  const merged = [...products];
+  for (const def of defaultList) {
+    const exists = merged.some(
+      (p) =>
+        p.id === def.id ||
+        p._id === def.id ||
+        (p.title && p.title.toLowerCase() === def.title.toLowerCase()) ||
+        (p.link && p.link.toLowerCase() === def.link.toLowerCase())
+    );
+    if (!exists) {
+      merged.push(mapProduct(def));
+    }
+  }
+
+  return merged.sort((a, b) => {
     if ((a.priority ?? 0) !== (b.priority ?? 0)) {
       return (a.priority ?? 0) - (b.priority ?? 0);
     }
-    return new Date(b.created_at || 0) - new Date(a.created_at || 0);
+    return new Date(b.createdAt || b.created_at || 0) - new Date(a.createdAt || a.created_at || 0);
   });
-  return sorted.map(mapProduct);
 }
 
 export async function getProductById(id) {
@@ -337,7 +434,11 @@ export async function getProductById(id) {
   }
 
   const store = readStore();
-  const row = store.products.find((p) => p.id === id);
+  let row = store.products.find((p) => p.id === id);
+  if (!row) {
+    // Check default store
+    row = defaultStore().products.find((p) => p.id === id);
+  }
   return row ? mapProduct(row) : null;
 }
 
@@ -346,82 +447,143 @@ export async function createProduct(payload) {
     id: randomUUID(),
     title: payload.title || "",
     description: payload.description || "",
+    kicker: payload.kicker || "",
+    detail: payload.detail || payload.content || "",
+    modules: payload.modules || "",
+    flow: payload.flow || "",
     image_url: payload.image_url || payload.imageUrl || "",
     link: payload.link || "",
     priority: typeof payload.priority === "number" ? Math.round(payload.priority) : 0,
     created_at: new Date().toISOString(),
   };
 
+  let createdProduct = null;
+
   if (await isSupabaseAvailable()) {
     try {
-      const { data, error } = await supabase
+      let { data, error } = await supabase
         .from("products")
         .insert({
           title: row.title,
           description: row.description,
+          kicker: row.kicker,
+          detail: row.detail,
+          modules: row.modules,
           image_url: row.image_url,
           link: row.link,
           priority: row.priority,
         })
         .select()
         .single();
-      if (!error && data) return mapProduct(data);
+
+      if (error && (error.message?.includes("column") || error.code === "PGRST204" || error.code === "42703")) {
+        const res = await supabase
+          .from("products")
+          .insert({
+            title: row.title,
+            description: row.description,
+            image_url: row.image_url,
+            link: row.link,
+            priority: row.priority,
+          })
+          .select()
+          .single();
+        data = res.data;
+        error = res.error;
+      }
+
+      if (!error && data) {
+        createdProduct = mapProduct({ ...row, ...data });
+      }
     } catch {
       supabaseCheck.available = false;
     }
   }
 
+  // Always write to local content store so local and Supabase remain synchronized and no items disappear
   const store = readStore();
-  store.products.unshift(row);
+  const storeRow = createdProduct ? { ...row, id: createdProduct.id } : row;
+  store.products.unshift(storeRow);
   writeStore(store);
-  return mapProduct(row);
+
+  return createdProduct || mapProduct(row);
 }
 
 export async function updateProduct(id, updates) {
+  let updatedProduct = null;
+
   if (await isSupabaseAvailable()) {
     try {
-      const { data, error } = await supabase
+      const updatePayload = {
+        ...(updates.title !== undefined && { title: updates.title }),
+        ...(updates.description !== undefined && { description: updates.description }),
+        ...(updates.kicker !== undefined && { kicker: updates.kicker }),
+        ...(updates.detail !== undefined && { detail: updates.detail }),
+        ...(updates.modules !== undefined && { modules: updates.modules }),
+        ...(updates.image_url !== undefined && { image_url: updates.image_url }),
+        ...(updates.imageUrl !== undefined && { image_url: updates.imageUrl }),
+        ...(updates.link !== undefined && { link: updates.link }),
+        ...(updates.priority !== undefined && { priority: updates.priority }),
+      };
+
+      let { data, error } = await supabase
         .from("products")
-        .update({
+        .update(updatePayload)
+        .eq("id", id)
+        .select()
+        .single();
+
+      if (error && (error.message?.includes("column") || error.code === "PGRST204" || error.code === "42703")) {
+        const basicPayload = {
           ...(updates.title !== undefined && { title: updates.title }),
           ...(updates.description !== undefined && { description: updates.description }),
           ...(updates.image_url !== undefined && { image_url: updates.image_url }),
           ...(updates.imageUrl !== undefined && { image_url: updates.imageUrl }),
           ...(updates.link !== undefined && { link: updates.link }),
           ...(updates.priority !== undefined && { priority: updates.priority }),
-        })
-        .eq("id", id)
-        .select()
-        .single();
-      if (!error && data) return mapProduct(data);
+        };
+        const res = await supabase.from("products").update(basicPayload).eq("id", id).select().single();
+        data = res.data;
+        error = res.error;
+      }
+
+      if (!error && data) {
+        updatedProduct = mapProduct(data);
+      }
     } catch {
       supabaseCheck.available = false;
     }
   }
 
+  // Always update local content store as well
   const store = readStore();
   const idx = store.products.findIndex((p) => p.id === id);
-  if (idx < 0) return null;
+  if (idx >= 0) {
+    store.products[idx] = {
+      ...store.products[idx],
+      ...(updates.title !== undefined && { title: updates.title }),
+      ...(updates.description !== undefined && { description: updates.description }),
+      ...(updates.kicker !== undefined && { kicker: updates.kicker }),
+      ...(updates.detail !== undefined && { detail: updates.detail }),
+      ...(updates.modules !== undefined && { modules: updates.modules }),
+      ...(updates.flow !== undefined && { flow: updates.flow }),
+      ...((updates.image_url !== undefined || updates.imageUrl !== undefined) && {
+        image_url: updates.image_url ?? updates.imageUrl,
+      }),
+      ...(updates.link !== undefined && { link: updates.link }),
+      ...(updates.priority !== undefined && { priority: updates.priority }),
+    };
+    writeStore(store);
+    return mapProduct(store.products[idx]);
+  }
 
-  store.products[idx] = {
-    ...store.products[idx],
-    ...(updates.title !== undefined && { title: updates.title }),
-    ...(updates.description !== undefined && { description: updates.description }),
-    ...((updates.image_url !== undefined || updates.imageUrl !== undefined) && {
-      image_url: updates.image_url ?? updates.imageUrl,
-    }),
-    ...(updates.link !== undefined && { link: updates.link }),
-    ...(updates.priority !== undefined && { priority: updates.priority }),
-  };
-  writeStore(store);
-  return mapProduct(store.products[idx]);
+  return updatedProduct;
 }
 
 export async function deleteProduct(id) {
   if (await isSupabaseAvailable()) {
     try {
-      const { error } = await supabase.from("products").delete().eq("id", id);
-      if (!error) return true;
+      await supabase.from("products").delete().eq("id", id);
     } catch {
       supabaseCheck.available = false;
     }
@@ -434,7 +596,7 @@ export async function deleteProduct(id) {
     writeStore(store);
     return true;
   }
-  return false;
+  return true;
 }
 
 // ======================== SOLUTIONS ========================

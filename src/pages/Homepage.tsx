@@ -103,7 +103,9 @@ const productHref = (product: Product) => {
         ) {
           return u.pathname;
         }
-      } catch {}
+      } catch {
+        // Fall back to returning raw link if parsing fails
+      }
       return link;
     }
     return link.startsWith("/") ? link : `/${link}`;
@@ -648,7 +650,22 @@ const Homepage: React.FC = () => {
       .then((data) => {
         if (!active) return;
         if (Array.isArray(data) && data.length) {
-          setProducts(data);
+          // Ensure default flagship products are never hidden when new products are added
+          const merged = [...data];
+          for (const def of defaultProducts) {
+            const exists = merged.some(
+              (p) =>
+                p._id === def._id ||
+                p.id === def._id ||
+                p.title.toLowerCase() === def.title.toLowerCase() ||
+                p.link === def.link
+            );
+            if (!exists) {
+              merged.push(def);
+            }
+          }
+          merged.sort((a, b) => (a.priority ?? 0) - (b.priority ?? 0));
+          setProducts(merged);
         }
       })
       .catch(() => {
