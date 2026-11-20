@@ -12,14 +12,18 @@ const title = (page: string) => `${page} | ${SITE_NAME}`;
 export const STATIC_PAGE_SEO: Record<string, PageSeo> = {
   "/": {
     path: "/",
-    title: `${SITE_NAME} | ${SITE_TAGLINE}`,
+    title: "BelTech Solutions Ethiopia | Odoo & ERPNext Implementation in Addis Ababa",
     description:
-      "BelTech Solutions is an ERP implementer in Addis Ababa. We set up Odoo and ERPNext, train company teams, and build automation and custom software for African businesses.",
+      "BelTech Solutions is an ERP implementer in Addis Ababa, Ethiopia. We set up Odoo and ERPNext, train corporate teams, and build automation and custom software for African enterprises.",
     keywords: [
+      "BelTech Solutions Ethiopia",
       "ERP implementer Addis Ababa",
       "Odoo Ethiopia",
       "ERPNext Ethiopia",
-      "BelTech Solutions",
+      "ERP software Addis Ababa",
+      "Odoo partner Addis Ababa",
+      "business automation Ethiopia",
+      "Ethiopian ERP system",
     ],
   },
   "/about": {
@@ -27,53 +31,54 @@ export const STATIC_PAGE_SEO: Record<string, PageSeo> = {
     title: title("About Us — ERP & Digital Solutions in Addis Ababa"),
     description:
       "BelTech Solutions was founded in 2024 in Addis Ababa to help African businesses modernize with Odoo, ERPNext, corporate ERP training, and tailored digital solutions.",
-    keywords: ["BelTech Solutions Addis Ababa", "ERP company Ethiopia"],
+    keywords: ["BelTech Solutions Addis Ababa", "ERP company Ethiopia", "Odoo developers Addis Ababa"],
   },
   "/services": {
     path: "/services",
-    title: title("ERP Implementation, Training, Automation & Software"),
+    title: title("ERP Implementation, Training, Automation & Software in Ethiopia"),
     description:
-      "Odoo and ERPNext implementation, corporate team training, business automation, and custom software development from BelTech Solutions in Addis Ababa.",
+      "Odoo and ERPNext implementation, corporate team training, business automation, and custom software development from BelTech Solutions in Addis Ababa, Ethiopia.",
     keywords: [
       "Odoo implementation Ethiopia",
-      "ERPNext training",
+      "ERPNext training Addis Ababa",
       "business automation Addis Ababa",
       "custom software Ethiopia",
+      "ERP consultant Ethiopia",
     ],
   },
   "/solutions": {
     path: "/solutions",
-    title: title("Projects & Case Studies"),
+    title: title("Projects & Case Studies — ERP Implementations in Ethiopia"),
     description:
-      "See BelTech ERP and website projects, including Diligent Trade on Odoo, SkillBridge Institute, and Eyoha Digitals.",
-    keywords: ["Odoo case study Ethiopia", "ERP projects Addis Ababa"],
+      "Explore BelTech ERP case studies and enterprise digital systems, including Diligent Trade on Odoo, SkillBridge Institute, and Eyoha Digitals in Addis Ababa.",
+    keywords: ["Odoo case study Ethiopia", "ERP projects Addis Ababa", "ERP implementation portfolio"],
   },
   "/industries": {
     path: "/industries",
-    title: title("Industries We Serve"),
+    title: title("Industries We Serve — Retail, Manufacturing & Healthcare ERP Ethiopia"),
     description:
-      "ERP and digital operations for retail, manufacturing, import-export, construction, accounting firms, healthcare, restaurants, and schools in Ethiopia and Africa.",
-    keywords: ["ERP for retail Ethiopia", "manufacturing ERP Addis Ababa"],
+      "ERP and digital operations tailored for retail, manufacturing, import-export, construction, accounting firms, healthcare, and schools in Ethiopia and East Africa.",
+    keywords: ["ERP for retail Ethiopia", "manufacturing ERP Addis Ababa", "import export ERP Ethiopia", "hospital ERP Ethiopia"],
   },
   "/blog": {
     path: "/blog",
-    title: title("Insights on ERP & Digital Operations"),
+    title: title("ERP & Digital Operations Blog — Guides for Ethiopian Businesses"),
     description:
-      "Articles and notes from BelTech on ERP, corporate team training, and digital operations for businesses in Africa.",
-    keywords: ["ERP blog Ethiopia", "Odoo tips Africa"],
+      "Practical articles and guides on Odoo, ERPNext, biometric payroll, tax compliance, and digital business operations in Ethiopia.",
+    keywords: ["ERP blog Ethiopia", "Odoo tips Africa", "Ethiopian payroll automation", "ERPNext vs Odoo Ethiopia"],
   },
   "/insights": {
     path: "/blog",
-    title: title("Insights on ERP & Digital Operations"),
+    title: title("ERP & Digital Operations Blog — Guides for Ethiopian Businesses"),
     description:
-      "Articles and notes from BelTech on ERP, corporate team training, and digital operations for businesses in Africa.",
+      "Practical articles and guides on Odoo, ERPNext, biometric payroll, tax compliance, and digital business operations in Ethiopia.",
   },
   "/contact": {
     path: "/contact",
-    title: title("Contact — Talk with the BelTech Team"),
+    title: title("Contact BelTech Solutions — Addis Ababa, Ethiopia"),
     description:
-      "Contact BelTech Solutions in Addis Ababa for ERP implementation, corporate training, automation, or custom software. Call +251 955 935 455 or email beltechsolns@gmail.com.",
-    keywords: ["contact BelTech", "ERP consultant Addis Ababa"],
+      "Talk with the BelTech Solutions engineering team in Bole Sub-City, Addis Ababa for ERP implementation, corporate training, automation, or custom software. Call +251 955 935 455 or email info@beltechsolns.et.",
+    keywords: ["contact BelTech", "ERP consultant Addis Ababa", "Odoo support Ethiopia"],
   },
   "/projects/diligent-trade": {
     path: "/projects/diligent-trade",
@@ -98,31 +103,78 @@ export const STATIC_PAGE_SEO: Record<string, PageSeo> = {
   },
   "/products/ethiopian-hrms": {
     path: "/products/ethiopian-hrms",
-    title: title("Ethiopian HRMS — Odoo HR & Payroll"),
+    title: "BelTech Ethiopian HRMS | Ethiopian Payroll & Biometric Attendance Software",
     description:
-      "BelTech Ethiopian HRMS: Odoo-based HR and payroll with biometric attendance, Ethiopian tax and pension, leave, and employee self-service.",
+      "BelTech Ethiopian HRMS: Complete Odoo-based HR and payroll software engineered for Ethiopian labor laws. Automated tax brackets, pension deductions, ZKTeco biometric sync, and self-service.",
     type: "product",
     keywords: [
       "Ethiopian payroll software",
-      "Odoo HRMS Ethiopia",
       "biometric attendance Ethiopia",
+      "Odoo HRMS Ethiopia",
+      "Ethiopian pension tax calculator",
+      "HR software Addis Ababa",
+      "ZKTeco integration Ethiopia",
     ],
   },
   "/products/carecentral": {
     path: "/products/carecentral",
-    title: title("CareCentral — Hospital & Clinic ERP"),
+    title: "CareCentral | Hospital & Clinic Management System in Ethiopia",
     description:
-      "CareCentral is BelTech’s healthcare ERP for hospitals and clinics: patients, outpatient, laboratory, intensive care, and administration in one system.",
+      "CareCentral is BelTech’s specialized healthcare ERP for hospitals and clinics in Ethiopia: patient records, OPD/IPD, laboratory, pharmacy, and unified administration in one system.",
     type: "product",
-    keywords: ["hospital management system Ethiopia", "clinic ERP"],
+    keywords: [
+      "hospital management system Ethiopia",
+      "clinic ERP Addis Ababa",
+      "healthcare software Ethiopia",
+      "EMR Ethiopia",
+      "hospital information system Addis Ababa",
+    ],
   },
   "/products/school360": {
     path: "/products/school360",
-    title: title("School360 — School Management on Odoo"),
+    title: "School360 | School Management System & ERP in Ethiopia",
     description:
-      "School360 digitizes admissions, attendance, exams, fees, and parent communication on an Odoo-based school management platform from BelTech.",
+      "School360 digitizes admissions, student records, biometric attendance, examinations, fee collection, and parent communication on an integrated Odoo school management platform in Ethiopia.",
     type: "product",
-    keywords: ["school management system Ethiopia", "Odoo school ERP"],
+    keywords: [
+      "school management system Ethiopia",
+      "school ERP Addis Ababa",
+      "Odoo education Ethiopia",
+      "school fees software Ethiopia",
+      "student information system Ethiopia",
+    ],
+  },
+  "/blog/insight-erp-ethiopia": {
+    path: "/blog/insight-erp-ethiopia",
+    title: title("How ERP Systems Transform Ethiopian Businesses"),
+    description:
+      "Why integrating sales, inventory, and finance into a single platform like Odoo or ERPNext accelerates business growth in Ethiopia.",
+    type: "article",
+    keywords: ["ERP Ethiopia", "Odoo benefits Addis Ababa", "business operations Ethiopia"],
+  },
+  "/blog/odoo-vs-erpnext-ethiopian-companies": {
+    path: "/blog/odoo-vs-erpnext-ethiopian-companies",
+    title: title("Odoo vs. ERPNext for Ethiopian Import/Export & Manufacturing Companies"),
+    description:
+      "A comprehensive comparison of Odoo and ERPNext for Ethiopian businesses: local tax support, multi-currency customs, license costs, and flexibility.",
+    type: "article",
+    keywords: ["Odoo vs ERPNext Ethiopia", "ERP comparison Ethiopia", "import export software Addis Ababa"],
+  },
+  "/blog/automate-ethiopian-payroll-pension-odoo": {
+    path: "/blog/automate-ethiopian-payroll-pension-odoo",
+    title: title("How to Automate Ethiopian Payroll & Pension Calculations in Odoo"),
+    description:
+      "Step-by-step guide on configuring Ethiopian income tax brackets, 7% employee and 11% employer pension contributions, and biometric attendance sync in Odoo.",
+    type: "article",
+    keywords: ["Ethiopian payroll in Odoo", "Ethiopian tax bracket calculation", "Ethiopian pension automation"],
+  },
+  "/blog/biometric-attendance-zkteco-ethiopia": {
+    path: "/blog/biometric-attendance-zkteco-ethiopia",
+    title: title("Integrating ZKTeco Biometric Devices with Odoo HRMS in Ethiopia"),
+    description:
+      "How to connect ZKTeco fingerprint and face recognition attendance hardware with Odoo for accurate timesheets, shift management, and automated payroll.",
+    type: "article",
+    keywords: ["ZKTeco Odoo Ethiopia", "biometric attendance Addis Ababa", "time and attendance sync"],
   },
 };
 
@@ -150,6 +202,10 @@ export const INDEXABLE_PATHS = [
   "/products/ethiopian-hrms",
   "/products/carecentral",
   "/products/school360",
+  "/blog/insight-erp-ethiopia",
+  "/blog/odoo-vs-erpnext-ethiopian-companies",
+  "/blog/automate-ethiopian-payroll-pension-odoo",
+  "/blog/biometric-attendance-zkteco-ethiopia",
 ] as const;
 
 export function resolvePageSeo(pathname: string): PageSeo {

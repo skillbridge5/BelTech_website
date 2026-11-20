@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Send, Youtube, MapPin, Phone, type LucideIcon } from "lucide-react";
+import { Mail, Linkedin, Send, Youtube, Instagram, MapPin, Phone, type LucideIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { WhatsAppIcon } from "./WhatsAppButton";
 import logo from "../assets/new-logo-free.png";
@@ -9,6 +9,8 @@ const Footer = () => {
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
     { name: "Ethiopian HRMS", path: "/products/ethiopian-hrms" },
+    { name: "CareCentral", path: "/products/carecentral" },
+    { name: "School360", path: "/products/school360" },
     { name: "About", path: "/about" },
     { name: "Projects", path: "/solutions" },
     { name: "Industries", path: "/industries" },
@@ -17,10 +19,11 @@ const Footer = () => {
   ];
 
   const socialLinks: { icon: LucideIcon | typeof WhatsAppIcon; url: string; label: string }[] = [
-    { icon: Mail, url: "mailto:beltechsolns@gmail.com", label: "Email" },
+    { icon: Mail, url: "mailto:info@beltechsolns.et", label: "Email" },
     { icon: Linkedin, url: "https://www.linkedin.com/company/beltech-solution/", label: "LinkedIn" },
     { icon: Send, url: "https://t.me/belTechSolns", label: "Telegram" },
     { icon: Youtube, url: "https://www.youtube.com/@BeltechSolns", label: "YouTube" },
+    { icon: Instagram, url: "https://www.instagram.com/beltech_solutions", label: "Instagram" },
     { icon: WhatsAppIcon, url: "https://wa.me/251955935455", label: "WhatsApp" },
   ];
 
@@ -75,7 +78,7 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-white/80">
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#7ec8ea]" />
-                <span>Addis Ababa, Ethiopia</span>
+                <span>Bole Sub-City, Cameroon St., Addis Ababa, Ethiopia</span>
               </li>
               <li className="flex items-start gap-2">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#7ec8ea]" />
@@ -86,8 +89,8 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#7ec8ea]" />
-                <a href="mailto:beltechsolns@gmail.com" className="hover:text-white">
-                  beltechsolns@gmail.com
+                <a href="mailto:info@beltechsolns.et" className="hover:text-white">
+                  info@beltechsolns.et
                 </a>
               </li>
             </ul>

@@ -15,14 +15,47 @@ import {
 
 const defaultInsights: Insight[] = [
   {
+    _id: "odoo-vs-erpnext-ethiopian-companies",
+    id: "odoo-vs-erpnext-ethiopian-companies",
+    title: "Odoo vs. ERPNext for Ethiopian Import/Export & Manufacturing Companies",
+    description:
+      "A comprehensive comparison of Odoo and ERPNext for Ethiopian businesses: local tax support, multi-currency customs, license costs, and flexibility.",
+    detail:
+      "Choosing between Odoo and ERPNext is one of the most common dilemmas faced by Ethiopian trade and manufacturing businesses in Addis Ababa. While both platforms are open-core, Odoo provides a mature modular marketplace with pre-built Ethiopian HRMS extensions, while ERPNext offers an all-inclusive open-source licensing model. For businesses handling multi-currency imports, customs clearance landed costs, and tiered VAT reporting, Odoo's automated landed-cost costing methods offer greater accuracy. When planning your ERP rollout, partner expertise and team training in Addis Ababa are the critical success factors.",
+    date: "2026-11-15T00:00:00.000Z",
+    imageUrl: "/assets/homepage/business-operations.png",
+  },
+  {
+    _id: "automate-ethiopian-payroll-pension-odoo",
+    id: "automate-ethiopian-payroll-pension-odoo",
+    title: "How to Automate Ethiopian Payroll & Pension Calculations in Odoo",
+    description:
+      "Step-by-step guide on configuring Ethiopian income tax brackets, 7% employee and 11% employer pension contributions, and biometric attendance sync in Odoo.",
+    detail:
+      "Manual payroll processing using Excel spreadsheets remains a major source of calculation errors and compliance penalties for Ethiopian organizations. Under Ethiopian labor regulations, employee income tax follows a progressive scale from 0% to 35%, alongside mandatory 7% employee pension and 11% employer private organization pension fund contributions. By integrating BelTech Ethiopian HRMS with Odoo, companies automate monthly tax deductions, generate official tax summary schedules for the Ministry of Revenues, and link attendance punches directly to payslip line items.",
+    date: "2026-11-10T00:00:00.000Z",
+    imageUrl: "/assets/payroll.jpeg",
+  },
+  {
+    _id: "biometric-attendance-zkteco-ethiopia",
+    id: "biometric-attendance-zkteco-ethiopia",
+    title: "Integrating ZKTeco Biometric Devices with Odoo HRMS in Ethiopia",
+    description:
+      "How to connect ZKTeco fingerprint and face recognition attendance hardware with Odoo for accurate timesheets, shift management, and automated payroll.",
+    detail:
+      "Buddy punching and unrecorded tardiness cost Ethiopian enterprises thousands of birr every month. Connecting ZKTeco biometric time-clocks to Odoo via automated push sync (ADMS) enables real-time attendance validation. BelTech HRMS captures device punches, correlates them with assigned shift schedules (standard, night, or rotational shifts), and automatically calculates overtime according to Ethiopian proclamation rates before pushing the final totals to payroll.",
+    date: "2026-11-05T00:00:00.000Z",
+    imageUrl: "/assets/homepage/attendance.jpg",
+  },
+  {
     _id: "insight-erp-ethiopia",
     id: "insight-erp-ethiopia",
     title: "How ERP Systems Transform Ethiopian Businesses",
     description:
       "Why integrating sales, inventory, and finance into a single platform like Odoo or ERPNext accelerates business growth.",
     detail:
-      "Implementing an ERP system allows companies to eliminate redundant data entry, ensure compliance with Ethiopian tax and payroll laws, and make data-driven operational decisions.",
-    date: "2026-01-01T00:00:00.000Z",
+      "Implementing an ERP system allows companies to eliminate redundant data entry, ensure compliance with Ethiopian tax and payroll laws, and make data-driven operational decisions across retail, wholesale, and service operations.",
+    date: "2026-10-25T00:00:00.000Z",
     imageUrl: "/assets/homepage/business-operations.png",
   },
 ];

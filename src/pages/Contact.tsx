@@ -115,7 +115,7 @@ const Contact = () => {
                 </svg>
                 <div className="flex items-center gap-0.4">
                   <Dot className="h-8 w-8 text-black" />
-                  <p className="font-semibold">Addis Ababa, Ethiopia, East Africa</p>
+                  <p className="font-semibold">Bole Sub-City, Cameroon St., Addis Ababa, Ethiopia</p>
                 </div>
               </div>
 
@@ -144,7 +144,11 @@ const Contact = () => {
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center gap-0.4">
                     <Dot className="h-8 w-8 text-black" />
-                    <a href="mailto:beltechsolns@gmail.com" className="font-semibold hover:text-[#0078B7]">beltechsolns@gmail.com</a>
+                    <a href="mailto:info@beltechsolns.et" className="font-semibold hover:text-[#0078B7]">info@beltechsolns.et</a>
+                  </div>
+                  <div className="flex items-center gap-0.4">
+                    <Dot className="h-8 w-8 text-black" />
+                    <a href="mailto:sales@beltechsolns.et" className="text-sm text-gray-600 hover:text-[#0078B7]">sales@beltechsolns.et</a>
                   </div>
                 </div>
               </div>

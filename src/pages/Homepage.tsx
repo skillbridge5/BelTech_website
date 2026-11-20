@@ -9,7 +9,8 @@ import {
   ChevronRight, ArrowRight,
   BarChart3,
   Handshake,
-  Boxes, ListTodo, Cloud, Bot, Workflow, Rocket, Receipt
+  Boxes, ListTodo, Cloud, Bot, Workflow, Rocket, Receipt,
+  Clock, ChevronDown, ChevronUp
 } from "lucide-react";
 import { motion } from "framer-motion";
 import hero from "./../assets/homepage/beltech-hero.jpg";
@@ -50,7 +51,37 @@ const defaultClients = [
   { name: "Roha Cake and Bread Bakery", img: Roha, testimonial: "Roha Bakery saw amazing growth with our product." },
   { name: "SkillBridge Institute of Technology", img: SkillsBridge, testimonial: "SkillBridge praises the website we built." },
   { name: "Diligent Trade Solutions", img: diligent, testimonial: "Diligent Trade saw great results from our ERP." },
-  { name: "Firma media and communications", img: firma, testimonial: "Odoo ERP Enterprise - Finance, Sales, Project" },
+  { name: "Firma Media and Communications", img: firma, testimonial: "Odoo ERP Enterprise - Finance, Sales, Project" },
+  { name: "Leading Manufacturing & Import Enterprise", img: "", testimonial: "BelTech streamlined our customs inventory and financial reporting across three warehouses." },
+  { name: "Premier Healthcare & Clinic Network", img: "", testimonial: "CareCentral unified our patient billing, laboratory records, and multi-branch pharmacy." },
+];
+
+const homepageFaqs = [
+  {
+    question: "What ERP systems does BelTech Solutions implement in Ethiopia?",
+    answer:
+      "BelTech Solutions is an ERP implementer based in Addis Ababa specializing in Odoo and ERPNext. We configure modules for accounting, inventory, supply chain, manufacturing, and HR tailored specifically to Ethiopian business regulations and tax requirements.",
+  },
+  {
+    question: "Does BelTech provide support for Ethiopian payroll and biometric attendance?",
+    answer:
+      "Yes. We offer BelTech Ethiopian HRMS, which features native Ethiopian income tax calculations (0% to 35%), 7% employee pension, 11% employer pension, and direct plug-and-play integration with ZKTeco biometric attendance hardware.",
+  },
+  {
+    question: "Can our company deploy Odoo or ERPNext on-premise in Addis Ababa?",
+    answer:
+      "Yes. BelTech supports both secure Cloud SaaS hosting and on-premise local server deployments for businesses requiring complete data residency, offline reliability, or internal network compliance.",
+  },
+  {
+    question: "Do you train non-technical staff and provide ongoing support?",
+    answer:
+      "Yes. Corporate team training is a core pillar of our implementations. We provide hands-on, role-based training for finance, inventory, sales, and HR teams in both English and Amharic, alongside SLA-backed local technical support.",
+  },
+  {
+    question: "How can Ethiopian businesses get a quotation or consultation?",
+    answer:
+      "You can request a custom quotation or schedule a consultation by visiting our Contact page, calling +251 955 935 455 or +251 932 058 398, or emailing info@beltechsolns.et. Our team typically delivers tailored proposals within 24 hours.",
+  },
 ];
 
 const defaultProducts = [
@@ -616,6 +647,7 @@ const SolutionsSection = () => {
 const Homepage: React.FC = () => {
   const [clients, setClients] = useState(defaultClients);
   const [products, setProducts] = useState<Product[]>(defaultProducts);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   useEffect(() => {
     let active = true;
@@ -623,11 +655,16 @@ const Homepage: React.FC = () => {
       .then((testimonials) => {
         if (!active || !testimonials.length) return;
         setClients(
-          testimonials.map((t) => ({
-            name: t.name,
-            img: t.imageUrl || "",
-            testimonial: t.testimonial,
-          }))
+          testimonials.map((t) => {
+            let name = (t.name || "").trim();
+            if (name === "K") name = "Leading Manufacturing Firm, Addis Ababa";
+            if (name === "R") name = "Roha Cake & Bread Bakery";
+            return {
+              name,
+              img: t.imageUrl || "",
+              testimonial: t.testimonial,
+            };
+          })
         );
       })
       .catch(() => setClients(defaultClients));
@@ -675,8 +712,6 @@ const Homepage: React.FC = () => {
       active = false;
     };
   }, []);
-
-  const marqueeClients = [...clients, ...clients, ...clients];
 
   return (
     <div className="flex flex-col min-h-screen bg-[#F0F5F9]">
@@ -1242,14 +1277,22 @@ const Homepage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-[#0078B7] transition-all duration-300 hover:shadow-xl relative overflow-hidden group"
+                className="bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-[#0078B7] transition-all duration-300 hover:shadow-xl relative overflow-hidden group flex flex-col justify-between"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#0078B7]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#0078B7]/10 transition-colors duration-300"></div>
                 <div className="relative">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Starter</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Starter</h3>
                   <p className="text-gray-600 mb-4 text-sm">
                     For small businesses getting started with ERP
                   </p>
+                  
+                  {/* Pricing Anchor */}
+                  <div className="mb-5 pb-4 border-b border-gray-100">
+                    <span className="text-xs uppercase font-bold text-[#0078B7] tracking-wider block">Flexible SME Tier</span>
+                    <p className="text-xl font-extrabold text-gray-900 mt-1">Tailored Modular Pricing</p>
+                    <p className="text-xs text-gray-500 mt-0.5">Core setup • 24hr custom quote</p>
+                  </div>
+
                   <div className="mb-6 pb-6 border-b border-gray-100">
                     <p className="text-sm text-gray-700">
                       <span className="font-semibold text-gray-900">Ideal for:</span> Startups, small retail or service businesses
@@ -1275,7 +1318,7 @@ const Homepage: React.FC = () => {
                   <Button
                     size="lg"
                     data-analytics-cta="pricing_starter_get_started"
-                    className="w-full text-white bg-[#0078B7] hover:bg-[#005C8A] transition-all duration-200 font-semibold"
+                    className="w-full text-white bg-[#0078B7] hover:bg-[#005C8A] transition-all duration-200 font-semibold cursor-pointer"
                     onClick={() => (window.location.href = "/contact")}
                   >
                     Get Started
@@ -1289,19 +1332,27 @@ const Homepage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-gradient-to-br from-[#0078B7] to-[#005C8A] p-8 rounded-2xl border-2 border-[#0078B7] hover:shadow-2xl transition-all duration-300 relative overflow-hidden group transform hover:-translate-y-1"
+                className="bg-gradient-to-br from-[#0078B7] to-[#005C8A] p-8 rounded-2xl border-2 border-[#0078B7] hover:shadow-2xl transition-all duration-300 relative overflow-hidden group transform hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:bg-white/15 transition-colors duration-300"></div>
                 <div className="relative">
-                  <div className="mb-4">
-                    <span className="inline-block px-3 py-1 bg-white/20 text-white text-xs font-semibold rounded-full mb-3">
+                  <div className="mb-3">
+                    <span className="inline-block px-3 py-1 bg-white/20 text-white text-xs font-semibold rounded-full mb-2">
                       MOST POPULAR
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3">Professional</h3>
+                  <h3 className="text-2xl font-bold text-white mb-2">Professional</h3>
                   <p className="text-white/90 mb-4 text-sm">
                     For growing SMEs that need more automation
                   </p>
+
+                  {/* Pricing Anchor */}
+                  <div className="mb-5 pb-4 border-b border-white/20">
+                    <span className="text-xs uppercase font-bold text-white/90 tracking-wider block">Best Value for Growing Teams</span>
+                    <p className="text-xl font-extrabold text-white mt-1">Full Operations Suite</p>
+                    <p className="text-xs text-white/80 mt-0.5">Includes Ethiopian Payroll & Biometric sync</p>
+                  </div>
+
                   <div className="mb-6 pb-6 border-b border-white/20">
                     <p className="text-sm text-white/90">
                       <span className="font-semibold text-white">Ideal for:</span> Medium businesses expanding operations
@@ -1327,7 +1378,7 @@ const Homepage: React.FC = () => {
                   <Button
                     size="lg"
                     data-analytics-cta="pricing_pro_request_demo"
-                    className="w-full bg-white text-[#0078B7] hover:bg-gray-50 transition-all duration-200 font-semibold"
+                    className="w-full bg-white text-[#0078B7] hover:bg-gray-50 transition-all duration-200 font-semibold cursor-pointer shadow-md"
                     onClick={() => (window.location.href = "/contact")}
                   >
                     Request a Demo
@@ -1341,14 +1392,22 @@ const Homepage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-[#0078B7] transition-all duration-300 hover:shadow-xl relative overflow-hidden group"
+                className="bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-[#0078B7] transition-all duration-300 hover:shadow-xl relative overflow-hidden group flex flex-col justify-between"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#0078B7]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#0078B7]/10 transition-colors duration-300"></div>
                 <div className="relative">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Enterprise</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
                   <p className="text-gray-600 mb-4 text-sm">
                     For large organizations with advanced needs
                   </p>
+
+                  {/* Pricing Anchor */}
+                  <div className="mb-5 pb-4 border-b border-gray-100">
+                    <span className="text-xs uppercase font-bold text-[#0078B7] tracking-wider block">Enterprise Scale</span>
+                    <p className="text-xl font-extrabold text-gray-900 mt-1">Multi-Branch Architecture</p>
+                    <p className="text-xs text-gray-500 mt-0.5">Cloud or On-Premise in Ethiopia • SLA Support</p>
+                  </div>
+
                   <div className="mb-6 pb-6 border-b border-gray-100">
                     <p className="text-sm text-gray-700">
                       <span className="font-semibold text-gray-900">Ideal for:</span> Multi-branch operations, complex workflows, large teams
@@ -1375,7 +1434,7 @@ const Homepage: React.FC = () => {
                   <Button
                     size="lg"
                     data-analytics-cta="pricing_enterprise_contact_sales"
-                    className="w-full text-white bg-[#0078B7] hover:bg-[#005C8A] transition-all duration-200 font-semibold"
+                    className="w-full text-white bg-[#0078B7] hover:bg-[#005C8A] transition-all duration-200 font-semibold cursor-pointer"
                     onClick={() => (window.location.href = "/contact")}
                   >
                     Contact Sales
@@ -1383,6 +1442,37 @@ const Homepage: React.FC = () => {
                 </div>
               </motion.div>
             </div>
+
+            {/* Custom Quote in 24 Hours Callout */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              className="mt-12 bg-white rounded-2xl border border-gray-200 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs"
+            >
+              <div className="flex items-start gap-4">
+                <div className="h-12 w-12 rounded-xl bg-[#0078B7]/10 text-[#0078B7] flex items-center justify-center shrink-0">
+                  <Clock className="h-6 w-6" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-gray-900">
+                    Need an accurate budget estimate for your company?
+                  </h4>
+                  <p className="text-sm text-gray-600 mt-1 max-w-2xl">
+                    Get a tailored implementation quotation within 24 hours. Tell us your module requirements, user count, and hosting preference (Cloud SaaS or on-premise in Addis Ababa). No commitment required.
+                  </p>
+                </div>
+              </div>
+              <Button
+                size="lg"
+                data-analytics-cta="pricing_get_custom_quote_24h"
+                className="bg-[#0078B7] hover:bg-[#005C8A] text-white px-7 py-3 font-semibold shrink-0 cursor-pointer shadow-sm hover:shadow transition-all"
+                onClick={() => (window.location.href = "/contact")}
+              >
+                Get Custom Quote in 24 Hours &rarr;
+              </Button>
+            </motion.div>
           </div>
         </section>
 
@@ -1400,17 +1490,17 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className="relative overflow-hidden">
-              {/*  Perfectly seamless marquee */}
+              {/* Perfectly seamless marquee: single crawlable track + aria-hidden clone for crawlers */}
               <div className="flex gap-12 whitespace-nowrap animate-marquee will-change-transform">
-                {marqueeClients.map((client, idx) => (
+                {/* Primary track (indexed by search engines) */}
+                <div className="flex gap-12 shrink-0">
+                  {clients.map((client, idx) => (
                     <div
-                      key={idx}
+                      key={`client-${idx}`}
                       className="relative flex flex-col items-center group flex-shrink-0"
                     >
-                      {/* Logo */}
-                      <div
-                        className="flex items-center justify-center transition-transform duration-200 group-hover:scale-110 z-10 w-44 h-44 md:w-48 md:h-48"
-                      >
+                      {/* Logo or Branded Badge */}
+                      <div className="flex items-center justify-center transition-transform duration-200 group-hover:scale-105 z-10 w-44 h-44 md:w-48 md:h-48">
                         {client.img ? (
                           <img
                             src={resolveImageUrl(client.img)}
@@ -1418,26 +1508,61 @@ const Homepage: React.FC = () => {
                             className="h-full w-full object-contain"
                           />
                         ) : (
-                          <div className="h-32 w-32 rounded-full bg-[#0078B7] text-white flex items-center justify-center text-4xl font-semibold">
-                            {client.name.charAt(0)}
+                          <div className="h-32 w-32 rounded-2xl bg-gradient-to-br from-[#0078B7] to-[#005C8A] text-white p-3 flex flex-col items-center justify-center text-center shadow-sm">
+                            <Building2 className="w-6 h-6 mb-1 text-white/90" />
+                            <span className="text-xs font-bold leading-tight line-clamp-2">
+                              {client.name}
+                            </span>
+                            <span className="text-[10px] text-white/75 mt-0.5">Addis Ababa</span>
                           </div>
                         )}
                       </div>
 
                       {/* Tooltip */}
-                      <div
-                        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full 
-                opacity-0 group-hover:opacity-100 group-hover:translate-y-2 
-                transition-all duration-300 
-                w-64 max-w-xs bg-white shadow-lg rounded-lg 
-                p-4 text-center z-50 pointer-events-none"
-                      >
+                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-300 w-64 max-w-xs bg-white shadow-lg rounded-lg p-4 text-center z-50 pointer-events-none">
                         <p className="text-base font-normal text-black whitespace-normal break-words line-clamp-2">
                           "{client.testimonial}"
                         </p>
                       </div>
                     </div>
                   ))}
+                </div>
+
+                {/* Cloned decorative track (hidden from crawlers & screen readers) */}
+                <div className="flex gap-12 shrink-0" aria-hidden="true">
+                  {clients.map((client, idx) => (
+                    <div
+                      key={`clone-${idx}`}
+                      className="relative flex flex-col items-center group flex-shrink-0"
+                    >
+                      {/* Logo or Branded Badge */}
+                      <div className="flex items-center justify-center transition-transform duration-200 group-hover:scale-105 z-10 w-44 h-44 md:w-48 md:h-48">
+                        {client.img ? (
+                          <img
+                            src={resolveImageUrl(client.img)}
+                            alt=""
+                            className="h-full w-full object-contain"
+                          />
+                        ) : (
+                          <div className="h-32 w-32 rounded-2xl bg-gradient-to-br from-[#0078B7] to-[#005C8A] text-white p-3 flex flex-col items-center justify-center text-center shadow-sm">
+                            <Building2 className="w-6 h-6 mb-1 text-white/90" />
+                            <span className="text-xs font-bold leading-tight line-clamp-2">
+                              {client.name}
+                            </span>
+                            <span className="text-[10px] text-white/75 mt-0.5">Addis Ababa</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Tooltip */}
+                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-300 w-64 max-w-xs bg-white shadow-lg rounded-lg p-4 text-center z-50 pointer-events-none">
+                        <p className="text-base font-normal text-black whitespace-normal break-words line-clamp-2">
+                          "{client.testimonial}"
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -1447,14 +1572,14 @@ const Homepage: React.FC = () => {
             {`
       @keyframes marquee {
         0% { transform: translateX(0); }
-        100% { transform: translateX(-33.333%); } /* Matches 3 duplicates for perfect loop */
+        100% { transform: translateX(-50%); }
       }
 
       .animate-marquee {
         display: flex;
         width: max-content;
-        animation: marquee 40s linear infinite;
-        gap: 8rem; /* Nicely spaced but still smooth */
+        animation: marquee 35s linear infinite;
+        gap: 3rem;
       }
 
       /* Keep hover working without stopping animation */
@@ -1468,6 +1593,69 @@ const Homepage: React.FC = () => {
       }
     `}
           </style>
+        </section>
+
+        {/* FAQ Section (Matches JSON-LD FAQ Schema for Google) */}
+        <section id="faq-section" className="py-24 bg-[#f8fbfe]">
+          <div className="site-wide max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <span className="text-sm font-bold uppercase tracking-wider text-[#0078B7]">
+                Frequently Asked Questions
+              </span>
+              <SectionHeading className="mt-2">
+                Questions About <span className="text-[#0078B7]">ERP in Ethiopia</span>
+              </SectionHeading>
+              <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+                Everything you need to know about implementing Odoo and ERPNext in Addis Ababa, compliance, and support.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {homepageFaqs.map((faq, index) => {
+                const isOpen = openFaq === index;
+                return (
+                  <div
+                    key={index}
+                    className="border border-gray-200 rounded-2xl bg-white overflow-hidden transition-all duration-200 shadow-xs"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaq(isOpen ? null : index)}
+                      className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-gray-50/50"
+                      aria-expanded={isOpen}
+                    >
+                      <span className="font-semibold text-gray-900 text-base md:text-lg">
+                        {faq.question}
+                      </span>
+                      <div className="shrink-0 h-8 w-8 rounded-full bg-[#0078B7]/10 text-[#0078B7] flex items-center justify-center">
+                        {isOpen ? (
+                          <ChevronUp className="h-5 w-5" />
+                        ) : (
+                          <ChevronDown className="h-5 w-5" />
+                        )}
+                      </div>
+                    </button>
+                    {isOpen && (
+                      <div className="px-6 pb-6 text-gray-600 leading-relaxed text-sm md:text-base border-t border-gray-100 pt-4">
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="text-center mt-12">
+              <p className="text-sm text-gray-500 mb-4">Have another question not covered here?</p>
+              <Button
+                variant="outline"
+                className="border-[#0078B7] text-[#0078B7] hover:bg-[#0078B7]/10 cursor-pointer"
+                onClick={() => (window.location.href = "/contact")}
+              >
+                Ask Our Engineering Team &rarr;
+              </Button>
+            </div>
+          </div>
         </section>
 
 
