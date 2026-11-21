@@ -117,7 +117,7 @@ const SolutionsPage = () => {
       <section className="bg-[#f7f8fa] py-20">
         <div className="site-wide">
           <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {!ready
+            {!ready && allProjects.length === 0
               ? Array.from({ length: 3 }).map((_, index) => (
                   <div key={index} className="h-80 animate-pulse rounded-[28px] bg-white" />
                 ))

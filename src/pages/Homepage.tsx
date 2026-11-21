@@ -1029,7 +1029,7 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {!productsReady
+              {!productsReady && products.length === 0
                 ? Array.from({ length: 3 }).map((_, index) => (
                     <div key={index} className="h-96 animate-pulse rounded-2xl bg-white" />
                   ))
@@ -1456,7 +1456,7 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className="relative overflow-hidden">
-              {!clientsReady ? (
+              {!clientsReady && clients.length === 0 ? (
                 <div className="flex gap-12">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <div key={index} className="h-44 w-44 shrink-0 animate-pulse rounded-2xl bg-[#E8F4FB] md:h-48 md:w-48" />

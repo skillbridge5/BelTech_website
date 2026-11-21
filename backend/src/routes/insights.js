@@ -28,10 +28,16 @@ const sanitize = (body = {}) => {
 };
 
 // GET /insights (public)
+// The list omits article bodies. Those bodies can contain embedded images and
+// make the blog index so large that the page gives up before any post renders.
 router.get("/", async (req, res) => {
   try {
     const insights = await getInsights();
-    return res.json({ data: { insights } });
+    const payload =
+      req.query.full === "1"
+        ? insights
+        : insights.map(({ detail, ...summary }) => summary);
+    return res.json({ data: { insights: payload } });
   } catch (err) {
     console.error("GET /insights error:", err);
     return res.status(500).json({ message: "Failed to load insights" });

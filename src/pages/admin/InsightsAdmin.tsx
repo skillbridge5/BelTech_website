@@ -5,6 +5,7 @@ import { Button } from "../../components/ui/button";
 import toast, { Toaster } from "react-hot-toast";
 import {
   loadInsights,
+  loadInsight,
   createInsight,
   updateInsight,
   deleteInsight,
@@ -80,14 +81,24 @@ const InsightsAdmin = () => {
     setShowForm(true);
   };
 
-  const openEdit = (insight: Insight) => {
-    setEditingId(insight._id || insight.id || null);
+  const openEdit = async (insight: Insight) => {
+    const id = insight._id || insight.id || null;
+    let source = insight;
+    if (id && !insight.detail) {
+      try {
+        const full = await loadInsight(id);
+        if (full) source = full;
+      } catch {
+        // Keep the summary if the full article cannot be loaded.
+      }
+    }
+    setEditingId(id);
     setForm({
-      title: insight.title || "",
-      description: insight.description || "",
-      detail: insight.detail || "",
-      imageUrl: insight.imageUrl || "",
-      date: insight.date ? insight.date.split("T")[0] : "",
+      title: source.title || "",
+      description: source.description || "",
+      detail: source.detail || "",
+      imageUrl: source.imageUrl || "",
+      date: source.date ? source.date.split("T")[0] : "",
     });
     setShowForm(true);
   };

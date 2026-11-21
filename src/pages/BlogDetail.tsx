@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Calendar, User, Clock, Share2 } from "lucide-react";
-import { loadInsights } from "../api/client";
+import { loadInsight, loadInsights } from "../api/client";
 import type { Insight } from "../api/client";
 import { resolveImageUrl } from "../lib/image";
 import { Button } from "../components/ui/button";
@@ -69,36 +69,32 @@ const BlogDetail = () => {
     let active = true;
     if (!id) return;
 
-    loadInsights()
-      .then((items: Insight[]) => {
-        if (!active || !Array.isArray(items)) return;
-        const normalized = id.toLowerCase().trim();
+    const normalized = id.toLowerCase().trim();
+    const matches = (item: Insight) => {
+      const itemId = (item._id || item.id || "").toLowerCase();
+      const itemSlug = (item.title || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+      return itemId === normalized || itemSlug === normalized;
+    };
 
-        let match = items.find((i) => {
-          const iId = (i._id || i.id || "").toLowerCase();
-          const iSlug = (i.title || "")
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/(^-|-$)/g, "");
-
-          return iId === normalized || iSlug === normalized;
+    loadInsight(id)
+      .then((item) => {
+        if (!active) return;
+        if (item && (item.title || item.detail)) {
+          setInsight(item);
+          setLoading(false);
+          return;
+        }
+        return loadInsights().then((items) => {
+          if (!active) return;
+          const match =
+            (Array.isArray(items) ? items.find(matches) : undefined) ||
+            defaultInsights.find(matches);
+          if (match) setInsight(match);
+          setLoading(false);
         });
-
-        if (!match) {
-          match = defaultInsights.find((i) => {
-            const iId = (i._id || i.id || "").toLowerCase();
-            const iSlug = (i.title || "")
-              .toLowerCase()
-              .replace(/[^a-z0-9]+/g, "-")
-              .replace(/(^-|-$)/g, "");
-            return iId === normalized || iSlug === normalized;
-          });
-        }
-
-        if (match) {
-          setInsight(match);
-        }
-        setLoading(false);
       })
       .catch(() => {
         if (!active) return;

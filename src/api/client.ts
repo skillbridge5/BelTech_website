@@ -127,11 +127,19 @@ export const updateContactStatus = (
 export const deleteContact = (id: string) => api.delete(`/contact/${id}`);
 
 // ===== Insights (public) =====
-export const loadInsights = async (): Promise<Insight[]> => {
-  const res = await api.get("/insights");
+export const loadInsights = async (full = false): Promise<Insight[]> => {
+  const res = await api.get(full ? "/insights?full=1" : "/insights", {
+    timeout: 30000,
+  });
   const data = res.data;
   const list = data?.data?.insights || data?.insights || data?.data || data;
   return Array.isArray(list) ? list : [];
+};
+
+export const loadInsight = async (id: string): Promise<Insight | null> => {
+  const res = await api.get(`/insights/${encodeURIComponent(id)}`);
+  const data = res.data;
+  return data?.data || data || null;
 };
 
 // ===== Solutions =====
