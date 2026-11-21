@@ -20,6 +20,15 @@ const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
+
+// Published content changes in the admin and must not be served from a stale cache.
+const publishedPrefixes = ["/api/products", "/api/insights", "/api/testimonials", "/api/solutions"];
+app.use((req, res, next) => {
+  if (req.method === "GET" && publishedPrefixes.some((prefix) => req.path.startsWith(prefix))) {
+    res.set("Cache-Control", "no-store");
+  }
+  next();
+});
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 // Root + health (root 404 confused operators; keep a clear status payload)

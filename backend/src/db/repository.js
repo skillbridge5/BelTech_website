@@ -252,6 +252,24 @@ Staff & Payroll Administration: Teacher qualification tracking, workload monitor
       priority: 4,
       created_at: "2026-01-05T00:00:00.000Z",
     },
+    {
+      id: "test-manufacturing",
+      name: "Leading Manufacturing & Import Enterprise",
+      testimonial:
+        "BelTech streamlined our customs inventory and financial reporting across three warehouses.",
+      image_url: "",
+      priority: 5,
+      created_at: "2026-01-06T00:00:00.000Z",
+    },
+    {
+      id: "test-healthcare",
+      name: "Premier Healthcare & Clinic Network",
+      testimonial:
+        "CareCentral unified our patient billing, laboratory records, and multi-branch pharmacy.",
+      image_url: "",
+      priority: 6,
+      created_at: "2026-01-07T00:00:00.000Z",
+    },
   ],
   insights: [
     {
@@ -331,6 +349,116 @@ function writeStore(store) {
   fs.writeFileSync(STORE_PATH, JSON.stringify(store, null, 2));
 }
 
+function normalizeKey(value) {
+  return String(value || "").trim().toLowerCase();
+}
+
+function sharesIdentity(a, b) {
+  const idA = normalizeKey(a?.id);
+  const idB = normalizeKey(b?.id);
+  if (idA && idA === idB) return true;
+
+  const titleA = normalizeKey(a?.title || a?.name);
+  const titleB = normalizeKey(b?.title || b?.name);
+  if (titleA && titleA === titleB) return true;
+
+  const linkA = normalizeKey(a?.link);
+  const linkB = normalizeKey(b?.link);
+  if (linkA && linkA === linkB) return true;
+
+  return false;
+}
+
+// Remote wins when the same item exists in both stores. Items that exist
+// in only one store are kept, so a save is visible even if the other copy lags.
+function mergeContent(remoteRows, localRows) {
+  const merged = [];
+  for (const row of localRows || []) {
+    if (!row || typeof row !== "object") continue;
+    if (!merged.some((existing) => sharesIdentity(row, existing))) merged.push(row);
+  }
+  for (const row of remoteRows || []) {
+    if (!row || typeof row !== "object") continue;
+    const idx = merged.findIndex((existing) => sharesIdentity(row, existing));
+    if (idx === -1) merged.push(row);
+    else merged[idx] = { ...merged[idx], ...row };
+  }
+  return merged;
+}
+
+function ensureDefaults(rows, defaults) {
+  const merged = [...rows];
+  for (const item of defaults || []) {
+    if (!merged.some((existing) => sharesIdentity(item, existing))) merged.push(item);
+  }
+  return merged;
+}
+
+function sortByPriority(rows) {
+  return [...rows].sort((a, b) => {
+    const priorityA = a.priority ?? 0;
+    const priorityB = b.priority ?? 0;
+    if (priorityA !== priorityB) return priorityA - priorityB;
+    return (
+      new Date(b.created_at || b.createdAt || 0).getTime() -
+      new Date(a.created_at || a.createdAt || 0).getTime()
+    );
+  });
+}
+
+function sortByDate(rows) {
+  return [...rows].sort(
+    (a, b) =>
+      new Date(b.date || b.created_at || b.createdAt || 0).getTime() -
+      new Date(a.date || a.created_at || a.createdAt || 0).getTime()
+  );
+}
+
+async function readRemoteTable(table, orders) {
+  if (!(await isSupabaseAvailable())) return [];
+  try {
+    let query = supabase.from(table).select("*");
+    for (const order of orders) {
+      query = query.order(order.column, {
+        ascending: order.ascending,
+        nullsFirst: false,
+      });
+    }
+    const { data, error } = await query;
+    if (!error && Array.isArray(data)) return data;
+    if (isMissingOrAuthError(error)) supabaseCheck.available = false;
+  } catch {
+    supabaseCheck.available = false;
+  }
+  return [];
+}
+
+function upsertLocal(collection, row) {
+  const store = readStore();
+  const list = store[collection];
+  if (!Array.isArray(list) || !row?.id) return;
+  const idx = list.findIndex((item) => item.id === row.id);
+  if (idx >= 0) list[idx] = { ...list[idx], ...row };
+  else list.unshift(row);
+  writeStore(store);
+}
+
+function removeLocal(collection, id) {
+  const store = readStore();
+  const list = store[collection];
+  if (!Array.isArray(list)) return false;
+  const next = list.filter((item) => item.id !== id);
+  if (next.length === list.length) return false;
+  store[collection] = next;
+  writeStore(store);
+  return true;
+}
+
+const priorityOrder = [
+  { column: "priority", ascending: true },
+  { column: "created_at", ascending: false },
+];
+
 export const mapProduct = (row) => ({
   _id: row.id,
   id: row.id,
@@ -404,52 +532,12 @@ export const mapContact = (row) => ({
 // ======================== PRODUCTS ========================
 
 export async function getProducts() {
-  const defaultList = defaultStore().products;
-  let products = [];
-
-  if (await isSupabaseAvailable()) {
-    try {
-      const { data, error } = await supabase
-        .from("products")
-        .select("*")
-        .order("priority", { ascending: true, nullsFirst: false })
-        .order("created_at", { ascending: false });
-      if (!error && Array.isArray(data)) {
-        products = data.map(mapProduct);
-      } else if (isMissingOrAuthError(error)) {
-        supabaseCheck.available = false;
-      }
-    } catch {
-      supabaseCheck.available = false;
-    }
-  }
-
-  const store = readStore();
-  if (!products.length) {
-    products = store.products.map(mapProduct);
-  }
-
-  // Ensure default flagship products are always present and never hidden when a new product is created
-  const merged = [...products];
-  for (const def of defaultList) {
-    const exists = merged.some(
-      (p) =>
-        p.id === def.id ||
-        p._id === def.id ||
-        (p.title && p.title.toLowerCase() === def.title.toLowerCase()) ||
-        (p.link && p.link.toLowerCase() === def.link.toLowerCase())
-    );
-    if (!exists) {
-      merged.push(mapProduct(def));
-    }
-  }
-
-  return merged.sort((a, b) => {
-    if ((a.priority ?? 0) !== (b.priority ?? 0)) {
-      return (a.priority ?? 0) - (b.priority ?? 0);
-    }
-    return new Date(b.createdAt || b.created_at || 0) - new Date(a.createdAt || a.created_at || 0);
-  });
+  const remote = await readRemoteTable("products", priorityOrder);
+  const merged = ensureDefaults(
+    mergeContent(remote, readStore().products),
+    defaultStore().products
+  );
+  return sortByPriority(merged).map(mapProduct);
 }
 
 export async function getProductById(id) {
@@ -635,32 +723,12 @@ export async function deleteProduct(id) {
 // ======================== SOLUTIONS ========================
 
 export async function getSolutions() {
-  if (await isSupabaseAvailable()) {
-    try {
-      const { data, error } = await supabase
-        .from("solutions")
-        .select("*")
-        .order("priority", { ascending: true, nullsFirst: false })
-        .order("created_at", { ascending: false });
-      if (!error && Array.isArray(data)) {
-        return data.map(mapSolution);
-      }
-      if (isMissingOrAuthError(error)) {
-        supabaseCheck.available = false;
-      }
-    } catch {
-      supabaseCheck.available = false;
-    }
-  }
-
-  const store = readStore();
-  const sorted = [...store.solutions].sort((a, b) => {
-    if ((a.priority ?? 0) !== (b.priority ?? 0)) {
-      return (a.priority ?? 0) - (b.priority ?? 0);
-    }
-    return new Date(b.created_at || 0) - new Date(a.created_at || 0);
-  });
-  return sorted.map(mapSolution);
+  const remote = await readRemoteTable("solutions", priorityOrder);
+  const merged = ensureDefaults(
+    mergeContent(remote, readStore().solutions),
+    defaultStore().solutions
+  );
+  return sortByPriority(merged).map(mapSolution);
 }
 
 export async function getSolutionById(id) {
@@ -694,6 +762,7 @@ export async function createSolution(payload) {
     created_at: new Date().toISOString(),
   };
 
+  let created = null;
   if (await isSupabaseAvailable()) {
     try {
       const { data, error } = await supabase
@@ -708,19 +777,19 @@ export async function createSolution(payload) {
         })
         .select()
         .single();
-      if (!error && data) return mapSolution(data);
+      if (!error && data) created = mapSolution({ ...row, ...data });
     } catch {
       supabaseCheck.available = false;
     }
   }
 
-  const store = readStore();
-  store.solutions.unshift(row);
-  writeStore(store);
-  return mapSolution(row);
+  const storeRow = created ? { ...row, id: created.id } : row;
+  upsertLocal("solutions", storeRow);
+  return created || mapSolution(storeRow);
 }
 
 export async function updateSolution(id, updates) {
+  let updated = null;
   if (await isSupabaseAvailable()) {
     try {
       const { data, error } = await supabase
@@ -737,7 +806,7 @@ export async function updateSolution(id, updates) {
         .eq("id", id)
         .select()
         .single();
-      if (!error && data) return mapSolution(data);
+      if (!error && data) updated = mapSolution(data);
     } catch {
       supabaseCheck.available = false;
     }
@@ -745,87 +814,61 @@ export async function updateSolution(id, updates) {
 
   const store = readStore();
   const idx = store.solutions.findIndex((s) => s.id === id);
-  if (idx < 0) return null;
+  if (idx >= 0) {
+    store.solutions[idx] = {
+      ...store.solutions[idx],
+      ...(updates.title !== undefined && { title: updates.title }),
+      ...(updates.description !== undefined && { description: updates.description }),
+      ...(updates.detail !== undefined && { detail: updates.detail }),
+      ...((updates.image_url !== undefined || updates.imageUrl !== undefined) && {
+        image_url: updates.image_url ?? updates.imageUrl,
+      }),
+      ...(updates.link !== undefined && { link: updates.link }),
+      ...(updates.priority !== undefined && { priority: updates.priority }),
+    };
+    writeStore(store);
+    return mapSolution(store.solutions[idx]);
+  }
 
-  store.solutions[idx] = {
-    ...store.solutions[idx],
-    ...(updates.title !== undefined && { title: updates.title }),
-    ...(updates.description !== undefined && { description: updates.description }),
-    ...(updates.detail !== undefined && { detail: updates.detail }),
-    ...((updates.image_url !== undefined || updates.imageUrl !== undefined) && {
-      image_url: updates.image_url ?? updates.imageUrl,
-    }),
-    ...(updates.link !== undefined && { link: updates.link }),
-    ...(updates.priority !== undefined && { priority: updates.priority }),
-  };
-  writeStore(store);
-  return mapSolution(store.solutions[idx]);
+  if (updated) {
+    upsertLocal("solutions", {
+      id: updated.id,
+      title: updated.title,
+      description: updated.description,
+      detail: updated.detail,
+      image_url: updated.imageUrl,
+      link: updated.link,
+      priority: updated.priority,
+      created_at: updated.createdAt,
+    });
+  }
+  return updated;
 }
 
 export async function deleteSolution(id) {
+  let remoteDeleted = false;
   if (await isSupabaseAvailable()) {
     try {
       const { error } = await supabase.from("solutions").delete().eq("id", id);
-      if (!error) return true;
+      remoteDeleted = !error;
     } catch {
       supabaseCheck.available = false;
     }
   }
 
-  const store = readStore();
-  const prevLen = store.solutions.length;
-  store.solutions = store.solutions.filter((s) => s.id !== id);
-  if (store.solutions.length !== prevLen) {
-    writeStore(store);
-    return true;
-  }
-  return false;
+  const localDeleted = removeLocal("solutions", id);
+  return remoteDeleted || localDeleted;
 }
 
 // ======================== INSIGHTS ========================
 
 export async function getInsights() {
-  const defaultList = defaultStore().insights;
-  let insights = [];
-
-  if (await isSupabaseAvailable()) {
-    try {
-      const { data, error } = await supabase
-        .from("insights")
-        .select("*")
-        .order("date", { ascending: false });
-      if (!error && Array.isArray(data)) {
-        insights = data.map(mapInsight);
-      } else if (isMissingOrAuthError(error)) {
-        supabaseCheck.available = false;
-      }
-    } catch {
-      supabaseCheck.available = false;
-    }
-  }
-
-  const store = readStore();
-  if (!insights.length) {
-    insights = store.insights.map(mapInsight);
-  }
-
-  // Ensure default flagship insights/articles are always present and never hidden when a new article is created
-  const merged = [...insights];
-  for (const def of defaultList) {
-    const exists = merged.some(
-      (i) =>
-        i.id === def.id ||
-        i._id === def.id ||
-        (i.title && i.title.toLowerCase() === def.title.toLowerCase())
-    );
-    if (!exists) {
-      merged.push(mapInsight(def));
-    }
-  }
-
-  return merged.sort(
-    (a, b) => new Date(b.date || b.created_at || b.createdAt || 0) - new Date(a.date || a.created_at || a.createdAt || 0)
+  const remote = await readRemoteTable("insights", [{ column: "date", ascending: false }]);
+  const merged = ensureDefaults(
+    mergeContent(remote, readStore().insights),
+    defaultStore().insights
   );
+  return sortByDate(merged).map(mapInsight);
 }
 
 export async function getInsightById(id) {
@@ -961,32 +1004,12 @@ export async function deleteInsight(id) {
 // ======================== TESTIMONIALS ========================
 
 export async function getTestimonials() {
-  if (await isSupabaseAvailable()) {
-    try {
-      const { data, error } = await supabase
-        .from("testimonials")
-        .select("*")
-        .order("priority", { ascending: true, nullsFirst: false })
-        .order("created_at", { ascending: false });
-      if (!error && Array.isArray(data)) {
-        return data.map(mapTestimonial);
-      }
-      if (isMissingOrAuthError(error)) {
-        supabaseCheck.available = false;
-      }
-    } catch {
-      supabaseCheck.available = false;
-    }
-  }
-
-  const store = readStore();
-  const sorted = [...store.testimonials].sort((a, b) => {
-    if ((a.priority ?? 0) !== (b.priority ?? 0)) {
-      return (a.priority ?? 0) - (b.priority ?? 0);
-    }
-    return new Date(b.created_at || 0) - new Date(a.created_at || 0);
-  });
-  return sorted.map(mapTestimonial);
+  const remote = await readRemoteTable("testimonials", priorityOrder);
+  const merged = ensureDefaults(
+    mergeContent(remote, readStore().testimonials),
+    defaultStore().testimonials
+  );
+  return sortByPriority(merged).map(mapTestimonial);
 }
 
 export async function getTestimonialById(id) {
@@ -1018,6 +1041,7 @@ export async function createTestimonial(payload) {
     created_at: new Date().toISOString(),
   };
 
+  let created = null;
   if (await isSupabaseAvailable()) {
     try {
       const { data, error } = await supabase
@@ -1030,19 +1054,19 @@ export async function createTestimonial(payload) {
         })
         .select()
         .single();
-      if (!error && data) return mapTestimonial(data);
+      if (!error && data) created = mapTestimonial({ ...row, ...data });
     } catch {
       supabaseCheck.available = false;
     }
   }
 
-  const store = readStore();
-  store.testimonials.unshift(row);
-  writeStore(store);
-  return mapTestimonial(row);
+  const storeRow = created ? { ...row, id: created.id } : row;
+  upsertLocal("testimonials", storeRow);
+  return created || mapTestimonial(storeRow);
 }
 
 export async function updateTestimonial(id, updates) {
+  let updated = null;
   if (await isSupabaseAvailable()) {
     try {
       const { data, error } = await supabase
@@ -1057,7 +1081,7 @@ export async function updateTestimonial(id, updates) {
         .eq("id", id)
         .select()
         .single();
-      if (!error && data) return mapTestimonial(data);
+      if (!error && data) updated = mapTestimonial(data);
     } catch {
       supabaseCheck.available = false;
     }
@@ -1065,39 +1089,46 @@ export async function updateTestimonial(id, updates) {
 
   const store = readStore();
   const idx = store.testimonials.findIndex((t) => t.id === id);
-  if (idx < 0) return null;
+  if (idx >= 0) {
+    store.testimonials[idx] = {
+      ...store.testimonials[idx],
+      ...(updates.name !== undefined && { name: updates.name }),
+      ...(updates.testimonial !== undefined && { testimonial: updates.testimonial }),
+      ...((updates.image_url !== undefined || updates.imageUrl !== undefined) && {
+        image_url: updates.image_url ?? updates.imageUrl,
+      }),
+      ...(updates.priority !== undefined && { priority: updates.priority }),
+    };
+    writeStore(store);
+    return mapTestimonial(store.testimonials[idx]);
+  }
 
-  store.testimonials[idx] = {
-    ...store.testimonials[idx],
-    ...(updates.name !== undefined && { name: updates.name }),
-    ...(updates.testimonial !== undefined && { testimonial: updates.testimonial }),
-    ...((updates.image_url !== undefined || updates.imageUrl !== undefined) && {
-      image_url: updates.image_url ?? updates.imageUrl,
-    }),
-    ...(updates.priority !== undefined && { priority: updates.priority }),
-  };
-  writeStore(store);
-  return mapTestimonial(store.testimonials[idx]);
+  if (updated) {
+    upsertLocal("testimonials", {
+      id: updated.id,
+      name: updated.name,
+      testimonial: updated.testimonial,
+      image_url: updated.imageUrl,
+      priority: updated.priority,
+      created_at: updated.createdAt,
+    });
+  }
+  return updated;
 }
 
 export async function deleteTestimonial(id) {
+  let remoteDeleted = false;
   if (await isSupabaseAvailable()) {
     try {
       const { error } = await supabase.from("testimonials").delete().eq("id", id);
-      if (!error) return true;
+      remoteDeleted = !error;
     } catch {
       supabaseCheck.available = false;
     }
   }
 
-  const store = readStore();
-  const prevLen = store.testimonials.length;
-  store.testimonials = store.testimonials.filter((t) => t.id !== id);
-  if (store.testimonials.length !== prevLen) {
-    writeStore(store);
-    return true;
-  }
-  return false;
+  const localDeleted = removeLocal("testimonials", id);
+  return remoteDeleted || localDeleted;
 }
 
 // ======================== CONTACTS ========================

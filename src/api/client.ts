@@ -128,15 +128,10 @@ export const deleteContact = (id: string) => api.delete(`/contact/${id}`);
 
 // ===== Insights (public) =====
 export const loadInsights = async (): Promise<Insight[]> => {
-  try {
-    const res = await api.get("/insights");
-    const data = res.data;
-    const list = data?.data?.insights || data?.insights || data?.data || data;
-    return Array.isArray(list) ? list : [];
-  } catch (err) {
-    console.error("Failed to fetch insights", err);
-    return [];
-  }
+  const res = await api.get("/insights");
+  const data = res.data;
+  const list = data?.data?.insights || data?.insights || data?.data || data;
+  return Array.isArray(list) ? list : [];
 };
 
 // ===== Solutions =====

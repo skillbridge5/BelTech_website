@@ -44,6 +44,7 @@ import erpnextShot from "./../assets/homepage/erpnext.jpg";
 import { Link } from "react-router-dom";
 import { fetchTestimonials, getProducts } from "../api/client";
 import type { Product } from "../api/client";
+import { usePublishedList } from "../hooks/usePublishedList";
 import { resolveImageUrl } from "../lib/image";
 
 const defaultClients = [
@@ -644,34 +645,27 @@ const SolutionsSection = () => {
   );
 };
 
-const Homepage: React.FC = () => {
-  const [clients, setClients] = useState(defaultClients);
-  const [products, setProducts] = useState<Product[]>(defaultProducts);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
+const displayClientName = (name: string) => {
+  const trimmed = name.trim();
+  if (trimmed === "K") return "Leading Manufacturing Firm, Addis Ababa";
+  if (trimmed === "R") return "Roha Cake & Bread Bakery";
+  return trimmed;
+};
 
-  useEffect(() => {
-    let active = true;
-    fetchTestimonials()
-      .then((testimonials) => {
-        if (!active || !testimonials.length) return;
-        setClients(
-          testimonials.map((t) => {
-            let name = (t.name || "").trim();
-            if (name === "K") name = "Leading Manufacturing Firm, Addis Ababa";
-            if (name === "R") name = "Roha Cake & Bread Bakery";
-            return {
-              name,
-              img: t.imageUrl || "",
-              testimonial: t.testimonial,
-            };
-          })
-        );
-      })
-      .catch(() => setClients(defaultClients));
-    return () => {
-      active = false;
-    };
-  }, []);
+const Homepage: React.FC = () => {
+  const { items: clients, ready: clientsReady } = usePublishedList(async () => {
+    const testimonials = await fetchTestimonials();
+    return testimonials.map((t) => ({
+      name: displayClientName(t.name || ""),
+      img: t.imageUrl || "",
+      testimonial: t.testimonial,
+    }));
+  }, defaultClients);
+  const { items: products, ready: productsReady } = usePublishedList<Product>(
+    getProducts,
+    defaultProducts as Product[]
+  );
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   useEffect(() => {
     if (window.location.hash !== "#products") return;
@@ -679,38 +673,6 @@ const Homepage: React.FC = () => {
       document.getElementById("products")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 50);
     return () => window.clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    let active = true;
-    getProducts()
-      .then((data) => {
-        if (!active) return;
-        if (Array.isArray(data) && data.length) {
-          // Ensure default flagship products are never hidden when new products are added
-          const merged = [...data];
-          for (const def of defaultProducts) {
-            const exists = merged.some(
-              (p) =>
-                p._id === def._id ||
-                p.id === def._id ||
-                p.title.toLowerCase() === def.title.toLowerCase() ||
-                p.link === def.link
-            );
-            if (!exists) {
-              merged.push(def);
-            }
-          }
-          merged.sort((a, b) => (a.priority ?? 0) - (b.priority ?? 0));
-          setProducts(merged);
-        }
-      })
-      .catch(() => {
-        if (active) setProducts(defaultProducts);
-      });
-    return () => {
-      active = false;
-    };
   }, []);
 
   return (
@@ -1067,7 +1029,11 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {products.map((product) => (
+              {!productsReady
+                ? Array.from({ length: 3 }).map((_, index) => (
+                    <div key={index} className="h-96 animate-pulse rounded-2xl bg-white" />
+                  ))
+                : products.map((product) => (
                 <div key={product._id} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col">
                   <div className="flex h-56 w-full items-center justify-center overflow-hidden bg-white">
                     {product.imageUrl ? (
@@ -1490,7 +1456,13 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className="relative overflow-hidden">
-              {/* Perfectly seamless marquee: single crawlable track + aria-hidden clone for crawlers */}
+              {!clientsReady ? (
+                <div className="flex gap-12">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <div key={index} className="h-44 w-44 shrink-0 animate-pulse rounded-2xl bg-[#E8F4FB] md:h-48 md:w-48" />
+                  ))}
+                </div>
+              ) : (
               <div className="flex gap-12 whitespace-nowrap animate-marquee will-change-transform">
                 {/* Primary track (indexed by search engines) */}
                 <div className="flex gap-12 shrink-0">
@@ -1564,6 +1536,7 @@ const Homepage: React.FC = () => {
                   ))}
                 </div>
               </div>
+              )}
             </div>
           </div>
 

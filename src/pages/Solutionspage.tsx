@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
 import { getSolutions } from "../api/client";
 import type { Solution } from "../api/client";
+import { usePublishedList } from "../hooks/usePublishedList";
 import solutionHero from "../assets/solutionpage/projects-intro.jpg";
 import above_the_footer from "../assets/above_the_footer.jpg";
 import diligent from "../assets/clientLogo/diligent-mark.png";
@@ -84,38 +84,25 @@ const normalizeProjectLink = (rawLink?: string, title?: string): string => {
 };
 
 const SolutionsPage = () => {
-  const [allProjects, setAllProjects] = useState<Project[]>(defaultProjects);
-
-  useEffect(() => {
-    let mounted = true;
-    getSolutions()
-      .then((data: Solution[]) => {
-        if (!mounted || !Array.isArray(data) || data.length === 0) return;
-        const mapped: Project[] = data.map((item, idx) => {
-          const normTitle = (item.title || "").toLowerCase().trim();
-          const matchedLogo =
-            (item.imageUrl && item.imageUrl.trim()) ||
-            knownLogos[item.link || ""] ||
-            knownLogos[normTitle];
-          return {
-            id: item._id || (item as any).id || `sol-${idx}`,
-            client: item.title,
-            kind: item.detail || "Project",
-            summary: item.description,
-            imageUrl: item.imageUrl,
-            logo: matchedLogo,
-            link: normalizeProjectLink(item.link, item.title),
-          };
-        });
-        setAllProjects(mapped);
-      })
-      .catch(() => {
-        if (mounted) setAllProjects(defaultProjects);
-      });
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  const { items: allProjects, ready } = usePublishedList(async () => {
+    const data = await getSolutions();
+    return data.map((item: Solution, idx) => {
+      const normTitle = (item.title || "").toLowerCase().trim();
+      const matchedLogo =
+        (item.imageUrl && item.imageUrl.trim()) ||
+        knownLogos[item.link || ""] ||
+        knownLogos[normTitle];
+      return {
+        id: item._id || item.id || `sol-${idx}`,
+        client: item.title,
+        kind: item.detail || "Project",
+        summary: item.description,
+        imageUrl: item.imageUrl,
+        logo: matchedLogo,
+        link: normalizeProjectLink(item.link, item.title),
+      };
+    });
+  }, defaultProjects);
 
   return (
     <div className="min-h-screen bg-white text-gray-800 antialiased">
@@ -130,7 +117,11 @@ const SolutionsPage = () => {
       <section className="bg-[#f7f8fa] py-20">
         <div className="site-wide">
           <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {allProjects.map((project, idx) => (
+            {!ready
+              ? Array.from({ length: 3 }).map((_, index) => (
+                  <div key={index} className="h-80 animate-pulse rounded-[28px] bg-white" />
+                ))
+              : allProjects.map((project, idx) => (
               <article
                 key={project.id || `${project.link}-${idx}`}
                 className="flex h-full flex-col overflow-hidden rounded-[28px] bg-white shadow-md"

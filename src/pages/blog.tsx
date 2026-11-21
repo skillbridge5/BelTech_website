@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
@@ -8,6 +7,7 @@ import above_the_footer from "./../assets/above_the_footer.jpg";
 import { motion } from "framer-motion";
 import PageIntro from "../components/PageIntro";
 import { resolveImageUrl } from "../lib/image";
+import { usePublishedList } from "../hooks/usePublishedList";
 
 interface InsightType {
   _id: string;
@@ -115,40 +115,10 @@ const defaultInsights: InsightType[] = [
 ];
 
 const Blog = () => {
-  const [insights, setInsights] = useState<InsightType[]>(defaultInsights);
-
-  useEffect(() => {
-    let active = true;
-    loadInsights()
-      .then((data) => {
-        if (!active) return;
-        if (Array.isArray(data) && data.length > 0) {
-          const merged = [...data];
-          for (const def of defaultInsights) {
-            const exists = merged.some(
-              (i) =>
-                (i._id && (i._id === def._id || i._id === def.id)) ||
-                (i.id && (i.id === def._id || i.id === def.id)) ||
-                (i.title && i.title.toLowerCase() === def.title.toLowerCase())
-            );
-            if (!exists) {
-              merged.push(def);
-            }
-          }
-          merged.sort(
-            (a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime()
-          );
-          setInsights(merged);
-        }
-      })
-      .catch((err) => {
-        console.error("Failed to load insights:", err);
-      });
-
-    return () => {
-      active = false;
-    };
-  }, []);
+  const { items: insights, ready } = usePublishedList(
+    () => loadInsights(),
+    defaultInsights
+  );
 
   return (
     <div className="font-sans antialiased bg-white text-gray-900">
@@ -176,7 +146,13 @@ const Blog = () => {
             </p>
           </motion.div>
 
-          {insights.length === 0 ? (
+          {!ready ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Array.from({ length: 3 }).map((_, index) => (
+                <div key={index} className="h-80 animate-pulse rounded-lg bg-gray-100" />
+              ))}
+            </div>
+          ) : insights.length === 0 ? (
             <p className="text-center text-gray-500 py-12">No posts yet.</p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-stretch">
