@@ -82,221 +82,7 @@ type ProductPage = {
 
 const tones = ["#0078B7", "#1493D4", "#0C6A8A", "#3D8EB5"];
 
-const products: Record<string, ProductPage> = {
-  "ethiopian-hrms": {
-    title: "BelTech Ethiopian HRMS",
-    kicker: "Complete HR and payroll management for Ethiopian businesses",
-    summary:
-      "BelTech Ethiopian HRMS is an Odoo-based human resource management system designed to automate HR operations, simplify employee management, and support Ethiopian labor regulations.",
-    image: humanResource,
-    modules: [
-      { title: "Employee management", body: "Employee profiles, contracts, departments, promotions, and career history.", icon: IdCard },
-      { title: "Biometric attendance", body: "ZKTeco integration, attendance tracking, lateness, absences, and corrections.", icon: Fingerprint },
-      { title: "Shift management", body: "Fixed, rotating, and overnight shifts with flexible work schedules.", icon: CalendarClock },
-      { title: "Ethiopian payroll and pension", body: "Salary calculations, income tax, pension contributions, allowances, deductions, and payslips.", icon: Banknote },
-      { title: "Leave management", body: "Annual, sick, maternity, and other leave types with automated balances and approvals.", icon: CalendarOff },
-      { title: "Overtime management", body: "Overtime calculations, approvals, and payroll integration.", icon: Clock },
-      { title: "Loans and salary advances", body: "Employee loans, repayment schedules, and payroll deductions.", icon: HandCoins },
-      { title: "Performance and promotions", body: "KPI evaluations, appraisals, promotions, and salary adjustments.", icon: Target },
-      { title: "Bonuses and incentives", body: "Performance bonuses, incentives, and approval workflows.", icon: Gift },
-      { title: "Disciplinary and grievance management", body: "Employee complaints, warnings, investigations, and resolutions.", icon: ShieldAlert },
-      { title: "Employee self-service", body: "Leave requests, attendance history, payslips, HR requests, and approvals.", icon: UserRound },
-      { title: "Ethiopian calendar", body: "Ethiopian date conversion and public holiday management.", icon: CalendarDays },
-      { title: "HR reports and dashboards", body: "Workforce analytics, attendance, payroll, tax, pension, and performance reports.", icon: PieChart },
-      { title: "Employee offboarding", body: "Resignations, clearance, final settlements, and exit management.", icon: LogOut },
-    ],
-    flow: {
-      heading: "The HRMS flow",
-      intro: "One path from the employee record through attendance, time, and payroll.",
-      steps: [
-        {
-          title: "Employee record",
-          body: "Profiles, contracts, departments, promotions, and career history sit in one record.",
-          icon: IdCard,
-        },
-        {
-          title: "Biometric attendance",
-          body: "Staff check in on a ZKTeco device. The system records attendance, lateness, absences, and corrections.",
-          icon: Fingerprint,
-        },
-        {
-          title: "Shifts, leave, and overtime",
-          body: "Fixed, rotating, and overnight shifts, leave balances, and overtime feed the same time record.",
-          icon: CalendarClock,
-        },
-        {
-          title: "Payroll and pension",
-          body: "Salary, income tax, pension, allowances, deductions, loans, and bonuses become the payslip.",
-          icon: Banknote,
-        },
-        {
-          title: "Self-service",
-          body: "Employees request leave, read attendance, open payslips, and follow approvals.",
-          icon: UserRound,
-        },
-        {
-          title: "Offboarding",
-          body: "Resignation, clearance, and the final settlement close the record.",
-          icon: LogOut,
-        },
-      ],
-    },
-    spotlight: {
-      kicker: "Attendance",
-      title: "The day starts",
-      titleAccent: "at the fingerprint.",
-      body: "One check-in, and lateness, absences, and corrections are already on the record. Managers stop collecting paper timesheets.",
-      image: attendanceShot,
-      imageAlt: "Fingerprint attendance device showing Check-In",
-      objectPosition: "center",
-    },
-    companion: {
-      kicker: "Payroll",
-      title: "The month closes",
-      titleAccent: "on one payslip.",
-      body: "Salary, income tax, pension, allowances, and deductions come together when the month ends. The payslip is ready without a second spreadsheet.",
-      image: payrollShot,
-      imageAlt: "Employee payslips list on a payroll system",
-      flip: true,
-      objectPosition: "top",
-    },
-  },
-  carecentral: {
-    title: "CareCentral",
-    kicker: "Healthcare ERP and hospital management system",
-    summary:
-      "CareCentral is a modular healthcare ERP for hospitals, clinics, and medical centers. It brings patient information, clinical work, medical services, staff, and administration into one platform.",
-    image: care,
-    modules: [
-      { title: "Patients", body: "Registration, medical records, history, and profiles.", icon: Users },
-      { title: "Outpatient", body: "Consultations, appointments, diagnoses, prescriptions, and follow-ups.", icon: Stethoscope },
-      { title: "Laboratory", body: "Requests, sample tracking, results, and reporting.", icon: FlaskConical },
-      { title: "Intensive care", body: "Admissions, monitoring, observations, and treatment records.", icon: HeartPulse },
-      { title: "Dashboards", body: "Operational statistics, analytics, and management reports.", icon: LayoutDashboard },
-      { title: "Access", body: "Staff accounts, role-based permissions, and administration.", icon: Shield },
-    ],
-    spotlight: {
-      kicker: "Patients and clinical work",
-      title: "From the front desk to the ward.",
-      body: "Registration, the outpatient visit, the laboratory, and intensive care stay on one patient record. The people running the hospital see that work on the same dashboards.",
-      image: care,
-      imageAlt: "CareCentral healthcare management system",
-    },
-    flow: {
-      heading: "The CareCentral flow",
-      intro: "One path from the patient arriving to the team running the hospital.",
-      steps: [
-        {
-          title: "Patient record",
-          body: "Registration, medical history, and the profile open the record.",
-          icon: Users,
-        },
-        {
-          title: "Outpatient visit",
-          body: "Consultations, appointments, diagnoses, prescriptions, and follow-ups stay on that record.",
-          icon: Stethoscope,
-        },
-        {
-          title: "Laboratory",
-          body: "Requests, sample tracking, results, and reports come back to the same patient.",
-          icon: FlaskConical,
-        },
-        {
-          title: "Intensive care",
-          body: "Admissions, monitoring, observations, and treatment records continue the chart.",
-          icon: HeartPulse,
-        },
-        {
-          title: "Dashboards",
-          body: "Operational statistics and management reports show how the hospital is running.",
-          icon: LayoutDashboard,
-        },
-        {
-          title: "Access",
-          body: "Staff accounts and role-based permissions decide who can see and change each part.",
-          icon: Shield,
-        },
-      ],
-    },
-    more: {
-      intro: "A hospital can start with the core and add these as the operation grows.",
-      items: [
-        { title: "Inpatient department", icon: BedDouble },
-        { title: "Emergency department", icon: Siren },
-        { title: "Pharmacy and medication", icon: Pill },
-        { title: "Radiology", icon: ScanLine },
-        { title: "Surgery and operating theatre", icon: Scissors },
-        { title: "Dental, ophthalmology, and ENT", icon: Smile },
-        { title: "Physiotherapy", icon: Dumbbell },
-        { title: "Gynecology and pediatrics", icon: Baby },
-        { title: "Cardiology, dermatology, and oncology", icon: Heart },
-        { title: "Dialysis and blood bank", icon: Droplet },
-        { title: "Vaccination and insurance", icon: Syringe },
-        { title: "Inventory and procurement", icon: Boxes },
-        { title: "Accounting and finance", icon: Calculator },
-        { title: "Human resources, payroll, and attendance", icon: Users },
-        { title: "Asset management", icon: Landmark },
-        { title: "Fleet and ambulance", icon: Ambulance },
-      ],
-    },
-  },
-  school360: {
-    title: "School360",
-    kicker: "End-to-end school management on Odoo",
-    summary:
-      "Digitize academics, admissions, attendance, examinations, fees, communication, and administration—all from one integrated, modular ERP platform engineered for educational institutions.",
-    image: school,
-    modules: [
-      { title: "Administration", body: "School records and the day-to-day running of the school.", icon: Building2 },
-      { title: "Attendance", body: "Attendance kept with the rest of the student record.", icon: CalendarCheck },
-      { title: "Exams", body: "Exams recorded in the same system as attendance and fees.", icon: GraduationCap },
-      { title: "Fees", body: "School fees handled with administration and the student record.", icon: Wallet },
-      { title: "Parents", body: "The school reaches parents from the same system.", icon: MessagesSquare },
-    ],
-    spotlight: {
-      kicker: "The school day",
-      title: "From the register to the parent.",
-      body: "Attendance, exams, and fees sit with the student record. The school reaches parents from that same system, so the day is not split across separate books.",
-      image: school,
-      imageAlt: "School360 school management system",
-    },
-    flow: {
-      heading: "The School360 flow",
-      intro: "One path from the school office to the parent.",
-      steps: [
-        {
-          title: "Administration",
-          body: "School records and the day-to-day running of the school sit in one place.",
-          icon: Building2,
-        },
-        {
-          title: "Attendance",
-          body: "Attendance is kept with the rest of the student record.",
-          icon: CalendarCheck,
-        },
-        {
-          title: "Exams",
-          body: "Exams are recorded in the same system as attendance and fees.",
-          icon: GraduationCap,
-        },
-        {
-          title: "Fees",
-          body: "School fees are handled with administration and the student record.",
-          icon: Wallet,
-        },
-        {
-          title: "Parents",
-          body: "The school reaches parents from the same system.",
-          icon: MessagesSquare,
-        },
-      ],
-    },
-    closing: {
-      title: "One system for the school day",
-      body: "Built on Odoo. Administration, attendance, exams, fees, and parents in one place.",
-    },
-  },
-};
+const products: Record<string, ProductPage> = {};
 
 const AppMark = ({ icon: Icon, tone, size = "lg" }: { icon: LucideIcon; tone: string; size?: "lg" | "sm" }) => (
   <div
@@ -326,10 +112,8 @@ const defaultModuleIcons: LucideIcon[] = [
 
 const ProductDetail = () => {
   const { slug } = useParams();
-  const [product, setProduct] = useState<ProductPage | undefined>(() =>
-    slug ? products[slug] : undefined
-  );
-  const [loading, setLoading] = useState<boolean>(!product);
+  const [product, setProduct] = useState<ProductPage | undefined>();
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     let active = true;
@@ -357,139 +141,56 @@ const ProductDetail = () => {
         });
 
         if (match) {
-          const builtIn = products[slug] || products[match.link.replace(/^\/products\//, "")];
+          const parsedModules: ProductModule[] = (match.modules || "")
+            .split("\n")
+            .filter((l) => l.trim().length > 0)
+            .map((line, idx) => {
+              const parts = line.split(/:(.+)/);
+              const title = parts[0]?.trim() || `Module ${idx + 1}`;
+              const body = parts[1]?.trim() || parts[0]?.trim();
+              return { title, body, icon: defaultModuleIcons[idx % defaultModuleIcons.length] };
+            });
 
-          // Parse modules from backend text or fallback
-          let parsedModules: ProductModule[] = [];
-          if (match.modules && match.modules.trim()) {
-            parsedModules = match.modules
-              .split("\n")
-              .filter((l) => l.trim().length > 0)
-              .map((line, idx) => {
-                const parts = line.split(/:(.+)/);
-                const title = parts[0]?.trim() || `Module ${idx + 1}`;
-                const body = parts[1]?.trim() || parts[0]?.trim();
-                return {
-                  title,
-                  body,
-                  icon: defaultModuleIcons[idx % defaultModuleIcons.length],
-                };
-              });
-          } else if (builtIn?.modules?.length) {
-            parsedModules = builtIn.modules;
-          } else {
-            parsedModules = [
-              {
-                title: "Core Operations",
-                body: match.description || "Streamlined end-to-end operational workflow.",
-                icon: LayoutDashboard,
-              },
-              {
-                title: "Real-time Visibility",
-                body: "Unified monitoring, records, and administrative controls.",
-                icon: PieChart,
-              },
-              {
-                title: "Secure & Compliant",
-                body: "Engineered to meet modern compliance, privacy, and data security standards.",
-                icon: Shield,
-              },
-              {
-                title: "Modular Integration",
-                body: "Extensible system ready to connect with your existing business processes.",
-                icon: Boxes,
-              },
-            ];
-          }
+          const parsedFlow = (match.flow || "").trim()
+            ? {
+                heading: `The ${match.title} flow`,
+                intro: "One connected path through your core operational lifecycle.",
+                steps: (match.flow || "")
+                  .split("\n")
+                  .filter((l) => l.trim().length > 0)
+                  .map((line, idx) => {
+                    const parts = line.split(/:(.+)/);
+                    const title = parts[0]?.trim() || `Step ${idx + 1}`;
+                    const body = parts[1]?.trim() || parts[0]?.trim();
+                    return { title, body, icon: defaultModuleIcons[idx % defaultModuleIcons.length] };
+                  }),
+              }
+            : parsedModules.length >= 3
+            ? {
+                heading: `The ${match.title} flow`,
+                intro: "One connected path through your core operational workflow.",
+                steps: parsedModules.slice(0, 5).map((m) => ({ title: m.title, body: m.body, icon: m.icon })),
+              }
+            : undefined;
 
-          // Parse or generate Flow steps
-          let parsedFlow = builtIn?.flow;
-          if (match.flow && match.flow.trim()) {
-            const steps = match.flow
-              .split("\n")
-              .filter((l) => l.trim().length > 0)
-              .map((line, idx) => {
-                const parts = line.split(/:(.+)/);
-                const title = parts[0]?.trim() || `Step ${idx + 1}`;
-                const body = parts[1]?.trim() || parts[0]?.trim();
-                return {
-                  title,
-                  body,
-                  icon: defaultModuleIcons[idx % defaultModuleIcons.length],
-                };
-              });
-            parsedFlow = {
-              heading: `The ${match.title} flow`,
-              intro: "One connected path through your core operational lifecycle.",
-              steps,
-            };
-          } else if (!parsedFlow && parsedModules.length >= 3) {
-            parsedFlow = {
-              heading: `The ${match.title} flow`,
-              intro: "One connected path through your core operational workflow.",
-              steps: parsedModules.slice(0, 5).map((m) => ({
-                title: m.title,
-                body: m.body,
-                icon: m.icon,
-              })),
-            };
-          }
-
-          // Build Spotlights
-          const spotlight = builtIn?.spotlight || {
-            kicker: match.kicker || "Core Architecture",
-            title: `Engineered for ${match.title}`,
-            titleAccent: "excellence.",
-            body: match.description || "Streamline operations, automate repetitive workflows, and give your team real-time operational visibility.",
-            image: match.imageUrl ? resolveImageUrl(match.imageUrl) : humanResource,
-            imageAlt: match.title,
-            objectPosition: "center",
-          };
-
-          const companion = builtIn?.companion || {
-            kicker: "Integration & Scale",
-            title: "Connected operations",
-            titleAccent: "across every team.",
-            body: "Eliminate disconnected systems and manual spreadsheets. Frontline staff, supervisors, and executive management work from a unified operational database.",
-            image: match.imageUrl ? resolveImageUrl(match.imageUrl) : attendanceShot,
-            imageAlt: `${match.title} operations`,
-            flip: true,
-            objectPosition: "center",
-          };
-
-          // Build Closing
-          const closing = builtIn?.closing || {
-            title: `Ready to get started with ${match.title}?`,
-            body: "Talk to our engineering team for a full demonstration, architecture review, and deployment roadmap.",
-            options: [
-              {
-                title: "Cloud SaaS",
-                body: "Fully managed, secure cloud hosting with automatic updates, high availability, and 24/7 monitoring.",
-                icon: Shield,
-              },
-              {
-                title: "On-Premise Deployment",
-                body: "Deploy directly on your local servers for complete data residency, offline biometric sync, and internal network compliance.",
-                icon: Building2,
-              },
-            ],
-          };
-
+          const image = match.imageUrl ? resolveImageUrl(match.imageUrl) : "";
           setProduct({
             title: match.title,
-            kicker:
-              match.kicker ||
-              builtIn?.kicker ||
-              "Enterprise software engineered for high-performance operations",
-            summary: match.description || builtIn?.summary || "",
-            detail: match.detail || builtIn?.detail || "",
-            image: match.imageUrl ? resolveImageUrl(match.imageUrl) : builtIn?.image || humanResource,
+            kicker: match.kicker || "Enterprise software engineered for high-performance operations",
+            summary: match.description || "",
+            detail: match.detail || "",
+            image,
             modules: parsedModules,
-            spotlight,
-            companion,
             flow: parsedFlow,
-            more: builtIn?.more,
-            closing,
+            spotlight: image ? { kicker: match.kicker || "Product", title: match.title, body: match.description || "", image, imageAlt: match.title } : undefined,
+            closing: {
+              title: `Ready to get started with ${match.title}?`,
+              body: "Talk to our engineering team for a full demonstration, architecture review, and deployment roadmap.",
+              options: [
+                { title: "Cloud SaaS", body: "Fully managed, secure cloud hosting with automatic updates, high availability, and 24/7 monitoring.", icon: Shield },
+                { title: "On-Premise Deployment", body: "Deploy directly on your local servers for complete data residency and internal network compliance.", icon: Building2 },
+              ],
+            },
           });
         }
         setLoading(false);

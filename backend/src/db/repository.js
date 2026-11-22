@@ -67,279 +67,22 @@ export async function isSupabaseAvailable() {
   }
 }
 
-const defaultStore = () => ({
-  products: [
-    {
-      id: "prod-ethiopian-hrms",
-      title: "Ethiopian HRMS",
-      kicker: "Complete HR and payroll management for Ethiopian businesses",
-      description:
-        "An Odoo-based HR and payroll system for Ethiopian businesses, from employees and biometric attendance through payroll, leave, and self-service.",
-      detail: `<p class="lead"><strong>BelTech Ethiopian HRMS</strong> is an enterprise human resource management and payroll system tailored specifically for Ethiopian businesses, tax laws, and labor regulations. Built on top of robust Odoo technology, it streamlines HR operations from attendance capture to tax compliance.</p>
-
-<div class="callout-box callout-info">
-  <h4>🇪🇹 Fully Compliant with Ethiopian Labor Regulations</h4>
-  <p>Accurately automates income tax bands (0% to 35%), mandatory employee pension (7%), employer pension (11%), severance formulas, and Ethiopian holiday calendar tracking.</p>
-</div>
-
-<h2>Core Architectural Highlights</h2>
-<p>Unlike generic global HR tools that require clumsy spreadsheet workarounds for Ethiopian tax rules, BelTech HRMS handles end-to-end personnel workflows natively:</p>
-
-<ul>
-  <li><strong>Automated Biometric Integration:</strong> Connect directly with ZKTeco and IP-enabled biometric devices. Punch logs automatically calculate work hours, tardiness, and overtime.</li>
-  <li><strong>Multi-shift & Overnight Schedules:</strong> Full flexibility for manufacturing plants, hospitals, hotels, and retail chains with rotating shift support.</li>
-  <li><strong>Employee Self-Service (ESS):</strong> Staff can submit leave requests, review attendance, and view monthly payslips straight from web or mobile.</li>
-  <li><strong>Tax & Pension Reporting:</strong> Generate ready-to-submit monthly declarations for the Ministry of Revenues and Pension Agency with one click.</li>
-</ul>
-
-<h2>The Integrated Lifecycle: From Hire to Retire</h2>
-<p>Employee records maintain complete career progression histories, contract renewals, disciplinary records, salary revisions, and exit clearances in a unified database.</p>`,
-      modules: `Employee Management: Comprehensive profiles, digital contract records, departments, promotions, and career history.
-Biometric Attendance: ZKTeco fingerprint and facial recognition device synchronization with automated punch validation.
-Shift Scheduling: Fixed, rotating, overnight, and flexible work schedules with automated rest day assignments.
-Ethiopian Payroll & Pension: Tax tiered calculations according to Ethiopian labor law, employee (7%) and employer (11%) pension deductions.
-Leave Administration: Annual, sick, maternity, and compassionate leave with automatic balance tracking and multi-tier approval flows.
-Overtime Management: Standard, weekend, and public holiday overtime rates automatically calculated into monthly payslips.
-Salary Advances & Loans: Loan request approvals, customizable repayment schedules, and automatic monthly deductions.
-Employee Self-Service: Intuitive portal for leave applications, attendance records, payslip downloads, and HR inquiries.
-Ethiopian Calendar Support: Built-in Geez calendar conversion, holidays, and Ethiopian fiscal year synchronizations.
-Analytics & Reporting: Real-time workforce headcounts, attendance ratios, payroll summaries, and tax compliance export sheets.`,
-      image_url: "/assets/homepage/human-resource.svg",
-      link: "/products/ethiopian-hrms",
-      priority: 0,
-      created_at: "2026-01-01T00:00:00.000Z",
-    },
-    {
-      id: "prod-carecentral",
-      title: "CareCentral",
-      kicker: "Healthcare ERP and hospital management system",
-      description:
-        "A healthcare ERP and hospital management system for patients, clinical work, staff, and administration.",
-      detail: `<p class="lead"><strong>CareCentral</strong> is an all-in-one healthcare ERP and hospital management system designed to coordinate clinical, diagnostic, pharmaceutical, and financial operations across modern medical facilities.</p>
-
-<div class="callout-box callout-tip">
-  <h4>🏥 Unified Patient Record Across All Hospital Units</h4>
-  <p>Eliminate paper charts and fragmented departments. From front-desk triage and outpatient consultation to laboratory tests, pharmacy fulfillment, and inpatient wards, every interaction updates the patient’s central electronic health record.</p>
-</div>
-
-<h2>Key System Capabilities</h2>
-<ul>
-  <li><strong>Outpatient & Inpatient Management:</strong> Real-time bed occupancy maps, surgical scheduling, vitals monitoring, and nurse handover notes.</li>
-  <li><strong>Laboratory & Imaging Integration:</strong> Barcoded specimen tracking, digital requisition forms, and validated lab result publication directly to patient profiles.</li>
-  <li><strong>Pharmacy & Controlled Inventory:</strong> Automated prescription queues, batch number and expiry date tracking, and automated reorder triggers for essential medicines.</li>
-  <li><strong>Consolidated Billing:</strong> Multi-department bill collation combining consultation fees, lab procedures, medication dispensing, and bed days into a single transparent invoice with private insurance claims support.</li>
-</ul>`,
-      modules: `Patient Registration & Records: Digital intake, demographic capture, insurance identification, and medical records.
-Outpatient Department (OPD): Doctor consultations, vitals logging, clinical notes, diagnosis coding, and electronic prescriptions.
-Inpatient Department (IPD): Admission processing, ward and bed management, nurse charts, and discharge summaries.
-Pharmacy & Medication: Prescription queues, barcode dispensing, batch/expiry tracking, and automated stock reordering.
-Laboratory Information System (LIS): Test requisition, barcode sample labeling, specimen tracking, and validated lab results.
-Billing & Insurance: Unified bill aggregation for consultation, lab, pharmacy, and bed charges with private insurance claims.
-Emergency & Triage: Fast-track trauma intake, triage level tagging, and rapid doctor routing.
-Hospital Administration & Analytics: Bed occupancy dashboards, department revenue metrics, and staffing allocations.`,
-      image_url: "/assets/homepage/care.jpg",
-      link: "/products/carecentral",
-      priority: 1,
-      created_at: "2026-01-02T00:00:00.000Z",
-    },
-    {
-      id: "prod-school360",
-      title: "School360",
-      kicker: "End-to-end school management platform engineered for educational excellence",
-      description:
-        "Digitize academics, admissions, attendance, examinations, fees, communication, and administration—all from one integrated, modular ERP platform engineered for educational institutions.",
-      detail: `<p class="lead"><strong>School360</strong> is an end-to-end educational institution ERP designed for K-12 schools, colleges, and training institutes. It digitizes student admissions, academic progress, examinations, fee collection, and administrative workflows into one seamless portal.</p>
-
-<div class="callout-box callout-info">
-  <h4>🎓 Integrated Academic & Administrative Operations</h4>
-  <p>Bridge the gap between administrators, teachers, parents, and students with real-time academic records, biometric student attendance, automated grade books, and secure fee processing.</p>
-</div>
-
-<h2>Comprehensive Institutional Capabilities</h2>
-<ul>
-  <li><strong>Digital Admissions & Enrollment:</strong> Manage student applications, interview scheduling, document verification, and automated student ID generation.</li>
-  <li><strong>Fee Management & Billing:</strong> Configurable tuition fee structures, term invoice generation, payment receipts, and automated SMS reminders for pending balances.</li>
-  <li><strong>Exams & Continuous Assessment:</strong> Mark entry, customized grading rubrics, automatic GPA computation, and one-click report card printing.</li>
-  <li><strong>Parent Portal & Mobile Communication:</strong> Give guardians real-time visibility into attendance records, homework assignments, exam schedules, and teacher feedback.</li>
-</ul>`,
-      modules: `Student Admissions & Enrollment: Online application forms, document verification, interview scheduling, and student ID generation.
-Academic Management: Curriculum planning, class section division, subject assignments, and teacher scheduling.
-Fee Management & Invoicing: Tuition fee structures, automated term invoices, bank transfer reconciliations, and penalty tracking.
-Attendance Tracking: Daily classroom roll-call, biometric gate logging, and automated SMS alerts to parents for absent students.
-Examinations & Report Cards: Exam timetables, continuous assessment recording, GPA calculations, and printable report cards.
-Parent & Student Portal: Dedicated web and mobile view for grades, fee payment receipts, upcoming schedules, and school announcements.
-Library Automation: Book cataloging, barcode scanning for borrow/return, and automated overdue book alerts.
-Staff & Payroll Administration: Teacher qualification tracking, workload monitoring, and monthly staff salary processing.`,
-      image_url: "/assets/homepage/school.jpg",
-      link: "/products/school360",
-      priority: 2,
-      created_at: "2026-01-03T00:00:00.000Z",
-    },
-  ],
-  solutions: [
-    {
-      id: "sol-diligent-trade",
-      title: "Diligent Trade",
-      description:
-        "An import-export company running orders, inventory, and finance in one Odoo system.",
-      detail: "Odoo ERP",
-      image_url: "/assets/clientLogo/diligent-mark.png",
-      link: "/projects/diligent-trade",
-      priority: 0,
-      created_at: "2026-01-01T00:00:00.000Z",
-    },
-    {
-      id: "sol-skillbridge",
-      title: "SkillBridge Institute of Technology",
-      description:
-        "A site where the institute presents its programs and prospective students can enquire.",
-      detail: "Website",
-      image_url: "/assets/clientLogo/skillBridge-mark.png",
-      link: "/projects/skillbridge",
-      priority: 1,
-      created_at: "2026-01-02T00:00:00.000Z",
-    },
-    {
-      id: "sol-eyoha",
-      title: "Eyoha Digitals",
-      description:
-        "A site for the studio’s services, portfolio, and consultation requests.",
-      detail: "Website",
-      image_url: "/assets/clientLogo/eyoha-mark.png",
-      link: "/projects/eyoha-digitals",
-      priority: 2,
-      created_at: "2026-01-03T00:00:00.000Z",
-    },
-  ],
-  testimonials: [
-    {
-      id: "test-eyoha",
-      name: "Eyoha Digitals",
-      testimonial: "Eyoha Digitals loved our website!",
-      image_url: "/assets/clientLogo/eyoha.png",
-      priority: 0,
-      created_at: "2026-01-01T00:00:00.000Z",
-    },
-    {
-      id: "test-roha",
-      name: "Roha Cake and Bread Bakery",
-      testimonial: "Roha Bakery saw amazing growth with our product.",
-      image_url: "/assets/clientLogo/RohaCake.png",
-      priority: 1,
-      created_at: "2026-01-02T00:00:00.000Z",
-    },
-    {
-      id: "test-skillbridge",
-      name: "SkillBridge Institute of Technology",
-      testimonial: "SkillBridge praises the website we built.",
-      image_url: "/assets/clientLogo/skillBridge.png",
-      priority: 2,
-      created_at: "2026-01-03T00:00:00.000Z",
-    },
-    {
-      id: "test-diligent",
-      name: "Diligent Trade Solutions",
-      testimonial: "Diligent Trade saw great results from our ERP.",
-      image_url: "/assets/clientLogo/diligent.png",
-      priority: 3,
-      created_at: "2026-01-04T00:00:00.000Z",
-    },
-    {
-      id: "test-firma",
-      name: "Firma Media and Communications",
-      testimonial: "Odoo ERP Enterprise - Finance, Sales, Project",
-      image_url: "/assets/clientLogo/firma.jpg",
-      priority: 4,
-      created_at: "2026-01-05T00:00:00.000Z",
-    },
-    {
-      id: "test-manufacturing",
-      name: "Leading Manufacturing & Import Enterprise",
-      testimonial:
-        "BelTech streamlined our customs inventory and financial reporting across three warehouses.",
-      image_url: "",
-      priority: 5,
-      created_at: "2026-01-06T00:00:00.000Z",
-    },
-    {
-      id: "test-healthcare",
-      name: "Premier Healthcare & Clinic Network",
-      testimonial:
-        "CareCentral unified our patient billing, laboratory records, and multi-branch pharmacy.",
-      image_url: "",
-      priority: 6,
-      created_at: "2026-01-07T00:00:00.000Z",
-    },
-  ],
-  insights: [
-    {
-      id: "odoo-vs-erpnext-ethiopian-companies",
-      title: "Odoo vs. ERPNext for Ethiopian Import/Export & Manufacturing Companies",
-      description:
-        "A comprehensive comparison of Odoo and ERPNext for Ethiopian businesses: local tax support, multi-currency customs, license costs, and flexibility.",
-      detail:
-        "Choosing between Odoo and ERPNext is one of the most common dilemmas faced by Ethiopian trade and manufacturing businesses in Addis Ababa. While both platforms are open-core, Odoo provides a mature modular marketplace with pre-built Ethiopian HRMS extensions, while ERPNext offers an all-inclusive open-source licensing model. For businesses handling multi-currency imports, customs clearance landed costs, and tiered VAT reporting, Odoo's automated landed-cost costing methods offer greater accuracy. When planning your ERP rollout, partner expertise and team training in Addis Ababa are the critical success factors.",
-      date: "2026-11-15T00:00:00.000Z",
-      image_url: "/assets/homepage/business-operations.png",
-      created_at: "2026-11-15T00:00:00.000Z",
-    },
-    {
-      id: "automate-ethiopian-payroll-pension-odoo",
-      title: "How to Automate Ethiopian Payroll & Pension Calculations in Odoo",
-      description:
-        "Step-by-step guide on configuring Ethiopian income tax brackets, 7% employee and 11% employer pension contributions, and biometric attendance sync in Odoo.",
-      detail:
-        "Manual payroll processing using Excel spreadsheets remains a major source of calculation errors and compliance penalties for Ethiopian organizations. Under Ethiopian labor regulations, employee income tax follows a progressive scale from 0% to 35%, alongside mandatory 7% employee pension and 11% employer private organization pension fund contributions. By integrating BelTech Ethiopian HRMS with Odoo, companies automate monthly tax deductions, generate official tax summary schedules for the Ministry of Revenues, and link attendance punches directly to payslip line items.",
-      date: "2026-11-10T00:00:00.000Z",
-      image_url: "/assets/payroll.jpeg",
-      created_at: "2026-11-10T00:00:00.000Z",
-    },
-    {
-      id: "biometric-attendance-zkteco-ethiopia",
-      title: "Integrating ZKTeco Biometric Devices with Odoo HRMS in Ethiopia",
-      description:
-        "How to connect ZKTeco fingerprint and face recognition attendance hardware with Odoo for accurate timesheets, shift management, and automated payroll.",
-      detail:
-        "Buddy punching and unrecorded tardiness cost Ethiopian enterprises thousands of birr every month. Connecting ZKTeco biometric time-clocks to Odoo via automated push sync (ADMS) enables real-time attendance validation. BelTech HRMS captures device punches, correlates them with assigned shift schedules (standard, night, or rotational shifts), and automatically calculates overtime according to Ethiopian proclamation rates before pushing the final totals to payroll.",
-      date: "2026-11-05T00:00:00.000Z",
-      image_url: "/assets/homepage/attendance.jpg",
-      created_at: "2026-11-05T00:00:00.000Z",
-    },
-    {
-      id: "insight-erp-ethiopia",
-      title: "How ERP Systems Transform Ethiopian Businesses",
-      description:
-        "Why integrating sales, inventory, and finance into a single platform like Odoo or ERPNext accelerates business growth.",
-      detail:
-        "Implementing an ERP system allows companies to eliminate redundant data entry, ensure compliance with Ethiopian tax and payroll laws, and make data-driven operational decisions across retail, wholesale, and service operations.",
-      date: "2026-10-25T00:00:00.000Z",
-      image_url: "/assets/homepage/business-operations.png",
-      created_at: "2026-10-25T00:00:00.000Z",
-    },
-  ],
-  contacts: [],
-});
-
 function readStore() {
+  const empty = { products: [], solutions: [], testimonials: [], insights: [], contacts: [] };
   try {
-    if (!fs.existsSync(STORE_PATH)) {
-      const init = defaultStore();
-      writeStore(init);
-      return init;
-    }
+    if (!fs.existsSync(STORE_PATH)) return empty;
     const raw = fs.readFileSync(STORE_PATH, "utf8");
     const parsed = JSON.parse(raw);
-    const store = {
+    return {
       products: Array.isArray(parsed.products) ? parsed.products : [],
       solutions: Array.isArray(parsed.solutions) ? parsed.solutions : [],
       testimonials: Array.isArray(parsed.testimonials) ? parsed.testimonials : [],
       insights: Array.isArray(parsed.insights) ? parsed.insights : [],
       contacts: Array.isArray(parsed.contacts) ? parsed.contacts : [],
     };
-    return store;
   } catch (err) {
     console.error("Failed to read content store:", err);
-    return defaultStore();
+    return empty;
   }
 }
 
@@ -382,14 +125,6 @@ function mergeContent(remoteRows, localRows) {
     const idx = merged.findIndex((existing) => sharesIdentity(row, existing));
     if (idx === -1) merged.push(row);
     else merged[idx] = { ...merged[idx], ...row };
-  }
-  return merged;
-}
-
-function ensureDefaults(rows, defaults) {
-  const merged = [...rows];
-  for (const item of defaults || []) {
-    if (!merged.some((existing) => sharesIdentity(item, existing))) merged.push(item);
   }
   return merged;
 }
@@ -533,10 +268,7 @@ export const mapContact = (row) => ({
 
 export async function getProducts() {
   const remote = await readRemoteTable("products", priorityOrder);
-  const merged = ensureDefaults(
-    mergeContent(remote, readStore().products),
-    defaultStore().products
-  );
+  const merged = mergeContent(remote, readStore().products);
   return sortByPriority(merged).map(mapProduct);
 }
 
@@ -555,11 +287,7 @@ export async function getProductById(id) {
   }
 
   const store = readStore();
-  let row = store.products.find((p) => p.id === id);
-  if (!row) {
-    // Check default store
-    row = defaultStore().products.find((p) => p.id === id);
-  }
+  const row = store.products.find((p) => p.id === id);
   return row ? mapProduct(row) : null;
 }
 
@@ -730,10 +458,7 @@ export async function deleteProduct(id) {
 
 export async function getSolutions() {
   const remote = await readRemoteTable("solutions", priorityOrder);
-  const merged = ensureDefaults(
-    mergeContent(remote, readStore().solutions),
-    defaultStore().solutions
-  );
+  const merged = mergeContent(remote, readStore().solutions);
   return sortByPriority(merged).map(mapSolution);
 }
 
@@ -880,10 +605,7 @@ export async function deleteSolution(id) {
 
 export async function getInsights() {
   const remote = await readRemoteTable("insights", [{ column: "date", ascending: false }]);
-  const merged = ensureDefaults(
-    mergeContent(remote, readStore().insights),
-    defaultStore().insights
-  );
+  const merged = mergeContent(remote, readStore().insights);
   return sortByDate(merged).map(mapInsight);
 }
 
@@ -902,10 +624,7 @@ export async function getInsightById(id) {
   }
 
   const store = readStore();
-  let row = store.insights.find((i) => i.id === id);
-  if (!row) {
-    row = defaultStore().insights.find((i) => i.id === id);
-  }
+  const row = store.insights.find((i) => i.id === id);
   return row ? mapInsight(row) : null;
 }
 
@@ -1027,10 +746,7 @@ export async function deleteInsight(id) {
 
 export async function getTestimonials() {
   const remote = await readRemoteTable("testimonials", priorityOrder);
-  const merged = ensureDefaults(
-    mergeContent(remote, readStore().testimonials),
-    defaultStore().testimonials
-  );
+  const merged = mergeContent(remote, readStore().testimonials);
   return sortByPriority(merged).map(mapTestimonial);
 }
 

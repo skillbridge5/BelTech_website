@@ -47,15 +47,7 @@ import type { Product } from "../api/client";
 import { usePublishedList } from "../hooks/usePublishedList";
 import { resolveImageUrl } from "../lib/image";
 
-const defaultClients = [
-  { name: "Eyoha Digitals", img: eyoha, testimonial: "Eyoha Digitals loved our website!" },
-  { name: "Roha Cake and Bread Bakery", img: Roha, testimonial: "Roha Bakery saw amazing growth with our product." },
-  { name: "SkillBridge Institute of Technology", img: SkillsBridge, testimonial: "SkillBridge praises the website we built." },
-  { name: "Diligent Trade Solutions", img: diligent, testimonial: "Diligent Trade saw great results from our ERP." },
-  { name: "Firma Media and Communications", img: firma, testimonial: "Odoo ERP Enterprise - Finance, Sales, Project" },
-  { name: "Leading Manufacturing & Import Enterprise", img: "", testimonial: "BelTech streamlined our customs inventory and financial reporting across three warehouses." },
-  { name: "Premier Healthcare & Clinic Network", img: "", testimonial: "CareCentral unified our patient billing, laboratory records, and multi-branch pharmacy." },
-];
+const defaultClients: Array<{ name: string; img: string; testimonial: string }> = [];
 
 const homepageFaqs = [
   {
@@ -85,34 +77,7 @@ const homepageFaqs = [
   },
 ];
 
-const defaultProducts = [
-  {
-    _id: "default-human-resource",
-    title: "Ethiopian HRMS",
-    description:
-      "An Odoo-based HR and payroll system for Ethiopian businesses, from employees and biometric attendance through payroll, leave, and self-service.",
-    imageUrl: humanResource,
-    link: "/products/ethiopian-hrms",
-    priority: 0,
-  },
-  {
-    _id: "default-carecentral",
-    title: "CareCentral",
-    description: "A healthcare ERP and hospital management system for patients, clinical work, staff, and administration.",
-    imageUrl: care,
-    link: "/products/carecentral",
-    priority: 1,
-  },
-  {
-    _id: "default-school360",
-    title: "School360",
-    description:
-      "Digitize academics, admissions, attendance, examinations, fees, communication, and administration—all from one integrated, modular ERP platform engineered for educational institutions.",
-    imageUrl: school,
-    link: "/products/school360",
-    priority: 2,
-  },
-];
+const defaultProducts: Product[] = [];
 
 
 const productDetailPaths: Record<string, string> = {
