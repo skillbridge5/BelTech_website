@@ -853,17 +853,27 @@ export async function updateSolution(id, updates) {
 
 export async function deleteSolution(id) {
   let remoteDeleted = false;
+  let remoteChecked = false;
   if (await isSupabaseAvailable()) {
+    remoteChecked = true;
     try {
-      const { error } = await supabase.from("solutions").delete().eq("id", id);
-      remoteDeleted = !error;
-    } catch {
-      supabaseCheck.available = false;
+      const { data, error } = await supabase
+        .from("solutions")
+        .delete()
+        .eq("id", id)
+        .select("id")
+        .maybeSingle();
+      if (error) throw error;
+      remoteDeleted = Boolean(data);
+    } catch (error) {
+      if (isMissingOrAuthError(error)) supabaseCheck.available = false;
+      else throw error;
     }
   }
 
   const localDeleted = removeLocal("solutions", id);
-  return remoteDeleted || localDeleted;
+  if (remoteChecked) return remoteDeleted || localDeleted;
+  return localDeleted;
 }
 
 // ======================== INSIGHTS ========================
@@ -989,22 +999,28 @@ export async function updateInsight(id, updates) {
 }
 
 export async function deleteInsight(id) {
+  let remoteDeleted = false;
+  let remoteChecked = false;
   if (await isSupabaseAvailable()) {
+    remoteChecked = true;
     try {
-      await supabase.from("insights").delete().eq("id", id);
-    } catch {
-      supabaseCheck.available = false;
+      const { data, error } = await supabase
+        .from("insights")
+        .delete()
+        .eq("id", id)
+        .select("id")
+        .maybeSingle();
+      if (error) throw error;
+      remoteDeleted = Boolean(data);
+    } catch (error) {
+      if (isMissingOrAuthError(error)) supabaseCheck.available = false;
+      else throw error;
     }
   }
 
-  const store = readStore();
-  const prevLen = store.insights.length;
-  store.insights = store.insights.filter((i) => i.id !== id);
-  if (store.insights.length !== prevLen) {
-    writeStore(store);
-    return true;
-  }
-  return false;
+  const localDeleted = removeLocal("insights", id);
+  if (remoteChecked) return remoteDeleted || localDeleted;
+  return localDeleted;
 }
 
 // ======================== TESTIMONIALS ========================
@@ -1124,17 +1140,27 @@ export async function updateTestimonial(id, updates) {
 
 export async function deleteTestimonial(id) {
   let remoteDeleted = false;
+  let remoteChecked = false;
   if (await isSupabaseAvailable()) {
+    remoteChecked = true;
     try {
-      const { error } = await supabase.from("testimonials").delete().eq("id", id);
-      remoteDeleted = !error;
-    } catch {
-      supabaseCheck.available = false;
+      const { data, error } = await supabase
+        .from("testimonials")
+        .delete()
+        .eq("id", id)
+        .select("id")
+        .maybeSingle();
+      if (error) throw error;
+      remoteDeleted = Boolean(data);
+    } catch (error) {
+      if (isMissingOrAuthError(error)) supabaseCheck.available = false;
+      else throw error;
     }
   }
 
   const localDeleted = removeLocal("testimonials", id);
-  return remoteDeleted || localDeleted;
+  if (remoteChecked) return remoteDeleted || localDeleted;
+  return localDeleted;
 }
 
 // ======================== CONTACTS ========================
@@ -1272,21 +1298,26 @@ export async function updateContactStatus(id, status) {
 }
 
 export async function deleteContact(id) {
+  let remoteDeleted = false;
+  let remoteChecked = false;
   if (await isSupabaseAvailable()) {
+    remoteChecked = true;
     try {
-      const { error } = await supabase.from("contacts").delete().eq("id", id);
-      if (!error) return true;
-    } catch {
-      supabaseCheck.available = false;
+      const { data, error } = await supabase
+        .from("contacts")
+        .delete()
+        .eq("id", id)
+        .select("id")
+        .maybeSingle();
+      if (error) throw error;
+      remoteDeleted = Boolean(data);
+    } catch (error) {
+      if (isMissingOrAuthError(error)) supabaseCheck.available = false;
+      else throw error;
     }
   }
 
-  const store = readStore();
-  const prevLen = store.contacts.length;
-  store.contacts = store.contacts.filter((c) => c.id !== id);
-  if (store.contacts.length !== prevLen) {
-    writeStore(store);
-    return true;
-  }
-  return false;
+  const localDeleted = removeLocal("contacts", id);
+  if (remoteChecked) return remoteDeleted || localDeleted;
+  return localDeleted;
 }
