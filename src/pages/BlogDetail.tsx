@@ -87,7 +87,7 @@ const BlogDetail = () => {
           setLoading(false);
           return;
         }
-        return loadInsights().then((items) => {
+        return loadInsights(true).then((items) => {
           if (!active) return;
           const match =
             (Array.isArray(items) ? items.find(matches) : undefined) ||

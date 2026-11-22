@@ -702,22 +702,28 @@ export async function updateProduct(id, updates) {
 }
 
 export async function deleteProduct(id) {
+  let remoteDeleted = false;
+  let remoteChecked = false;
   if (await isSupabaseAvailable()) {
+    remoteChecked = true;
     try {
-      await supabase.from("products").delete().eq("id", id);
-    } catch {
-      supabaseCheck.available = false;
+      const { data, error } = await supabase
+        .from("products")
+        .delete()
+        .eq("id", id)
+        .select("id")
+        .maybeSingle();
+      if (error) throw error;
+      remoteDeleted = Boolean(data);
+    } catch (error) {
+      if (isMissingOrAuthError(error)) supabaseCheck.available = false;
+      else throw error;
     }
   }
 
-  const store = readStore();
-  const prevLen = store.products.length;
-  store.products = store.products.filter((p) => p.id !== id);
-  if (store.products.length !== prevLen) {
-    writeStore(store);
-    return true;
-  }
-  return true;
+  const localDeleted = removeLocal("products", id);
+  if (remoteChecked) return remoteDeleted || localDeleted;
+  return localDeleted;
 }
 
 // ======================== SOLUTIONS ========================

@@ -11,6 +11,35 @@ import {
 } from "../lib/adminStore.js";
 
 const router = Router();
+const loginAttempts = new Map();
+const LOGIN_WINDOW_MS = 15 * 60 * 1000;
+const LOGIN_MAX_ATTEMPTS = 10;
+
+function loginAttemptKey(req, email) {
+  const ip = String(req.ip || req.headers["x-forwarded-for"] || "unknown").split(",")[0].trim();
+  return `${ip}:${String(email || "").toLowerCase()}`;
+}
+
+function isLoginRateLimited(key) {
+  const now = Date.now();
+  const entry = loginAttempts.get(key);
+  if (!entry || now - entry.startedAt > LOGIN_WINDOW_MS) return false;
+  return entry.count >= LOGIN_MAX_ATTEMPTS;
+}
+
+function recordLoginFailure(key) {
+  const now = Date.now();
+  const entry = loginAttempts.get(key);
+  if (!entry || now - entry.startedAt > LOGIN_WINDOW_MS) {
+    loginAttempts.set(key, { count: 1, startedAt: now });
+    return;
+  }
+  entry.count += 1;
+}
+
+function clearLoginFailures(key) {
+  loginAttempts.delete(key);
+}
 
 function isMissingOrAuthError(error) {
   const msg = String(error?.message || error || "").toLowerCase();
@@ -88,6 +117,10 @@ router.post("/login", async (req, res) => {
   }
 
   const normalized = email.toLowerCase();
+  const attemptKey = loginAttemptKey(req, normalized);
+  if (isLoginRateLimited(attemptKey)) {
+    return res.status(429).json({ message: "Too many login attempts. Try again later." });
+  }
 
   // Prefer local .env admin for local development (Supabase key is often a placeholder).
   if (
@@ -102,6 +135,7 @@ router.post("/login", async (req, res) => {
     if (local) {
       const validLocal = await bcrypt.compare(password, local.password_hash);
       if (validLocal) {
+        clearLoginFailures(attemptKey);
         const token = jwt.sign(
           { sub: local.id, email: local.email, source: "local" },
           process.env.JWT_SECRET,
@@ -116,6 +150,7 @@ router.post("/login", async (req, res) => {
   if (!sb.unavailable && sb.data) {
     const valid = await bcrypt.compare(password, sb.data.password_hash);
     if (valid) {
+      clearLoginFailures(attemptKey);
       const token = jwt.sign(
         { sub: sb.data.id, email: sb.data.email, source: "supabase" },
         process.env.JWT_SECRET,
@@ -130,6 +165,7 @@ router.post("/login", async (req, res) => {
   if (local) {
     const valid = await bcrypt.compare(password, local.password_hash);
     if (valid) {
+      clearLoginFailures(attemptKey);
       const token = jwt.sign(
         { sub: local.id, email: local.email, source: "local" },
         process.env.JWT_SECRET,
@@ -139,6 +175,7 @@ router.post("/login", async (req, res) => {
     }
   }
 
+  recordLoginFailure(attemptKey);
   return res.status(401).json({ message: "Invalid credentials" });
 });
 
@@ -158,13 +195,13 @@ router.put("/account", requireAuth, async (req, res) => {
       .eq("id", req.user.sub)
       .maybeSingle();
 
-    if (error && isMissingOrAuthError(error)) {
-      admin = await findLocalAdminById(req.user.sub);
-    } else if (!error) {
-      admin = data;
-    } else {
+    if (error) {
+      if (isMissingOrAuthError(error)) {
+        return res.status(503).json({ message: "Admin account store unavailable. Try again later." });
+      }
       return res.status(401).json({ message: error.message });
     }
+    admin = data;
   }
 
   if (!admin) {
@@ -197,7 +234,7 @@ router.put("/account", requireAuth, async (req, res) => {
   if (newPassword) updates.password_hash = await bcrypt.hash(newPassword, 10);
 
   let updated;
-  if (source === "local" || !(await trySupabaseAdmin(admin.email)).data) {
+  if (source === "local") {
     updated = await updateLocalAdmin(admin.id, updates);
   } else {
     const { data, error: updateError } = await supabase
@@ -207,6 +244,9 @@ router.put("/account", requireAuth, async (req, res) => {
       .select("id, email")
       .single();
     if (updateError) {
+      if (isMissingOrAuthError(updateError)) {
+        return res.status(503).json({ message: "Admin account store unavailable. Try again later." });
+      }
       return res.status(500).json({ message: updateError.message });
     }
     updated = data;
