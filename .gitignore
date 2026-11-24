@@ -36,3 +36,4 @@ src/**/*.d.ts.map
 # Local fallback stores (used when Supabase is unavailable)
 backend/data/analytics-store.json
 backend/data/admin-store.json
+beltech_website.tar.gz
