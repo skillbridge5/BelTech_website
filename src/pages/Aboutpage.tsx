@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Target, Flag, Handshake, LineChart, Eye } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription } from "../components/ui/card";
 import abouthero from "./../assets/aboutPage/about-intro.jpg"

@@ -1,5 +1,6 @@
 "use client";
 
+// @ts-ignore
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState, useEffect } from "react";

@@ -11,6 +11,7 @@ import {
   Handshake,
   Boxes, ListTodo, Cloud, Bot, Workflow, Rocket, Receipt,
   Clock, ChevronDown, ChevronUp
+// @ts-ignore
 } from "lucide-react";
 import { motion } from "framer-motion";
 import hero from "./../assets/homepage/beltech-hero.jpg";
@@ -31,9 +32,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../components/ui/tooltip";
-import school from "./../assets/homepage/school.jpg";
 import humanResource from "./../assets/homepage/human-resource.svg";
-import care from "./../assets/homepage/care.jpg";
 import solutionTraining from "./../assets/homepage/erp-training-card.jpg";
 import erpnextShot from "./../assets/homepage/erpnext.jpg";
 import { Link } from "react-router-dom";

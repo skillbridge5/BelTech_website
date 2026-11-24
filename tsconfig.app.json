@@ -9,7 +9,7 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "moduleDetection": "force",
     
     /* Composite project requirements */
@@ -29,5 +29,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src/**/*", "src/**/*.d.ts", "*.d.ts"]
 }

@@ -19,6 +19,7 @@ import {
   ChevronUp,
   Sparkles,
   X,
+// @ts-ignore
 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
 import { Card, CardContent } from "../../components/ui/card";

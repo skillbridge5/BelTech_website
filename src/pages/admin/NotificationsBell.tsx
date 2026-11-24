@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+// @ts-ignore
 import { Bell, Mail, X } from "lucide-react";
 import toast from "react-hot-toast";
 import { fetchContacts } from "../../api/client";

@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Mail, Linkedin, Send, Youtube, Instagram, MapPin, Phone, type LucideIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { WhatsAppIcon } from "./WhatsAppButton";

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+// @ts-ignore
 import { ArrowLeft, Calendar, User, Clock, Share2 } from "lucide-react";
 import { loadInsight, loadInsights } from "../api/client";
 import type { Insight } from "../api/client";

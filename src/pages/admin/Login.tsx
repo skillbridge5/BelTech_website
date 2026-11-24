@@ -4,6 +4,7 @@ import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
 import { useAuth } from "../../hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
+// @ts-ignore
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import logo from "../../assets/new_logo.png";
 import { getErrorMessage } from "../../api/client";

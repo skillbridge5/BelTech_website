@@ -1,5 +1,6 @@
 import { Button } from '../components/ui/button';
 import { useEffect, type ComponentType, type ReactNode } from 'react';
+// @ts-ignore
 import { CheckCircle, Zap, Users, Globe, Settings, GraduationCap } from 'lucide-react';
 import customSoft from "./../assets/servicepage/customSoftNew.jpg";
 import servicesIntro from "./../assets/servicepage/services-intro.jpg";

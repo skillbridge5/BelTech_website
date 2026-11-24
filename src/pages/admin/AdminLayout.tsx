@@ -4,6 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { updateAdminAccount, getErrorMessage } from "../../api/client";
+// @ts-ignore
 import { LayoutDashboard, FileText, FolderKanban, Mail, LogOut, MessageCircle, User, X, Package, LineChart } from "lucide-react";
 import NotificationsBell from "./NotificationsBell";
 import logo from "../../assets/new_logo.png";

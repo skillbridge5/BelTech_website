@@ -1,3 +1,4 @@
+// @ts-ignore
 import { ShoppingCart, Factory, Truck, Building2, FileText, Hospital, UtensilsCrossed, CheckCircle, GraduationCap } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";

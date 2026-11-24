@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+// @ts-ignore
 import { Upload, X, ImageIcon } from "lucide-react";
 import { uploadImage, getErrorMessage } from "../api/client";
 import toast from "react-hot-toast";

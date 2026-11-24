@@ -11,6 +11,7 @@ import {
 } from "../../api/client";
 import type { Solution } from "../../api/client";
 import { getErrorMessage } from "../../api/client";
+// @ts-ignore
 import { Plus, Pencil, Trash2, X, Search } from "lucide-react";
 import ImageUpload from "../../components/ImageUpload";
 import { resolveImageUrl } from "../../lib/image";

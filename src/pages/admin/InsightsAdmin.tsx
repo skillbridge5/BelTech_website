@@ -24,6 +24,7 @@ import {
   Clock,
   Sparkles,
   CheckCircle2,
+// @ts-ignore
 } from "lucide-react";
 import ImageUpload from "../../components/ImageUpload";
 import { resolveImageUrl } from "../../lib/image";

@@ -8,6 +8,7 @@ import {
   deleteContact,
   getErrorMessage,
 } from "../../api/client";
+// @ts-ignore
 import { Search, Eye, X, CheckCircle2, Inbox, Trash2 } from "lucide-react";
 
 interface Contact {

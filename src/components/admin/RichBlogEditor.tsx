@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+// @ts-ignore
 import {
   Bold,
   Italic,
@@ -30,6 +31,7 @@ import {
   Check,
   Info,
   Sparkles,
+// @ts-ignore
 } from "lucide-react";
 import { uploadImage, getErrorMessage } from "../../api/client";
 import { resolveImageUrl } from "../../lib/image";

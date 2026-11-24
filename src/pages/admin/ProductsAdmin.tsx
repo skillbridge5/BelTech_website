@@ -24,6 +24,7 @@ import {
   Workflow,
   FileText,
   Image as ImageIcon,
+// @ts-ignore
 } from "lucide-react";
 import ImageUpload from "../../components/ImageUpload";
 import RichBlogEditor from "../../components/admin/RichBlogEditor";

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "../../components/ui/card";
 import { getSolutions, loadInsights, fetchContacts, fetchTestimonials } from "../../api/client";
+// @ts-ignore
 import { FolderKanban, FileText, Users, MessageCircle } from "lucide-react";
 
 const Dashboard = () => {

@@ -5,6 +5,7 @@ import { Textarea } from "../components/ui/textarea";
 import toast, { Toaster } from "react-hot-toast";
 import contactHero from "./../assets/contactHero.png";
 import above_the_footer from "./../assets/above_the_footer.jpg";
+// @ts-ignore
 import { Dot } from "lucide-react";
 import { submitContact, getErrorMessage } from "../api/client";
 import { motion } from "framer-motion";

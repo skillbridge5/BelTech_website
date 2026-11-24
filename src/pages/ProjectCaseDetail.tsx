@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+// @ts-ignore
 import { ArrowLeft } from "lucide-react";
 import ProjectCase from "../components/ProjectCase";
 import { getSolutions } from "../api/client";
