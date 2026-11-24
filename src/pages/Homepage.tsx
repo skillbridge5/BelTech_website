@@ -80,6 +80,7 @@ const productDetailPaths: Record<string, string> = {
   "Human Resource": "/products/ethiopian-hrms",
   CareCentral: "/products/carecentral",
   School360: "/products/school360",
+  "Yes POS": "/yes-pos",
 };
 
 const productHref = (product: Product) => {
