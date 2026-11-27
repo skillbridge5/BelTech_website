@@ -345,10 +345,23 @@ export function productFaqJsonLd(pathname: string) {
 }
 
 export function buildJsonLdGraph(pathname: string, page: PageSeo) {
+  const canonical = absoluteUrl(page.path || pathname);
   const graph: Record<string, unknown>[] = [
     organizationJsonLd(),
     websiteJsonLd(),
-    breadcrumbJsonLd(page.path || pathname),
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      url: canonical,
+      name: page.title,
+      description: page.description,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      breadcrumb: { "@id": `${canonical}#breadcrumb` },
+    },
+    {
+      "@id": `${canonical}#breadcrumb`,
+      ...breadcrumbJsonLd(page.path || pathname),
+    },
   ];
 
   if (pathname === "/" || pathname === "/contact") {
@@ -359,7 +372,7 @@ export function buildJsonLdGraph(pathname: string, page: PageSeo) {
     graph.push(homepageFaqJsonLd());
   }
 
-  if (pathname === "/services") {
+  if (pathname === "/services" || pathname === "/erp-software") {
     graph.push(servicePageJsonLd());
     graph.push({
       "@type": "FAQPage",

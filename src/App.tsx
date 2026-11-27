@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import VisitorTracker from "./components/VisitorTracker";
 
 const Homepage = lazy(() => import("./pages/Homepage"));
+const ErpSoftware = lazy(() => import("./pages/ErpSoftware"));
 const Aboutpage = lazy(() => import("./pages/Aboutpage"));
 const Servicespage = lazy(() => import("./pages/Servicespage"));
 const SolutionsPage = lazy(() => import("./pages/Solutionspage"));
@@ -60,6 +61,7 @@ export default function App() {
           <Routes>
             <Route element={<PublicLayout />}>
               <Route path="/" element={<Homepage />} />
+              <Route path="/erp-software" element={<ErpSoftware />} />
               <Route path="/about" element={<Aboutpage />} />
               <Route path="/services" element={<Servicespage />} />
               <Route path="/solutions" element={<SolutionsPage />} />

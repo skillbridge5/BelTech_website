@@ -1,0 +1,561 @@
+{
+  "siteUrl": "https://beltechsolns.et",
+  "organization": {
+    "name": "BelTech Solutions",
+    "legalName": "BelTech Solutions",
+    "url": "https://beltechsolns.et",
+    "email": "beltechsolns@gmail.com",
+    "telephone": ["+251955935455", "+251932058398"],
+    "logo": "https://beltechsolns.et/favicon.png",
+    "image": "https://beltechsolns.et/og-default.jpg",
+    "address": {
+      "streetAddress": "Bole Sub-City, Cameroon St., Near Edna Mall",
+      "addressLocality": "Addis Ababa",
+      "addressRegion": "Addis Ababa",
+      "postalCode": "1000",
+      "addressCountry": "ET"
+    },
+    "geo": { "latitude": 9.005401, "longitude": 38.785002 },
+    "sameAs": [
+      "https://www.linkedin.com/company/beltech-solution/",
+      "https://t.me/belTechSolns",
+      "https://www.youtube.com/@BeltechSolns",
+      "https://www.instagram.com/beltech_solutions",
+      "https://wa.me/251955935455"
+    ]
+  },
+  "routes": {
+    "/": {
+      "title": "BelTech Solutions Ethiopia | Odoo & ERPNext Implementation in Addis Ababa",
+      "description": "BelTech Solutions is an ERP implementer in Addis Ababa, Ethiopia. We set up Odoo and ERPNext, train corporate teams, and build automation and custom software for African enterprises.",
+      "type": "website",
+      "h1": "ERP software and implementation in Addis Ababa, Ethiopia",
+      "lead": "BelTech Solutions helps Ethiopian and East African businesses run on one connected system. We implement Odoo and ERPNext, configure accounting, inventory, HR and sales, train the people who use the system, and stay available for local support after go-live.",
+      "sections": [
+        {
+          "h2": "ERP implementation that fits Ethiopian business rules",
+          "paragraphs": [
+            "An ERP project succeeds when the system reflects how your business actually works. Our consultants map your procurement, sales, warehousing, finance and payroll processes, then configure Odoo or ERPNext around them instead of forcing your teams to work around generic software. Local tax handling, multi-currency import and export documents, pension calculations and Ethiopian labour requirements are built into the setup.",
+            "We work with retail chains, manufacturers, importers, construction firms, schools, clinics and service companies in Addis Ababa and across Ethiopia. Every implementation includes data migration, role-based training and a go-live plan, so your team can use the system from day one."
+          ],
+          "bullets": [
+            "Odoo ERP implementation and customisation in Addis Ababa",
+            "ERPNext deployment for growing Ethiopian enterprises",
+            "Corporate ERP training for finance, sales, inventory and HR teams",
+            "Business process automation and third-party integrations",
+            "Custom software development when off-the-shelf modules are not enough"
+          ]
+        },
+        {
+          "h2": "Odoo and ERPNext: the right platform for your stage",
+          "paragraphs": [
+            "Odoo suits organisations that want a wide app catalogue and a fast rollout across sales, inventory, accounting and HR. ERPNext suits manufacturers and distributors that need deep inventory, production and regulatory flexibility at a lower licence cost. We assess your processes, transaction volume, reporting needs and budget, then recommend one platform and explain the trade-offs in plain language.",
+            "Both platforms can be hosted in the cloud or on your own servers in Ethiopia, so data residency and offline reliability remain under your control."
+          ]
+        },
+        {
+          "h2": "Products built for Ethiopian operations",
+          "paragraphs": [
+            "Alongside implementation services we maintain three ready-to-use products: BelTech Ethiopian HRMS for payroll, tax and biometric attendance; CareCentral for hospitals and clinics; and School360 for admissions, fees, exams and parent communication. Each product is built on the same ERP foundation and can be connected to your wider finance and inventory records."
+          ]
+        },
+        {
+          "h2": "Local team, long-term support",
+          "paragraphs": [
+            "We are based in Bole Sub-City, Addis Ababa, and support businesses across Africa remotely and on site. Training is delivered in English and Amharic, and our support agreements include response times that work for local business hours. If you are comparing ERP vendors in Ethiopia, start with a demonstration using your own processes."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "What ERP systems does BelTech Solutions implement in Ethiopia?",
+          "a": "BelTech Solutions is an ERP implementer based in Addis Ababa specialising in Odoo and ERPNext. We configure modules for accounting, inventory, supply chain, manufacturing and HR, tailored to Ethiopian business regulations and tax requirements."
+        },
+        {
+          "q": "Does BelTech provide support for Ethiopian payroll and biometric attendance?",
+          "a": "Yes. BelTech Ethiopian HRMS supports Ethiopian income tax bands, 7% employee and 11% employer pension contributions, and integrates with ZKTeco biometric attendance devices."
+        },
+        {
+          "q": "Can Odoo or ERPNext be deployed on-premise in Addis Ababa?",
+          "a": "Yes. We support secure cloud hosting and on-premise deployments for businesses that need local data residency, offline operation or internal network compliance."
+        },
+        {
+          "q": "Do you train non-technical staff?",
+          "a": "Yes. Corporate ERP training is part of every implementation, with role-based sessions for finance, inventory, sales and HR teams in English and Amharic."
+        },
+        {
+          "q": "How do I request an ERP quotation in Ethiopia?",
+          "a": "Visit our contact page, call +251 955 935 455 or +251 932 058 398, or email beltechsolns@gmail.com. We usually send a tailored proposal within 24 hours."
+        }
+      ]
+    },
+    "/erp-software": {
+      "title": "ERP Software in Ethiopia | Odoo, ERPNext & Custom ERP | BelTech",
+      "description": "Compare and implement ERP software in Ethiopia. BelTech Solutions delivers Odoo ERP, ERPNext, local payroll, inventory, accounting and on-premise deployment in Addis Ababa.",
+      "type": "website",
+      "h1": "ERP software in Ethiopia, implemented by a local team",
+      "lead": "BelTech Solutions supplies and implements ERP software for businesses in Addis Ababa and across Ethiopia. Whether you need Odoo, ERPNext, a custom payroll module or an on-premise deployment, we configure one system around your processes and train your team to use it.",
+      "sections": [
+        {
+          "h2": "What our ERP software manages",
+          "paragraphs": [
+            "A single ERP system replaces spreadsheets and disconnected tools with shared records. Your finance team closes the month from live accounting data, the warehouse sees stock movements as they happen, sales tracks orders and receivables, and HR runs payroll from approved attendance. Managers get dashboards that reflect the same numbers in every department.",
+            "We configure the modules you need now and leave room to add more later, so the system grows with your business instead of requiring a replacement."
+          ],
+          "bullets": [
+            "Accounting, invoicing, tax reporting and multi-currency ledgers",
+            "Procurement, inventory, warehouses and stock valuation",
+            "Sales, CRM, quotations and order fulfilment",
+            "Manufacturing, bills of materials and production planning",
+            "Human resources, Ethiopian payroll, pensions and biometric attendance",
+            "Project costing, service delivery and management dashboards"
+          ]
+        },
+        {
+          "h2": "Odoo ERP versus ERPNext for Ethiopian companies",
+          "paragraphs": [
+            "Odoo offers a large module catalogue, a polished interface and fast implementation for sales, inventory and accounting teams. ERPNext offers strong manufacturing and inventory depth with an open-source licence, which suits organisations that want to avoid per-user licence costs. We evaluate transaction volume, reporting, integrations and in-house skills before recommending a platform.",
+            "If neither fits, we build custom software on the same stack and connect it to your ERP through documented APIs."
+          ]
+        },
+        {
+          "h2": "Cloud or on-premise ERP deployment",
+          "paragraphs": [
+            "Cloud ERP is faster to launch and easier to maintain, while on-premise deployment keeps data on servers inside your organisation. Both options are available in Ethiopia. We help you decide based on connectivity, compliance and disaster recovery requirements, then handle installation, backup and staff training.",
+            "Every project includes data migration from existing spreadsheets or legacy systems, validation of opening balances, and a staged go-live so critical operations are never interrupted."
+          ]
+        },
+        {
+          "h2": "ERP pricing in Ethiopia",
+          "paragraphs": [
+            "ERP cost depends on the number of users, modules, deployment model and integration work. We provide a written quotation after a short discovery session, with clear separation between platform licences, implementation effort and optional support. Contact our Addis Ababa team for a demonstration and estimate tailored to your company."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Which ERP software is best for a growing business in Ethiopia?",
+          "a": "Odoo is often the fastest route for sales, inventory and accounting teams, while ERPNext is a strong fit for manufacturers and organisations that prefer an open-source licence. We assess your processes before recommending either platform."
+        },
+        {
+          "q": "How long does ERP implementation take?",
+          "a": "A focused deployment for one or two departments can go live in a few weeks. Larger rollouts with multiple sites, data migration and customisation are planned in phases so teams adopt the system gradually."
+        },
+        {
+          "q": "Can the ERP run without reliable internet?",
+          "a": "Yes. On-premise deployments run on local servers and continue operating during internet downtime, with synchronisation when connectivity returns."
+        },
+        {
+          "q": "Do you offer ERP training in Addis Ababa?",
+          "a": "Yes. We provide role-based corporate training in English and Amharic, both on site and remotely, for finance, sales, inventory, HR and management users."
+        }
+      ]
+    },
+    "/services": {
+      "title": "ERP Implementation, Training, Automation & Software in Ethiopia | BelTech Solutions",
+      "description": "Odoo and ERPNext implementation, corporate team training, business automation, and custom software development from BelTech Solutions in Addis Ababa, Ethiopia.",
+      "type": "website",
+      "h1": "ERP services in Ethiopia",
+      "lead": "From first process map to post-go-live support, BelTech Solutions provides the services needed to make ERP software useful in day-to-day operations.",
+      "sections": [
+        {
+          "h2": "ERP implementation and migration",
+          "paragraphs": [
+            "We document current workflows, configure Odoo or ERPNext, clean and migrate existing data, test critical transactions with your team, and launch in controlled phases. Local tax, pension and import-export requirements are validated during configuration rather than added later."
+          ]
+        },
+        {
+          "h2": "Corporate ERP training",
+          "paragraphs": [
+            "Training is organised by role, so finance, sales, warehouse and HR staff practise the transactions they perform every day. Sessions are available in English and Amharic, on site in Addis Ababa or remotely, and include short reference guides for each process."
+          ]
+        },
+        {
+          "h2": "Business automation and integration",
+          "paragraphs": [
+            "We connect ERP software to payment systems, biometric devices, e-commerce stores, banks and third-party applications. Repetitive tasks such as approvals, reconciliations and notifications are automated with clear audit trails."
+          ]
+        },
+        {
+          "h2": "Custom software development",
+          "paragraphs": [
+            "When an off-the-shelf module does not match a unique process, we build web applications, dashboards and APIs around your ERP. Custom work stays maintainable because it uses the same data model and access controls as the core system."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "What ERP systems does BelTech implement?",
+          "a": "BelTech implements and customises Odoo and ERPNext for finance, sales, inventory, HR, manufacturing and related operations."
+        },
+        {
+          "q": "Do you train the company team after go-live?",
+          "a": "Yes. Corporate ERP training is part of how we work, with role-based sessions for the people who use the system every day."
+        },
+        {
+          "q": "Where is BelTech based?",
+          "a": "BelTech Solutions is based in Addis Ababa, Ethiopia, and supports businesses across Africa that need ERP, automation, training or custom software."
+        }
+      ]
+    },
+    "/about": {
+      "title": "About Us — ERP & Digital Solutions in Addis Ababa | BelTech Solutions",
+      "description": "BelTech Solutions was founded in 2024 in Addis Ababa to help African businesses modernise with Odoo, ERPNext, corporate ERP training and tailored digital solutions.",
+      "type": "website",
+      "h1": "About BelTech Solutions",
+      "lead": "We are an Addis Ababa based ERP and software company helping African organisations replace fragmented tools with systems that their teams can actually use.",
+      "sections": [
+        {
+          "h2": "Why we started",
+          "paragraphs": [
+            "BelTech Solutions was founded in 2024 after seeing the same problem across Ethiopian companies: capable teams held back by spreadsheets, disconnected accounting packages and manual reporting. We set out to provide implementation, training and local support in one place so that ERP projects deliver measurable operational change."
+          ]
+        },
+        {
+          "h2": "How we work",
+          "paragraphs": [
+            "We start by understanding the process, not by demonstrating features. Our consultants map the way your business buys, sells, stores, produces and pays, then configure the platform to match. We validate the setup with real transactions from your team, train the users, and remain available for support after launch.",
+            "Our work covers Odoo and ERPNext implementation, corporate training, automation, custom software and the maintenance of our own products for HR, healthcare and education."
+          ]
+        },
+        {
+          "h2": "Local knowledge, wider reach",
+          "paragraphs": [
+            "Being based in Ethiopia means we understand local tax rules, pension contributions, import documentation and the practical constraints of connectivity and power. We support clients in Addis Ababa on site and organisations elsewhere in Africa remotely."
+          ]
+        }
+      ],
+      "faq": []
+    },
+    "/industries": {
+      "title": "Industries We Serve — Retail, Manufacturing & Healthcare ERP Ethiopia | BelTech Solutions",
+      "description": "ERP and digital operations tailored for retail, manufacturing, import-export, construction, accounting firms, healthcare, and schools in Ethiopia and East Africa.",
+      "type": "website",
+      "h1": "Industries we serve",
+      "lead": "BelTech Solutions configures ERP software around the way different industries operate in Ethiopia, from stock-intensive retail to patient records and school administration.",
+      "sections": [
+        {
+          "h2": "Retail and distribution",
+          "paragraphs": [
+            "Multi-store inventory, pricing, promotions, barcode scanning and real-time stock valuation keep shelves accurate and purchasing decisions grounded in data."
+          ]
+        },
+        {
+          "h2": "Manufacturing and import-export",
+          "paragraphs": [
+            "Bills of materials, production orders, cost tracking, landed cost and multi-currency documents help manufacturers and importers control margins and customs paperwork."
+          ]
+        },
+        {
+          "h2": "Healthcare, education and professional services",
+          "paragraphs": [
+            "CareCentral manages patient records, laboratory, pharmacy and billing for hospitals and clinics. School360 handles admissions, fees, exams and parent communication. Construction firms and accounting practices use the same ERP foundation for project costing, time tracking and client reporting.",
+            "Every industry setup includes role-based training and support in English and Amharic."
+          ]
+        }
+      ],
+      "faq": []
+    },
+    "/solutions": {
+      "title": "Projects & Case Studies — ERP Implementations in Ethiopia | BelTech Solutions",
+      "description": "Explore BelTech ERP case studies and enterprise digital systems, including Diligent Trade on Odoo, SkillBridge Institute, and Eyoha Digitals in Addis Ababa.",
+      "type": "website",
+      "h1": "Projects and case studies",
+      "lead": "A look at systems BelTech Solutions has delivered for businesses and institutions in Addis Ababa.",
+      "sections": [
+        {
+          "h2": "Diligent Trade — Odoo for import and export",
+          "paragraphs": [
+            "Diligent Trade needed orders, inventory and finance in one place. We implemented Odoo with purchase, sales, stock and accounting workflows configured around the company's import-export process, then trained the team on daily operations and reporting."
+          ]
+        },
+        {
+          "h2": "SkillBridge Institute and Eyoha Digitals",
+          "paragraphs": [
+            "For SkillBridge Institute we built a website that keeps programmes and student enquiries in one place. For Eyoha Digitals we delivered a site covering services, portfolio and consultation requests. Both projects show how custom software can support the same operational goals as an ERP rollout."
+          ]
+        }
+      ],
+      "faq": []
+    },
+    "/blog": {
+      "title": "ERP & Digital Operations Blog — Guides for Ethiopian Businesses | BelTech Solutions",
+      "description": "Practical articles and guides on Odoo, ERPNext, biometric payroll, tax compliance, and digital business operations in Ethiopia.",
+      "type": "website",
+      "h1": "ERP and digital operations guides",
+      "lead": "Practical writing from the BelTech team about ERP software, payroll compliance and running digital operations in Ethiopia.",
+      "sections": [
+        {
+          "h2": "Recent guides",
+          "paragraphs": [
+            "Our articles compare Odoo and ERPNext for Ethiopian companies, explain how to automate payroll and pension calculations, describe ZKTeco biometric integration, and look at what ERP systems change in growing businesses.",
+            "Each guide is written for business owners, finance leads and operations managers rather than developers, with examples drawn from real implementations in Addis Ababa."
+          ]
+        }
+      ],
+      "faq": []
+    },
+    "/contact": {
+      "title": "Contact BelTech Solutions — Addis Ababa, Ethiopia",
+      "description": "Talk with the BelTech Solutions engineering team in Bole Sub-City, Addis Ababa for ERP implementation, corporate training, automation, or custom software. Call +251 955 935 455 or email beltechsolns@gmail.com.",
+      "type": "website",
+      "h1": "Contact BelTech Solutions",
+      "lead": "Tell us about your processes and we will recommend an ERP approach, provide an estimate and arrange a demonstration with your own data.",
+      "sections": [
+        {
+          "h2": "Visit or call our Addis Ababa office",
+          "paragraphs": [
+            "BelTech Solutions is located in Bole Sub-City, Cameroon Street, near Edna Mall, Addis Ababa, Ethiopia. Office hours are Monday to Friday, 08:30 to 17:30.",
+            "Call +251 955 935 455 or +251 932 058 398, email beltechsolns@gmail.com, or use the contact form on this page. Many enquiries receive a tailored response within 24 hours."
+          ]
+        },
+        {
+          "h2": "What to include in your enquiry",
+          "paragraphs": [
+            "Sharing your industry, number of users, current tools and the processes causing the most difficulty helps us prepare a useful first conversation. If you already use Odoo or ERPNext, tell us which modules are live and where the gaps are."
+          ]
+        }
+      ],
+      "faq": []
+    },
+    "/products/ethiopian-hrms": {
+      "title": "BelTech Ethiopian HRMS | Ethiopian Payroll & Biometric Attendance Software",
+      "description": "BelTech Ethiopian HRMS: Complete Odoo-based HR and payroll software engineered for Ethiopian labor laws. Automated tax brackets, pension deductions, ZKTeco biometric sync, and self-service.",
+      "type": "product",
+      "h1": "BelTech Ethiopian HRMS",
+      "lead": "Payroll, attendance and HR software built in Ethiopia for Ethiopian labour rules, running on Odoo and ready to connect to biometric devices.",
+      "sections": [
+        {
+          "h2": "Payroll that follows Ethiopian rules",
+          "paragraphs": [
+            "The system calculates progressive income tax, 7% employee pension and 11% employer pension, overtime, severance and leave balances from approved attendance records. Statutory reports and payslips are generated from the same data, reducing reconciliation work at month end."
+          ]
+        },
+        {
+          "h2": "Biometric attendance and self-service",
+          "paragraphs": [
+            "ZKTeco fingerprint and face recognition devices sync punches into shift schedules, overtime and payroll. Employees view payslips, request leave and track approvals through a web and mobile portal, while managers approve requests with a clear audit trail.",
+            "HRMS can be deployed in the cloud or on your own servers in Addis Ababa, and connects to the accounting and cost centres in your wider ERP system."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Is BelTech Ethiopian HRMS compliant with Ethiopian labour and tax law?",
+          "a": "Yes. It automates progressive income tax bands, 7% employee and 11% employer pension contributions, severance calculations and leave policies according to current Ethiopian labour proclamations."
+        },
+        {
+          "q": "Does it connect with ZKTeco biometric devices?",
+          "a": "Yes. Attendance punches sync over a local network or cloud connection and feed timesheets, shift management and monthly payroll."
+        },
+        {
+          "q": "Can employees access payslips on mobile?",
+          "a": "Yes. The self-service portal works on web and mobile for payslips, leave balances, requests and approvals."
+        }
+      ]
+    },
+    "/products/carecentral": {
+      "title": "CareCentral | Hospital & Clinic Management System in Ethiopia",
+      "description": "CareCentral is BelTech's specialised healthcare ERP for hospitals and clinics in Ethiopia: patient records, OPD/IPD, laboratory, pharmacy, and unified administration in one system.",
+      "type": "product",
+      "h1": "CareCentral hospital and clinic management system",
+      "lead": "CareCentral brings patient records, outpatient and inpatient care, laboratory, pharmacy and billing into one healthcare ERP for Ethiopian hospitals and clinics.",
+      "sections": [
+        {
+          "h2": "One record across every department",
+          "paragraphs": [
+            "Registration, triage, consultations, admissions, investigations, prescriptions and billing all reference the same patient record. Clinicians see relevant history, laboratory results and current medication, while administrators see bed occupancy, revenue and stock levels without reconciling separate registers."
+          ]
+        },
+        {
+          "h2": "Built for local conditions",
+          "paragraphs": [
+            "CareCentral supports on-premise installation on hospital servers so clinical work continues during internet downtime and patient data stays within the organisation. Role-based access protects sensitive records, and reports can be configured for management and regulatory needs."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Which hospital departments does CareCentral support?",
+          "a": "Outpatient and inpatient care, emergency triage, operating theatre, electronic medical records, laboratory, pharmacy and unified medical billing."
+        },
+        {
+          "q": "Can it run offline or on-premise?",
+          "a": "Yes. CareCentral can be installed on local hospital servers for uninterrupted clinical operations and local data privacy."
+        }
+      ]
+    },
+    "/products/school360": {
+      "title": "School360 | School Management System & ERP in Ethiopia",
+      "description": "School360 digitizes admissions, student records, biometric attendance, examinations, fee collection, and parent communication on an integrated Odoo school management platform in Ethiopia.",
+      "type": "product",
+      "h1": "School360 school management system",
+      "lead": "School360 manages admissions, attendance, examinations, fees and parent communication in one school ERP built for Ethiopian schools.",
+      "sections": [
+        {
+          "h2": "Administration in one place",
+          "paragraphs": [
+            "Admissions, student files, class allocation, biometric attendance, grading, report cards and fee collection are recorded in one system. Finance staff see outstanding fees by class and term, teachers record marks and attendance, and school leaders track enrolment and performance trends.",
+            "Parents use a web portal to check attendance, results, notices and fee receipts, reducing the volume of phone calls and paper notices."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "How does School360 manage student fees and reports?",
+          "a": "It tracks tuition, transport billing, examinations, grading and report cards, with automated notifications to parents through the portal."
+        },
+        {
+          "q": "Can parents view academic performance online?",
+          "a": "Yes. Parents can check attendance, exam results, notices and fee receipts from a smartphone or computer."
+        }
+      ]
+    },
+    "/blog/insight-erp-ethiopia": {
+      "title": "How ERP Systems Transform Ethiopian Businesses | BelTech Solutions",
+      "description": "Why integrating sales, inventory, and finance into a single platform like Odoo or ERPNext accelerates business growth in Ethiopia.",
+      "type": "article",
+      "h1": "How ERP systems transform Ethiopian businesses",
+      "lead": "Disconnected spreadsheets make it hard to know what is actually happening in a growing company. An ERP system gives every department the same numbers.",
+      "sections": [
+        {
+          "h2": "From isolated records to one source of truth",
+          "paragraphs": [
+            "In many Ethiopian businesses, sales are tracked in one notebook, stock in a spreadsheet and accounts in a separate package. Closing the month means reconciling three different versions of the truth. An ERP system records a transaction once and makes it available to sales, warehouse and finance simultaneously.",
+            "That single record speeds up invoicing, reveals slow-moving stock earlier and makes cash-flow forecasts dependable. Managers stop asking staff to rebuild reports and start asking better questions of the data."
+          ]
+        },
+        {
+          "h2": "What changes after implementation",
+          "paragraphs": [
+            "The largest gains usually come from routine work: approvals that move automatically, stock alerts before items run out, and payroll calculated from approved attendance. Teams adopt the system faster when training is role-based and uses their own transactions rather than generic examples.",
+            "ERP is not only a technology project. It is a decision about how information flows through the business, which is why local implementation experience matters."
+          ]
+        }
+      ],
+      "faq": []
+    },
+    "/blog/odoo-vs-erpnext-ethiopian-companies": {
+      "title": "Odoo vs. ERPNext for Ethiopian Import/Export & Manufacturing Companies | BelTech Solutions",
+      "description": "A comprehensive comparison of Odoo and ERPNext for Ethiopian businesses: local tax support, multi-currency customs, licence costs, and flexibility.",
+      "type": "article",
+      "h1": "Odoo vs ERPNext for Ethiopian companies",
+      "lead": "Both platforms can run finance, inventory and operations. The right choice depends on your processes, budget and the skills available in your team.",
+      "sections": [
+        {
+          "h2": "Where Odoo fits",
+          "paragraphs": [
+            "Odoo provides a broad set of applications with a consistent interface, which makes it practical for companies rolling out sales, CRM, inventory, accounting and HR at the same time. Implementation is typically faster because common processes are already covered. It is a commercial licence, so user costs should be included in the total budget."
+          ]
+        },
+        {
+          "h2": "Where ERPNext fits",
+          "paragraphs": [
+            "ERPNext offers strong manufacturing, production planning and inventory features under an open-source licence. Organisations with technical staff who want to customise deeply often prefer it, although implementation and ongoing maintenance require more internal discipline."
+          ]
+        },
+        {
+          "h2": "Local considerations",
+          "paragraphs": [
+            "For import-export companies, multi-currency documents, landed cost and customs paperwork matter more than module count. For manufacturers, bills of materials and production costing take priority. We evaluate these requirements alongside reporting, hosting and support before recommending a platform."
+          ]
+        }
+      ],
+      "faq": []
+    },
+    "/blog/automate-ethiopian-payroll-pension-odoo": {
+      "title": "How to Automate Ethiopian Payroll & Pension Calculations in Odoo | BelTech Solutions",
+      "description": "Step-by-step guide on configuring Ethiopian income tax brackets, 7% employee and 11% employer pension contributions, and biometric attendance sync in Odoo.",
+      "type": "article",
+      "h1": "Automating Ethiopian payroll and pension in Odoo",
+      "lead": "Payroll is one of the first processes where ERP produces a visible return, because it removes repeated manual calculations and reconciliation.",
+      "sections": [
+        {
+          "h2": "Set up the statutory rules once",
+          "paragraphs": [
+            "Configure progressive income tax bands, 7% employee pension and 11% employer pension as salary rules, together with overtime, allowances and leave policies. Once the rules are validated against a sample payroll, each monthly run uses the same logic and produces an audit trail."
+          ]
+        },
+        {
+          "h2": "Connect attendance to payroll",
+          "paragraphs": [
+            "Biometric punches from ZKTeco devices feed approved timesheets, so overtime and absences are calculated from actual attendance rather than manual entries. Employees check payslips and leave balances in the self-service portal, and managers approve exceptions before the payroll run.",
+            "Test the configuration with borderline cases such as partial months, overtime and unpaid leave before relying on it for live payroll."
+          ]
+        }
+      ],
+      "faq": []
+    },
+    "/blog/biometric-attendance-zkteco-ethiopia": {
+      "title": "Integrating ZKTeco Biometric Devices with Odoo HRMS in Ethiopia | BelTech Solutions",
+      "description": "How to connect ZKTeco fingerprint and face recognition attendance hardware with Odoo for accurate timesheets, shift management, and automated payroll.",
+      "type": "article",
+      "h1": "Integrating ZKTeco biometric attendance with Odoo",
+      "lead": "Biometric attendance removes buddy punching and manual timesheets, but only when device data reaches payroll in a reliable way.",
+      "sections": [
+        {
+          "h2": "How the integration works",
+          "paragraphs": [
+            "Employees are registered once in Odoo and on the ZKTeco device. Punches are collected over the local network or through cloud synchronisation, matched to the employee record, and interpreted against shift schedules. Late arrivals, overtime and missing punches are flagged for approval before payroll is calculated.",
+            "For sites with limited connectivity, devices store punches locally and sync when the connection returns. Clear exception reports keep HR in control of the final timesheet."
+          ]
+        }
+      ],
+      "faq": []
+    },
+    "/projects/diligent-trade": {
+      "title": "Diligent Trade — Odoo ERP Case Study | BelTech Solutions",
+      "description": "How BelTech implemented Odoo ERP for Diligent Trade, connecting import-export orders, inventory, and finance in one system.",
+      "type": "article",
+      "h1": "Diligent Trade — Odoo ERP implementation",
+      "lead": "A case study of an Odoo rollout that connected import-export orders, warehouse stock and finance for an Addis Ababa trading business.",
+      "sections": [
+        {
+          "h2": "The challenge",
+          "paragraphs": [
+            "Orders, stock movements and invoices were tracked in separate tools, making it difficult to know the margin on a shipment or the true value of inventory. The team needed one system that reflected the realities of import-export work."
+          ]
+        },
+        {
+          "h2": "What we delivered",
+          "paragraphs": [
+            "We configured Odoo purchase, sales, inventory and accounting modules around the company's workflow, migrated opening balances and stock, and trained staff on each process. Managers now follow orders from quotation to delivery and see the associated financial position in the same system."
+          ]
+        }
+      ],
+      "faq": []
+    },
+    "/projects/skillbridge": {
+      "title": "SkillBridge Institute — Website Case Study | BelTech Solutions",
+      "description": "Website BelTech built for SkillBridge Institute of Technology so programs and student enquiries live in one place.",
+      "type": "article",
+      "h1": "SkillBridge Institute website",
+      "lead": "A website project that gave SkillBridge Institute a single place to present programmes and capture student enquiries.",
+      "sections": [
+        {
+          "h2": "The brief",
+          "paragraphs": [
+            "Programme information and enquiry handling were scattered across social posts and messaging apps. We designed a clear site structure for courses, admissions and contact, with an enquiry flow that routes requests to the right staff member."
+          ]
+        }
+      ],
+      "faq": []
+    },
+    "/projects/eyoha-digitals": {
+      "title": "Eyoha Digitals — Website Case Study | BelTech Solutions",
+      "description": "Website BelTech built for Eyoha Digitals covering services, portfolio, and consultation requests.",
+      "type": "article",
+      "h1": "Eyoha Digitals website",
+      "lead": "A portfolio and consultation website built for Eyoha Digitals in Addis Ababa.",
+      "sections": [
+        {
+          "h2": "The brief",
+          "paragraphs": [
+            "The company needed a professional online presence that explained its services, showed recent work and made it easy for prospective clients to request a consultation. We delivered a responsive site with clear service pages and a simple enquiry process."
+          ]
+        }
+      ],
+      "faq": []
+    }
+  }
+}

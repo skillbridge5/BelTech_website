@@ -6,6 +6,15 @@
   RewriteEngine On
   RewriteBase /
 
+  # Canonicalise legacy/duplicate URLs (mirrors vercel.json redirects)
+  RewriteRule ^Contact$ /contact [R=301,L]
+  RewriteRule ^Solutions$ /solutions [R=301,L]
+  RewriteRule ^ERPDetail$ /projects/diligent-trade [R=301,L]
+  RewriteRule ^CharityPlatform$ /projects/skillbridge [R=301,L]
+  RewriteRule ^RetailAuto$ /projects/eyoha-digitals [R=301,L]
+  RewriteRule ^insights$ /blog [R=301,L]
+  RewriteRule ^DigitalMarketingDetail$ /solutions [R=301,L]
+
   # 1. Force HTTPS (Optional - uncomment if your SSL certificate is installed)
   # RewriteCond %{HTTPS} !=on
   # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

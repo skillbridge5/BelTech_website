@@ -43,16 +43,18 @@ function upsertLink(rel: string, href: string) {
 }
 
 function upsertJsonLd(data: object) {
+  // Prerendered pages already ship a JSON-LD block. Reuse it so the page never
+  // ends up with two conflicting Organization/WebSite graphs at runtime.
   let el = document.head.querySelector(
-    `script[${LD_ATTR}]`
+    'script[type="application/ld+json"]'
   ) as HTMLScriptElement | null;
   if (!el) {
     el = document.createElement("script");
     el.type = "application/ld+json";
-    el.setAttribute(LD_ATTR, "true");
     document.head.appendChild(el);
   }
-  el.textContent = JSON.stringify(data);
+  el.setAttribute(LD_ATTR, "true");
+  el.textContent = JSON.stringify(data).replace(/</g, "\\u003c");
 }
 
 type SeoHeadProps = {
@@ -81,9 +83,6 @@ export default function SeoHead({ pathname }: SeoHeadProps) {
     upsertMeta({ name: "robots" }, robots);
     upsertMeta({ name: "googlebot" }, robots);
     upsertMeta({ name: "author" }, SITE_NAME);
-    if (page.keywords?.length) {
-      upsertMeta({ name: "keywords" }, page.keywords.join(", "));
-    }
 
     upsertLink("canonical", canonical);
 
