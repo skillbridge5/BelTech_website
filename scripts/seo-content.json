@@ -89,68 +89,6 @@
         }
       ]
     },
-    "/erp-software": {
-      "title": "ERP Software in Ethiopia | Odoo, ERPNext & Custom ERP | BelTech",
-      "description": "Compare and implement ERP software in Ethiopia. BelTech Solutions delivers Odoo ERP, ERPNext, local payroll, inventory, accounting and on-premise deployment in Addis Ababa.",
-      "type": "website",
-      "h1": "ERP software in Ethiopia, implemented by a local team",
-      "lead": "BelTech Solutions supplies and implements ERP software for businesses in Addis Ababa and across Ethiopia. Whether you need Odoo, ERPNext, a custom payroll module or an on-premise deployment, we configure one system around your processes and train your team to use it.",
-      "sections": [
-        {
-          "h2": "What our ERP software manages",
-          "paragraphs": [
-            "A single ERP system replaces spreadsheets and disconnected tools with shared records. Your finance team closes the month from live accounting data, the warehouse sees stock movements as they happen, sales tracks orders and receivables, and HR runs payroll from approved attendance. Managers get dashboards that reflect the same numbers in every department.",
-            "We configure the modules you need now and leave room to add more later, so the system grows with your business instead of requiring a replacement."
-          ],
-          "bullets": [
-            "Accounting, invoicing, tax reporting and multi-currency ledgers",
-            "Procurement, inventory, warehouses and stock valuation",
-            "Sales, CRM, quotations and order fulfilment",
-            "Manufacturing, bills of materials and production planning",
-            "Human resources, Ethiopian payroll, pensions and biometric attendance",
-            "Project costing, service delivery and management dashboards"
-          ]
-        },
-        {
-          "h2": "Odoo ERP versus ERPNext for Ethiopian companies",
-          "paragraphs": [
-            "Odoo offers a large module catalogue, a polished interface and fast implementation for sales, inventory and accounting teams. ERPNext offers strong manufacturing and inventory depth with an open-source licence, which suits organisations that want to avoid per-user licence costs. We evaluate transaction volume, reporting, integrations and in-house skills before recommending a platform.",
-            "If neither fits, we build custom software on the same stack and connect it to your ERP through documented APIs."
-          ]
-        },
-        {
-          "h2": "Cloud or on-premise ERP deployment",
-          "paragraphs": [
-            "Cloud ERP is faster to launch and easier to maintain, while on-premise deployment keeps data on servers inside your organisation. Both options are available in Ethiopia. We help you decide based on connectivity, compliance and disaster recovery requirements, then handle installation, backup and staff training.",
-            "Every project includes data migration from existing spreadsheets or legacy systems, validation of opening balances, and a staged go-live so critical operations are never interrupted."
-          ]
-        },
-        {
-          "h2": "ERP pricing in Ethiopia",
-          "paragraphs": [
-            "ERP cost depends on the number of users, modules, deployment model and integration work. We provide a written quotation after a short discovery session, with clear separation between platform licences, implementation effort and optional support. Contact our Addis Ababa team for a demonstration and estimate tailored to your company."
-          ]
-        }
-      ],
-      "faq": [
-        {
-          "q": "Which ERP software is best for a growing business in Ethiopia?",
-          "a": "Odoo is often the fastest route for sales, inventory and accounting teams, while ERPNext is a strong fit for manufacturers and organisations that prefer an open-source licence. We assess your processes before recommending either platform."
-        },
-        {
-          "q": "How long does ERP implementation take?",
-          "a": "A focused deployment for one or two departments can go live in a few weeks. Larger rollouts with multiple sites, data migration and customisation are planned in phases so teams adopt the system gradually."
-        },
-        {
-          "q": "Can the ERP run without reliable internet?",
-          "a": "Yes. On-premise deployments run on local servers and continue operating during internet downtime, with synchronisation when connectivity returns."
-        },
-        {
-          "q": "Do you offer ERP training in Addis Ababa?",
-          "a": "Yes. We provide role-based corporate training in English and Amharic, both on site and remotely, for finance, sales, inventory, HR and management users."
-        }
-      ]
-    },
     "/services": {
       "title": "ERP Implementation, Training, Automation & Software in Ethiopia | BelTech Solutions",
       "description": "Odoo and ERPNext implementation, corporate team training, business automation, and custom software development from BelTech Solutions in Addis Ababa, Ethiopia.",

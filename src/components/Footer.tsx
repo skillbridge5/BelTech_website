@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   const quickLinks = [
     { name: "Home", path: "/" },
-    { name: "ERP Software", path: "/erp-software" },
     { name: "Services", path: "/services" },
     { name: "Ethiopian HRMS", path: "/products/ethiopian-hrms" },
     { name: "CareCentral", path: "/products/carecentral" },

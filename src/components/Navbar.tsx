@@ -29,7 +29,6 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "ERP Software", path: "/erp-software" },
     { name: "Services", path: "/services" },
     { name: "About", path: "/about" },
     { name: "Projects", path: "/solutions" },

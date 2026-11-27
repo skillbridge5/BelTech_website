@@ -26,20 +26,6 @@ export const STATIC_PAGE_SEO: Record<string, PageSeo> = {
       "Ethiopian ERP system",
     ],
   },
-  "/erp-software": {
-    path: "/erp-software",
-    title: "ERP Software in Ethiopia | Odoo, ERPNext & Custom ERP | BelTech",
-    description:
-      "Compare and implement ERP software in Ethiopia. BelTech Solutions delivers Odoo ERP, ERPNext, local payroll, inventory, accounting and on-premise deployment in Addis Ababa.",
-    keywords: [
-      "ERP software Ethiopia",
-      "ERP system Addis Ababa",
-      "Odoo ERP Ethiopia",
-      "ERPNext software Ethiopia",
-      "business software Ethiopia",
-      "on-premise ERP Addis Ababa",
-    ],
-  },
   "/about": {
     path: "/about",
     title: title("About Us — ERP & Digital Solutions in Addis Ababa"),
@@ -204,7 +190,6 @@ export const CANONICAL_ALIASES: Record<string, string> = {
 
 export const INDEXABLE_PATHS = [
   "/",
-  "/erp-software",
   "/about",
   "/services",
   "/solutions",

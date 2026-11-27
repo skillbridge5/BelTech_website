@@ -51,7 +51,6 @@ const labelFor = (segment) =>
     contact: "Contact",
     projects: "Projects",
     products: "Products",
-    "erp-software": "ERP Software",
     "diligent-trade": "Diligent Trade",
     skillbridge: "SkillBridge",
     "eyoha-digitals": "Eyoha Digitals",
@@ -150,7 +149,7 @@ function jsonLd(path, route) {
     });
   }
 
-  if (path === "/services" || path === "/erp-software") {
+  if (path === "/services") {
     graph.push({
       "@type": "ItemList",
       name: "BelTech Solutions ERP services",
@@ -202,7 +201,7 @@ function bodyHtml(route) {
   return `<div id="root"><main class="seo-static" style="max-width:960px;margin:0 auto;padding:110px 20px 60px;font-family:Arial,sans-serif;color:#1f2937;line-height:1.7">
 <h1>${esc(route.h1)}</h1>
 <p style="font-size:1.1rem;color:#374151">${esc(route.lead)}</p>
-<p><a href="/erp-software">ERP software in Ethiopia</a> · <a href="/services">ERP implementation services</a> · <a href="/contact">Request a quotation</a></p>
+<p><a href="/services">ERP implementation services</a> · <a href="/contact">Request a quotation</a></p>
 ${sections}${faq}
 <section><h2>Work with BelTech Solutions</h2><p>Based in Bole Sub-City, Addis Ababa. Call +251 955 935 455 or email beltechsolns@gmail.com to discuss ERP implementation, training or custom software.</p></section>
 </main></div>`;

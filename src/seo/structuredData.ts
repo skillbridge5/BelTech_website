@@ -372,7 +372,7 @@ export function buildJsonLdGraph(pathname: string, page: PageSeo) {
     graph.push(homepageFaqJsonLd());
   }
 
-  if (pathname === "/services" || pathname === "/erp-software") {
+  if (pathname === "/services") {
     graph.push(servicePageJsonLd());
     graph.push({
       "@type": "FAQPage",
