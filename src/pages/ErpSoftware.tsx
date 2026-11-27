@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { ComponentType } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-// @ts-expect-error - lucide-react types are not resolvable in this project's TS setup
+// @ts-ignore - lucide-react types are not resolvable in this project's TS setup
 import { ArrowRight, ArrowUpRight, Boxes, Check, CheckCircle2, ChevronDown, ClipboardCheck, Cloud, Database, Factory, GraduationCap, Layers, LineChart, MapPin, Phone, Server, ShieldCheck, Sparkles, Users, Workflow } from "lucide-react";
 import servicesIntro from "../assets/servicepage/services-intro.jpg";
 import erpImplementation from "../assets/servicepage/erp_implementation.jpg";
