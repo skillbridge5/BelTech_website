@@ -67,7 +67,7 @@ const homepageFaqs = [
   {
     question: "How can Ethiopian businesses get a quotation or consultation?",
     answer:
-      "You can request a custom quotation or schedule a consultation by visiting our Contact page, calling +251 955 935 455 or +251 932 058 398, or emailing info@beltechsolns.et. Our team typically delivers tailored proposals within 24 hours.",
+      "You can request a custom quotation or schedule a consultation by visiting our Contact page, calling +251 955 935 455 or +251 932 058 398, or emailing beltechsolns@gmail.com. Our team typically delivers tailored proposals within 24 hours.",
   },
 ];
 

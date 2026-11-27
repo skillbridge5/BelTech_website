@@ -77,7 +77,7 @@ export const STATIC_PAGE_SEO: Record<string, PageSeo> = {
     path: "/contact",
     title: title("Contact BelTech Solutions — Addis Ababa, Ethiopia"),
     description:
-      "Talk with the BelTech Solutions engineering team in Bole Sub-City, Addis Ababa for ERP implementation, corporate training, automation, or custom software. Call +251 955 935 455 or email info@beltechsolns.et.",
+      "Talk with the BelTech Solutions engineering team in Bole Sub-City, Addis Ababa for ERP implementation, corporate training, automation, or custom software. Call +251 955 935 455 or email beltechsolns@gmail.com.",
     keywords: ["contact BelTech", "ERP consultant Addis Ababa", "Odoo support Ethiopia"],
   },
   "/projects/diligent-trade": {

@@ -15,7 +15,7 @@ export const COMPANY = {
   foundingDate: "2024",
   description:
     "BelTech Solutions is an enterprise ERP implementer in Addis Ababa, Ethiopia. We specialize in Odoo and ERPNext implementation, corporate team training, workflow automation, and custom software development across Africa.",
-  email: "info@beltechsolns.et",
+  email: "beltechsolns@gmail.com",
   salesEmail: "sales@beltechsolns.et",
   telephone: ["+251955935455", "+251932058398"],
   whatsapp: "https://wa.me/251955935455",

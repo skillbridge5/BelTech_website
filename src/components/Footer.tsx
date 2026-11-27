@@ -20,7 +20,7 @@ const Footer = () => {
   ];
 
   const socialLinks: { icon: LucideIcon | typeof WhatsAppIcon; url: string; label: string }[] = [
-    { icon: Mail, url: "mailto:info@beltechsolns.et", label: "Email" },
+    { icon: Mail, url: "mailto:beltechsolns@gmail.com", label: "Email" },
     { icon: Linkedin, url: "https://www.linkedin.com/company/beltech-solution/", label: "LinkedIn" },
     { icon: Send, url: "https://t.me/belTechSolns", label: "Telegram" },
     { icon: Youtube, url: "https://www.youtube.com/@BeltechSolns", label: "YouTube" },
@@ -90,8 +90,8 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#7ec8ea]" />
-                <a href="mailto:info@beltechsolns.et" className="hover:text-white">
-                  info@beltechsolns.et
+                <a href="mailto:beltechsolns@gmail.com" className="hover:text-white">
+                  beltechsolns@gmail.com
                 </a>
               </li>
             </ul>

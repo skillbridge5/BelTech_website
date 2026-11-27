@@ -145,7 +145,7 @@ const Contact = () => {
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center gap-0.4">
                     <Dot className="h-8 w-8 text-black" />
-                    <a href="mailto:info@beltechsolns.et" className="font-semibold hover:text-[#0078B7]">info@beltechsolns.et</a>
+                    <a href="mailto:beltechsolns@gmail.com" className="font-semibold hover:text-[#0078B7]">beltechsolns@gmail.com</a>
                   </div>
                   <div className="flex items-center gap-0.4">
                     <Dot className="h-8 w-8 text-black" />
